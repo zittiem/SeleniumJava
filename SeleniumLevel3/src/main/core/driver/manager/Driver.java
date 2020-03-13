@@ -3,29 +3,51 @@ package driver.manager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Function;
 
-import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebDriver.TargetLocator;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.chrome.ChromeDriver;
 
-public class Driver extends DriverManager {
+public class Driver {
 	private static Logger logger = Logger.getLogger(Driver.class);
 	
-	public static TargetLocator switchTo() {
-		return getDriver().switchTo();
+	protected static WebDriver getDriver() {
+		WebDriver driver = new ChromeDriver();
+		return driver;
 	}
 	
-	public static String getCurrentUrl() {
-		return getDriver().getCurrentUrl();
+	/**
+	 ***********Author: Thanh Hoang ***********	 
+	 */
+	
+	public static void navigate(String url) {
+		logger.debug("Navigate to " + url);
+		try {
+			getDriver().get(url);
+		} catch (Exception e) {
+			logger.error("An error occurred when nagivating " + e.getMessage());
+		}
+	}
+	
+	public static String getPageSource() {
+		return getDriver().getPageSource();
+	}
+	
+	public static String getTitle(){
+		return getDriver().getTitle();
+	}
+	
+	public static String getWindowHandle() {
+		return getDriver().getWindowHandle();
+	}
+	
+	public static ArrayList<String> getWindowHandles() {
+		return new ArrayList<String>(getDriver().getWindowHandles());
 	}
 	
 	public static WebElement findElement(By by) {
@@ -36,23 +58,33 @@ public class Driver extends DriverManager {
 		return getDriver().findElements(by);
 	}
 	
-	public static String getSessionId() {
-		String sessionId = null;
+	public static void switchToFrame(WebElement frameElement) {
 		try {
-			sessionId = ((RemoteWebDriver) getDriver()).getSessionId().toString();
-		} catch (Exception ex)
-		{
-			logger.error("An error occurred when getting session Id " + ex.getMessage());
-		}
-		return sessionId;
-	}
+			logger.debug("Switch frame using web element");
+			getDriver().switchTo().frame(frameElement);
 
-	public static void navigate(String url) {
-		logger.debug("Navigate to " + url);
-		try {
-			getDriver().get(url);
 		} catch (Exception e) {
-			logger.error("An error occurred when nagivating " + e.getMessage());
+			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToFrame(int frameIndex) {
+		try {
+			logger.debug("Switch frame using frame index");
+			getDriver().switchTo().frame(frameIndex);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by index: " + e.getMessage());
+		}
+	}
+	
+	public static void switchTo(String windowHandle) {
+		try {
+			logger.debug("Switch window");
+			getDriver().switchTo().window(windowHandle);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching window: " + e.getMessage());
 		}
 	}
 	
@@ -64,34 +96,14 @@ public class Driver extends DriverManager {
 			logger.error("An error occurred when maximizing browser" + e.getMessage());
 		}
 	}
-
-	public static Object execJavaScript(String script, Object... objs) {
-		return ((JavascriptExecutor) getDriver()).executeScript(script, objs);
-	}
 	
-	public static void waitForAjaxJQueryProcess() {
-		logger.debug("Wait for ajax complete");
-		WebDriverWait wait = new WebDriverWait(getDriver(), getTimeOut());
-		try {
-			wait.until(new Function<WebDriver, Boolean>() {
-				@Override
-				public Boolean apply(WebDriver driver) {
-					Boolean ajaxIsComplete = (Boolean) (execJavaScript("return Ext.Ajax.isLoading() == false;"));
-					return ajaxIsComplete;
-				}
-			});
-		} catch (Exception e) {
-			logger.error("An error occurred when waitForAjaxJQueryProcess" + e.getMessage());
-		}
-	}
-
 	public static void close() {
 		try {
 			logger.debug("Close browser");
 			getDriver().close();
 
 		} catch (Exception e) {
-			logger.error("An error occurred when closing browser" + e.getMessage());
+			logger.error("An error occurred when closing browser:" + e.getMessage());
 		}
 	}
 	
@@ -101,59 +113,30 @@ public class Driver extends DriverManager {
 			getDriver().quit();
 
 		} catch (Exception e) {
-			logger.error("An error occurred when quiting browser" + e.getMessage());
+			logger.error("An error occurred when quiting browser: " + e.getMessage());
 		}
 	}
 	
-	public static WebDriver getWebDriver() {
-		return getDriver();
-	}
-	
-	public static String captureScreenshot(String filename, String filepath) {
-		logger.info("Capture screenshot");
+	public static String takeScreenShot(String filename, String filepath) throws Exception{
 		String path = "";
-		try {
-			// Taking the screen using TakesScreenshot Class
-			File objScreenCaptureFile = ((TakesScreenshot) getDriver()).getScreenshotAs(OutputType.FILE);
-
-			// Storing the image in the local system.
-			File dest = new File(
-					System.getProperty("user.dir") + File.separator + filepath + File.separator + filename + ".png");
-			FileUtils.copyFile(objScreenCaptureFile, dest);
-			path = dest.getAbsolutePath();
+		try {	
+			//Convert web driver object to TakeScreenshot
+			TakesScreenshot scrShot =((TakesScreenshot) getDriver());
+	
+			//Call getScreenshotAs method to create image file
+			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
+	
+			//Move image file to new destination
+			File DestFile = new File(
+				System.getProperty("user.dir") + File.separator + filepath + File.separator + filename + ".png");
+	
+			//Copy file at destination
+			FileUtils.copyFile(SrcFile, DestFile);
+			path = DestFile.getAbsolutePath();
 		} catch (Exception e) {
 			logger.error("An error occurred when capturing screen shot: " + e.getMessage());
 		}
-		return path;
+	return path;
 	}
 
-	public static void delay(double timeInSecond) {
-		try {
-			Thread.sleep((long)(timeInSecond * 1000));
-		} catch (Exception e) {
-			logger.error("An error occurred when delay: " + e.getMessage());
-		}
-	}
-
-	public static List<String> getWindowHandles()
-	{
-		return new ArrayList<String>(getDriver().getWindowHandles());
-	}
-	
-	public static String getWindowHandle()
-	{
-		return getDriver().getWindowHandle();
-	}
-	
-	public static void switchTo(String windowHandle) {
-		getDriver().switchTo().window(windowHandle);
-	}
-	
-	public static void openNewTab() {
-		execJavaScript("window.open('about:blank','_blank');");
-	}
-		
-	public static String getRemoteCapability(String key) {
-		return ((RemoteWebDriver)getDriver()).getCapabilities().getCapability(key).toString();
-	}
 }

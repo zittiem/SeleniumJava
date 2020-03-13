@@ -1,7 +1,5 @@
 package utils.common;
 
-import utils.helper.PropertiesHelper;
-
 public class Constants {
 	
 	// Data folder controls json
@@ -19,12 +17,4 @@ public class Constants {
 	public static final int VERTICAL_PERCENTAGE_START_POINT = 50;
 	public static final int HORIZONTAL_PERCENTAGE_START_POINT = 50;
 
-	// Username and password
-	public static final String EMAIL = PropertiesHelper.getPropValue("profile.user.email");
-	public static final String USERNAME = PropertiesHelper.getPropValue("profile.user.username");
-	public static final String PASSWORD = PropertiesHelper.getPropValue("profile.user.password");
-	public static final String URL = PropertiesHelper.getPropValue("profile.url");
-	
-
-	
 }

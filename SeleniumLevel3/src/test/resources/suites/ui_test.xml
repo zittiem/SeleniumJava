@@ -8,17 +8,16 @@
 
 	<test name="Run Chrome">
 		<parameter name="browser" value="chrome.local" />
-		<parameter name="autoLogBug" value="false" />
 		<parameter name="platform" value="desktop" />		
 		<classes>
-			<class name="tests.web.TM_001_US001">
+			<class name="tests.web.Example1">
 				<methods>
-					<include name="TC01_Check_Community_Card_Data" />
+					<include name="TC01_Example1" />
 				</methods>
 			</class>
-			<class name="tests.web.TM_002_US002">
+			<class name="tests.web.Example2">
 				<methods>
-					<include name="TC01_Check_Community_Card_Data" />
+					<include name="TC01_Example2" />
 				</methods>
 			</class>
 		</classes>

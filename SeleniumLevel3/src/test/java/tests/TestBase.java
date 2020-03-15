@@ -6,55 +6,36 @@ import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Guice;
 import org.testng.annotations.Parameters;
+import driver.manager.DriverUtils;
+import driver.setting.DriverType;
+import utils.common.Constants;
 
 public class TestBase {
 
-	@Parameters({ "browser", "autoLogBug", "platform" })
+	@Parameters({ "driverConfig", "platform" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeMethod(String browser, boolean autoLogBug, String platform, Method method, ITestContext context)
+	public void beforeMethod(String driverConfig, String platform, Method method, ITestContext context)
 			throws Throwable {
 		
-		context.setAttribute("autoLogBug", autoLogBug);
-		Driver.config(Constants.BROWSER_SETTING_FILE, platform, browser, method.getName());
-		Driver.initDriver();
-		Driver.setWaitForAjax(false);
-		loadDriverConfig(browser);
-		PageObjectHelper.loadPageObject(this);
+		DriverUtils.loadDriverProperty(Constants.DRIVER_SETTING_FILE, platform, driverConfig);
+		DriverUtils.initDriver();
+		loadDriverConfig(DriverUtils.getDriverProperty().getDriverType());
 	}
 
-	
 	@AfterMethod(alwaysRun = true)
 	public void cleanUp(ITestResult result) {
-		// Driver.quit(result.isSuccess());
-		Driver.quit();
+		DriverUtils.quitAll();
 	}
 	
-	public void loadAndroidNativeAppConfig() {
-		Driver.setTimeOut(Constants.SHORT_TIME);
-	}
-
 	public void loadWebBrowserConfig() {
-		Driver.setPageLoadTimeOut(Constants.LONG_TIME);
-		Driver.setTimeOut(Constants.SHORT_TIME);
-		Driver.maximizeBrowser();
-		Driver.navigate(Constants.URL);
+		DriverUtils.maximizeBrowser();
+		DriverUtils.navigate(Constants.URL);
 	}
 
-	public void loadDriverConfig(String browser) {
-		if (browser.equals("android.native")) {
-			loadAndroidNativeAppConfig();
-		} else {
+	public void loadDriverConfig(DriverType driver) {
+		if (driver != DriverType.AndroidNative)
 			loadWebBrowserConfig();
-		}
-	}
-	
-	public void launchTaylorMorrisonPage() {
-		Driver.setPageLoadTimeOut(Constants.LONG_TIME);
-		Driver.setTimeOut(Constants.SHORT_TIME);
-		Driver.maximizeBrowser();
-		Driver.navigate(Constants.URL);
 	}
 }
 

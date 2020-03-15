@@ -2,28 +2,16 @@ package driver.manager;
 
 import org.openqa.selenium.WebDriver;
 
+import driver.setting.DriverProperty;
+
 public abstract class BaseDriver {
 	
 	protected WebDriver webDriver;
-	protected int timeOut = 30;
-	private int pageLoadTimeOut = 60;
-	protected int shortTimeOut = 15;
+	protected DriverProperty driverProperty;
 	
-	protected int getTimeOut() {
-		return timeOut;
-	}
-
-	protected void setTimeOut(int timeOut) {
-		this.timeOut = timeOut;
-	}
-
-	public int getPageLoadTimeOut() {
-		return pageLoadTimeOut;
-	}
-
-	public void setPageLoadTimeOut(int pageLoadTimeOut) {
-		this.pageLoadTimeOut = pageLoadTimeOut;
+	public BaseDriver(DriverProperty property) {
+		this.driverProperty = property;
 	}
 	
-	public abstract void createWebDriver();
+	public abstract void createDriver();
 }

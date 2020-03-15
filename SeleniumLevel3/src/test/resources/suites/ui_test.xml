@@ -7,8 +7,8 @@
 	</listeners>
 
 	<test name="Run Chrome">
-		<parameter name="browser" value="chrome.local" />
-		<parameter name="platform" value="desktop" />		
+		<parameter name="driverConfig" value="chrome.local" />
+		<parameter name="platform" value="windows" />		
 		<classes>
 			<class name="tests.web.Example1">
 				<methods>

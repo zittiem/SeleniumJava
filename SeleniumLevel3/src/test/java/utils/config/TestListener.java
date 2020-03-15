@@ -9,7 +9,7 @@ import utils.report.ExtentReportManager;
 import utils.report.ExtentTestManager;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import driver.manager.Driver;
+import driver.manager.DriverUtils;
 
 public class TestListener implements ITestListener {
 
@@ -41,7 +41,7 @@ public class TestListener implements ITestListener {
 		String screenshotFileName = UUID.randomUUID().toString();
 		String screenshotFilePath = "";
 		try {
-			screenshotFilePath = Driver.takeScreenShot(screenshotFileName, ExtentReportManager.getScreenshotFolder());
+			screenshotFilePath = DriverUtils.takeScreenShot(screenshotFileName, ExtentReportManager.getScreenshotFolder());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

@@ -10,19 +10,17 @@ import driver.setting.DriverProperty;
 public class DriverFactory {
 	private static Logger logger = Logger.getLogger(DriverFactory.class);
 
-	private static final String DRIVER_PACKAGE_NAME = "drivers.resource";
-	private static final String DRIVER_CLASS_NAME = "%sDriver";
+	private static final String DRIVER_CLASS_FULLNAME = "driver.resource.%sDriver";
 	private static final String METHOD_NAME = "create%sDriver";
 
 	public static BaseDriver newInstance(DriverProperty property) {
 
-		String className = String.format(DRIVER_CLASS_NAME, property.getDriverType().toString());
+		String classFullName = String.format(DRIVER_CLASS_FULLNAME, property.getDriverType().toString());
 		String methodName = String.format(METHOD_NAME, property.getMode());
 
 		try {
 			Method method;
-			String fullClassName = DRIVER_PACKAGE_NAME + "." + className;
-			Class<?> clzz = Class.forName(fullClassName);
+			Class<?> clzz = Class.forName(classFullName);
 			Constructor<?> cons = clzz.getDeclaredConstructor(new Class[] { DriverProperty.class });
 			Object obj = cons.newInstance(property);
 

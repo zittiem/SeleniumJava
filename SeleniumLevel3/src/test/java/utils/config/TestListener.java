@@ -9,7 +9,7 @@ import utils.report.ExtentReportManager;
 import utils.report.ExtentTestManager;
 import com.aventstack.extentreports.MediaEntityBuilder;
 import com.aventstack.extentreports.Status;
-import driver.manager.DriverUtils;
+import driver.manager.DriverUtils;;
 
 public class TestListener implements ITestListener {
 
@@ -29,7 +29,7 @@ public class TestListener implements ITestListener {
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		System.out.println("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
+		Logger.info("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
 		ExtentTestManager.getTest().log(Status.PASS, "Test passed");
 	}
 
@@ -42,6 +42,9 @@ public class TestListener implements ITestListener {
 		String screenshotFilePath = "";
 		try {
 			screenshotFilePath = DriverUtils.takeScreenShot(screenshotFileName, ExtentReportManager.getScreenshotFolder());
+			Logger.info(screenshotFilePath);
+			Logger.info(screenshotFileName);
+			Logger.info(ExtentReportManager.getScreenshotFolder());
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
@@ -57,11 +60,11 @@ public class TestListener implements ITestListener {
 	}
 
 	public void onTestSkipped(ITestResult result) {
-		System.out.println("*** Test " + result.getMethod().getMethodName() + " skipped...");
+		Logger.info("*** Test " + result.getMethod().getMethodName() + " skipped...");
 		ExtentTestManager.getTest().log(Status.SKIP, "Test Skipped");
 	}
 
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		System.out.println("*** Test failed but within percentage % " + result.getMethod().getMethodName());
+		Logger.info("*** Test failed but within percentage % " + result.getMethod().getMethodName());
 	}
 }

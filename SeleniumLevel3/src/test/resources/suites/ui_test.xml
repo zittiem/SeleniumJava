@@ -7,17 +7,12 @@
 	</listeners>
 
 	<test name="Run Chrome">
-		<parameter name="driverConfig" value="chrome.local" />
-		<parameter name="platform" value="windows" />		
+		<parameter name="driverConfig" value="firefox.local" />
+		<parameter name="platform" value="any" />		
 		<classes>
-			<class name="tests.web.Example1">
+			<class name="tests.VietJet.TS_VietJet_ThanhTestReport">
 				<methods>
-					<include name="TC01_Example1" />
-				</methods>
-			</class>
-			<class name="tests.web.Example2">
-				<methods>
-					<include name="TC01_Example2" />
+					<include name="TC01" />
 				</methods>
 			</class>
 		</classes>

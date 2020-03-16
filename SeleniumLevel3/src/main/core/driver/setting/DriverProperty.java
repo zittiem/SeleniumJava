@@ -72,7 +72,8 @@ public class DriverProperty {
 	}
 	
 	public void setRemoteUrl(String remoteUrl) throws MalformedURLException {
-		this.remoteUrl = new URL(remoteUrl);
+		if (StringUtils.isNotBlank(remoteUrl))
+			this.remoteUrl = new URL(remoteUrl);
 	}
 	
 	public List<String> getArguments() {

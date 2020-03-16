@@ -1,5 +1,6 @@
 package driver.manager;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -87,8 +88,11 @@ public class DriverManager {
 	
 	public static void createDriver(String key, DriverProperty property) {
 		if (DRIVER.get() == null)
+		{
 			DRIVER.set(new HashMap<String, BaseDriver>());
-		
+			KEYS.set(new ArrayList<String>());
+		}
+			
 		BaseDriver driver = DriverFactory.newInstance(property);
 		driver.webDriver.manage().timeouts().pageLoadTimeout(property.getPageTimeOut(), TimeUnit.SECONDS);
 		driver.webDriver.manage().timeouts().implicitlyWait(property.getElementTimeOut(), TimeUnit.SECONDS);

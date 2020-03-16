@@ -30,7 +30,7 @@ public class ChromeDriver extends BaseDriver {
 	@Override
 	public void createLocalDriver() {
 		if (StringUtils.isNotBlank(driverProperty.getDriverExecutable()))
-			options.setBinary(driverProperty.getDriverExecutable());
+			System.setProperty("webdriver.chrome.driver", driverProperty.getDriverExecutable());
 		else
 			WebDriverManager.chromedriver().setup();
 		

@@ -35,7 +35,7 @@ public class FirefoxDriver extends BaseDriver {
 	@Override
 	public void createLocalDriver() {
 		if (StringUtils.isNotBlank(driverProperty.getDriverExecutable()))
-			options.setBinary(driverProperty.getDriverExecutable());
+			System.setProperty("webdriver.firefox.driver", driverProperty.getDriverExecutable());
 		else
 			WebDriverManager.firefoxdriver().setup();
 		

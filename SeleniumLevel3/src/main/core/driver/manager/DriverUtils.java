@@ -135,22 +135,21 @@ public class DriverUtils extends DriverManager {
 		String path = "";
 		try {	
 			//Convert web driver object to TakeScreenshot
-			TakesScreenshot scrShot = ((TakesScreenshot) getDriver());
+			TakesScreenshot scrShot =((TakesScreenshot) getDriver());
 	
 			//Call getScreenshotAs method to create image file
-			File SrcFile= scrShot.getScreenshotAs(OutputType.FILE);
+			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 	
 			//Move image file to new destination
-			File DestFile = new File(
-				System.getProperty("user.dir") + File.separator + filepath + File.separator + filename + ".png");
-	
+			File DestFile = new File(filepath + File.separator + filename + ".png");
+
 			//Copy file at destination
 			FileUtils.copyFile(SrcFile, DestFile);
 			path = DestFile.getAbsolutePath();
 		} catch (Exception e) {
 			logger.error("An error occurred when capturing screen shot: " + e.getMessage());
 		}
-	return path;
+		return path;
 	}
 
 }

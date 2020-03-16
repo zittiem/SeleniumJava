@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import helper.JsonHelper;
@@ -13,13 +14,14 @@ public class DriverProperty {
 
 	private Platform platform;
 	private DriverType driverType;
-	private int timeOut;
+	private RunningMode mode;
 	private String driverExecutable;
 	private URL remoteUrl;
-	private RunningMode mode;
 	private List<String> arguments;
 	private Map<String, Object> userProfilePreference;
 	private DesiredCapabilities capabilities;
+	private int pageTimeOut = 60; // seconds
+	private int elementTimeOut = 3; // seconds
 	
 	public Platform getPlatform() {
 		return platform;
@@ -45,12 +47,16 @@ public class DriverProperty {
 		this.driverType = DriverType.fromString(driverType);
 	}
 	
-	public int getTimeOut() {
-		return timeOut;
+	public RunningMode getMode() {
+		return mode;
 	}
 	
-	public void setTimeOut(int timeOut) {
-		this.timeOut = timeOut;
+	public void setMode(RunningMode mode) {
+		this.mode = mode;
+	}
+	
+	public void setMode(String mode) throws Exception {
+		this.mode = RunningMode.fromString(mode);
 	}
 	
 	public String getDriverExecutable() {
@@ -69,18 +75,6 @@ public class DriverProperty {
 		this.remoteUrl = new URL(remoteUrl);
 	}
 	
-	public RunningMode getMode() {
-		return mode;
-	}
-	
-	public void setMode(RunningMode mode) {
-		this.mode = mode;
-	}
-	
-	public void setMode(String mode) throws Exception {
-		this.mode = RunningMode.fromString(mode);
-	}
-	
 	public List<String> getArguments() {
 		return arguments;
 	}
@@ -93,7 +87,7 @@ public class DriverProperty {
 		this.arguments = arguments;
 	}
 	
-	public void setArguments(String arguments) {
+	public void setArguments(String arguments) throws Exception {
 		this.arguments = JsonHelper.convertJsonToList(arguments);
 	}
 	
@@ -105,7 +99,7 @@ public class DriverProperty {
 		this.userProfilePreference = userProfilePreference;
 	}
 	
-	public void setUserProfilePreference(String userProfilePreference) {
+	public void setUserProfilePreference(String userProfilePreference) throws Exception {
 		this.userProfilePreference = JsonHelper.convertJsonToMap(userProfilePreference);
 	}
 	
@@ -117,7 +111,33 @@ public class DriverProperty {
 		this.capabilities = capabilities;
 	}
 	
-	public void setCapabilities(String capabilities) {
+	public void setCapabilities(String capabilities) throws Exception {
 		this.capabilities = JsonHelper.convertJsonToCapabilities(capabilities);
+	}
+	
+	public int getPageTimeOut() {
+		return pageTimeOut;
+	}
+	
+	public void setPageTimeOut(int pageTimeOut) {
+		this.pageTimeOut = pageTimeOut;
+	}
+	
+	public void setPageTimeOut(String pageTimeOut) {
+		if (StringUtils.isNumeric(pageTimeOut))
+			this.pageTimeOut = Integer.parseInt(pageTimeOut);
+	}
+	
+	public int getElementTimeOut() {
+		return elementTimeOut;
+	}
+	
+	public void setElementTimeOut(int elementTimeOut) {
+		this.elementTimeOut = elementTimeOut;
+	}
+	
+	public void setElementTimeOut(String elementTimeOut) {
+		if (StringUtils.isNumeric(elementTimeOut))
+			this.elementTimeOut = Integer.parseInt(elementTimeOut);
 	}
 }

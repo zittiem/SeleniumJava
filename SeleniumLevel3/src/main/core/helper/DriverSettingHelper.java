@@ -21,7 +21,8 @@ public class DriverSettingHelper {
 			
 			String mode = section.get("mode");
 			String driverType = section.get("driver");
-			int timeOut = Integer.parseInt(section.get("timeOut"));
+			String pageTimeOut = section.get("pageTimeOut");
+			String elementTimeOut = section.get("elementTimeOut");
 			String driverExecutable = section.get("executable");
 			String remoteUrl = section.get("remoteUrl");
 			String arguments = section.get("arguments");
@@ -30,7 +31,8 @@ public class DriverSettingHelper {
 			
 			property.setMode(mode);
 			property.setDriverType(driverType);
-			property.setTimeOut(timeOut);
+			property.setPageTimeOut(pageTimeOut);
+			property.setElementTimeOut(elementTimeOut);
 			property.setDriverExecutable(driverExecutable);
 			property.setRemoteUrl(remoteUrl);
 			property.setArguments(arguments);

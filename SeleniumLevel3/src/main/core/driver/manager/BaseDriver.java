@@ -13,5 +13,7 @@ public abstract class BaseDriver {
 		this.driverProperty = property;
 	}
 	
-	public abstract void createDriver();
+	public abstract void createLocalDriver();
+	
+	public abstract void createRemoteDriver();
 }

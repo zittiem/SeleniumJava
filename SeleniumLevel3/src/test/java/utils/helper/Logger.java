@@ -1,9 +1,7 @@
 package utils.helper;
 
 import org.testng.Reporter;
-
 import com.aventstack.extentreports.Status;
-
 import utils.report.ExtentTestManager;
 
 public class Logger {

@@ -61,7 +61,7 @@ public class ExtentReportManager {
     }
     
 	public static synchronized String getScreenshotFolder() {
-		String path = reportFileLocation + System.getProperty("file.separator") + "screenshots";
+		String path = reportFilepath + fileSeperator + "screenshots";
 		File output = new File(path);
 		if (!output.exists())
 			output.mkdir();

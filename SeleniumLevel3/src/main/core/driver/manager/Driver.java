@@ -3,6 +3,7 @@ package driver.manager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.apache.commons.io.FileUtils;
@@ -15,9 +16,16 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class Driver {
 	private static Logger logger = Logger.getLogger(Driver.class);
+	private static WebDriver driver;
 	
-	protected static WebDriver getDriver() {
-		WebDriver driver = new ChromeDriver();
+	public static WebDriver initDriver() {
+		System.setProperty("webdriver.chrome.driver", "D:\\03_Training\\01_Selenium Java\\Level3\\SeleniumJava\\SeleniumLevel3\\src\\test\\resources\\drivers\\win\\chromedriver.exe");
+		driver = new ChromeDriver();
+		logger.info("initDriver done");
+		return driver;
+	}
+	
+	public static WebDriver getDriver() {
 		return driver;
 	}
 	
@@ -119,24 +127,32 @@ public class Driver {
 	
 	public static String takeScreenShot(String filename, String filepath) throws Exception{
 		String path = "";
+		logger.info("path: " + path);
 		try {	
 			//Convert web driver object to TakeScreenshot
+			logger.info("Convert web driver object to TakeScreenshot");
 			TakesScreenshot scrShot =((TakesScreenshot) getDriver());
 	
 			//Call getScreenshotAs method to create image file
+			logger.info("Call getScreenshotAs method to create image file");
 			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 	
 			//Move image file to new destination
+			logger.info("Move image file to new destination");
 			File DestFile = new File(
 				System.getProperty("user.dir") + File.separator + filepath + File.separator + filename + ".png");
-	
+			logger.info(DestFile);
 			//Copy file at destination
 			FileUtils.copyFile(SrcFile, DestFile);
 			path = DestFile.getAbsolutePath();
 		} catch (Exception e) {
 			logger.error("An error occurred when capturing screen shot: " + e.getMessage());
 		}
-	return path;
+		return path;
+	}
+	
+	public static void setPageLoadTimeOut(int timeoutSec) {
+		getDriver().manage().timeouts().pageLoadTimeout(timeoutSec, TimeUnit.SECONDS);
 	}
 
 }

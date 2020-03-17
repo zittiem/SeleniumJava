@@ -29,12 +29,21 @@ public class DriverManager {
 		return DRIVER.get().get(CURRENT_KEY.get());
 	}
 	
+	private static String generateDriverKey(String prefix)
+	{
+		String key;
+		int number = 1;
+		while(true)
+		{
+			key = prefix + "-" + number;
+			if (!DRIVER.get().containsKey(key))
+				return key;
+			number++;
+		}
+	}
+	
 	protected static Map<String, BaseDriver> getDriverMap() {
 		return DRIVER.get();
-	}
-
-	protected static WebDriver getDriver() {
-		return getBaseDriver().webDriver;
 	}
 	
 	protected static void removeDriver()
@@ -50,6 +59,18 @@ public class DriverManager {
 				DEFAULT_KEY.set(KEYS.get().get(0));
 			}
 		}
+	}
+	
+	public static String getCurrentDriverKey() {
+		return CURRENT_KEY.get();
+	}
+	
+	public static String getDefaultDriverKey() {
+		return DEFAULT_KEY.get();
+	}
+	
+	public static WebDriver getDriver() {
+		return getBaseDriver().webDriver;
 	}
 
 	public static DriverProperty getDriverProperty() {
@@ -67,13 +88,19 @@ public class DriverManager {
 	}
 	
 	public static void initDriver() {
-		String key = String.format("%s-%d", CACHE_DIVER_PROPERTY.get().getDriverType().toString(), 1);
+		if (DRIVER.get() == null)
+		{
+			DRIVER.set(new HashMap<String, BaseDriver>());
+			KEYS.set(new ArrayList<String>());
+		}
+		
+		String key = generateDriverKey(CACHE_DIVER_PROPERTY.get().getDriverType().toString());
 		createDriver(key, CACHE_DIVER_PROPERTY.get());
 		DEFAULT_KEY.set(key);
 	}
 
 	public static void createDriver() {
-		String key = String.format("%s-%d", CACHE_DIVER_PROPERTY.get().getDriverType().toString(), DRIVER.get().size() + 1);
+		String key = generateDriverKey(CACHE_DIVER_PROPERTY.get().getDriverType().toString());
 		createDriver(key, CACHE_DIVER_PROPERTY.get());
 	}
 	
@@ -82,17 +109,11 @@ public class DriverManager {
 	}
 	
 	public static void createDriver(DriverProperty property) {
-		String key = String.format("%s-%d", property.getDriverType().toString(), DRIVER.get().size() + 1);
+		String key = generateDriverKey(property.getDriverType().toString());
 		createDriver(key, property);
 	}
 	
 	public static void createDriver(String key, DriverProperty property) {
-		if (DRIVER.get() == null)
-		{
-			DRIVER.set(new HashMap<String, BaseDriver>());
-			KEYS.set(new ArrayList<String>());
-		}
-			
 		BaseDriver driver = DriverFactory.newInstance(property);
 		driver.webDriver.manage().timeouts().pageLoadTimeout(property.getPageTimeOut(), TimeUnit.SECONDS);
 		driver.webDriver.manage().timeouts().implicitlyWait(property.getElementTimeOut(), TimeUnit.SECONDS);

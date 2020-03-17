@@ -9,20 +9,18 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.JavascriptExecutor;
 
-public class DriverUtils extends DriverManager {
+public class DriverUtils {
 	private static Logger logger = Logger.getLogger(DriverUtils.class);
 	
 	/* -------------------------- SURFACE -------------------------- */
 	
-	public static void navigate(String url) {
-		logger.debug("Navigate to " + url);
-		try {
-			getDriver().get(url);
-		} catch (Exception e) {
-			logger.error("An error occurred when nagivating: " + e.getMessage());
-		}
+	public static WebDriver getDriver()
+	{
+		return DriverManager.getDriver();
 	}
 	
 	public static String getURL(){
@@ -41,7 +39,7 @@ public class DriverUtils extends DriverManager {
 		return getDriver().getWindowHandle();
 	}
 	
-	public static ArrayList<String> getWindowHandles() {
+	public static List<String> getWindowHandles() {
 		return new ArrayList<String>(getDriver().getWindowHandles());
 	}
 	
@@ -53,23 +51,27 @@ public class DriverUtils extends DriverManager {
 		return getDriver().findElements(by);
 	}
 	
+	public static Object executeJavaScript(String script, Object... objs) {
+		logger.debug("Execute javascript " + script);
+		return ((JavascriptExecutor) getDriver()).executeScript(script, objs);
+	}
+	
+	public static void navigate(String url) {
+		logger.debug("Navigate to " + url);
+		try {
+			getDriver().get(url);
+		} catch (Exception e) {
+			logger.error("An error occurred when nagivating: " + e.getMessage());
+		}
+	}
+	
 	public static void switchToFrame(WebElement frameElement) {
 		try {
-			logger.debug("Switch frame using web element");
+			logger.debug("Switch frame");
 			getDriver().switchTo().frame(frameElement);
 
 		} catch (Exception e) {
 			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
-		}
-	}
-	
-	public static void switchToFrame(int frameIndex) {
-		try {
-			logger.debug("Switch frame using frame index");
-			getDriver().switchTo().frame(frameIndex);
-
-		} catch (Exception e) {
-			logger.error("An error occurred when switching frame by index: " + e.getMessage());
 		}
 	}
 	
@@ -99,7 +101,7 @@ public class DriverUtils extends DriverManager {
 			getDriver().close();
 			if (windowCount == 1)
 			{
-				removeDriver();
+				DriverManager.removeDriver();
 			}
 
 		} catch (Exception e) {
@@ -111,7 +113,7 @@ public class DriverUtils extends DriverManager {
 		try {
 			logger.debug("Quit browser");
 			getDriver().quit();
-			removeDriver();
+			DriverManager.removeDriver();
 
 		} catch (Exception e) {
 			logger.error("An error occurred when quiting browser: " + e.getMessage());
@@ -121,13 +123,21 @@ public class DriverUtils extends DriverManager {
 	public static void quitAll() {
 		try {
 			logger.debug("Quit all browsers");
-			for (Map.Entry<String, BaseDriver> item : getDriverMap().entrySet())
+			for (Map.Entry<String, BaseDriver> item : DriverManager.getDriverMap().entrySet())
 			{
 				item.getValue().webDriver.quit();
 			}
 
 		} catch (Exception e) {
 			logger.error("An error occurred when quiting all browsers: " + e.getMessage());
+		}
+	}
+	
+	public static void wait(int timeInSecond) {
+		try {
+			Thread.sleep(timeInSecond * 1000);
+		} catch (Exception e) {
+			logger.error(String.format("An error occurred when wait %d seconds: %s", timeInSecond, e.getMessage()));
 		}
 	}
 	
@@ -151,5 +161,4 @@ public class DriverUtils extends DriverManager {
 		}
 		return path;
 	}
-
 }

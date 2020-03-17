@@ -7,8 +7,9 @@
 	</listeners>
 
 	<test name="Run Chrome">
-		<parameter name="driverConfig" value="firefox.local" />
-		<parameter name="platform" value="any" />		
+		<parameter name="driverConfig" value="chrome.local" />
+		<parameter name="platform" value="any" />
+		<parameter name="url" value="https://www.vietjetair.com/Sites/Web/en-US/Home" />		
 		<classes>
 			<class name="tests.VietJet.TS_VietJet_ThanhTestReport">
 				<methods>

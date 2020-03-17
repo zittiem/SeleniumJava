@@ -6,8 +6,6 @@ import tests.TestBaseVJ;
 import utils.helper.Logger;
 
 public class TS_VietJet_ThanhTestReport extends TestBaseVJ {
-
-	
 	
 	@Test(description = "Search and choose tickets on a specific day successfully.")
 	

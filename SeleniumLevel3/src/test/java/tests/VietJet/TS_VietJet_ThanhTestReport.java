@@ -2,10 +2,10 @@ package tests.VietJet;
 
 import org.testng.annotations.Test;
 import pages.VietJet.*;
-import tests.TestBaseVJ;
+import tests.TestBase;
 import utils.helper.Logger;
 
-public class TS_VietJet_ThanhTestReport extends TestBaseVJ {
+public class TS_VietJet_ThanhTestReport extends TestBase {
 	
 	@Test(description = "Search and choose tickets on a specific day successfully.")
 	

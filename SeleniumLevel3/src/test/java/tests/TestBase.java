@@ -10,16 +10,16 @@ import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import utils.common.Constants;
 
-public class TestBaseVJ {
+public class TestBase {
 
-	@Parameters({ "driverConfig", "platform", "url" })
+	@Parameters({ "driverConfig", "platform", "appName" })
 	
 	@BeforeMethod(alwaysRun = true)
-	public void beforeMethod(String driverConfig, String platform, String url)
+	public void beforeMethod(String driverConfig, String platform, String appName)
 			throws Throwable {
 		DriverManager.loadDriverProperty(Constants.DRIVER_SETTING_FILE, platform, driverConfig);
 		DriverManager.initDriver();
-		launchVietJet(url);
+		launchApp(appName);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -27,9 +27,19 @@ public class TestBaseVJ {
 		DriverUtils.quitAll();
 	}
 	
-	public void launchVietJet(String url) {
+	public void launchApp(String appName) {
 		DriverUtils.maximizeBrowser();
-		DriverUtils.navigate(url);
+		switch(appName) {
+		case "VietJet":
+			DriverUtils.navigate(Constants.vietJetURL);
+			break;
+		case "Agoda":
+			DriverUtils.navigate(Constants.agodaURL);
+			break;
+		case "LGEmail":
+			DriverUtils.navigate(Constants.logigearEmailURL);
+			break;
+		}
 	}
 }
 

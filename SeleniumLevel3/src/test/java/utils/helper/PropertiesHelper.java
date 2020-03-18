@@ -19,6 +19,7 @@ public class PropertiesHelper {
 			}
 
 			// load a properties file from class path, inside static method
+			pProfile = new Properties();
 			pProfile.load(input);
 		} catch (IOException ex) {
 			ex.printStackTrace();
@@ -34,9 +35,9 @@ public class PropertiesHelper {
 		return pProfile;
 	}
 
-
 	public static String getPropValue(String key) {
-		pProfile = loadPropertiesFromClasspath("profile.properties");
+		pProfile = loadPropertiesFromClasspath("profile/profile.properties");
+		System.out.print(pProfile.getProperty("key"));
 		return pProfile.getProperty(key);
 	}
 

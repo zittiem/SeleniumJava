@@ -11,21 +11,21 @@
       <![CDATA[<b>INFO: </b>TC01 failed!]]>
     </line>
     <line>
-      <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots\50c8c00a-41c0-42e4-b965-1e58e82e95e9.png]]>
+      <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots\af1732c0-22cb-4e59-8b54-c56dbd9d310b.png]]>
     </line>
     <line>
-      <![CDATA[<b>INFO: </b>50c8c00a-41c0-42e4-b965-1e58e82e95e9]]>
+      <![CDATA[<b>INFO: </b>af1732c0-22cb-4e59-8b54-c56dbd9d310b]]>
     </line>
     <line>
       <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots]]>
     </line>
   </reporter-output>
-  <suite name="Suite" duration-ms="9373" started-at="2020-03-17T14:00:01 ICT" finished-at="2020-03-17T14:00:10 ICT">
+  <suite name="Suite" duration-ms="33892" started-at="2020-03-18T13:10:38 ICT" finished-at="2020-03-18T13:11:12 ICT">
     <groups>
     </groups>
-    <test name="Run Chrome" duration-ms="9373" started-at="2020-03-17T14:00:01 ICT" finished-at="2020-03-17T14:00:10 ICT">
+    <test name="Run Chrome" duration-ms="33892" started-at="2020-03-18T13:10:38 ICT" finished-at="2020-03-18T13:11:12 ICT">
       <class name="tests.VietJet.TS_VietJet_ThanhTestReport">
-        <test-method status="PASS" signature="beforeMethod(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="beforeMethod" is-config="true" duration-ms="6736" started-at="2020-03-17T14:00:01 ICT" finished-at="2020-03-17T14:00:08 ICT">
+        <test-method status="PASS" signature="beforeMethod(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="beforeMethod" is-config="true" duration-ms="31316" started-at="2020-03-18T13:10:38 ICT" finished-at="2020-03-18T13:11:09 ICT">
           <params>
             <param index="0">
               <value>
@@ -39,14 +39,14 @@
             </param>
             <param index="2">
               <value>
-                <![CDATA[https://www.vietjetair.com/Sites/Web/en-US/Home]]>
+                <![CDATA[VietJet]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- beforeMethod -->
-        <test-method status="FAIL" signature="TC01()[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="TC01" duration-ms="417" started-at="2020-03-17T14:00:08 ICT" description="Search and choose tickets on a specific day successfully." finished-at="2020-03-17T14:00:08 ICT">
+        <test-method status="FAIL" signature="TC01()[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="TC01" duration-ms="542" started-at="2020-03-18T13:11:09 ICT" description="Search and choose tickets on a specific day successfully." finished-at="2020-03-18T13:11:10 ICT">
           <exception class="org.openqa.selenium.support.ui.UnexpectedTagNameException">
             <message>
               <![CDATA[Element should have been "select" but was "span"
@@ -91,17 +91,17 @@ at java.lang.Thread.run(Thread.java:745)
               <![CDATA[<b>INFO: </b>TC01 failed!]]>
             </line>
             <line>
-              <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots\50c8c00a-41c0-42e4-b965-1e58e82e95e9.png]]>
+              <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots\af1732c0-22cb-4e59-8b54-c56dbd9d310b.png]]>
             </line>
             <line>
-              <![CDATA[<b>INFO: </b>50c8c00a-41c0-42e4-b965-1e58e82e95e9]]>
+              <![CDATA[<b>INFO: </b>af1732c0-22cb-4e59-8b54-c56dbd9d310b]]>
             </line>
             <line>
               <![CDATA[<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots]]>
             </line>
           </reporter-output>
         </test-method> <!-- TC01 -->
-        <test-method status="PASS" signature="cleanUp(org.testng.ITestResult)[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="cleanUp" is-config="true" duration-ms="1238" started-at="2020-03-17T14:00:09 ICT" finished-at="2020-03-17T14:00:10 ICT">
+        <test-method status="PASS" signature="cleanUp(org.testng.ITestResult)[pri:0, instance:tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5]" name="cleanUp" is-config="true" duration-ms="925" started-at="2020-03-18T13:11:11 ICT" finished-at="2020-03-18T13:11:12 ICT">
           <params>
             <param index="0">
               <value>

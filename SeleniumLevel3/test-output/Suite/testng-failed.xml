@@ -6,13 +6,13 @@
   </listeners>
   <test thread-count="1" name="Run Chrome(failed)" parallel="methods">
     <parameter name="driverConfig" value="chrome.local"/>
+    <parameter name="appName" value="VietJet"/>
     <parameter name="platform" value="any"/>
-    <parameter name="url" value="https://www.vietjetair.com/Sites/Web/en-US/Home"/>
     <classes>
       <class name="tests.VietJet.TS_VietJet_ThanhTestReport">
         <methods>
-          <include name="TC01"/>
           <include name="beforeMethod"/>
+          <include name="TC01"/>
           <include name="cleanUp"/>
         </methods>
       </class> <!-- tests.VietJet.TS_VietJet_ThanhTestReport -->

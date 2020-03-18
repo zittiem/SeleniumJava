@@ -39,8 +39,16 @@ public class BaseElement {
 		this.byLocator = By.xpath(xPath);
 	}
 	
+	public BaseElement(String by, String value) {
+		this.byLocator = getByLocator(by, value);
+	}
+	
 	public BaseElement(FindElementBy by, String value) {
 		this.byLocator = getByLocator(by, value);
+	}
+	
+	public BaseElement(FindElementBy by, String value, String text) {
+		this.byLocator = getByLocator(by, String.format(value,text));
 	}
 
 	/**
@@ -375,17 +383,15 @@ public class BaseElement {
 	}
 
 	public String getText() {
-		return getText(Constant.ElementWaitingTime);
+		return getText(Constant.ElementWaitingTime).trim();
 	}
 
 	public List<WebElement> findElements(By by) {
-		// TODO Auto-generated method stub
-		return null;
+		return findElements(by);
 	}
 
 	public WebElement findElement(By by) {
-		// TODO Auto-generated method stub
-		return null;
+		return findElement(by);
 	}
 
 	/**

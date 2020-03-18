@@ -21,17 +21,35 @@ public class Element extends BaseElement {
 	 * @param by : FindElementBy list
 	 * @param    value: String
 	 */
+	public Element(String by, String value) {
+		super(by, value);
+	}
+
+	/**
+	 * @author Dung.Vu: Find element by and provided values.
+	 * @param by : FindElementBy list
+	 * @param    value: String
+	 */
 	public Element(FindElementBy by, String value) {
 		super(by, value);
+	}
+
+	/**
+	 * @author Dung.Vu: Get Dynamic Element.
+	 * @param by : FindElementBy list
+	 * @param    value: String
+	 */
+	public Element getElement(FindElementBy by, Object... text) {
+		return new Element(by, String.format(super.getLocator().toString(), text));
 	}
 
 	/**
 	 * @author Dung.Vu: Clear element's value before entering the new one.
 	 * @param value
 	 */
-	public void enter(String value) {
+	public void enter(Object value) {
 		clear();
-		sendKeys(value);
+		sendKeys(value.toString());
 	}
 
 	/**
@@ -47,6 +65,15 @@ public class Element extends BaseElement {
 			while (isSelected()) {
 				click();
 			}
+		}
+	}
+
+	/**
+	 * @author Dung.Vu: Set Radio-Button ON
+	 */
+	public void setRarioButton() {
+		while (!isSelected()) {
+			click();
 		}
 	}
 

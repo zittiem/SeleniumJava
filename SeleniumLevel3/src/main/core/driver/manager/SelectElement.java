@@ -26,7 +26,7 @@ public class SelectElement extends BaseElement {
 	 * @param    value: String
 	 */
 	public SelectElement(FindElementBy by, String value) {
-		super(getByLocator(by, value));
+		super(by, value);
 	}
 
 	/**
@@ -52,7 +52,8 @@ public class SelectElement extends BaseElement {
 				selectByValue(value, timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
 			}
 		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(), error.getMessage()));
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
 			throw error;
 		}
 	}
@@ -65,6 +66,28 @@ public class SelectElement extends BaseElement {
 		selectByValue(value, Constant.ElementWaitingTime);
 	}
 
+	/**
+	 * @author Dung.vu: Select Drop-down-list by partial text
+	 * @param value
+	 */
+	public void selectByPartText(String partialText) {
+		getOptions().parallelStream()
+				.filter(option -> getAttribute("textContent").toLowerCase().contains(partialText.toLowerCase()))
+				.findFirst().ifPresent(option -> selectByText(getAttribute("textContent")));
+	}
+
+	/**
+	 * @author Dung.vu: Select VietJet Calendar by partial text
+	 * @param date
+	 */
+	public void selectVJCalendar(String date) {
+		getOptions().parallelStream()
+				.filter(option -> getAttribute("textContent").toLowerCase().contains(date.toLowerCase()))
+				.findFirst().ifPresent(option -> selectByText(getAttribute("textContent")));
+	}
+	
+	
+	
 	/**
 	 * @author Dung.Vu: Get list of Drop-down-list options in specific time
 	 * @param timeOut: in second
@@ -84,7 +107,8 @@ public class SelectElement extends BaseElement {
 				getOptions(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
 			}
 		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(), error.getMessage()));
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
 			throw error;
 		}
 		return options;
@@ -114,7 +138,8 @@ public class SelectElement extends BaseElement {
 				getSelectedOption(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
 			}
 		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(), error.getMessage()));
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
 			throw error;
 		}
 		return selected;
@@ -143,7 +168,8 @@ public class SelectElement extends BaseElement {
 				selectByText(text, timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
 			}
 		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(), error.getMessage()));
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
 			throw error;
 		}
 	}
@@ -171,7 +197,8 @@ public class SelectElement extends BaseElement {
 				selectByIndex(index, timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
 			}
 		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(), error.getMessage()));
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
 			throw error;
 		}
 	}

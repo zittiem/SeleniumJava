@@ -38,17 +38,17 @@ public class BaseElement {
 	public BaseElement(String xPath) {
 		this.byLocator = By.xpath(xPath);
 	}
-	
+
 	public BaseElement(String by, String value) {
 		this.byLocator = getByLocator(by, value);
 	}
-	
+
 	public BaseElement(FindElementBy by, String value) {
 		this.byLocator = getByLocator(by, value);
 	}
-	
+
 	public BaseElement(FindElementBy by, String value, String text) {
-		this.byLocator = getByLocator(by, String.format(value,text));
+		this.byLocator = getByLocator(by, String.format(value, text));
 	}
 
 	/**
@@ -183,6 +183,7 @@ public class BaseElement {
 	public List<WebElement> getWebElements(int timeOut) {
 		return waitForAllElementsPresent(timeOut);
 	}
+	
 
 	// From super
 	// -------------------------------------------------------------------------
@@ -383,7 +384,7 @@ public class BaseElement {
 	}
 
 	public String getText() {
-		return getText(Constant.ElementWaitingTime).trim();
+		return getText(Constant.ElementWaitingTime);
 	}
 
 	public List<WebElement> findElements(By by) {

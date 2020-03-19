@@ -1,11 +1,17 @@
 package driver.manager;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 
 import driver.setting.FindElementBy;
 import helper.Constant;
 
 public class Element extends BaseElement {
+	private static Logger cLOG = Logger.getLogger(BaseElement.class);
 
 	/**
 	 * @author Dung.Vu: Find element by input xpath values.
@@ -41,6 +47,28 @@ public class Element extends BaseElement {
 	 */
 	public Element getElement(FindElementBy by, Object... text) {
 		return new Element(by, String.format(super.getLocator().toString(), text));
+	}
+
+	/**
+	 * @author Dung.Vu: Get all web elements and convert to elements
+	 * @return elements
+	 */
+	public List<Element> getElements() {
+		List<WebElement> list = null;
+		List<Element> elements = new ArrayList<>();
+		try {
+			list = getWebElements(Constant.ElementWaitingTime);
+			for (int i = 1; i <= list.size(); i++) {
+				String _xpath = getLocator().toString().substring(10);
+				Element _element = new Element(FindElementBy.xpath,"(" + _xpath + ")[" + i + "]");
+				elements.add(_element);
+			}
+		} catch (Exception error) {
+			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
+			throw error;
+		}
+		return elements;
 	}
 
 	/**

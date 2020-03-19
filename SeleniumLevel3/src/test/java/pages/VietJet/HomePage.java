@@ -6,35 +6,39 @@ import datatype.FlightInfo;
 import datatype.FlightInfo.FlightOption;
 import datatype.FlightInfo.LocationOption;
 import driver.manager.Element;
+import driver.manager.Locator;
 import driver.manager.SelectElement;
 import driver.setting.FindElementBy;
 
-public class HomePage {
+public class HomePage {	
+	Locator locator = new Locator(getClass().getSimpleName());
+	
 	// Elements
-	protected Element rbxRoundTrip = new Element("//input[@value='RbRoundTrip']");
-	protected Element rbxRbOneWay = new Element("//input[@value='RbOneWay']");
-	protected SelectElement cbxOrigin = new SelectElement("//select[@id='selectOrigin']");
-	protected SelectElement cbxDestination = new SelectElement("//select[@id='selectDestination']");
-	protected Element calDepartDate = new Element("//input[contains(@id,'TxtDepartDate')]");
-	protected Element calReturnDate = new Element("//input[contains(@id,'TxtReturnDate')]");
-	protected SelectElement cbxCurrency = new SelectElement("//input[contains(@id,'CbbCurrency_TextBox')]");
-	protected Element txtNumberOfAdults = new Element("//input[contains(@id,'CbbAdults_TextBox')]");
-	protected Element chxInfare = new Element("//input[contains(@id,'ChkInfare')]");
-	protected Element txtPromoCode = new Element("//input[contains(@id,'TxtPromoCode')]");
-	protected Element txtNumberOfChildrens = new Element("//input[contains(@id,'CbbChildren_TextBox')]");
-	protected Element txtNumberOfInfants = new Element("//input[contains(@id,'CbbInfants_TextBox')]");
-	protected Element btnSearch = new Element("//input[contains(@id,'BtSearch')]");
+	protected Element rbxRoundTrip = new Element(locator.getLocate("rbxRoundTrip"));
+	protected Element rbxRbOneWay = new Element(locator.getLocate("rbxRbOneWay"));	
+	protected Element calDepartDate = new Element(locator.getLocate("calDepartDate"));
+	protected Element calReturnDate = new Element(locator.getLocate("calReturnDate"));	
+	protected Element txtNumberOfAdults = new Element(locator.getLocate("txtNumberOfAdults"));
+	protected Element chxInfare = new Element(locator.getLocate("chxInfare"));
+	protected Element txtPromoCode = new Element(locator.getLocate("txtPromoCode"));
+	protected Element txtNumberOfChildrens = new Element(locator.getLocate("txtNumberOfChildrens"));
+	protected Element txtNumberOfInfants = new Element(locator.getLocate("txtNumberOfInfants"));
+	protected Element btnSearch = new Element(locator.getLocate("btnSearch"));
+	protected SelectElement cbxOrigin = new SelectElement(locator.getLocate("cbxOrigin"));	
+	protected SelectElement cbxCurrency = new SelectElement(locator.getLocate("cbxCurrency"));
+	protected SelectElement cbxDestination = new SelectElement(locator.getLocate("cbxDestination"));
+	
 	// Select Location
-	protected Element txtSearch = new Element("//input [contains(@class,'search__field') and @type='search']");
-	protected Element liLocationItem = new Element(
-			"//li[contains(@class, 'results__option') and contains(text(),'%s')]");
+	protected Element txtSearch = new Element(locator.getLocate("txtSearch"));
+	protected Element liLocationItem = new Element(locator.getLocate("liLocationItem"));
+	
 	// Select Date
-	protected Element linkDatePickerNavigation = new Element("//a[@class='ui-datepicker-%s ui-corner-all']");
-	protected Element lblCurrentYear = new Element("//span[@class='ui-datepicker-year']");
-	protected SelectElement cbxMonth = new SelectElement("//select[@class='ui-datepicker-month']");
-	protected Element celDay = new Element("//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]");
+	protected Element linkDatePickerNavigation = new Element(locator.getLocate("linkDatePickerNavigation"));
+	protected Element lblCurrentYear = new Element(locator.getLocate("lblCurrentYear"));	
+	protected Element celDay = new Element(locator.getLocate("celDay"));
+	protected SelectElement cbxMonth = new SelectElement(locator.getLocate("cbxMonth"));
+	
 	// Methods
-
 	private void selectYear(int year) {
 		int currentYear = Integer.parseInt(lblCurrentYear.getText());
 		String vector = "";
@@ -120,6 +124,4 @@ public class HomePage {
 	}
 	
 	//Thanh test method-Start
-	
-
 }

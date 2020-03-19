@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
+import org.javatuples.Pair;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
@@ -20,6 +21,10 @@ public class SelectElement extends BaseElement {
 		super(By.xpath(xpath));
 	}
 
+	public SelectElement(Pair<String, String> byValue) {
+		super(byValue.getValue0(), byValue.getValue1());
+	}
+	
 	/**
 	 * @author Dung.Vu: Find element byType and provided values.
 	 * @param by : FindElementBy list

@@ -1,0 +1,23 @@
+{
+	"any-chrome": {
+	  "rbxRoundTrip": "xpath=//input[@value='RbRoundTrip']",
+	  "rbxRbOneWay": "xpath=//input[@value='RbOneWay']",
+	  "cbxOrigin": "xpath=//select[@id='selectOrigin']",
+	  "cbxDestination": "xpath=//select[@id='selectDestination']",
+	  "calDepartDate": "xpath=//input[contains(@id,'TxtDepartDate')]",
+	  "calReturnDate": "xpath=//input[contains(@id,'TxtReturnDate')]",
+	  "cbxCurrency": "xpath=//input[contains(@id,'CbbCurrency_TextBox')]",
+	  "txtNumberOfAdults": "xpath=//input[contains(@id,'CbbAdults_TextBox')]",
+	  "chxInfare": "xpath=//input[contains(@id,'ChkInfare')]",
+	  "txtPromoCode": "xpath=//input[contains(@id,'TxtPromoCode')",
+	  "txtNumberOfChildrens": "xpath=//input[contains(@id,'CbbChildren_TextBox')]",
+	  "txtNumberOfInfants": "xpath=//input[contains(@id,'CbbInfants_TextBox')]",
+	  "btnSearch": "xpath=//input[contains(@id,'BtSearch')]",
+	  "txtSearch": "xpath=//input[contains(@class,'search__field') and @type='search']",
+	  "liLocationItem": "xpath=//li[contains(@class, 'results__option') and contains(text(),'%s')]",
+	  "linkDatePickerNavigation": "xpath=//a[@class='ui-datepicker-%s ui-corner-all']",
+	  "lblCurrentYear": "xpath=//span[@class='ui-datepicker-year']",
+	  "cbxMonth": "xpath=//select[@class='ui-datepicker-month']",
+	  "celDay": "xpath=//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]"
+	}
+}

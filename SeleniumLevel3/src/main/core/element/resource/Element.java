@@ -1,4 +1,4 @@
-package driver.manager;
+package element.resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import driver.setting.FindElementBy;
+import element.base.BaseElement;
 import helper.Constant;
 
 public class Element extends BaseElement {

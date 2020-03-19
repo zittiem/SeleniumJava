@@ -1,6 +1,6 @@
 package pages.VietJet;
 
-import driver.manager.Element;
+import element.resource.Element;
 
 public class SelectTravelOptionsPage {
 	// Element

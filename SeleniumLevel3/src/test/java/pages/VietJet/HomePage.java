@@ -5,9 +5,9 @@ import java.util.Date;
 import datatype.FlightInfo;
 import datatype.FlightInfo.FlightOption;
 import datatype.FlightInfo.LocationOption;
-import driver.manager.Element;
-import driver.manager.SelectElement;
 import driver.setting.FindElementBy;
+import element.resource.Element;
+import element.resource.SelectElement;
 
 public class HomePage {
 	// Elements

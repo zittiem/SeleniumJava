@@ -4,7 +4,7 @@ import java.util.Date;
 
 import utils.common.Common;
 
-public class FlightInfo {
+public class BookingInfo {
 
 	private FlightOption flightOption = FlightOption.RETURN;
 	private LocationOption origin;
@@ -70,7 +70,7 @@ public class FlightInfo {
 				+ this.promoCode + "\nNumber of Childrens: " + this.numberOfChildens + "\nNumber of Infants: "
 				+ this.numberOfInfants + "\n=========================================================");
 	}
-	public FlightInfo(FlightOption flightOption, LocationOption origin, Date departDate, LocationOption destination,
+	public BookingInfo(FlightOption flightOption, LocationOption origin, Date departDate, LocationOption destination,
 			Date returnDate, String currency, int numberOfAdults, boolean lowestFare, String promoCode,
 			int numberOfChildens, int numberOfInfants) {
 		super();
@@ -155,8 +155,8 @@ public class FlightInfo {
 			return this;
 		}
 
-		public FlightInfo build() {
-			FlightInfo flight = new FlightInfo(this.flightOption, this.origin, this.departDate, this.destination,
+		public BookingInfo build() {
+			BookingInfo flight = new BookingInfo(this.flightOption, this.origin, this.departDate, this.destination,
 					this.returnDate, this.currency, this.numberOfAdults, this.lowestFare, this.promoCode,
 					this.numberOfChildens, this.numberOfInfants);
 			return flight;

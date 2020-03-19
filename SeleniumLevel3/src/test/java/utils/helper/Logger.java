@@ -30,4 +30,15 @@ public class Logger {
 		Reporter.log(message);
 		ExtentTestManager.getTest().log(Status.INFO, message);
 	}
+	
+	public static void passedAssertion(String message) {
+		Reporter.log("<b>INFO: </b>" + message);
+		ExtentTestManager.getTest().log(Status.PASS, message);
+	}
+	
+	public static void failedAssertion(String message) {
+		Reporter.log("<b>INFO: </b>" + message);
+		ExtentTestManager.getTest().log(Status.FAIL, message);
+	}
+	
 }

@@ -33,8 +33,6 @@ public class TestListener implements ITestListener {
 		
 		ExtentTestManager.startTest(result.getMethod().getMethodName(), testSuite.get(result.getTestContext().getName()));
 		ExtentTestManager.getTest().assignCategory(result.getTestContext().getName());
-		Logger.info(String.format("TEST CASE: %s.%s", result.getTestClass().getName(), result.getName()).replace("_",
-				"_ "));
 	}
 	
 	public void onFinish(ITestContext context) {
@@ -43,13 +41,11 @@ public class TestListener implements ITestListener {
 	}
 
 	public void onTestSuccess(ITestResult result) {
-		Logger.info("*** Executed " + result.getMethod().getMethodName() + " test successfully...");
-		ExtentTestManager.getTest().log(Status.PASS, "Test passed");
+		ExtentTestManager.getTest().log(Status.PASS, "*** TEST EXECUTION COMPLETE - PASSED: " + result.getMethod().getMethodName());
 	}
 
 	public void onTestFailure(ITestResult result) {
-		Logger.info("*** Test execution " + result.getMethod().getMethodName() + " failed...");
-		
+
 		// capture screenshot
 		String screenshotFileName = UUID.randomUUID().toString();
 		String screenshotFilePath = "";
@@ -62,7 +58,7 @@ public class TestListener implements ITestListener {
 		
 		// attach screenshots to report
 		try {
-				ExtentTestManager.getTest().fail(result.getThrowable().getMessage(),
+				ExtentTestManager.getTest().fail("*** TEST EXECUTION COMPLETE - FAILED: " + result.getMethod().getMethodName() + " - " + result.getThrowable().getMessage(),
 							MediaEntityBuilder.createScreenCaptureFromPath(screenshotFilePath).build());
 		} catch (IOException e) {
 		Logger.info("An exception occured while taking screenshot " + e.getCause());

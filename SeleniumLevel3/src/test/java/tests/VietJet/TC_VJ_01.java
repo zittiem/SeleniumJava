@@ -5,9 +5,9 @@ import static org.testng.Assert.assertTrue;
 
 import org.testng.annotations.Test;
 
-import datatype.FlightInfo;
-import datatype.FlightInfo.FlightOption;
-import datatype.FlightInfo.LocationOption;
+import datatype.BookingInfo;
+import datatype.BookingInfo.FlightOption;
+import datatype.BookingInfo.LocationOption;
 import pages.VietJet.HomePage;
 import pages.VietJet.SelectTravelOptionsPage;
 import tests.TestBase;
@@ -18,7 +18,7 @@ public class TC_VJ_01 extends TestBase   {
 	@Test(description = "TC_VJ_001, Verify that user can search and choose tickets on a specific day successfully.")
 	public void TC01() {
 		HomePage homePage = new HomePage();
-		FlightInfo flight = new FlightInfo.FlightBuilder().setFlightOption(FlightOption.RETURN)
+		BookingInfo flight = new BookingInfo.FlightBuilder().setFlightOption(FlightOption.RETURN)
 				.setOrigin(LocationOption.SGN).setDepartDate(Common.plusDays(1)).setDestination(LocationOption.HAN)
 				.setReturnDate(Common.plusDays(4)).setCurrency("VND").setNumberOfAdults(2).build();		
 		Logger.info("1. Navigate to 'https://www.vietjetair.com/Sites/Web/en-US/Home'.");

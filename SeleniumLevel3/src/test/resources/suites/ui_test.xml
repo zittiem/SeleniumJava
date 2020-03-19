@@ -9,11 +9,12 @@
 	<test name="Run Chrome">
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />
-		<parameter name="url" value="https://www.vietjetair.com/Sites/Web/en-US/Home" />		
+		<parameter name="appName" value="VietJet" />		
 		<classes>
-			<class name="tests.VietJet.TS_VietJet_ThanhTestReport">
+			<class name="tests.VietJet.TS_VietJet_ThanhHoang">
 				<methods>
 					<include name="TC01" />
+					<include name="TC02" />
 				</methods>
 			</class>
 		</classes>

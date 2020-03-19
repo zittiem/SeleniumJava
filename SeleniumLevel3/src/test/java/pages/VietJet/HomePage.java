@@ -118,5 +118,8 @@ public class HomePage {
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
+	
+	//Thanh test method-Start
+	
 
 }

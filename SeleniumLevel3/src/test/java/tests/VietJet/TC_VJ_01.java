@@ -10,11 +10,11 @@ import datatype.FlightInfo.FlightOption;
 import datatype.FlightInfo.LocationOption;
 import pages.VietJet.HomePage;
 import pages.VietJet.SelectTravelOptionsPage;
-import tests.TestBaseVJ;
+import tests.TestBase;
 import utils.common.Common;
 import utils.helper.Logger;
 
-public class TC_VJ_01   {
+public class TC_VJ_01 extends TestBase   {
 	@Test(description = "TC_VJ_001, Verify that user can search and choose tickets on a specific day successfully.")
 	public void TC01() {
 		HomePage homePage = new HomePage();

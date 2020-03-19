@@ -1,5 +1,7 @@
 package utils.common;
 
+import utils.helper.PropertiesHelper;
+
 public class Constants {
 	
 	// Data folder controls json
@@ -18,7 +20,7 @@ public class Constants {
 	public static final int HORIZONTAL_PERCENTAGE_START_POINT = 50;
 	
 	// URL 
-	public static final String vietJetURL = "https://www.vietjetair.com/Sites/Web/en-US/Home";
-	public static final String agodaURL = "https://www.agoda.com/";
-	public static final String logigearEmailURL = "https://sgmail.logigear.com";
+	public static final String vietJetURL = PropertiesHelper.getPropValue("vietjet.url");
+	public static final String agodaURL = PropertiesHelper.getPropValue("agoda.url");
+	public static final String logigearEmailURL = PropertiesHelper.getPropValue("lgemail.url");
 }

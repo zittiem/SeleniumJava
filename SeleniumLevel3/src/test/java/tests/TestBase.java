@@ -4,7 +4,9 @@ package tests;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
@@ -24,7 +26,8 @@ public class TestBase {
 
 	@AfterMethod(alwaysRun = true)
 	public void cleanUp(ITestResult result) {
-		DriverUtils.quitAll();
+		
+		DriverUtils.quit();
 	}
 	
 	public void launchApp(String appName) {

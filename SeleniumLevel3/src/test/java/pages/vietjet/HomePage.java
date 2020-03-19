@@ -1,9 +1,8 @@
-package pages.VietJet;
+package pages.vietjet;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
-
+import org.testng.Assert;
 import driver.manager.DriverUtils;
 
 public class HomePage {
@@ -16,9 +15,11 @@ public class HomePage {
 	}
 	
 	// Methods
-	public void selectOrigin(String origin) {
-		Select select = new Select(cbbOrigin);
-        select.deselectAll();
-        select.selectByVisibleText(origin);
+	public void checkControlDisplay() {
+		Assert.assertTrue(cbbOrigin.isDisplayed());
+	}
+	
+	public void checkControlNotDisplay() {
+		Assert.assertEquals(cbbOrigin.isDisplayed(), "False");
 	}
 }

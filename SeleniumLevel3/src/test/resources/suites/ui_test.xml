@@ -6,14 +6,15 @@
 		<listener class-name="utils.config.TestListener" />
 	</listeners>
 
-	<test name="Run Chrome">
+	<test name="VietJet">
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />
 		<parameter name="appName" value="VietJet" />		
 		<classes>
-			<class name="tests.VietJet.TS_VietJet_ThanhTestReport">
+			<class name="tests.vietjet.TS_VietJet_ThanhHoang">
 				<methods>
 					<include name="TC01" />
+					<include name="TC02" />
 				</methods>
 			</class>
 		</classes>

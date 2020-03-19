@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Run Chrome</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>1/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Mar 18 13:10:38 ICT 2020</td>
+<td>Started on:</td><td>Thu Mar 19 10:51:30 ICT 2020</td>
 </tr>
-<tr><td>Total time:</td><td>33 seconds (33892 ms)</td>
+<tr><td>Total time:</td><td>36 seconds (36862 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,37 +75,30 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='tests.VietJet.TS_VietJet_ThanhTestReport.TC01()'><b>TC01</b><br>Test class: tests.VietJet.TS_VietJet_ThanhTestReport<br>Test method: Search and choose tickets on a specific day successfully.<br/>
-<a href="#Output-172023378" onClick='toggleBox("Output-172023378", this, "Show output", "Hide output");'>Show output</a>
+<td title='tests.vietjet.TS_VietJet_ThanhHoang.TC02()'><b>TC02</b><br>Test class: tests.vietjet.TS_VietJet_ThanhHoang<br>Test method: Search and choose tickets on a specific day successfully.<br/>
+<a href="#Output-131307129" onClick='toggleBox("Output-131307129", this, "Show output", "Hide output");'>Show output</a>
 
-<a href="#Output-172023378" onClick="toggleAllBoxes();">Show all outputs</a>
-<div class='log' id="Output-172023378">
+<a href="#Output-131307129" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-131307129">
+<b>INFO: </b>TEST CASE: tests.vietjet.TS_ VietJet_ ThanhHoang.TC02<br/>
 <b>INFO: </b>1. Navigate to 'https://www.vietjetair.com/Sites/Web/en-US/Home'.<br/>
-<b>INFO: </b>*** Test execution TC01 failed...<br/>
-<b>INFO: </b>TC01 failed!<br/>
-<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots\af1732c0-22cb-4e59-8b54-c56dbd9d310b.png<br/>
-<b>INFO: </b>af1732c0-22cb-4e59-8b54-c56dbd9d310b<br/>
-<b>INFO: </b>D:\03_Training\01_Selenium Java\Level3\SeleniumJava\SeleniumLevel3\TestReport\screenshots<br/>
+<b>INFO: </b>*** Test execution TC02 failed...<br/>
 </div>
 </td>
-<td><div><pre>org.openqa.selenium.support.ui.UnexpectedTagNameException: Element should have been &quot;select&quot; but was &quot;span&quot;
-Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
-System info: host: &apos;LGVN14410&apos;, ip: &apos;192.168.170.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_66&apos;
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:47)
-	at pages.VietJet.HomePage.selectOrigin(HomePage.java:20)
-	at tests.VietJet.TS_VietJet_ThanhTestReport.TC01(TS_VietJet_ThanhTestReport.java:15)
+<td><div><pre>java.lang.AssertionError: expected [False] but found [true]
+	at pages.vietjet.HomePage.checkControlNotDisplay(HomePage.java:23)
+	at tests.vietjet.TS_VietJet_ThanhHoang.TC02(TS_VietJet_ThanhHoang.java:23)
 	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
 	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
 	at java.lang.Thread.run(Thread.java:745)
-... Removed 12 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace172023378", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace172023378'><pre>org.openqa.selenium.support.ui.UnexpectedTagNameException: Element should have been &quot;select&quot; but was &quot;span&quot;
-Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
-System info: host: &apos;LGVN14410&apos;, ip: &apos;192.168.170.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_66&apos;
-Driver info: driver.version: unknown
-	at org.openqa.selenium.support.ui.Select.&lt;init&gt;(Select.java:47)
-	at pages.VietJet.HomePage.selectOrigin(HomePage.java:20)
-	at tests.VietJet.TS_VietJet_ThanhTestReport.TC01(TS_VietJet_ThanhTestReport.java:15)
+... Removed 16 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace131307129", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace131307129'><pre>java.lang.AssertionError: expected [False] but found [true]
+	at org.testng.Assert.fail(Assert.java:97)
+	at org.testng.Assert.assertEqualsImpl(Assert.java:136)
+	at org.testng.Assert.assertEquals(Assert.java:118)
+	at org.testng.Assert.assertEquals(Assert.java:563)
+	at pages.vietjet.HomePage.checkControlNotDisplay(HomePage.java:23)
+	at tests.vietjet.TS_VietJet_ThanhHoang.TC02(TS_VietJet_ThanhHoang.java:23)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -123,7 +116,29 @@ Driver info: driver.version: unknown
 	at java.lang.Thread.run(Thread.java:745)
 </pre></div></td>
 <td>0</td>
-<td>tests.VietJet.TS_VietJet_ThanhTestReport@6acdbdf5</td></tr>
+<td>tests.vietjet.TS_VietJet_ThanhHoang@6acdbdf5</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='tests.vietjet.TS_VietJet_ThanhHoang.TC01()'><b>TC01</b><br>Test class: tests.vietjet.TS_VietJet_ThanhHoang<br>Test method: Search and choose tickets on a specific day successfully.<br/>
+<a href="#Output-1446089028" onClick='toggleBox("Output-1446089028", this, "Show output", "Hide output");'>Show output</a>
+
+<a href="#Output-1446089028" onClick="toggleAllBoxes();">Show all outputs</a>
+<div class='log' id="Output-1446089028">
+<b>INFO: </b>TEST CASE: tests.vietjet.TS_ VietJet_ ThanhHoang.TC01<br/>
+<b>INFO: </b>1. Navigate to 'https://www.vietjetair.com/Sites/Web/en-US/Home'.<br/>
+<b>INFO: </b>*** Executed TC01 test successfully...<br/>
+</div>
+</td>
+<td></td>
+<td>0</td>
+<td>tests.vietjet.TS_VietJet_ThanhHoang@6acdbdf5</td></tr>
 </table><p>
 </body>
 </html>

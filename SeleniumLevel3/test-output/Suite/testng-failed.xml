@@ -9,13 +9,13 @@
     <parameter name="appName" value="VietJet"/>
     <parameter name="platform" value="any"/>
     <classes>
-      <class name="tests.VietJet.TS_VietJet_ThanhTestReport">
+      <class name="tests.vietjet.TS_VietJet_ThanhHoang">
         <methods>
           <include name="beforeMethod"/>
-          <include name="TC01"/>
           <include name="cleanUp"/>
+          <include name="TC02"/>
         </methods>
-      </class> <!-- tests.VietJet.TS_VietJet_ThanhTestReport -->
+      </class> <!-- tests.vietjet.TS_VietJet_ThanhHoang -->
     </classes>
   </test> <!-- Run Chrome(failed) -->
 </suite> <!-- Failed suite [Suite] -->

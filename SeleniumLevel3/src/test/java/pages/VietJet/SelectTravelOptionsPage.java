@@ -5,29 +5,30 @@ import java.util.List;
 import datatype.TicketInfo.FlightClass;
 import element.resource.Element;
 import element.setting.FindElementBy;
+import driver.manager.Locator;
 
-public class SelectTravelOptionsPage {
+public class SelectTravelOptionsPage {	
+	Locator locator = new Locator(getClass().getSimpleName());
+	
 	// Element
-	protected Element formTravelOption = new Element(FindElementBy.id,"TravelOptions");
-	protected Element lblPageTitle = new Element("//div[@style='float: left']/h1");
-	protected Element lblDisplayCurrency = new Element("//div[@style='float: left']/h3");
-	protected Element lblDepartureFrom = new Element("//table[@id='tblLeg1APs']//td[1]");
-	protected Element lblDepartureTo = new Element("//table[@id='tblLeg1APs']//td[2]");
-	protected Element lblDepartureDate = new Element("//span [@id='Leg1Date']");
-	protected Element lblReturnFrom = new Element("//table[@id='tblLeg2APs']//td[1]");
-	protected Element lblReturnTo = new Element("//table[@id='tblLeg2APs']//td[2]");
-	protected Element lblReturnDate = new Element("//span [@id='Leg2Date']");
-	protected Element lblNumberOfAdults = new Element("//table[@id='tblPaxCountsInfo']//td[1]");
-	protected Element lblNumberOfChildrens = new Element("//table[@id='tblPaxCountsInfo']//td[2]");
-	protected Element lblNumberOfInfants = new Element("//table[@id='tblPaxCountsInfo']//td[3]");
-	// ***For element that capture by index -> will update when having solution for
-	// multi-languages
-	// Select ticket
-	protected Element optDerparturPrice = new Element(
-			"//tr[contains(@id,'gridTravelOptDep')]//td[@data-familyid='%s']");
-	protected Element optReturnPrice = new Element("//tr[contains(@id,'gridTravelOptRet')]//td[@data-familyid='%s']");
+	protected Element formTravelOption = new Element(locator.getLocate("formTravelOption"));
+	protected Element lblPageTitle = new Element(locator.getLocate("lblPageTitle"));
+	protected Element lblDisplayCurrency = new Element(locator.getLocate("lblDisplayCurrency"));
+	protected Element lblDepartureFrom = new Element(locator.getLocate("lblDepartureFrom"));
+	protected Element lblDepartureTo = new Element(locator.getLocate("lblDepartureTo"));
+	protected Element lblDepartureDate = new Element(locator.getLocate("lblDepartureDate"));
+	protected Element lblReturnFrom = new Element(locator.getLocate("lblReturnFrom"));
+	protected Element lblReturnTo = new Element(locator.getLocate("lblReturnTo"));
+	protected Element lblReturnDate = new Element(locator.getLocate("lblReturnDate"));
+	protected Element lblNumberOfAdults = new Element(locator.getLocate("lblNumberOfAdults"));
+	protected Element lblNumberOfChildrens = new Element(locator.getLocate("lblNumberOfChildrens"));
+	protected Element lblNumberOfInfants = new Element(locator.getLocate("lblNumberOfInfants"));
+	
+	//Select ticket
+	protected Element optDerparturPrice = new Element(locator.getLocate("optDerparturPrice"));
+	protected Element optReturnPrice = new Element(locator.getLocate("optReturnPrice"));
 
-	protected Element btnContinue = new Element("//a[contains(@href,'continue')]");
+	protected Element btnContinue = new Element(locator.getLocate("btnContinue"));
 	// Method
 	public boolean isDisplayed() {
 		return (this.lblPageTitle.isDisplayed() && this.formTravelOption.isDisplayed());

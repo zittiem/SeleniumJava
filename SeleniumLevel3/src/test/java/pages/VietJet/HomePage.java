@@ -8,33 +8,37 @@ import datatype.BookingInfo.LocationOption;
 import element.resource.Element;
 import element.resource.SelectElement;
 import element.setting.FindElementBy;
+import driver.manager.Locator;
 
-public class HomePage {
+public class HomePage {	
+	Locator locator = new Locator(getClass().getSimpleName());
+	
 	// Elements
-	protected Element rbxRoundTrip = new Element(FindElementBy.id, "ctl00_UcRightV31_RbRoundTrip");
-	protected Element rbxRbOneWay = new Element(FindElementBy.id, "ctl00_UcRightV31_RbOneWay");
-	protected SelectElement cbxOrigin = new SelectElement(FindElementBy.id, "selectOrigin]");
-	protected SelectElement cbxDestination = new SelectElement(FindElementBy.id, "selectDestination");
-	protected Element calDepartDate = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtDepartDate");
-	protected Element calReturnDate = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtReturnDate");
-	protected SelectElement cbxCurrency = new SelectElement(FindElementBy.id, "ctl00_UcRightV31_CbbCurrency_TextBox");
-	protected Element txtNumberOfAdults = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbAdults_TextBox");
-	protected Element chxInfare = new Element(FindElementBy.id, "ctl00_UcRightV31_ChkInfare");
-	protected Element txtPromoCode = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtPromoCode");
-	protected Element txtNumberOfChildrens = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbChildren_TextBox");
-	protected Element txtNumberOfInfants = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbInfants_TextBox");
-	protected Element btnSearch = new Element(FindElementBy.id, "ctl00_UcRightV31_BtSearch");
+	protected Element rbxRoundTrip = new Element(locator.getLocate("rbxRoundTrip"));
+	protected Element rbxRbOneWay = new Element(locator.getLocate("rbxRbOneWay"));	
+	protected Element calDepartDate = new Element(locator.getLocate("calDepartDate"));
+	protected Element calReturnDate = new Element(locator.getLocate("calReturnDate"));	
+	protected Element txtNumberOfAdults = new Element(locator.getLocate("txtNumberOfAdults"));
+	protected Element chxInfare = new Element(locator.getLocate("chxInfare"));
+	protected Element txtPromoCode = new Element(locator.getLocate("txtPromoCode"));
+	protected Element txtNumberOfChildrens = new Element(locator.getLocate("txtNumberOfChildrens"));
+	protected Element txtNumberOfInfants = new Element(locator.getLocate("txtNumberOfInfants"));
+	protected Element btnSearch = new Element(locator.getLocate("btnSearch"));
+	protected SelectElement cbxOrigin = new SelectElement(locator.getLocate("cbxOrigin"));	
+	protected SelectElement cbxCurrency = new SelectElement(locator.getLocate("cbxCurrency"));
+	protected SelectElement cbxDestination = new SelectElement(locator.getLocate("cbxDestination"));
+	
 	// Select Location
-	protected Element txtSearch = new Element("//input [contains(@class,'search__field') and @type='search']");
-	protected Element liLocationItem = new Element(
-			"//li[contains(@class, 'results__option') and contains(text(),'%s')]");
+	protected Element txtSearch = new Element(locator.getLocate("txtSearch"));
+	protected Element liLocationItem = new Element(locator.getLocate("liLocationItem"));
+	
 	// Select Date
-	protected Element linkDatePickerNavigation = new Element("//a[@class='ui-datepicker-%s ui-corner-all']");
-	protected Element lblCurrentYear = new Element("//span[@class='ui-datepicker-year']");
-	protected SelectElement cbxMonth = new SelectElement("//select[@class='ui-datepicker-month']");
-	protected Element celDay = new Element("//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]");
+	protected Element linkDatePickerNavigation = new Element(locator.getLocate("linkDatePickerNavigation"));
+	protected Element lblCurrentYear = new Element(locator.getLocate("lblCurrentYear"));	
+	protected Element celDay = new Element(locator.getLocate("celDay"));
+	protected SelectElement cbxMonth = new SelectElement(locator.getLocate("cbxMonth"));
+	
 	// Methods
-
 	private void selectYear(int year) {
 		int currentYear = Integer.parseInt(lblCurrentYear.getText());
 		String vector = "";
@@ -118,7 +122,5 @@ public class HomePage {
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
-
 	// Thanh test method-Start
-
 }

@@ -2,13 +2,13 @@ package pages.VietJet;
 
 import java.util.Date;
 
-import datatype.FlightInfo;
-import datatype.FlightInfo.FlightOption;
-import datatype.FlightInfo.LocationOption;
-import driver.manager.Element;
+import datatype.BookingInfo;
+import datatype.BookingInfo.FlightOption;
+import datatype.BookingInfo.LocationOption;
+import element.resource.Element;
+import element.resource.SelectElement;
+import element.setting.FindElementBy;
 import driver.manager.Locator;
-import driver.manager.SelectElement;
-import driver.setting.FindElementBy;
 
 public class HomePage {	
 	Locator locator = new Locator(getClass().getSimpleName());
@@ -103,7 +103,7 @@ public class HomePage {
 		}
 	}
 
-	public void enterSearchData(FlightInfo flight) {
+	public void enterSearchData(BookingInfo flight) {
 		selectFlightOption(flight.getFlightOption());
 		selectOrigin(flight.getOrigin());
 		selectDepartDate(flight.getDepartDate());
@@ -117,11 +117,10 @@ public class HomePage {
 		txtNumberOfInfants.enter(flight.getNumberOfInfants());
 	}
 
-	public SelectTravelOptionsPage submitSearchFlight(FlightInfo flight) {
+	public SelectTravelOptionsPage submitSearchFlight(BookingInfo flight) {
 		enterSearchData(flight);
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
-	
-	//Thanh test method-Start
+	// Thanh test method-Start
 }

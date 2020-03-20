@@ -1,4 +1,4 @@
-package driver.manager;
+package element.base;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -16,18 +16,19 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Stopwatch;
 
-import driver.manager.BaseElement;
-import driver.setting.ElementStatus;
-import driver.setting.FindElementBy;
+import driver.manager.DriverManager;
+import element.base.BaseElement;
+import element.setting.ElementStatus;
+import element.setting.FindElementBy;
 import helper.Constant;
 
-public class BaseElement {
+public class BaseElement implements IWaiter {
 	private static Logger cLOG = Logger.getLogger(BaseElement.class);
 	protected WebElement element = null;
 	protected List<WebElement> elements = null;
 	private By byLocator;
 
-	protected By getLocator() {
+	public By getLocator() {
 		return this.byLocator;
 	}
 
@@ -51,110 +52,11 @@ public class BaseElement {
 		this.byLocator = getByLocator(by, String.format(value, text));
 	}
 
-	/**
-	 * @author Dung.Vu: Support to Find element by () and provided values.
-	 * @param by : property name
-	 * @param    value: String
-	 */
-	public By getByLocator(String by, String value) {
-		switch (by) {
-		case "css":
-			return By.cssSelector(value);
-		case "id":
-			return By.id(value);
-		case "link":
-			return By.linkText(value);
-		case "xpath":
-			return By.xpath(value);
-		case "text":
-			return By.xpath(String.format("//*[contains(text(), '%s')]", value));
-		case "name":
-			return By.name(value);
-		default:
-			return By.xpath(value);
-		}
-	}
-
-	/**
-	 * @author Dung.Vu: Support to Find element by () and provided values.
-	 * @param by : ElementStatus by
-	 * @param    value: String
-	 */
-	public By getByLocator(FindElementBy by, String value) {
-		return getByLocator(by.getValue(), value);
-	}
+	
 
 	// ----------------------Section Handling timing ----------------------------
 
-	public WebElement waitForCondition(ElementStatus condition, int timeOut) {
-		try {
-			WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), timeOut);
-			switch (condition.getValue()) {
-			case "visibilityOf":
-				element = wait.until(ExpectedConditions.visibilityOf(element));
-				break;
-			case "elementToBeClickable":
-				element = wait.until(ExpectedConditions.elementToBeClickable(element));
-				break;
-			case "visibilityOfElementLocated":
-				element = wait.until(ExpectedConditions.visibilityOfElementLocated(getLocator()));
-				break;
-			case "presenceOfElementLocated":
-				element = wait.until(ExpectedConditions.presenceOfElementLocated(getLocator()));
-				break;
-			default:
-				element = wait.until(ExpectedConditions.visibilityOf(element));
-				break;
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with element '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-		return element;
-	}
-
-	/**
-	 * @author Dung.Vu: Wait for element exist in a specific time.
-	 * @param timeOut -> In Second.
-	 */
-	public WebElement waitForPresent(int timeOut) {
-		return waitForCondition(ElementStatus.PRESENT, timeOut);
-	}
-
-	/**
-	 * @author Dung.Vu: Wait for element click-able in a specific time.
-	 * @param timeOut -> In Second.
-	 */
-	public WebElement waitForClickable(int timeOut) {
-		return waitForCondition(ElementStatus.CLICKABLE, timeOut);
-	}
-
-	/**
-	 * @author Dung.Vu: Wait for element displayed in a specific time.
-	 * @param timeOut
-	 * @return element
-	 */
-	public WebElement waitForDisplay(int timeOut) {
-		return waitForCondition(ElementStatus.DISPLAY, timeOut);
-	}
-
-	/**
-	 * @author Dung.Vu: Wait for all elements are presented in specific time out
-	 * @param timeOut
-	 * @return List of Elements
-	 */
-	private List<WebElement> waitForAllElementsPresent(int timeOut) {
-		try {
-			WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), timeOut);
-			elements = wait.until(ExpectedConditions.presenceOfAllElementsLocatedBy(getLocator()));
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with element '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-		return elements;
-	}
+	
 
 	/**
 	 * @author Dung.Vu: Move mouse to element

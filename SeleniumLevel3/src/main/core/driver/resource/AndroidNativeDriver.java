@@ -1,6 +1,6 @@
 package driver.resource;
 
-import driver.manager.BaseDriver;
+import driver.resource.base.BaseDriver;
 import driver.setting.DriverProperty;
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;

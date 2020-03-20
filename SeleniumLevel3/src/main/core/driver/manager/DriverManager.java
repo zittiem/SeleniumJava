@@ -8,6 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
+
+import driver.resource.base.BaseDriver;
 import driver.setting.DriverProperty;
 import helper.DriverSettingHelper;
 
@@ -70,15 +72,15 @@ public class DriverManager {
 	}
 	
 	public static WebDriver getDriver() {
-		return getBaseDriver().webDriver;
+		return getBaseDriver().getWebDriver();
 	}
 
 	public static DriverProperty getDriverProperty() {
-		return getBaseDriver().driverProperty;
+		return getBaseDriver().getDriverProperty();
 	}
 	
 	public static DriverProperty getDriverProperty(String key) {
-		return DRIVER.get().get(key).driverProperty;
+		return DRIVER.get().get(key).getDriverProperty();
 	}
 
 	public static void loadDriverProperty(String propertyFile, String platform, String sectionName) throws Exception {
@@ -115,8 +117,8 @@ public class DriverManager {
 	
 	public static void createDriver(String key, DriverProperty property) {
 		BaseDriver driver = DriverFactory.newInstance(property);
-		driver.webDriver.manage().timeouts().pageLoadTimeout(property.getPageTimeOut(), TimeUnit.SECONDS);
-		driver.webDriver.manage().timeouts().implicitlyWait(property.getElementTimeOut(), TimeUnit.SECONDS);
+		driver.getWebDriver().manage().timeouts().pageLoadTimeout(property.getPageTimeOut(), TimeUnit.SECONDS);
+		driver.getWebDriver().manage().timeouts().implicitlyWait(property.getElementTimeOut(), TimeUnit.SECONDS);
 		DRIVER.get().put(key, driver);
 		CURRENT_KEY.set(key);
 		KEYS.get().add(key);

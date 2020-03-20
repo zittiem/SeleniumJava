@@ -1,9 +1,13 @@
 package pages.VietJet;
 
-import driver.manager.Element;
+import java.util.List;
+
+import datatype.TicketInfo.FlightClass;
+import element.resource.Element;
+import element.setting.FindElementBy;
 import driver.manager.Locator;
 
-public class SelectTravelOptionsPage {
+public class SelectTravelOptionsPage {	
 	Locator locator = new Locator(getClass().getSimpleName());
 	
 	// Element
@@ -21,19 +25,47 @@ public class SelectTravelOptionsPage {
 	protected Element lblNumberOfInfants = new Element(locator.getLocate("lblNumberOfInfants"));
 	
 	//Select ticket
-	protected Element rbnDerparturPrice = new Element(locator.getLocate("rbnDerparturPrice"));
-	protected Element rbnReturnPrice = new Element(locator.getLocate("rbnReturnPrice"));
+	protected Element optDerparturPrice = new Element(locator.getLocate("optDerparturPrice"));
+	protected Element optReturnPrice = new Element(locator.getLocate("optReturnPrice"));
 
+	protected Element btnContinue = new Element(locator.getLocate("btnContinue"));
 	// Method
 	public boolean isDisplayed() {
-
-		// DriverUtils.getTitle();
-		return (this.lblPageTitle.isDisplayed() && this.lblDisplayCurrency.isDisplayed()
-				&& this.formTravelOption.isDisplayed());
+		return (this.lblPageTitle.isDisplayed() && this.formTravelOption.isDisplayed());
 	}
 
 	public boolean isCurrencyDisplay(String currency) {
 		return this.lblDisplayCurrency.getText().contains(currency);
+	}
+
+	// Find the cheapest flight option
+
+	public Element getCheapestDeparture(FlightClass flightClass) {
+		return this.getCheapestOption(optDerparturPrice.getElement(FindElementBy.xpath, flightClass.getValue()));
+	}
+
+	public Element getCheapestReturn(FlightClass flightClass) {
+		return this.getCheapestOption(optReturnPrice.getElement(FindElementBy.xpath, flightClass.getValue()));
+	}
+
+	private Element getCheapestOption(Element element) {
+		List<Element> elements = element.getElements();
+		int price = 0;
+		Element expElement = null;
+		for (int i = 1; i <= elements.size(); i++) {
+			String _xpath = element.getLocation().toString().substring(10);
+			Element _element = new Element(FindElementBy.xpath, "(" + _xpath + ")[" + i + "]");
+			System.out.println(getTicketPrice(_element));
+			if (getTicketPrice(_element) < price) {
+				price = getTicketPrice(_element);
+				expElement = _element;
+			}
+		}
+		return expElement;
+	}
+
+	private int getTicketPrice(Element element) {
+		return Integer.parseInt(element.getText().split(" ")[1].replace(",", ""));
 	}
 
 	public String getDepartureFromInfo() {
@@ -71,4 +103,17 @@ public class SelectTravelOptionsPage {
 	public String getNumberOfInfantsInfo() {
 		return lblNumberOfInfants.getText();
 	}
+
+	public SelectTravelOptionsPage selectCheapestTicket(FlightClass flightClass) {
+		getCheapestDeparture(flightClass).click();
+		getCheapestReturn(flightClass).click();
+		return this;
+	}
+	
+//	public PassengerInformationPage submit()
+//	{
+//		btnContinue.click();
+//		return new PassengerInformationPage();
+//	}
+
 }

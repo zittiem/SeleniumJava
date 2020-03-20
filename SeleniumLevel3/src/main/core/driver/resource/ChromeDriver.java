@@ -4,7 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import driver.manager.BaseDriver;
+import driver.resource.base.BaseDriver;
 import driver.setting.DriverProperty;
 import io.github.bonigarcia.wdm.WebDriverManager;
 

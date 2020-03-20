@@ -11,6 +11,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+
+import driver.resource.base.BaseDriver;
+
 import org.openqa.selenium.JavascriptExecutor;
 
 public class DriverUtils {
@@ -125,7 +128,7 @@ public class DriverUtils {
 			logger.debug("Quit all browsers");
 			for (Map.Entry<String, BaseDriver> item : DriverManager.getDriverMap().entrySet())
 			{
-				item.getValue().webDriver.quit();
+				item.getValue().getWebDriver().quit();
 			}
 
 		} catch (Exception e) {

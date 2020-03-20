@@ -1,4 +1,4 @@
-package driver.manager;
+package element.resource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +11,7 @@ import org.openqa.selenium.support.ui.Select;
 import com.google.common.base.Stopwatch;
 
 import driver.setting.FindElementBy;
+import element.base.BaseElement;
 import helper.Constant;
 
 public class SelectElement extends BaseElement {

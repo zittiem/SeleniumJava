@@ -3,8 +3,8 @@ package pages.VietJet;
 import java.util.List;
 
 import datatype.TicketInfo.FlightClass;
-import driver.manager.Element;
 import driver.setting.FindElementBy;
+import element.resource.Element;
 
 public class SelectTravelOptionsPage {
 	// Element

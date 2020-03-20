@@ -2,28 +2,28 @@ package pages.VietJet;
 
 import java.util.Date;
 
-import datatype.FlightInfo;
-import datatype.FlightInfo.FlightOption;
-import datatype.FlightInfo.LocationOption;
+import datatype.BookingInfo;
+import datatype.BookingInfo.FlightOption;
+import datatype.BookingInfo.LocationOption;
 import driver.setting.FindElementBy;
 import element.resource.Element;
 import element.resource.SelectElement;
 
 public class HomePage {
 	// Elements
-	protected Element rbxRoundTrip = new Element("//input[@value='RbRoundTrip']");
-	protected Element rbxRbOneWay = new Element("//input[@value='RbOneWay']");
-	protected SelectElement cbxOrigin = new SelectElement("//select[@id='selectOrigin']");
-	protected SelectElement cbxDestination = new SelectElement("//select[@id='selectDestination']");
-	protected Element calDepartDate = new Element("//input[contains(@id,'TxtDepartDate')]");
-	protected Element calReturnDate = new Element("//input[contains(@id,'TxtReturnDate')]");
-	protected SelectElement cbxCurrency = new SelectElement("//input[contains(@id,'CbbCurrency_TextBox')]");
-	protected Element txtNumberOfAdults = new Element("//input[contains(@id,'CbbAdults_TextBox')]");
-	protected Element chxInfare = new Element("//input[contains(@id,'ChkInfare')]");
-	protected Element txtPromoCode = new Element("//input[contains(@id,'TxtPromoCode')]");
-	protected Element txtNumberOfChildrens = new Element("//input[contains(@id,'CbbChildren_TextBox')]");
-	protected Element txtNumberOfInfants = new Element("//input[contains(@id,'CbbInfants_TextBox')]");
-	protected Element btnSearch = new Element("//input[contains(@id,'BtSearch')]");
+	protected Element rbxRoundTrip = new Element(FindElementBy.id, "ctl00_UcRightV31_RbRoundTrip");
+	protected Element rbxRbOneWay = new Element(FindElementBy.id, "ctl00_UcRightV31_RbOneWay");
+	protected SelectElement cbxOrigin = new SelectElement(FindElementBy.id, "selectOrigin]");
+	protected SelectElement cbxDestination = new SelectElement(FindElementBy.id, "selectDestination");
+	protected Element calDepartDate = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtDepartDate");
+	protected Element calReturnDate = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtReturnDate");
+	protected SelectElement cbxCurrency = new SelectElement(FindElementBy.id, "ctl00_UcRightV31_CbbCurrency_TextBox");
+	protected Element txtNumberOfAdults = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbAdults_TextBox");
+	protected Element chxInfare = new Element(FindElementBy.id, "ctl00_UcRightV31_ChkInfare");
+	protected Element txtPromoCode = new Element(FindElementBy.id, "ctl00_UcRightV31_TxtPromoCode");
+	protected Element txtNumberOfChildrens = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbChildren_TextBox");
+	protected Element txtNumberOfInfants = new Element(FindElementBy.id, "ctl00_UcRightV31_CbbInfants_TextBox");
+	protected Element btnSearch = new Element(FindElementBy.id, "ctl00_UcRightV31_BtSearch");
 	// Select Location
 	protected Element txtSearch = new Element("//input [contains(@class,'search__field') and @type='search']");
 	protected Element liLocationItem = new Element(
@@ -99,7 +99,7 @@ public class HomePage {
 		}
 	}
 
-	public void enterSearchData(FlightInfo flight) {
+	public void enterSearchData(BookingInfo flight) {
 		selectFlightOption(flight.getFlightOption());
 		selectOrigin(flight.getOrigin());
 		selectDepartDate(flight.getDepartDate());
@@ -113,13 +113,12 @@ public class HomePage {
 		txtNumberOfInfants.enter(flight.getNumberOfInfants());
 	}
 
-	public SelectTravelOptionsPage submitSearchFlight(FlightInfo flight) {
+	public SelectTravelOptionsPage submitSearchFlight(BookingInfo flight) {
 		enterSearchData(flight);
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
-	
-	//Thanh test method-Start
-	
+
+	// Thanh test method-Start
 
 }

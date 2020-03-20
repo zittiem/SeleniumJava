@@ -17,9 +17,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Stopwatch;
 
 import driver.manager.DriverManager;
-import driver.setting.ElementStatus;
-import driver.setting.FindElementBy;
 import element.base.BaseElement;
+import element.setting.ElementStatus;
+import element.setting.FindElementBy;
 import helper.Constant;
 
 public class BaseElement implements IWaiter {

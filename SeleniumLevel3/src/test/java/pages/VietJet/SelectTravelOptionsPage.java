@@ -3,8 +3,8 @@ package pages.VietJet;
 import java.util.List;
 
 import datatype.TicketInfo.FlightClass;
-import driver.setting.FindElementBy;
 import element.resource.Element;
+import element.setting.FindElementBy;
 
 public class SelectTravelOptionsPage {
 	// Element
@@ -109,10 +109,10 @@ public class SelectTravelOptionsPage {
 		return this;
 	}
 	
-	public PassengerInformationPage submit()
-	{
-		btnContinue.click();
-		return new PassengerInformationPage();
-	}
+//	public PassengerInformationPage submit()
+//	{
+//		btnContinue.click();
+//		return new PassengerInformationPage();
+//	}
 
 }

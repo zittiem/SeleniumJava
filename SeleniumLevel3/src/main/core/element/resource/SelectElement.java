@@ -10,8 +10,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import com.google.common.base.Stopwatch;
 
-import driver.setting.FindElementBy;
 import element.base.BaseElement;
+import element.setting.FindElementBy;
 import helper.Constant;
 
 public class SelectElement extends BaseElement {

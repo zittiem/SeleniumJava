@@ -8,7 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driver.manager.DriverManager;
-import driver.setting.ElementStatus;
+import element.setting.ElementStatus;
 
 public interface IWaiter extends ILocator {
 	static Logger cLOG = Logger.getLogger(IWaiter.class);

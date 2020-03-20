@@ -7,8 +7,8 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import driver.setting.FindElementBy;
 import element.base.BaseElement;
+import element.setting.FindElementBy;
 import helper.Constant;
 
 public class Element extends BaseElement {

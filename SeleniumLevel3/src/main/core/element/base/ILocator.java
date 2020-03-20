@@ -2,7 +2,7 @@ package element.base;
 
 import org.openqa.selenium.By;
 
-import driver.setting.FindElementBy;
+import element.setting.FindElementBy;
 
 public interface ILocator {
 	By getLocator();

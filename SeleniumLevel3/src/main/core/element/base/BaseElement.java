@@ -5,10 +5,12 @@ import java.util.concurrent.TimeUnit;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.Rectangle;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -17,20 +19,17 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.google.common.base.Stopwatch;
 
 import driver.manager.DriverManager;
+import driver.manager.DriverUtils;
 import element.base.BaseElement;
 import element.setting.ElementStatus;
 import element.setting.FindElementBy;
 import helper.Constant;
 
-public class BaseElement implements IWaiter {
+public class BaseElement implements IFinder, IWaiter, IAction, IStatus {
 	private static Logger cLOG = Logger.getLogger(BaseElement.class);
 	protected WebElement element = null;
 	protected List<WebElement> elements = null;
 	private By byLocator;
-
-	public By getLocator() {
-		return this.byLocator;
-	}
 
 	public BaseElement(By locator) {
 		this.byLocator = locator;
@@ -51,392 +50,404 @@ public class BaseElement implements IWaiter {
 	public BaseElement(FindElementBy by, String value, String text) {
 		this.byLocator = getByLocator(by, String.format(value, text));
 	}
-
 	
-
-	// ----------------------Section Handling timing ----------------------------
-
-	
-
-	/**
-	 * @author Dung.Vu: Move mouse to element
-	 * @param timeOut
-	 */
-	public void moveToElement(int timeOut) {
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			new Actions(DriverManager.getDriver()).moveToElement(waitForDisplay(timeOut)).build().perform();
-		} catch (StaleElementReferenceException e) {
-			if (sw.elapsed(TimeUnit.SECONDS) <= (long) timeOut) {
-				cLOG.warn(String.format("Try to move to the control %s again", getLocator().toString()));
-				moveToElement(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
+	// ---------------------- Locator ---------------------------- //
+	@Override
+	public By getLocator() {
+		return this.byLocator;
 	}
 
-	/**
-	 * @author Dung.Vu: Wait for all elements are presented in specific time out
-	 * @return list of Elements
-	 */
-	public List<WebElement> getWebElements(int timeOut) {
-		return waitForAllElementsPresent(timeOut);
-	}
-	
-
-	// From super
-	// -------------------------------------------------------------------------
-	public <X> X getScreenshotAs(OutputType<X> target) throws WebDriverException {
-		throw new UnsupportedOperationException("The method is not implemented");
-	}
-
-	/**
-	 * @author Dung.Vu: click on element after waiting for element is click-able in
-	 *         specific timeout
-	 * @param timeOut
-	 */
-	public void click(int timeOut) {
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			waitForDisplay(timeOut).click();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to click control %s again", getLocator().toString()));
-				click(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-	}
-
+	// ---------------------- Action ---------------------------- //
+	@Override
 	public void click() {
-		click(Constant.ElementWaitingTime);
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	waitForClickable(Constant.ElementWaitingTime).click();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to click control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
 	}
-
-	public void submit() {
-		throw new UnsupportedOperationException("The method is not implemented");
-	}
-
-	/**
-	 * @author Dung.Vu: Send keys to element after waiting for element displayed in
-	 *         specific timeout
-	 * @param timeOut
-	 * @param keysToSend
-	 */
-	public void sendKeys(int timeOut, CharSequence... keysToSend) {
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			waitForDisplay(timeOut).sendKeys(keysToSend);
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to send key to the control %s again", getLocator().toString()));
-				sendKeys(timeOut - (int) sw.elapsed(TimeUnit.SECONDS), keysToSend);
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	
+	@Override
+	public void click(int x, int y) {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForClickable(Constant.ElementWaitingTime);
+		    	new Actions(DriverUtils.getDriver()).moveToElement(element, x, y).click().build().perform();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to click(%s, %s) control %s again", x, y, getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
 	}
 
-	public void sendKeys(CharSequence... keysToSend) {
-		sendKeys(Constant.ElementWaitingTime, keysToSend);
-	}
-
-	/**
-	 * @author Dung.Vu: Clear value after waiting for element presence.
-	 * @param timeOutInSeconds
-	 */
-	public void clear(int timeOut) {
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			waitForDisplay(timeOut).clear();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to clear data %s again", getLocator().toString()));
-				clear(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	@Override
+	public void clickByJS() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForClickable(Constant.ElementWaitingTime);
+		    	DriverUtils.executeJavaScript("arguments[0].click();", element);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to clickByJS control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
 	}
 
+	@Override
+	public void clickByAction() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForClickable(Constant.ElementWaitingTime);
+		    	new Actions(DriverUtils.getDriver()).click(element).build().perform();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to clickByAction control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
+	}
+	
+	@Override
+	public void doubleClick() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForClickable(Constant.ElementWaitingTime);
+		    	new Actions(DriverUtils.getDriver()).doubleClick(element).build().perform();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to doubleClick control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
+	}
+
+	@Override
+	public void sendKeys(CharSequence... keysToEnter) {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	waitForPresent(Constant.ElementWaitingTime).sendKeys(keysToEnter);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to sendKeys to control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
+	}
+
+	@Override
 	public void clear() {
-		clear(Constant.ElementWaitingTime);
-	}
-
-	public String getTagName() {
-		throw new UnsupportedOperationException("The method is not implemented");
-	}
-
-	/**
-	 * @author Dung.Vu get element's attribute after waiting for element present in
-	 *         specific time
-	 * @param timeOut
-	 * @param attributeName
-	 * @return return attribute value
-	 */
-	private String getAttribute(String attributeName, int timeOut) {
-		String attribute = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			attribute = waitForDisplay(timeOut).getAttribute(attributeName);
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get Attribute of the control %s again", getLocator().toString()));
-				getAttribute(attributeName, timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	waitForPresent(Constant.ElementWaitingTime).clear();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to clear value for control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return attribute;
 	}
 
-	public String getAttribute(String name) {
-		return getAttribute(name, Constant.ElementWaitingTime);
-	}
-
-	/**
-	 * @author Dung.Vu: Verify whether Element is selected or not after waiting for
-	 *         element present in a specific timeout in seconds.
-	 * @param timeOut
-	 * @return True/False
-	 */
-	public boolean isSelected(int timeOut) {
-		boolean isSelected = false;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			isSelected = waitForDisplay(timeOut).isSelected();
-		} catch (StaleElementReferenceException e) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to check the control is selected %s again", getLocator().toString()));
-				isSelected(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	@Override
+	public void submit() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	waitForPresent(Constant.ElementWaitingTime).submit();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to submit control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return isSelected;
 	}
 
-	public boolean isSelected() {
-		return isSelected(Constant.ElementWaitingTime);
-	}
-
-	/**
-	 * @author Dung.Vu: Verify whether Element is enabled or not after waiting for
-	 *         element present in a specific timeout in seconds.
-	 * @param timeOut
-	 * @return True if Element is enabled
-	 */
-	public boolean isEnabled(int timeOut) {
-		boolean isEnabled = false;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			isEnabled = waitForDisplay(timeOut).isEnabled();
-		} catch (StaleElementReferenceException e) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to check the control is enabled %s again", getLocator().toString()));
-				isEnabled(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	@Override
+	public void focus() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForPresent(Constant.ElementWaitingTime);
+		    	DriverUtils.executeJavaScript("arguments[0].focus();", element);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to focus on control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return isEnabled;
 	}
 
-	public boolean isEnabled() {
-		return isEnabled(Constant.ElementWaitingTime);
-	}
-
-	/**
-	 * @author Dung.Vu: Get element's text after waiting for element displayed in
-	 *         specific time
-	 * @param timeOut
-	 * @return
-	 */
-	public String getText(int timeOut) {
-		String text = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			text = waitForDisplay(timeOut).getText();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get text of the control %s again", getLocator().toString()));
-				getText(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	@Override
+	public void hover() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	String mouseHoverScript = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}";
+		    	WebElement element = waitForPresent(Constant.ElementWaitingTime);
+		    	DriverUtils.executeJavaScript(mouseHoverScript, element);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to hover on control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return text;
 	}
-
-	public String getText() {
-		return getText(Constant.ElementWaitingTime);
-	}
-
-	public List<WebElement> findElements(By by) {
-		return findElements(by);
-	}
-
-	public WebElement findElement(By by) {
-		return findElement(by);
-	}
-
-	/**
-	 * @author Dung.Vu: Verify weather Element is displayed or not in a specific
-	 *         timeout.
-	 * @param timeOut
-	 * @return True/False
-	 */
-	public boolean isDisplayed(int timeOut) {
-		boolean isDisplayed = false;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			isDisplayed = waitForDisplay(timeOut).isDisplayed();
-		} catch (StaleElementReferenceException e) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to check the control is displayed %s again", getLocator().toString()));
-				return isDisplayed(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+	
+	@Override
+	public void moveToElement() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForClickable(Constant.ElementWaitingTime);
+		    	new Actions(DriverUtils.getDriver()).moveToElement(element).build().perform();
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to move to control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return isDisplayed;
 	}
 
+	@Override
+	public void scrollIntoView() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForPresent(Constant.ElementWaitingTime);
+		    	DriverUtils.executeJavaScript("arguments[0].scrollIntoView(true);", element);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to scroll to control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
+	}
+
+	@Override
+	public void scrollIntoViewBottom() {
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	WebElement element = waitForPresent(Constant.ElementWaitingTime);
+		    	DriverUtils.executeJavaScript("arguments[0].scrollIntoView(false);", element);
+		    	return;
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to scroll to bottom of control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
+		}
+	}
+
+	// ---------------------- Finder ---------------------------- //
+	@Override
+	public WebElement getElement() {
+		return DriverUtils.findElement(getLocator());
+	}
+
+	@Override
+	public WebElement getChildElement(By locator) {
+		return getElement().findElement(getLocator());
+	}
+
+	@Override
+	public List<WebElement> getElements() {
+		return DriverUtils.findElements(getLocator());
+	}
+
+	@Override
+	public List<WebElement> getChildElements(By locator) {
+		return getElement().findElements(getLocator());
+	}
+
+	// ---------------------- Status ---------------------------- //
+	@Override
 	public boolean isDisplayed() {
-		return isDisplayed(Constant.ElementWaitingTime);
-	}
-
-	/**
-	 * @author Dung.Vu: Get element's location after waiting for element displayed
-	 *         on screen in a specific timeout in seconds.
-	 * @param timeOut
-	 * @return Location
-	 */
-	public Point getLocation(int timeOut) {
-		Point location = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			location = waitForDisplay(timeOut).getLocation();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get text of the control %s again", getLocator().toString()));
-				getLocation(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
+		int tries = 0;
+		while (tries < Constant.ElementRetryLimit) {
+		    tries++;
+		    try {
+		    	return waitForPresent(Constant.ElementWaitingTime).isDisplayed();
+		    } catch (StaleElementReferenceException staleEx) {
+		    	if (tries == Constant.ElementRetryLimit)
+		    		throw staleEx;
+		    	cLOG.warn(String.format("Try to get Displayed status from control %s again", getLocator().toString()));
+		    } catch (Exception e) {
+		    	cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+						e.getMessage()));
+		    	throw e;
+		    }
 		}
-		return location;
+		return false;
 	}
 
-	public Point getLocation() {
-		return getLocation(Constant.ElementWaitingTime);
+	@Override
+	public boolean isDisplayed(int timeOutInSeconds) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	/**
-	 * @author Dung.Vu: Get element's size after Waiting for element displayed on
-	 *         screen in a specific timeout in seconds.
-	 * @param timeOut
-	 * @return Dimension
-	 */
-	public Dimension getSize(int timeOut) {
-
-		Dimension size = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			size = waitForDisplay(timeOut).getSize();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get text of the control %s again", getLocator().toString()));
-				getSize(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-		return size;
+	@Override
+	public boolean isEnabled() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public Dimension getSize() {
-		return getSize(Constant.ElementWaitingTime);
+	@Override
+	public boolean isEnabled(int timeOutInSeconds) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	/**
-	 * @author Dung.Vu: Get element's Rectangle after Waiting for element displayed
-	 *         on screen in a specific timeout in seconds.
-	 * @param timeOut
-	 * @return Rectangle
-	 */
-	public Rectangle getRect(int timeOut) {
-		Rectangle rect = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			rect = waitForDisplay(timeOut).getRect();
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get text of the control %s again", getLocator().toString()));
-				getRect(timeOut - (int) sw.elapsed(TimeUnit.SECONDS));
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-		return rect;
+	@Override
+	public boolean isSelected() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	public Rectangle getRect() {
-		return getRect(Constant.ElementWaitingTime);
+	@Override
+	public boolean isSelected(int timeOutInSeconds) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
-	/**
-	 * @author Dung.Vu: Get element's CSS value after waiting for element displayed
-	 *         on screen in a specific timeout in seconds.
-	 * @param timeOut
-	 * @param propertyName -> css property name
-	 * @return css value
-	 */
-	public String getCssValue(int timeOut, String propertyName) {
-		String cssValue = null;
-		Stopwatch sw = Stopwatch.createStarted();
-		try {
-			cssValue = waitForDisplay(timeOut).getCssValue(propertyName);
-		} catch (StaleElementReferenceException ex) {
-			if (sw.elapsed(TimeUnit.SECONDS) < (long) timeOut) {
-				cLOG.warn(String.format("Try to get text of the control %s again", getLocator().toString()));
-				getCssValue(timeOut - (int) sw.elapsed(TimeUnit.SECONDS), propertyName);
-			}
-		} catch (Exception error) {
-			cLOG.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
-					error.getMessage()));
-			throw error;
-		}
-		return cssValue;
-	}
-
+	@Override
 	public String getCssValue(String propertyName) {
-		return getCssValue(Constant.ElementWaitingTime, propertyName);
+		// TODO Auto-generated method stub
+		return null;
 	}
+
+	@Override
+	public String getAttribute(String attributeName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getText() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getValue() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTagName() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getLocation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Dimension getSize() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Rectangle getRect() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	// ---------------------- Waiter ---------------------------- //
 
 }

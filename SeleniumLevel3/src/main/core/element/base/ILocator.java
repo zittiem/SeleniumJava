@@ -5,6 +5,7 @@ import org.openqa.selenium.By;
 import element.setting.FindElementBy;
 
 public interface ILocator {
+	
 	By getLocator();
 	
 	/**

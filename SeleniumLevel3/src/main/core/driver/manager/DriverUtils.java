@@ -136,11 +136,11 @@ public class DriverUtils {
 		}
 	}
 	
-	public static void wait(int timeInSecond) {
+	public static void wait(double timeInSecond) {
 		try {
-			Thread.sleep(timeInSecond * 1000);
+			Thread.sleep((long)(timeInSecond * 1000));
 		} catch (Exception e) {
-			logger.error(String.format("An error occurred when wait %d seconds: %s", timeInSecond, e.getMessage()));
+			logger.error(String.format("An error occurred when wait %s seconds: %s", timeInSecond, e.getMessage()));
 		}
 	}
 	

@@ -1,0 +1,23 @@
+{
+	"any-chrome": {
+	  "rbxRoundTrip": "id=ctl00_UcRightV31_RbRoundTrip",
+	  "rbxRbOneWay": "id=ctl00_UcRightV31_RbOneWay",
+	  "cbxOrigin": "id=selectOrigin",
+	  "cbxDestination": "id=selectDestination",
+	  "calDepartDate": "id=ctl00_UcRightV31_TxtDepartDate",
+	  "calReturnDate": "id=ctl00_UcRightV31_TxtReturnDate",
+	  "cbxCurrency": "id=ctl00_UcRightV31_CbbCurrency_TextBox",
+	  "txtNumberOfAdults": "id=ctl00_UcRightV31_CbbAdults_TextBox",
+	  "chxInfare": "id=ctl00_UcRightV31_ChkInfare",
+	  "txtPromoCode": "id=ctl00_UcRightV31_TxtPromoCode",
+	  "txtNumberOfChildrens": "id=ctl00_UcRightV31_CbbChildren_TextBox",
+	  "txtNumberOfInfants": "id=ctl00_UcRightV31_CbbInfants_TextBox",
+	  "btnSearch": "id=ctl00_UcRightV31_BtSearch",
+	  "txtSearch": "xpath=//input[contains(@class,'search__field') and @type='search']",
+	  "liLocationItem": "xpath=//li[contains(@class, 'results__option') and contains(text(),'%s')]",
+	  "linkDatePickerNavigation": "xpath=//a[@class='ui-datepicker-%s ui-corner-all']",
+	  "lblCurrentYear": "xpath=//span[@class='ui-datepicker-year']",
+	  "cbxMonth": "xpath=//select[@class='ui-datepicker-month']",
+	  "celDay": "xpath=//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]"
+	}
+}

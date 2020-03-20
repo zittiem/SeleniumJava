@@ -9,6 +9,7 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import com.google.common.base.Stopwatch;
+import org.javatuples.Pair;
 
 import element.base.BaseElement;
 import element.setting.FindElementBy;
@@ -21,6 +22,10 @@ public class SelectElement extends BaseElement {
 		super(By.xpath(xpath));
 	}
 
+	public SelectElement(Pair<String, String> byValue) {
+		super(byValue.getValue0(), byValue.getValue1());
+	}
+	
 	/**
 	 * @author Dung.Vu: Find element byType and provided values.
 	 * @param by : FindElementBy list

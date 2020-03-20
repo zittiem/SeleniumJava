@@ -3,6 +3,7 @@ package element.resource;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.javatuples.Pair;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -32,6 +33,10 @@ public class Element extends BaseElement {
 		super(by, value);
 	}
 
+	public Element(Pair<String, String> byValue) {
+		super(byValue.getValue0(), byValue.getValue1());
+	}
+	
 	/**
 	 * @author Dung.Vu: Find element by and provided values.
 	 * @param by : FindElementBy list

@@ -2,33 +2,35 @@ package pages.VietJet;
 
 import java.util.List;
 
+import org.openqa.selenium.WebElement;
+
 import datatype.TicketInfo.FlightClass;
-import element.resource.Element;
-import element.setting.FindElementBy;
-import driver.manager.Locator;
+import element.resource.web.Element;
+import element.setting.FindBy;
+import helper.LocatorHelper;
 
 public class SelectTravelOptionsPage {	
-	Locator locator = new Locator(getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(getClass().getSimpleName());
 	
 	// Element
-	protected Element formTravelOption = new Element(locator.getLocate("formTravelOption"));
-	protected Element lblPageTitle = new Element(locator.getLocate("lblPageTitle"));
-	protected Element lblDisplayCurrency = new Element(locator.getLocate("lblDisplayCurrency"));
-	protected Element lblDepartureFrom = new Element(locator.getLocate("lblDepartureFrom"));
-	protected Element lblDepartureTo = new Element(locator.getLocate("lblDepartureTo"));
-	protected Element lblDepartureDate = new Element(locator.getLocate("lblDepartureDate"));
-	protected Element lblReturnFrom = new Element(locator.getLocate("lblReturnFrom"));
-	protected Element lblReturnTo = new Element(locator.getLocate("lblReturnTo"));
-	protected Element lblReturnDate = new Element(locator.getLocate("lblReturnDate"));
-	protected Element lblNumberOfAdults = new Element(locator.getLocate("lblNumberOfAdults"));
-	protected Element lblNumberOfChildrens = new Element(locator.getLocate("lblNumberOfChildrens"));
-	protected Element lblNumberOfInfants = new Element(locator.getLocate("lblNumberOfInfants"));
+	protected Element formTravelOption = new Element(locator.getLocator("formTravelOption"));
+	protected Element lblPageTitle = new Element(locator.getLocator("lblPageTitle"));
+	protected Element lblDisplayCurrency = new Element(locator.getLocator("lblDisplayCurrency"));
+	protected Element lblDepartureFrom = new Element(locator.getLocator("lblDepartureFrom"));
+	protected Element lblDepartureTo = new Element(locator.getLocator("lblDepartureTo"));
+	protected Element lblDepartureDate = new Element(locator.getLocator("lblDepartureDate"));
+	protected Element lblReturnFrom = new Element(locator.getLocator("lblReturnFrom"));
+	protected Element lblReturnTo = new Element(locator.getLocator("lblReturnTo"));
+	protected Element lblReturnDate = new Element(locator.getLocator("lblReturnDate"));
+	protected Element lblNumberOfAdults = new Element(locator.getLocator("lblNumberOfAdults"));
+	protected Element lblNumberOfChildrens = new Element(locator.getLocator("lblNumberOfChildrens"));
+	protected Element lblNumberOfInfants = new Element(locator.getLocator("lblNumberOfInfants"));
 	
 	//Select ticket
-	protected Element optDerparturPrice = new Element(locator.getLocate("optDerparturPrice"));
-	protected Element optReturnPrice = new Element(locator.getLocate("optReturnPrice"));
+	protected Element optDerparturPrice = new Element(locator.getLocator("optDerparturPrice"));
+	protected Element optReturnPrice = new Element(locator.getLocator("optReturnPrice"));
 
-	protected Element btnContinue = new Element(locator.getLocate("btnContinue"));
+	protected Element btnContinue = new Element(locator.getLocator("btnContinue"));
 	// Method
 	public boolean isDisplayed() {
 		return (this.lblPageTitle.isDisplayed() && this.formTravelOption.isDisplayed());
@@ -41,20 +43,20 @@ public class SelectTravelOptionsPage {
 	// Find the cheapest flight option
 
 	public Element getCheapestDeparture(FlightClass flightClass) {
-		return this.getCheapestOption(optDerparturPrice.getElement(FindElementBy.xpath, flightClass.getValue()));
+		return this.getCheapestOption(optDerparturPrice.Dynamic(flightClass.getValue()));
 	}
 
 	public Element getCheapestReturn(FlightClass flightClass) {
-		return this.getCheapestOption(optReturnPrice.getElement(FindElementBy.xpath, flightClass.getValue()));
+		return this.getCheapestOption(optReturnPrice.Dynamic(flightClass.getValue()));
 	}
 
 	private Element getCheapestOption(Element element) {
-		List<Element> elements = element.getElements();
+		List<WebElement> elements = element.getElements();
 		int price = 0;
 		Element expElement = null;
 		for (int i = 1; i <= elements.size(); i++) {
 			String _xpath = element.getLocation().toString().substring(10);
-			Element _element = new Element(FindElementBy.xpath, "(" + _xpath + ")[" + i + "]");
+			Element _element = new Element(FindBy.xpath, "(" + _xpath + ")[" + i + "]");
 			System.out.println(getTicketPrice(_element));
 			if (getTicketPrice(_element) < price) {
 				price = getTicketPrice(_element);

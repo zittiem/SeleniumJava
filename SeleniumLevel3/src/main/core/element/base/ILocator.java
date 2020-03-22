@@ -1,43 +1,40 @@
 package element.base;
 
+import org.javatuples.Pair;
 import org.openqa.selenium.By;
 
-import element.setting.FindElementBy;
+import element.setting.FindBy;
+import helper.LocatorHelper;
 
 public interface ILocator {
 	
 	By getLocator();
 	
-	/**
-	 * @author Dung.Vu: Support to Find element by () and provided values.
-	 * @param by : property name
-	 * @param    value: String
-	 */
-	public default By getByLocator(String by, String value) {
+	public default By getByLocator(FindBy by, String value) {
 		switch (by) {
-		case "css":
-			return By.cssSelector(value);
-		case "id":
+		case id:
 			return By.id(value);
-		case "link":
-			return By.linkText(value);
-		case "xpath":
-			return By.xpath(value);
-		case "text":
-			return By.xpath(String.format("//*[contains(text(), '%s')]", value));
-		case "name":
+		case name:
 			return By.name(value);
+		case css:
+			return By.cssSelector(value);
+		case linkText:
+			return By.linkText(value);
+		case text:
+			return By.xpath(String.format("//*[contains(text(), '%s')]", value));
+		case xpath:
+			return By.xpath(value);
 		default:
 			return By.xpath(value);
 		}
 	}
-
-	/**
-	 * @author Dung.Vu: Support to Find element by () and provided values.
-	 * @param by : ElementStatus by
-	 * @param    value: String
-	 */
-	public default By getByLocator(FindElementBy by, String value) {
-		return getByLocator(by.getValue(), value);
+	
+	public default By getByLocator(Pair<FindBy, String> locator) {
+		return getByLocator(locator.getValue0(), locator.getValue1());
+	}
+	
+	public default By getByLocator(String locator) {
+		Pair<FindBy, String> pairLocator = LocatorHelper.getPairLocator(locator);
+		return getByLocator(pairLocator.getValue0(), pairLocator.getValue1());
 	}
 }

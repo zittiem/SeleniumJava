@@ -5,38 +5,40 @@ import java.util.Date;
 import datatype.BookingInfo;
 import datatype.BookingInfo.FlightOption;
 import datatype.BookingInfo.LocationOption;
-import element.resource.Element;
-import element.resource.SelectElement;
-import element.setting.FindElementBy;
-import driver.manager.Locator;
+import element.resource.web.Element;
+import element.resource.web.CheckableElement;
+import element.resource.web.DropdownElement;
+import element.resource.web.EditableElement;
+import helper.LocatorHelper;
+import utils.common.Constants;
 
 public class HomePage {	
-	Locator locator = new Locator(getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
 	
 	// Elements
-	protected Element rbxRoundTrip = new Element(locator.getLocate("rbxRoundTrip"));
-	protected Element rbxRbOneWay = new Element(locator.getLocate("rbxRbOneWay"));	
-	protected Element calDepartDate = new Element(locator.getLocate("calDepartDate"));
-	protected Element calReturnDate = new Element(locator.getLocate("calReturnDate"));	
-	protected Element txtNumberOfAdults = new Element(locator.getLocate("txtNumberOfAdults"));
-	protected Element chxInfare = new Element(locator.getLocate("chxInfare"));
-	protected Element txtPromoCode = new Element(locator.getLocate("txtPromoCode"));
-	protected Element txtNumberOfChildrens = new Element(locator.getLocate("txtNumberOfChildrens"));
-	protected Element txtNumberOfInfants = new Element(locator.getLocate("txtNumberOfInfants"));
-	protected Element btnSearch = new Element(locator.getLocate("btnSearch"));
-	protected SelectElement cbxOrigin = new SelectElement(locator.getLocate("cbxOrigin"));	
-	protected SelectElement cbxCurrency = new SelectElement(locator.getLocate("cbxCurrency"));
-	protected SelectElement cbxDestination = new SelectElement(locator.getLocate("cbxDestination"));
+	protected Element rbxRoundTrip = new Element(locator.getLocator("rbxRoundTrip"));
+	protected Element rbxRbOneWay = new Element(locator.getLocator("rbxRbOneWay"));	
+	protected Element calDepartDate = new Element(locator.getLocator("calDepartDate"));
+	protected Element calReturnDate = new Element(locator.getLocator("calReturnDate"));	
+	protected EditableElement txtNumberOfAdults = new EditableElement(locator.getLocator("txtNumberOfAdults"));
+	protected CheckableElement chxInfare = new CheckableElement(locator.getLocator("chxInfare"));
+	protected EditableElement txtPromoCode = new EditableElement(locator.getLocator("txtPromoCode"));
+	protected EditableElement txtNumberOfChildrens = new EditableElement(locator.getLocator("txtNumberOfChildrens"));
+	protected EditableElement txtNumberOfInfants = new EditableElement(locator.getLocator("txtNumberOfInfants"));
+	protected Element btnSearch = new Element(locator.getLocator("btnSearch"));
+	protected DropdownElement cbxOrigin = new DropdownElement(locator.getLocator("cbxOrigin"));	
+	protected DropdownElement cbxCurrency = new DropdownElement(locator.getLocator("cbxCurrency"));
+	protected DropdownElement cbxDestination = new DropdownElement(locator.getLocator("cbxDestination"));
 	
 	// Select Location
-	protected Element txtSearch = new Element(locator.getLocate("txtSearch"));
-	protected Element liLocationItem = new Element(locator.getLocate("liLocationItem"));
+	protected EditableElement txtSearch = new EditableElement(locator.getLocator("txtSearch"));
+	protected Element liLocationItem = new Element(locator.getLocator("liLocationItem"));
 	
 	// Select Date
-	protected Element linkDatePickerNavigation = new Element(locator.getLocate("linkDatePickerNavigation"));
-	protected Element lblCurrentYear = new Element(locator.getLocate("lblCurrentYear"));	
-	protected Element celDay = new Element(locator.getLocate("celDay"));
-	protected SelectElement cbxMonth = new SelectElement(locator.getLocate("cbxMonth"));
+	protected Element linkDatePickerNavigation = new Element(locator.getLocator("linkDatePickerNavigation"));
+	protected Element lblCurrentYear = new Element(locator.getLocator("lblCurrentYear"));	
+	protected Element celDay = new Element(locator.getLocator("celDay"));
+	protected DropdownElement cbxMonth = new DropdownElement(locator.getLocator("cbxMonth"));
 	
 	// Methods
 	private void selectYear(int year) {
@@ -48,7 +50,7 @@ public class HomePage {
 			vector = "";
 		}
 		while (currentYear != year) {
-			lblCurrentYear.getElement(FindElementBy.xpath, vector).click();
+			lblCurrentYear.Dynamic(vector).click();
 			currentYear = Integer.parseInt(lblCurrentYear.getText());
 		}
 	}
@@ -58,27 +60,27 @@ public class HomePage {
 	}
 
 	private void selectDay(int day) {
-		celDay.getElement(FindElementBy.xpath, day).click();
+		celDay.Dynamic(day).click();
 	}
 
 	public void selectFlightOption(FlightOption option) {
 		if (option.getValue() == "One Way") {
-			rbxRbOneWay.setRarioButton();
+			rbxRbOneWay.click();
 		} else {
-			rbxRoundTrip.setRarioButton();
+			rbxRoundTrip.click();
 		}
 	}
 
 	public void selectOrigin(LocationOption location) {
 		cbxOrigin.click();
 		txtSearch.enter(location.getKey());
-		liLocationItem.getElement(FindElementBy.xpath, location.getKey()).click();
+		liLocationItem.Dynamic(location.getKey()).click();
 	}
 
 	public void selectDestination(LocationOption location) {
 		cbxDestination.click();
 		txtSearch.enter(location.getKey());
-		liLocationItem.getElement(FindElementBy.xpath, location.getKey()).click();
+		liLocationItem.Dynamic(location.getKey()).click();
 	}
 
 	private void selectCal(Date date) {
@@ -111,7 +113,7 @@ public class HomePage {
 		selectReturnDate(flight.getReturnDate());
 		selectCurrency(flight.getCurrency());
 		txtNumberOfAdults.enter(flight.getNumberOfAdults());
-		chxInfare.setCheckbox(flight.isLowestFare());
+		chxInfare.setState(flight.isLowestFare());
 		txtPromoCode.enter(flight.getPromoCode());
 		txtNumberOfChildrens.enter(flight.getNumberOfChildens());
 		txtNumberOfInfants.enter(flight.getNumberOfInfants());

@@ -16,4 +16,6 @@ public interface IMobileAction extends IAction {
 	void zoom();
 	
 	void zoom(int x, int y);
+	
+	void setValue(Object value);
 }

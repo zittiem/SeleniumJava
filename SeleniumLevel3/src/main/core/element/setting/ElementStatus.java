@@ -1,18 +1,9 @@
 package element.setting;
 
 public enum ElementStatus {
-	PRESENT("presenceOfElementLocated"),
-	VISIBLE("visibilityOf"),
-	DISPLAY("visibilityOfElementLocated"),
-	CLICKABLE("elementToBeClickable");
-	
-	private String status;
-
-	ElementStatus(String status) {
-		this.status = status;
-	}
-
-	public String getValue() {
-		return status;
-	}
+	PRESENT, NOT_PRESENT, 
+	DISPLAYED, NOT_DISPLAYED, 
+	CLICKABLE, NOT_CLICKABLE, 
+	ENABLED, DISABLED, 
+	SELECTED, NOT_SELECTED
 }

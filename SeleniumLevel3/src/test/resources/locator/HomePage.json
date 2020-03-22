@@ -1,5 +1,5 @@
 {
-	"any-chrome": {
+	"any.chrome": {
 	  "rbxRoundTrip": "id=ctl00_UcRightV31_RbRoundTrip",
 	  "rbxRbOneWay": "id=ctl00_UcRightV31_RbOneWay",
 	  "cbxOrigin": "id=selectOrigin",

@@ -1,7 +1,6 @@
-package element.base;
+package element.mobile;
 
 import java.util.function.Function;
-
 import org.apache.log4j.Logger;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
@@ -14,8 +13,8 @@ import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import element.setting.ElementStatus;
 
-public interface IWaiter extends ILocator {
-	public static Logger logger = Logger.getLogger(IWaiter.class);
+public interface IMobileWaiter extends IMobileLocator {
+	static Logger logger = Logger.getLogger(IMobileWaiter.class);
 	
 	public default void waitForCondition(ElementStatus condition, int timeOut, boolean throwable) {
 		try {
@@ -100,44 +99,90 @@ public interface IWaiter extends ILocator {
 		}
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element exist in a specific time.
+	 * @param timeOut -> In Second.
+	 */
 	public default void waitForPresent(int timeOut) {
 		waitForCondition(ElementStatus.PRESENT, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element not exist in a specific time.
+	 * @param timeOut -> In Second.
+	 */
 	public default void waitForNotPresent(int timeOut) {
 		waitForCondition(ElementStatus.NOT_PRESENT, timeOut, false);
 	}
 
+	/**
+	 * @author Dung.Vu: Wait for element click-able in a specific time.
+	 * @param timeOut -> In Second.
+	 */
 	public default void waitForClickable(int timeOut) {
 		waitForCondition(ElementStatus.CLICKABLE, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element not click-able in a specific time.
+	 * @param timeOut -> In Second.
+	 */
 	public default void waitForNotClickable(int timeOut) {
 		waitForCondition(ElementStatus.NOT_CLICKABLE, timeOut, false);
 	}
 
+	/**
+	 * @author Dung.Vu: Wait for element displayed in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForDisplayed(int timeOut) {
 		waitForCondition(ElementStatus.DISPLAYED, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element not displayed in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForNotDisplayed(int timeOut) {
 		waitForCondition(ElementStatus.NOT_DISPLAYED, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element enabled in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForEnabled(int timeOut) {
 		waitForCondition(ElementStatus.ENABLED, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element disabled in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForDisabled(int timeOut) {
 		waitForCondition(ElementStatus.DISABLED, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element selected in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForSelected(int timeOut) {
 		waitForCondition(ElementStatus.SELECTED, timeOut, false);
 	}
 	
+	/**
+	 * @author Dung.Vu: Wait for element not selected in a specific time.
+	 * @param timeOut
+	 * @return element
+	 */
 	public default void waitForNotSelected(int timeOut) {
 		waitForCondition(ElementStatus.NOT_SELECTED, timeOut, false);
 	}
-
+	
 }

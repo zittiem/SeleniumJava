@@ -1,5 +1,5 @@
 {
-	"any-chrome": {
+	"any.chrome": {
 	  "formTravelOption": "id=TravelOptions",
 	  "lblPageTitle": "xpath=//div[@style='float: left']/h1",
 	  "lblDisplayCurrency": "xpath=//div[@style='float: left']/h3",

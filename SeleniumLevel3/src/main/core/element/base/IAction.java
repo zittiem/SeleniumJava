@@ -14,8 +14,6 @@ public interface IAction {
 	
 	void sendKeys(CharSequence... keysToEnter);
 	
-	void clear();
-	
 	void submit();
 	
 	void focus();

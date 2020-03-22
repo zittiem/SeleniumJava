@@ -8,6 +8,7 @@ public class Constants {
 	public static final String DATA_FOLDER = System.getProperty("user.dir") + "\\src\\test\\resources\\data\\";
 
 	public static final String DRIVER_SETTING_FILE = "src/test/resources/driver.setting.properties";
+	public static final String LOCATOR_FOLDER_PATH = "src/test/resources/locator/";
 
 	// Timeout variables
 	public static final int LONG_TIME = 60;

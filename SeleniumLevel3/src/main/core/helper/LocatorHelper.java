@@ -94,7 +94,7 @@ public class LocatorHelper {
 			}
 			
 			if (content == null)
-				throw new Exception(String.format("'%s' key was not found for '%s': %s", elementName, getKey(currentPlatform, currentDriver)));
+				throw new Exception(String.format("'%s' key was not found for '%s'", elementName, getKey(currentPlatform, currentDriver)));
 
 			locatorType = FindBy.fromString(getLocatorType(content.getAsString()));
 			locatorValue = getLocatorValue(content.getAsString());

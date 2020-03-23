@@ -8,13 +8,13 @@ public class BookingInfo {
 
 	private FlightOption flightOption = FlightOption.RETURN;
 	private LocationOption origin;
-	private Date departDate;
+	private Date departDate = new Date();
 	private LocationOption destination;
-	private Date returnDate;
-	private String currency ="";
-	private int numberOfAdults;
+	private Date returnDate = DateTimeHelper.plusDays(1);
+	private String currency = null;
+	private int numberOfAdults = 0;
 	private boolean lowestFare = false;
-	private String promoCode = "";
+	private String promoCode = null;
 	private int numberOfChildens = 0;
 	private int numberOfInfants = 0;
 
@@ -63,12 +63,13 @@ public class BookingInfo {
 	}
 
 	public void showInfo() {
-		System.out.println("===================Flight Information===================" + "\nFlight Option: " + this.flightOption + "\nOrigin: "
-				+ this.origin.getValue() + "\nDepart Date: " + DateTimeHelper.getDate(this.departDate) + "\nDestination :" + this.destination.getValue()
-				+ "\nReturn Date: " + DateTimeHelper.getDate(this.returnDate) + "\nCurrency: " + this.currency + "\nNumber Of Adults: "
-				+ this.numberOfAdults + "\nSelect lowest fare: " + this.lowestFare + "\nPromo Code: "
-				+ this.promoCode + "\nNumber of Childrens: " + this.numberOfChildens + "\nNumber of Infants: "
-				+ this.numberOfInfants + "\n=========================================================");
+		System.out.println("===================Flight Information===================" + "\nFlight Option: "
+				+ this.flightOption + "\nOrigin: " + this.origin.getValue() + "\nDepart Date: "
+				+ DateTimeHelper.getDate(this.departDate) + "\nDestination :" + this.destination.getValue() + "\nReturn Date: "
+				+ DateTimeHelper.getDate(this.returnDate) + "\nCurrency: " + this.currency + "\nNumber Of Adults: "
+				+ this.numberOfAdults + "\nSelect lowest fare: " + this.lowestFare + "\nPromo Code: " + this.promoCode
+				+ "\nNumber of Childrens: " + this.numberOfChildens + "\nNumber of Infants: " + this.numberOfInfants
+				+ "\n=========================================================");
 	}
 	public BookingInfo(FlightOption flightOption, LocationOption origin, Date departDate, LocationOption destination,
 			Date returnDate, String currency, int numberOfAdults, boolean lowestFare, String promoCode,
@@ -88,17 +89,17 @@ public class BookingInfo {
 	}
 
 	public static class FlightBuilder {
-		private FlightOption flightOption;
+		private FlightOption flightOption = FlightOption.RETURN;
 		private LocationOption origin;
-		private Date departDate;
+		private Date departDate = new Date();
 		private LocationOption destination;
-		private Date returnDate;
-		private String currency;
-		private int numberOfAdults;
-		private boolean lowestFare;
-		private String promoCode;
-		private int numberOfChildens;
-		private int numberOfInfants;
+		private Date returnDate = DateTimeHelper.plusDays(1);
+		private String currency = null;
+		private int numberOfAdults = 0;
+		private boolean lowestFare = false;
+		private String promoCode = null;
+		private int numberOfChildens = 0;
+		private int numberOfInfants = 0;
 
 		public FlightBuilder setFlightOption(FlightOption flightOption) {
 			this.flightOption = flightOption;

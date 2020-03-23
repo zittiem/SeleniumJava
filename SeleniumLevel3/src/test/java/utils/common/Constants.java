@@ -21,7 +21,7 @@ public class Constants {
 	public static final int HORIZONTAL_PERCENTAGE_START_POINT = 50;
 	
 	// URL 
-	public static final String vietJetURL = PropertiesHelper.getPropValue("vietjet.url");
-	public static final String agodaURL = PropertiesHelper.getPropValue("agoda.url");
-	public static final String logigearEmailURL = PropertiesHelper.getPropValue("lgemail.url");
-}
+		public static final String vietJetUS_URL = PropertiesHelper.getPropValue("vietjetUS.url");
+		public static final String vietJetVI_URL = PropertiesHelper.getPropValue("vietjetVI.url");
+		public static final String agoda_URL = PropertiesHelper.getPropValue("agoda.url");
+		public static final String logigearEmail_URL = PropertiesHelper.getPropValue("lgemail.url");}

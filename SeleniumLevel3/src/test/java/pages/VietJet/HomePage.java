@@ -124,5 +124,14 @@ public class HomePage {
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
+	
 	// Thanh test method-Start
+	
+	public SelectFarePage searchCheapestFlights(BookingInfo booking) {
+		enterSearchData(booking);
+		btnSearch.click();
+		return new SelectFarePage();
+	}
+	
+	// Thanh test method-End
 }

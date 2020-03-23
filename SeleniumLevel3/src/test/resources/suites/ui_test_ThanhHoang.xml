@@ -8,12 +8,10 @@
 
 	<test name="Run Chrome">
 		<parameter name="driverConfig" value="chrome.local" />
-		<parameter name="platform" value="any" />
-		<parameter name="appName" value="VietJet" />		
+		<parameter name="platform" value="any" />	
 		<classes>
 			<class name="tests.VietJet.TS_VietJet_ThanhHoang">
 				<methods>
-					<include name="TC01" />
 					<include name="TC02" />
 				</methods>
 			</class>

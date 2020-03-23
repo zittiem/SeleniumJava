@@ -7,11 +7,11 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
-import utils.common.Common;
+import utils.helper.RandomHelper;
 
 public class ExtentReportManager {
 	private static ExtentReports extent;
-    private static String reportFileName = "Test-Automation-Report " + Common.getNowTime("MM.dd.yyyy - HH.mm.ss") + ".html";
+    private static String reportFileName = "Test-Automation-Report " + RandomHelper.getNowTime("MM.dd.yyyy - HH.mm.ss") + ".html";
     private static String fileSeperator = System.getProperty("file.separator");
     private static String reportFilepath = System.getProperty("user.dir") + fileSeperator + "TestReport";
     private static String reportFileLocation =  reportFilepath + fileSeperator + reportFileName;

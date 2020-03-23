@@ -10,7 +10,7 @@ import datatype.BookingInfo.*;
 import pages.VietJet.HomePage;
 import pages.VietJet.SelectTravelOptionsPage;
 import tests.TestBase;
-import utils.common.Common;
+import utils.helper.DateTimeHelper;
 import utils.helper.Logger;
 
 public class TC_VJ_01 extends TestBase   {
@@ -18,8 +18,8 @@ public class TC_VJ_01 extends TestBase   {
 	public void TC01() {
 		HomePage homePage = new HomePage();
 		BookingInfo flight = new BookingInfo.FlightBuilder().setFlightOption(FlightOption.RETURN)
-				.setOrigin(LocationOption.SGN).setDepartDate(Common.plusDays(1)).setDestination(LocationOption.HAN)
-				.setReturnDate(Common.plusDays(4)).setCurrency("VND").setNumberOfAdults(2).build();		
+				.setOrigin(LocationOption.SGN).setDepartDate(DateTimeHelper.plusDays(1)).setDestination(LocationOption.HAN)
+				.setReturnDate(DateTimeHelper.plusDays(4)).setCurrency("VND").setNumberOfAdults(2).build();		
 		Logger.info("1. Navigate to 'https://www.vietjetair.com/Sites/Web/en-US/Home'.");
 		Logger.info("2. Search the ticket with the following information");
 		SelectTravelOptionsPage traveloptionPage = homePage.submitSearchFlight(flight);

@@ -2,7 +2,7 @@ package datatype;
 
 import java.util.Date;
 
-import utils.common.Common;
+import utils.helper.DateTimeHelper;
 
 public class BookingInfo {
 
@@ -64,8 +64,8 @@ public class BookingInfo {
 
 	public void showInfo() {
 		System.out.println("===================Flight Information===================" + "\nFlight Option: " + this.flightOption + "\nOrigin: "
-				+ this.origin.getValue() + "\nDepart Date: " + Common.getDate(this.departDate) + "\nDestination :" + this.destination.getValue()
-				+ "\nReturn Date: " + Common.getDate(this.returnDate) + "\nCurrency: " + this.currency + "\nNumber Of Adults: "
+				+ this.origin.getValue() + "\nDepart Date: " + DateTimeHelper.getDate(this.departDate) + "\nDestination :" + this.destination.getValue()
+				+ "\nReturn Date: " + DateTimeHelper.getDate(this.returnDate) + "\nCurrency: " + this.currency + "\nNumber Of Adults: "
 				+ this.numberOfAdults + "\nSelect lowest fare: " + this.lowestFare + "\nPromo Code: "
 				+ this.promoCode + "\nNumber of Childrens: " + this.numberOfChildens + "\nNumber of Infants: "
 				+ this.numberOfInfants + "\n=========================================================");

@@ -101,43 +101,43 @@ public interface IWaiter extends ILocator {
 	}
 	
 	public default void waitForPresent(int timeOut) {
-		waitForCondition(ElementStatus.PRESENT, timeOut, false);
+		waitForCondition(ElementStatus.PRESENT, timeOut, true);
 	}
 	
 	public default void waitForNotPresent(int timeOut) {
-		waitForCondition(ElementStatus.NOT_PRESENT, timeOut, false);
+		waitForCondition(ElementStatus.NOT_PRESENT, timeOut, true);
 	}
 
 	public default void waitForClickable(int timeOut) {
-		waitForCondition(ElementStatus.CLICKABLE, timeOut, false);
+		waitForCondition(ElementStatus.CLICKABLE, timeOut, true);
 	}
 	
 	public default void waitForNotClickable(int timeOut) {
-		waitForCondition(ElementStatus.NOT_CLICKABLE, timeOut, false);
+		waitForCondition(ElementStatus.NOT_CLICKABLE, timeOut, true);
 	}
 
 	public default void waitForDisplayed(int timeOut) {
-		waitForCondition(ElementStatus.DISPLAYED, timeOut, false);
+		waitForCondition(ElementStatus.DISPLAYED, timeOut, true);
 	}
 	
 	public default void waitForNotDisplayed(int timeOut) {
-		waitForCondition(ElementStatus.NOT_DISPLAYED, timeOut, false);
+		waitForCondition(ElementStatus.NOT_DISPLAYED, timeOut, true);
 	}
 	
 	public default void waitForEnabled(int timeOut) {
-		waitForCondition(ElementStatus.ENABLED, timeOut, false);
+		waitForCondition(ElementStatus.ENABLED, timeOut, true);
 	}
 	
 	public default void waitForDisabled(int timeOut) {
-		waitForCondition(ElementStatus.DISABLED, timeOut, false);
+		waitForCondition(ElementStatus.DISABLED, timeOut, true);
 	}
 	
 	public default void waitForSelected(int timeOut) {
-		waitForCondition(ElementStatus.SELECTED, timeOut, false);
+		waitForCondition(ElementStatus.SELECTED, timeOut, true);
 	}
 	
 	public default void waitForNotSelected(int timeOut) {
-		waitForCondition(ElementStatus.NOT_SELECTED, timeOut, false);
+		waitForCondition(ElementStatus.NOT_SELECTED, timeOut, true);
 	}
 
 }

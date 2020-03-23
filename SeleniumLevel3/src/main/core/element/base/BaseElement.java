@@ -19,7 +19,7 @@ import element.setting.FindBy;
 import helper.Constant;
 import helper.LocatorHelper;
 
-public class BaseElement implements IFinder, IWaiter, IAction, IStatus {
+public class BaseElement implements IFinder, IWaiter, IAction, IInfo {
 	private static Logger logger = Logger.getLogger(BaseElement.class);
 
 	private By byLocator;

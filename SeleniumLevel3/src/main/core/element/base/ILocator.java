@@ -21,6 +21,8 @@ public interface ILocator {
 		case linkText:
 			return By.linkText(value);
 		case text:
+			return By.xpath(String.format("//*[text()='%s']", value));
+		case partialText:
 			return By.xpath(String.format("//*[contains(text(), '%s')]", value));
 		case xpath:
 			return By.xpath(value);

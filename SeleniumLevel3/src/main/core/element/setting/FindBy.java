@@ -1,7 +1,7 @@
 package element.setting;
 
 public enum FindBy {
-	css("css"), id("id"), linkText("linkText"), xpath("xpath"), text("text"), name("name");
+	css("css"), id("id"), linkText("linkText"), xpath("xpath"), text("text"), partialText("partialText"), name("name");
 
 	private String by;
 

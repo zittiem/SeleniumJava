@@ -15,7 +15,7 @@ import element.setting.SwipeDirection;
 import helper.LocatorHelper;
 import io.appium.java_client.MobileElement;
 
-public class BaseMobileElement implements IMobileFinder, IMobileWaiter, IMobileAction, IMobileStatus {
+public class BaseMobileElement implements IMobileFinder, IMobileWaiter, IMobileAction, IMobileInfo {
 	private static Logger logger = Logger.getLogger(BaseMobileElement.class);
 
 	private By byLocator;

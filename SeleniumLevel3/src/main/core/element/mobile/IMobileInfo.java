@@ -1,9 +1,9 @@
 package element.mobile;
 
 import org.openqa.selenium.Point;
-import element.base.IStatus;
+import element.base.IInfo;
 
-public interface IMobileStatus extends IStatus {
+public interface IMobileInfo extends IInfo {
 	
 	Point getCenter();
 	

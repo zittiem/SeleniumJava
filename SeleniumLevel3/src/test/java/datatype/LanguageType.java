@@ -1,7 +1,7 @@
 package datatype;
 
 public enum LanguageType {
-	EN("EN", "English"), VI("VI", "VietNamese");
+	EN("EN", "English"), VI("VI", "Tiếng Việt");
 	
 	private String code;
 	private String text;

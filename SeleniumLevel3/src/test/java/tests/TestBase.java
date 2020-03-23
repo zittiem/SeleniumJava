@@ -5,7 +5,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-
 import datatype.LanguageType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
@@ -34,7 +33,7 @@ public class TestBase {
 		
 		switch(appName) {
 		case "VietJetUS":
-			DriverUtils.navigate(Constants.vietJetUS_URL);
+			DriverUtils.navigate(Constants.vietJetEN_URL);
 			break;
 		case "VietJetVI":
 			DriverUtils.navigate(Constants.vietJetVI_URL);

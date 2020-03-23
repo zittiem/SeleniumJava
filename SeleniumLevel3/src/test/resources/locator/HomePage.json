@@ -2,7 +2,7 @@
 	"any.chrome": {
 	  "rbxRoundTrip": "id=ctl00_UcRightV31_RbRoundTrip",
 	  "rbxRbOneWay": "id=ctl00_UcRightV31_RbOneWay",
-	  "cbxOrigin": "id=selectOrigin",
+	  "cbxOrigin": "id=select2-selectOrigin-container",
 	  "cbxDestination": "id=selectDestination",
 	  "calDepartDate": "id=ctl00_UcRightV31_TxtDepartDate",
 	  "calReturnDate": "id=ctl00_UcRightV31_TxtReturnDate",

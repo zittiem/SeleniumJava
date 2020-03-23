@@ -4,24 +4,21 @@ package tests;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Parameters;
-import org.testng.asserts.SoftAssert;
-
+import datatype.LanguageType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import utils.common.Constants;
 
 public class TestBase {
 
-	@Parameters({ "driverConfig", "platform", "appName" })
+	@Parameters({ "driverConfig", "platform" })
 	
 	@BeforeMethod(alwaysRun = true)
-	public void beforeMethod(String driverConfig, String platform, String appName)
+	public void beforeMethod(String driverConfig, String platform)
 			throws Throwable {
 		DriverManager.loadDriverProperty(Constants.DRIVER_SETTING_FILE, platform, driverConfig);
 		DriverManager.initDriver();
-		launchApp(appName);
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -30,19 +27,23 @@ public class TestBase {
 		DriverUtils.quit();
 	}
 	
-	public void launchApp(String appName) {
+	public void launchApp(String appName, LanguageType lang) {
 		DriverUtils.maximizeBrowser();
+		appName = appName + lang.getCode();
+		
 		switch(appName) {
-		case "VietJet":
-			DriverUtils.navigate(Constants.vietJetURL);
+		case "VietJetUS":
+			DriverUtils.navigate(Constants.vietJetEN_URL);
 			break;
-		case "Agoda":
-			DriverUtils.navigate(Constants.agodaURL);
+		case "VietJetVI":
+			DriverUtils.navigate(Constants.vietJetVI_URL);
 			break;
-		case "LGEmail":
-			DriverUtils.navigate(Constants.logigearEmailURL);
+		case "AgodaUS":
+			DriverUtils.navigate(Constants.agoda_URL);
+			break;
+		case "LGEmailUS":
+			DriverUtils.navigate(Constants.logigearEmail_URL);
 			break;
 		}
 	}
 }
-

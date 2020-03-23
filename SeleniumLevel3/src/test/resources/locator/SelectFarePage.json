@@ -1,0 +1,13 @@
+{
+	"any.chrome": {
+	  "lstDepFare": "xpath=//table[@id='ctrValueViewerDepGrid']//p[@class='vvFare']",
+	  "lstRetFare": "xpath=//table[@id='ctrValueViewerRetGrid']//p[@class='vvFare']",
+	  "lnkDepNext": "xpath=//table[@id='ctrValueViewerDepGrid']//th[@class='vvNext']",
+	  "lnkDepPrev": "xpath=//table[@id='ctrValueViewerDepGrid']//th[@class='vvPrev']",
+	  "lnkRetNext": "xpath=//table[@id='ctrValueViewerRetGrid']//th[@class='vvNext']",
+	  "lnkRetPrev": "xpath=//table[@id='ctrValueViewerRetGrid']//th[@class='vvPrev']",
+	  "lblSelectedMonth": "xpath=//table[@id='ctrValueViewerDepGrid']//tr[1]/th[2]/b",
+	  "tdCheapestFare": "xpath=//table[@id='ctrValueViewerDepGrid']//td[@id='%s']"
+	 }
+}
+	

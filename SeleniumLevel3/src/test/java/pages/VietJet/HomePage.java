@@ -26,7 +26,7 @@ public class HomePage {
 	protected EditableElement txtNumberOfChildrens = new EditableElement(locator.getLocator("txtNumberOfChildrens"));
 	protected EditableElement txtNumberOfInfants = new EditableElement(locator.getLocator("txtNumberOfInfants"));
 	protected Element btnSearch = new Element(locator.getLocator("btnSearch"));
-	protected DropdownElement cbxOrigin = new DropdownElement(locator.getLocator("cbxOrigin"));	
+	protected Element cbxOrigin = new Element(locator.getLocator("cbxOrigin"));	
 	protected DropdownElement cbxCurrency = new DropdownElement(locator.getLocator("cbxCurrency"));
 	protected DropdownElement cbxDestination = new DropdownElement(locator.getLocator("cbxDestination"));
 	
@@ -124,5 +124,14 @@ public class HomePage {
 		btnSearch.click();
 		return new SelectTravelOptionsPage();
 	}
+	
 	// Thanh test method-Start
+	
+	public SelectFarePage searchCheapestFlights(BookingInfo booking) {
+		enterSearchData(booking);
+		btnSearch.click();
+		return new SelectFarePage();
+	}
+	
+	// Thanh test method-End
 }

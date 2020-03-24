@@ -2,11 +2,8 @@ package driver.manager;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.TimeUnit;
-
 import org.apache.log4j.Logger;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
@@ -14,123 +11,38 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import driver.setting.DriverProperty;
-import helper.DriverSettingHelper;
+
+import driver.resource.base.BaseDriver;
+
+import org.openqa.selenium.JavascriptExecutor;
 
 public class DriverUtils {
 	private static Logger logger = Logger.getLogger(DriverUtils.class);
-	private static ThreadLocal<Map<String, BaseDriver>> DRIVER = new ThreadLocal<Map<String, BaseDriver>>();
-	private static ThreadLocal<List<String>> KEYS = new ThreadLocal<List<String>>();
-	private static ThreadLocal<String> DEFAULT_KEY = new ThreadLocal<String>();
-	private static ThreadLocal<String> CURRENT_KEY = new ThreadLocal<String>();
-	private static ThreadLocal<DriverProperty> CACHE_DIVER_PROPERTY = new ThreadLocal<DriverProperty>();
-	
-	private static boolean isKeyExists(String key)
-	{
-		return DRIVER.get().containsKey(key);
-	}
-	
-	private static BaseDriver getBaseDriver() {
-		if (!isKeyExists(CURRENT_KEY.get())) {
-			logger.error(String.format("Driver with key '%s' is not found", CURRENT_KEY.get()));
-			return null;
-		}
-
-		return DRIVER.get().get(CURRENT_KEY.get());
-	}
-
-	protected static WebDriver getDriver() {
-		return getBaseDriver().webDriver;
-	}
-
-	public static DriverProperty getDriverProperty() {
-		return getBaseDriver().driverProperty;
-	}
-
-	public static void loadDriverProperty(String propertyFile, String platform, String sectionName) throws Exception {
-		DriverProperty property = DriverSettingHelper.getDriverProperty(propertyFile, sectionName);
-		property.setPlatform(platform);
-		CACHE_DIVER_PROPERTY.set(property);
-	}
-	
-	public static void initDriver() {
-		String key = String.format("%s-%d", CACHE_DIVER_PROPERTY.get().getDriverType().toString(), 1);
-		createDriver(key, CACHE_DIVER_PROPERTY.get());
-		DEFAULT_KEY.set(key);
-	}
-
-	public static void createDriver() {
-		String key = String.format("%s-%d", CACHE_DIVER_PROPERTY.get().getDriverType().toString(), DRIVER.get().size() + 1);
-		createDriver(key, CACHE_DIVER_PROPERTY.get());
-	}
-	
-	public static void createDriver(String key) {
-		createDriver(key, CACHE_DIVER_PROPERTY.get());
-	}
-	
-	public static void createDriver(DriverProperty property) {
-		String key = String.format("%s-%d", property.getDriverType().toString(), DRIVER.get().size() + 1);
-		createDriver(key, property);
-	}
-	
-	public static void createDriver(String key, DriverProperty property) {
-		if (DRIVER.get() == null)
-			DRIVER.set(new HashMap<String, BaseDriver>());
-		
-		BaseDriver driver = DriverFactory.newInstance(property);
-		driver.webDriver.manage().timeouts().implicitlyWait(property.getTimeOut(), TimeUnit.SECONDS);
-		DRIVER.get().put(key, driver);
-		CURRENT_KEY.set(key);
-		KEYS.get().add(key);
-	}
-
-	public static void switchToDriver(String key) {
-		CURRENT_KEY.set(key);
-	}
-
-	public static void switchToDefaultDriver() {
-		CURRENT_KEY.set(DEFAULT_KEY.get());
-	}
-	
-	private static void removeDriver()
-	{
-		DRIVER.get().remove(CURRENT_KEY.get());
-		KEYS.get().remove(CURRENT_KEY.get());
-		int size = KEYS.get().size();
-		if (size > 0)
-		{
-			CURRENT_KEY.set(KEYS.get().get(size - 1));
-			if (!isKeyExists(DEFAULT_KEY.get()))
-			{
-				DEFAULT_KEY.set(KEYS.get().get(0));
-			}
-		}
-	}
 	
 	/* -------------------------- SURFACE -------------------------- */
 	
-	public static void navigate(String url) {
-		logger.debug("Navigate to " + url);
-		try {
-			getDriver().get(url);
-		} catch (Exception e) {
-			logger.error("An error occurred when nagivating: " + e.getMessage());
-		}
+	public static WebDriver getDriver()
+	{
+		return DriverManager.getDriver();
 	}
 	
-	public static String getPageSource() {
-		return getDriver().getPageSource();
+	public static String getURL(){
+		return getDriver().getCurrentUrl();
 	}
 	
 	public static String getTitle(){
 		return getDriver().getTitle();
 	}
 	
+	public static String getPageSource() {
+		return getDriver().getPageSource();
+	}
+	
 	public static String getWindowHandle() {
 		return getDriver().getWindowHandle();
 	}
 	
-	public static ArrayList<String> getWindowHandles() {
+	public static List<String> getWindowHandles() {
 		return new ArrayList<String>(getDriver().getWindowHandles());
 	}
 	
@@ -142,23 +54,27 @@ public class DriverUtils {
 		return getDriver().findElements(by);
 	}
 	
+	public static Object executeJavaScript(String script, Object... objs) {
+		logger.debug("Execute javascript " + script);
+		return ((JavascriptExecutor) getDriver()).executeScript(script, objs);
+	}
+	
+	public static void navigate(String url) {
+		logger.debug("Navigate to " + url);
+		try {
+			getDriver().get(url);
+		} catch (Exception e) {
+			logger.error("An error occurred when nagivating: " + e.getMessage());
+		}
+	}
+	
 	public static void switchToFrame(WebElement frameElement) {
 		try {
-			logger.debug("Switch frame using web element");
+			logger.debug("Switch frame");
 			getDriver().switchTo().frame(frameElement);
 
 		} catch (Exception e) {
 			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
-		}
-	}
-	
-	public static void switchToFrame(int frameIndex) {
-		try {
-			logger.debug("Switch frame using frame index");
-			getDriver().switchTo().frame(frameIndex);
-
-		} catch (Exception e) {
-			logger.error("An error occurred when switching frame by index: " + e.getMessage());
 		}
 	}
 	
@@ -188,7 +104,7 @@ public class DriverUtils {
 			getDriver().close();
 			if (windowCount == 1)
 			{
-				removeDriver();
+				DriverManager.removeDriver();
 			}
 
 		} catch (Exception e) {
@@ -200,7 +116,7 @@ public class DriverUtils {
 		try {
 			logger.debug("Quit browser");
 			getDriver().quit();
-			removeDriver();
+			DriverManager.removeDriver();
 
 		} catch (Exception e) {
 			logger.error("An error occurred when quiting browser: " + e.getMessage());
@@ -210,13 +126,21 @@ public class DriverUtils {
 	public static void quitAll() {
 		try {
 			logger.debug("Quit all browsers");
-			for (Map.Entry<String, BaseDriver> item : DRIVER.get().entrySet())
+			for (Map.Entry<String, BaseDriver> item : DriverManager.getDriverMap().entrySet())
 			{
-				item.getValue().webDriver.quit();
+				item.getValue().getWebDriver().quit();
 			}
 
 		} catch (Exception e) {
-			logger.error("An error occurred when quiting browser: " + e.getMessage());
+			logger.error("An error occurred when quiting all browsers: " + e.getMessage());
+		}
+	}
+	
+	public static void wait(double timeInSecond) {
+		try {
+			Thread.sleep((long)(timeInSecond * 1000));
+		} catch (Exception e) {
+			logger.error(String.format("An error occurred when wait %s seconds: %s", timeInSecond, e.getMessage()));
 		}
 	}
 	
@@ -224,22 +148,20 @@ public class DriverUtils {
 		String path = "";
 		try {	
 			//Convert web driver object to TakeScreenshot
-			TakesScreenshot scrShot = ((TakesScreenshot) getDriver());
+			TakesScreenshot scrShot =((TakesScreenshot) getDriver());
 	
 			//Call getScreenshotAs method to create image file
-			File SrcFile= scrShot.getScreenshotAs(OutputType.FILE);
+			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
 	
 			//Move image file to new destination
-			File DestFile = new File(
-				System.getProperty("user.dir") + File.separator + filepath + File.separator + filename + ".png");
-	
+			File DestFile = new File(filepath + File.separator + filename + ".png");
+
 			//Copy file at destination
 			FileUtils.copyFile(SrcFile, DestFile);
 			path = DestFile.getAbsolutePath();
 		} catch (Exception e) {
 			logger.error("An error occurred when capturing screen shot: " + e.getMessage());
 		}
-	return path;
+		return path;
 	}
-
 }

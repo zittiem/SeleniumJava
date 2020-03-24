@@ -7,11 +7,13 @@ import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ChartLocation;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
+import utils.helper.RandomHelper;
+
 public class ExtentReportManager {
 	private static ExtentReports extent;
-    private static String reportFileName = "Test-Automation-Report.html";
+    private static String reportFileName = "Test-Automation-Report " + RandomHelper.getNowTime("MM.dd.yyyy - HH.mm.ss") + ".html";
     private static String fileSeperator = System.getProperty("file.separator");
-    private static String reportFilepath = System.getProperty("user.dir") + fileSeperator+ "TestReport";
+    private static String reportFilepath = System.getProperty("user.dir") + fileSeperator + "TestReport";
     private static String reportFileLocation =  reportFilepath + fileSeperator + reportFileName;
   
  
@@ -61,7 +63,7 @@ public class ExtentReportManager {
     }
     
 	public static synchronized String getScreenshotFolder() {
-		String path = reportFileLocation + System.getProperty("file.separator") + "screenshots";
+		String path = reportFilepath + fileSeperator + "screenshots";
 		File output = new File(path);
 		if (!output.exists())
 			output.mkdir();

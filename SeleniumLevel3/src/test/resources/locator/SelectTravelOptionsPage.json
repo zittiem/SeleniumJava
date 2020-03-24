@@ -1,0 +1,19 @@
+{
+	"any.chrome": {
+	  "formTravelOption": "id=TravelOptions",
+	  "lblPageTitle": "xpath=//div[@style='float: left']/h1",
+	  "lblDisplayCurrency": "xpath=//div[@style='float: left']/h3",
+	  "lblDepartureFrom": "xpath=//table[@id='tblLeg1APs']//td[./span[@class='label' and text()='Từ: ' or text()='From: ']]",
+	  "lblDepartureTo": "xpath=//table[@id='tblLeg1APs']//td[./span[@class='label' and text()='Đến: ' or text()='To: ']]",
+	  "lblDepartureDate": "xpath=lblDepartureDate",
+	  "lblReturnFrom": "xpath=//table[@id='tblLeg2APs']//td[./span[@class='label' and text()='Từ: ' or text()='From: ']]",
+	  "lblReturnTo": "xpath=//table[@id='tblLeg2APs']//td[./span[@class='label' and text()='Đến: ' or text()='To: ']]",
+	  "lblReturnDate": "xpath=//span [@id='Leg2Date']",
+	  "lblNumberOfAdults": "xpath=//table[@id='tblPaxCountsInfo']//td[./span[starts-with(text(),'Adults')]]",
+	  "lblNumberOfChildrens": "xpath=//table[@id='tblPaxCountsInfo']//td[./span[starts-with(text(),'Children')]]",
+	  "lblNumberOfInfants": "xpath=//table[@id='tblPaxCountsInfo']//td[./span[starts-with(text(),'Infants')]]",
+	  "optDerparturPrice": "xpath=//tr[contains(@id,'gridTravelOptDep')]//td[@data-familyid='%s']",
+	  "optReturnPrice": "xpath=//tr[contains(@id,'gridTravelOptRet')]//td[@data-familyid='%s']",
+	  "btnContinue": "xpath=//a[contains(@href,'continue')]"
+	}
+}

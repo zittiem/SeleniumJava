@@ -13,35 +13,35 @@ import com.google.gson.reflect.TypeToken;
 
 public class JsonHelper {
 
-	private static Logger log = Logger.getLogger(JsonHelper.class);
+	private static Logger logger = Logger.getLogger(JsonHelper.class);
 
-	public static List<String> convertJsonToList(String json) {
+	public static List<String> convertJsonToList(String json) throws Exception {
 		try {
-			log.debug("JsonHelper: convertJsonToMap");
+			logger.debug("JsonHelper: convertJsonToList");
 			Type mapType = new TypeToken<List<String>>() {
 			}.getType();
 			Gson gson = new Gson();
 			return gson.fromJson(json, mapType);
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			throw e;
 		}
 	}
 	
-	public static <T> Map<String, T> convertJsonToMap(String json) {
+	public static <T> Map<String, T> convertJsonToMap(String json) throws Exception {
 		try {
-			log.debug("JsonHelper: convertJsonToMap");
+			logger.debug("JsonHelper: convertJsonToMap");
 			Type mapType = new TypeToken<Map<String, T>>() {
 			}.getType();
 			Gson gson = new Gson();
 			return gson.fromJson(json, mapType);
 		} catch (Exception e) {
-			log.error(e.getMessage());
+			logger.error(e.getMessage());
 			throw e;
 		}
 	}
 
-	public static DesiredCapabilities convertJsonToCapabilities(String json) {
+	public static DesiredCapabilities convertJsonToCapabilities(String json) throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		Map<String, String> caps = JsonHelper.convertJsonToMap(json);
 		if (caps != null) {

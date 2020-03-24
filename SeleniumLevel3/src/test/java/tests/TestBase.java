@@ -45,5 +45,6 @@ public class TestBase {
 			DriverUtils.navigate(Constants.logigearEmail_URL);
 			break;
 		}
+		System.out.println(DriverUtils.getURL());
 	}
 }

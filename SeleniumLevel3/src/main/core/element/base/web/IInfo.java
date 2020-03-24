@@ -1,4 +1,4 @@
-package element.base;
+package element.base.web;
 
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;

@@ -1,73 +1,80 @@
-package element.resource.web;
+package element.wrapper.web;
 
 import org.javatuples.Pair;
+
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import driver.manager.DriverUtils;
-import element.base.BaseElement;
+import element.base.web.Element;
 import element.setting.ElementStatus;
 import element.setting.FindBy;
 import helper.Constant;
 
-public class EditableElement extends BaseElement {
-	private static Logger logger = Logger.getLogger(EditableElement.class);
+public class TextBox extends Element {
+	private static Logger logger = Logger.getLogger(TextBox.class);
 
-	public EditableElement(By locator) {
+	public TextBox(By locator) {
 		super(locator);
 	}
 
-	public EditableElement(String locator) {
+	public TextBox(String locator) {
 		super(locator);
 	}
 
-	public EditableElement(BaseElement parentElement, String locator) {
+	public TextBox(Element parentElement, String locator) {
 		super(parentElement, locator);
 	}
 
-	public EditableElement(String locator, Object... arguments) {
+	public TextBox(String locator, Object... arguments) {
 		super(locator, arguments);
 	}
 
-	public EditableElement(BaseElement parentElement, String locator, Object... arguments) {
+	public TextBox(Element parentElement, String locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public EditableElement(Pair<FindBy, String> locator) {
+	public TextBox(Pair<FindBy, String> locator) {
 		super(locator);
 	}
 
-	public EditableElement(BaseElement parentElement, Pair<FindBy, String> locator) {
+	public TextBox(Element parentElement, Pair<FindBy, String> locator) {
 		super(parentElement, locator);
 	}
 
-	public EditableElement(Pair<FindBy, String> locator, Object... arguments) {
+	public TextBox(Pair<FindBy, String> locator, Object... arguments) {
 		super(locator, arguments);
 	}
 
-	public EditableElement(BaseElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
+	public TextBox(Element parentElement, Pair<FindBy, String> locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public EditableElement(FindBy by, String value) {
+	public TextBox(FindBy by, String value) {
 		super(by, value);
 	}
 
-	public EditableElement(BaseElement parentElement, FindBy by, String value) {
+	public TextBox(Element parentElement, FindBy by, String value) {
 		super(parentElement, by, value);
 	}
 
-	public EditableElement(FindBy by, String value, Object... arguments) {
+	public TextBox(FindBy by, String value, Object... arguments) {
 		super(by, value, arguments);
 	}
 
-	public EditableElement(BaseElement parentElement, FindBy by, String value, Object... arguments) {
+	public TextBox(Element parentElement, FindBy by, String value, Object... arguments) {
 		super(parentElement, by, value, arguments);
 	}
 
-	public EditableElement Dynamic(Object... arguments) {
+	public TextBox Dynamic(Object... arguments) {
 		super.Dynamic(arguments);
 		return this;
+	}
+	
+	public List<TextBox> getWrapperTextboxes() {
+		return getWrapperElements(TextBox.class);
 	}
 
 	/**

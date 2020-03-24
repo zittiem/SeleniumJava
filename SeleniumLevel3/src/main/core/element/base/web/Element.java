@@ -1,5 +1,7 @@
-package element.base;
+package element.base.web;
 
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.javatuples.Pair;
@@ -13,90 +15,91 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import driver.manager.DriverUtils;
-import element.base.BaseElement;
+import driver.setting.DriverProperty;
+import element.base.web.Element;
 import element.setting.ElementStatus;
 import element.setting.FindBy;
 import helper.Constant;
 import helper.LocatorHelper;
 
-public class BaseElement implements IFinder, IWaiter, IAction, IInfo {
-	private static Logger logger = Logger.getLogger(BaseElement.class);
+public class Element implements IFinder, IWaiter, IAction, IInfo {
+	private static Logger logger = Logger.getLogger(Element.class);
 
 	private By byLocator;
 	private Pair<FindBy, String> pairLocator;
-	private BaseElement parentElement;
+	private Element parentElement;
 
-	public BaseElement(By locator) {
+	public Element(By locator) {
 		this.byLocator = locator;
 	}
 	
-	public BaseElement(String locator) {
+	public Element(String locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 	}
 	
-	public BaseElement(BaseElement parentElement, String locator) {
+	public Element(Element parentElement, String locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 		this.parentElement = parentElement;
 	}
 	
-	public BaseElement(String locator, Object... arguments) {
+	public Element(String locator, Object... arguments) {
 		this.byLocator = getByLocator(String.format(locator, arguments));
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 	}
 	
-	public BaseElement(BaseElement parentElement, String locator, Object... arguments) {
+	public Element(Element parentElement, String locator, Object... arguments) {
 		this.byLocator = getByLocator(String.format(locator, arguments));
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 		this.parentElement = parentElement;
 	}
 
-	public BaseElement(Pair<FindBy, String> locator) {
+	public Element(Pair<FindBy, String> locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = locator;
 	}
 	
-	public BaseElement(BaseElement parentElement, Pair<FindBy, String> locator) {
+	public Element(Element parentElement, Pair<FindBy, String> locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = locator;
 		this.parentElement = parentElement;
 	}
 	
-	public BaseElement(Pair<FindBy, String> locator, Object... arguments) {
+	public Element(Pair<FindBy, String> locator, Object... arguments) {
 		this.byLocator = getByLocator(locator.getValue0(), String.format(locator.getValue1(), arguments));
 		this.pairLocator = locator;
 	}
 	
-	public BaseElement(BaseElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
+	public Element(Element parentElement, Pair<FindBy, String> locator, Object... arguments) {
 		this.byLocator = getByLocator(locator.getValue0(), String.format(locator.getValue1(), arguments));
 		this.pairLocator = locator;
 		this.parentElement = parentElement;
 	}
 
-	public BaseElement(FindBy by, String value) {
+	public Element(FindBy by, String value) {
 		this.byLocator = getByLocator(by, value);
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 	}
 	
-	public BaseElement(BaseElement parentElement, FindBy by, String value) {
+	public Element(Element parentElement, FindBy by, String value) {
 		this.byLocator = getByLocator(by, value);
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 		this.parentElement = parentElement;
 	}
 
-	public BaseElement(FindBy by, String value, Object... arguments) {
+	public Element(FindBy by, String value, Object... arguments) {
 		this.byLocator = getByLocator(by, String.format(value, arguments));
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 	}
 	
-	public BaseElement(BaseElement parentElement, FindBy by, String value, Object... arguments) {
+	public Element(Element parentElement, FindBy by, String value, Object... arguments) {
 		this.byLocator = getByLocator(by, String.format(value, arguments));
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 		this.parentElement = parentElement;
 	}
 	
-	public BaseElement Dynamic(Object... arguments)
+	public Element Dynamic(Object... arguments)
 	{
 		if (this.pairLocator != null)
 			this.byLocator = getByLocator(this.pairLocator.getValue0(), String.format(this.pairLocator.getValue1(), arguments));
@@ -713,6 +716,28 @@ public class BaseElement implements IFinder, IWaiter, IAction, IInfo {
 		return null;
 	}
 
-	// ---------------------- Waiter ---------------------------- //
+	public List<Element> getWrapperElements() {
+		return getWrapperElements(Element.class);
+	}
+	
+	@SuppressWarnings("unchecked")
+	public <T> List<T> getWrapperElements(Class<T> clazz) {
+		List<T> elements = new ArrayList<>();
+		try {
+			if (!getLocator().toString().contains(FindBy.xpath.getValue()))
+				throw new Exception("getWrapperElements: Only support for xpath locator");
+			Constructor<?> cons = clazz.getDeclaredConstructor(new Class[] { FindBy.class, String.class });
+			String xpath = getLocator().toString().substring(10);
+			List<WebElement> list = getChildElements(getLocator());
+			for (int i = 1; i <= list.size(); i++) {
+				T element = (T)cons.newInstance(FindBy.xpath, "(" + xpath + ")[" + i + "]");
+				elements.add(element);
+			}
+		} catch (Exception error) {
+			logger.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+					error.getMessage()));
+		}
+		return elements;
+	}
 
 }

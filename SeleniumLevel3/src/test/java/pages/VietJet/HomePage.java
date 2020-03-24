@@ -6,11 +6,11 @@ import datatype.BookingInfo;
 import datatype.BookingInfo.FlightOption;
 import datatype.BookingInfo.LocationOption;
 import datatype.LanguageType;
-import element.resource.web.Element;
+import element.base.web.Element;
 import element.setting.FindBy;
-import element.resource.web.CheckableElement;
-import element.resource.web.DropdownElement;
-import element.resource.web.EditableElement;
+import element.wrapper.web.CheckBox;
+import element.wrapper.web.DropDown;
+import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
 import utils.assertion.SoftAssertion;
 import utils.common.Constants;
@@ -53,34 +53,34 @@ public class HomePage {
 	// Methods
 	// Elements
 
-	protected DropdownElement cbxLanguage = new DropdownElement(FindBy.id, "ctl00_UcHeaderV31_DrLang");
-	protected CheckableElement rbxRoundTrip = new CheckableElement(FindBy.id, "ctl00_UcRightV31_RbRoundTrip");
-	protected CheckableElement rbxRbOneWay = new CheckableElement(FindBy.id, "ctl00_UcRightV31_RbOneWay");
+	protected DropDown cbxLanguage = new DropDown(FindBy.id, "ctl00_UcHeaderV31_DrLang");
+	protected CheckBox rbxRoundTrip = new CheckBox(FindBy.id, "ctl00_UcRightV31_RbRoundTrip");
+	protected CheckBox rbxRbOneWay = new CheckBox(FindBy.id, "ctl00_UcRightV31_RbOneWay");
 	protected Element spanOrigin = new Element(FindBy.id, "select2-selectOrigin-container");
 	protected Element spanDestination = new Element(FindBy.id, "select2-selectDestination-container");
 
 	protected Element calDepartDate = new Element(FindBy.id, "ctl00_UcRightV31_TxtDepartDate");
 	protected Element calReturnDate = new Element(FindBy.id, "ctl00_UcRightV31_TxtReturnDate");
 	protected Element cbxCurrency = new Element(FindBy.id, "ctl00_UcRightV31_CbbCurrency_TextBox");
-	protected CheckableElement chxInfare = new CheckableElement(FindBy.id, "ctl00_UcRightV31_ChkInfare");
-	protected EditableElement txtPromoCode = new EditableElement(FindBy.id, "ctl00_UcRightV31_TxtPromoCode");
+	protected CheckBox chxInfare = new CheckBox(FindBy.id, "ctl00_UcRightV31_ChkInfare");
+	protected TextBox txtPromoCode = new TextBox(FindBy.id, "ctl00_UcRightV31_TxtPromoCode");
 	protected Element btnSearch = new Element(FindBy.id, "ctl00_UcRightV31_BtSearch");
 
 	// Select Passengers
-	protected EditableElement txtNumberOfPassengers = new EditableElement(FindBy.id, "ctl00_UcRightV31_Cbb%s_TextBox");
+	protected TextBox txtNumberOfPassengers = new TextBox(FindBy.id, "ctl00_UcRightV31_Cbb%s_TextBox");
 	protected Element btnNumberOfPassengers = new Element(FindBy.id, "ctl00_UcRightV31_Cbb%s_Button");
 	protected Element listNumberOfPassengersOption = new Element(FindBy.xpath,
 			"//ul[@id='ctl00_UcRightV31_Cbb%s_OptionList']/li[text()='%s']");
 
 	// Select Location
-	protected EditableElement txtSearch = new EditableElement(FindBy.xpath,
+	protected TextBox txtSearch = new TextBox(FindBy.xpath,
 			"//input [@class='select2-search__field' and @type='search']");
 	protected Element liLocationItem = new Element(FindBy.xpath, "//li[contains(@id, '%s')]");
 	// Select Date
 	protected Element linkDatePickerNavigation = new Element(FindBy.xpath,
 			"//a[@class='ui-datepicker-%s ui-corner-all']");
 	protected Element lblCurrentYear = new Element(FindBy.xpath, "//span[@class='ui-datepicker-year']");
-	protected DropdownElement cbxMonth = new DropdownElement(FindBy.xpath, "//select[@class='ui-datepicker-month']");
+	protected DropDown cbxMonth = new DropDown(FindBy.xpath, "//select[@class='ui-datepicker-month']");
 	protected Element celDay = new Element(FindBy.xpath,
 			"//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]");
 	// Methods

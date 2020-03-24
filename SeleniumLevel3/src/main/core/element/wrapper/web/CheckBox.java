@@ -1,71 +1,78 @@
-package element.resource.web;
+package element.wrapper.web;
 
 import org.javatuples.Pair;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import element.base.BaseElement;
+
+import element.base.web.Element;
 import element.setting.FindBy;
 
-public class CheckableElement extends BaseElement {
-	private static Logger logger = Logger.getLogger(CheckableElement.class);
+public class CheckBox extends Element {
+	private static Logger logger = Logger.getLogger(CheckBox.class);
 
-	public CheckableElement(By locator) {
+	public CheckBox(By locator) {
 		super(locator);
 	}
 	
-	public CheckableElement(String locator) {
+	public CheckBox(String locator) {
 		super(locator);
 	}
 	
-	public CheckableElement(BaseElement parentElement, String locator) {
+	public CheckBox(Element parentElement, String locator) {
 		super(parentElement, locator);
 	}
 	
-	public CheckableElement(String locator, Object... arguments) {
+	public CheckBox(String locator, Object... arguments) {
 		super(locator, arguments);
 	}
 	
-	public CheckableElement(BaseElement parentElement, String locator, Object... arguments) {
+	public CheckBox(Element parentElement, String locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public CheckableElement(Pair<FindBy, String> locator) {
+	public CheckBox(Pair<FindBy, String> locator) {
 		super(locator);
 	}
 	
-	public CheckableElement(BaseElement parentElement, Pair<FindBy, String> locator) {
+	public CheckBox(Element parentElement, Pair<FindBy, String> locator) {
 		super(parentElement, locator);
 	}
 	
-	public CheckableElement(Pair<FindBy, String> locator, Object... arguments) {
+	public CheckBox(Pair<FindBy, String> locator, Object... arguments) {
 		super(locator, arguments);
 	}
 	
-	public CheckableElement(BaseElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
+	public CheckBox(Element parentElement, Pair<FindBy, String> locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public CheckableElement(FindBy by, String value) {
+	public CheckBox(FindBy by, String value) {
 		super(by, value);
 	}
 	
-	public CheckableElement(BaseElement parentElement, FindBy by, String value) {
+	public CheckBox(Element parentElement, FindBy by, String value) {
 		super(parentElement, by, value);
 	}
 
-	public CheckableElement(FindBy by, String value, Object... arguments) {
+	public CheckBox(FindBy by, String value, Object... arguments) {
 		super(by, value, arguments);
 	}
 	
-	public CheckableElement(BaseElement parentElement, FindBy by, String value, Object... arguments) {
+	public CheckBox(Element parentElement, FindBy by, String value, Object... arguments) {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public CheckableElement Dynamic(Object... arguments)
+	public CheckBox Dynamic(Object... arguments)
 	{
 		super.Dynamic(arguments);
 		return this;
+	}
+	
+	public List<CheckBox> getWrapperCheckboxes() {
+		return getWrapperElements(CheckBox.class);
 	}
 	
 	public void check() {

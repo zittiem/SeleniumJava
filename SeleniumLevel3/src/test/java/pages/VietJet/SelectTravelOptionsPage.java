@@ -6,9 +6,9 @@ import datatype.BookingInfo;
 import datatype.TicketInfo;
 import datatype.TicketInfo.FlightClass;
 import driver.manager.DriverUtils;
-import element.resource.web.CheckableElement;
-import element.resource.web.Element;
+import element.base.web.Element;
 import element.setting.FindBy;
+import element.wrapper.web.CheckBox;
 import helper.LocatorHelper;
 import utils.assertion.SoftAssertion;
 import utils.common.Constants;
@@ -76,7 +76,7 @@ public class SelectTravelOptionsPage {
 			}
 		}
 		String _xpath = expElement.getLocator().toString().substring(10) + "/input[@id='gridTravelOptDep']";
-		CheckableElement rdxCheapestDeparture = new CheckableElement(FindBy.xpath, _xpath);
+		CheckBox rdxCheapestDeparture = new CheckBox(FindBy.xpath, _xpath);
 		rdxCheapestDeparture.scrollIntoView();
 		rdxCheapestDeparture.check();
 	}
@@ -92,7 +92,7 @@ public class SelectTravelOptionsPage {
 			}
 		}
 		String _xpath = expElement.getLocator().toString().substring(10) + "/input[@id='gridTravelOptRet']";
-		CheckableElement rdxCheapestReturn = new CheckableElement(FindBy.xpath, _xpath);
+		CheckBox rdxCheapestReturn = new CheckBox(FindBy.xpath, _xpath);
 		rdxCheapestReturn.scrollIntoView();
 		rdxCheapestReturn.check();
 	}

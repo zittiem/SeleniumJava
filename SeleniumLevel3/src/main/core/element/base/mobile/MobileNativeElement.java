@@ -1,4 +1,4 @@
-package element.mobile;
+package element.base.mobile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -15,84 +15,84 @@ import element.setting.SwipeDirection;
 import helper.LocatorHelper;
 import io.appium.java_client.MobileElement;
 
-public class BaseMobileElement implements IMobileFinder, IMobileWaiter, IMobileAction, IMobileInfo {
-	private static Logger logger = Logger.getLogger(BaseMobileElement.class);
+public class MobileNativeElement implements IMobileFinder, IMobileWaiter, IMobileAction, IMobileInfo {
+	private static Logger logger = Logger.getLogger(MobileNativeElement.class);
 
 	private By byLocator;
 	private Pair<FindBy, String> pairLocator;
-	private BaseMobileElement parentElement;
+	private MobileNativeElement parentElement;
 
-	public BaseMobileElement(By locator) {
+	public MobileNativeElement(By locator) {
 		this.byLocator = locator;
 	}
 	
-	public BaseMobileElement(String locator) {
+	public MobileNativeElement(String locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, String locator) {
+	public MobileNativeElement(MobileNativeElement parentElement, String locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 		this.parentElement = parentElement;
 	}
 	
-	public BaseMobileElement(String locator, Object... arguments) {
+	public MobileNativeElement(String locator, Object... arguments) {
 		this.byLocator = getByLocator(String.format(locator, arguments));
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, String locator, Object... arguments) {
+	public MobileNativeElement(MobileNativeElement parentElement, String locator, Object... arguments) {
 		this.byLocator = getByLocator(String.format(locator, arguments));
 		this.pairLocator = LocatorHelper.getPairLocator(locator);
 		this.parentElement = parentElement;
 	}
 
-	public BaseMobileElement(Pair<FindBy, String> locator) {
+	public MobileNativeElement(Pair<FindBy, String> locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = locator;
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, Pair<FindBy, String> locator) {
+	public MobileNativeElement(MobileNativeElement parentElement, Pair<FindBy, String> locator) {
 		this.byLocator = getByLocator(locator);
 		this.pairLocator = locator;
 		this.parentElement = parentElement;
 	}
 	
-	public BaseMobileElement(Pair<FindBy, String> locator, Object... arguments) {
+	public MobileNativeElement(Pair<FindBy, String> locator, Object... arguments) {
 		this.byLocator = getByLocator(locator.getValue0(), String.format(locator.getValue1(), arguments));
 		this.pairLocator = locator;
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
+	public MobileNativeElement(MobileNativeElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
 		this.byLocator = getByLocator(locator.getValue0(), String.format(locator.getValue1(), arguments));
 		this.pairLocator = locator;
 		this.parentElement = parentElement;
 	}
 
-	public BaseMobileElement(FindBy by, String value) {
+	public MobileNativeElement(FindBy by, String value) {
 		this.byLocator = getByLocator(by, value);
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, FindBy by, String value) {
+	public MobileNativeElement(MobileNativeElement parentElement, FindBy by, String value) {
 		this.byLocator = getByLocator(by, value);
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 		this.parentElement = parentElement;
 	}
 
-	public BaseMobileElement(FindBy by, String value, Object... arguments) {
+	public MobileNativeElement(FindBy by, String value, Object... arguments) {
 		this.byLocator = getByLocator(by, String.format(value, arguments));
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 	}
 	
-	public BaseMobileElement(BaseMobileElement parentElement, FindBy by, String value, Object... arguments) {
+	public MobileNativeElement(MobileNativeElement parentElement, FindBy by, String value, Object... arguments) {
 		this.byLocator = getByLocator(by, String.format(value, arguments));
 		this.pairLocator = new Pair<FindBy, String>(by, value);
 		this.parentElement = parentElement;
 	}
 	
-	public BaseMobileElement Dynamic(Object... arguments)
+	public MobileNativeElement Dynamic(Object... arguments)
 	{
 		if (this.pairLocator != null)
 			this.byLocator = getByLocator(this.pairLocator.getValue0(), String.format(this.pairLocator.getValue1(), arguments));

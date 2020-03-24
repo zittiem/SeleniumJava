@@ -1,4 +1,4 @@
-package element.resource.web;
+package element.wrapper.web;
 
 import org.javatuples.Pair;
 
@@ -11,70 +11,74 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.support.ui.Select;
 
-import element.base.BaseElement;
+import element.base.web.Element;
 import element.setting.ElementStatus;
 import element.setting.FindBy;
 import helper.Constant;
 
-public class DropdownElement extends BaseElement {
-	private static Logger logger = Logger.getLogger(DropdownElement.class);
+public class DropDown extends Element {
+	private static Logger logger = Logger.getLogger(DropDown.class);
 
-	public DropdownElement(By locator) {
+	public DropDown(By locator) {
 		super(locator);
 	}
 	
-	public DropdownElement(String locator) {
+	public DropDown(String locator) {
 		super(locator);
 	}
 	
-	public DropdownElement(BaseElement parentElement, String locator) {
+	public DropDown(Element parentElement, String locator) {
 		super(parentElement, locator);
 	}
 	
-	public DropdownElement(String locator, Object... arguments) {
+	public DropDown(String locator, Object... arguments) {
 		super(locator, arguments);
 	}
 	
-	public DropdownElement(BaseElement parentElement, String locator, Object... arguments) {
+	public DropDown(Element parentElement, String locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public DropdownElement(Pair<FindBy, String> locator) {
+	public DropDown(Pair<FindBy, String> locator) {
 		super(locator);
 	}
 	
-	public DropdownElement(BaseElement parentElement, Pair<FindBy, String> locator) {
+	public DropDown(Element parentElement, Pair<FindBy, String> locator) {
 		super(parentElement, locator);
 	}
 	
-	public DropdownElement(Pair<FindBy, String> locator, Object... arguments) {
+	public DropDown(Pair<FindBy, String> locator, Object... arguments) {
 		super(locator, arguments);
 	}
 	
-	public DropdownElement(BaseElement parentElement, Pair<FindBy, String> locator, Object... arguments) {
+	public DropDown(Element parentElement, Pair<FindBy, String> locator, Object... arguments) {
 		super(parentElement, locator, arguments);
 	}
 
-	public DropdownElement(FindBy by, String value) {
+	public DropDown(FindBy by, String value) {
 		super(by, value);
 	}
 	
-	public DropdownElement(BaseElement parentElement, FindBy by, String value) {
+	public DropDown(Element parentElement, FindBy by, String value) {
 		super(parentElement, by, value);
 	}
 
-	public DropdownElement(FindBy by, String value, Object... arguments) {
+	public DropDown(FindBy by, String value, Object... arguments) {
 		super(by, value, arguments);
 	}
 	
-	public DropdownElement(BaseElement parentElement, FindBy by, String value, Object... arguments) {
+	public DropDown(Element parentElement, FindBy by, String value, Object... arguments) {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public DropdownElement Dynamic(Object... arguments)
+	public DropDown Dynamic(Object... arguments)
 	{
 		super.Dynamic(arguments);
 		return this;
+	}
+	
+	public List<DropDown> getWrapperDropdowns() {
+		return getWrapperElements(DropDown.class);
 	}
 	
 	/**

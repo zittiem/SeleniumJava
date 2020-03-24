@@ -5,7 +5,7 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
-import element.resource.web.Element;
+import element.base.web.Element;
 import driver.manager.DriverUtils;
 import helper.LocatorHelper;
 import utils.common.Constants;

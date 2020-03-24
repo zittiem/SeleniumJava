@@ -1,6 +1,6 @@
-package element.mobile;
+package element.base.mobile;
 
-import element.base.IAction;
+import element.base.web.IAction;
 import element.setting.SwipeDirection;
 
 public interface IMobileAction extends IAction {

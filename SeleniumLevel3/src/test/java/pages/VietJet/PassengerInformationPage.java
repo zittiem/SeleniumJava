@@ -1,7 +1,7 @@
 package pages.VietJet;
 
 import datatype.TicketInfo;
-import element.resource.web.Element;
+import element.base.web.Element;
 import element.setting.FindBy;
 import utils.assertion.SoftAssertion;
 

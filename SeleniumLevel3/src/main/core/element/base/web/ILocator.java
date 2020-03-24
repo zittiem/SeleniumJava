@@ -1,4 +1,4 @@
-package element.base;
+package element.base.web;
 
 import org.javatuples.Pair;
 import org.openqa.selenium.By;

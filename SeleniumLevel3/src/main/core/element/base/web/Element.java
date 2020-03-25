@@ -441,7 +441,7 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 		while (tries < Constant.ElementRetryLimit) {
 		    tries++;
 		    try {
-		    	getElement().isDisplayed();
+		    	return getElement().isDisplayed();
 		    } catch (StaleElementReferenceException staleEx) {
 		    	if (tries == Constant.ElementRetryLimit)
 		    		return false;
@@ -479,7 +479,7 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 		while (tries < Constant.ElementRetryLimit) {
 		    tries++;
 		    try {
-		    	getElement().isEnabled();
+		    	return getElement().isEnabled();
 		    } catch (StaleElementReferenceException staleEx) {
 		    	if (tries == Constant.ElementRetryLimit)
 		    		return false;
@@ -517,7 +517,7 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 		while (tries < Constant.ElementRetryLimit) {
 		    tries++;
 		    try {
-		    	getElement().isSelected();
+		    	return getElement().isSelected();
 		    } catch (StaleElementReferenceException staleEx) {
 		    	if (tries == Constant.ElementRetryLimit)
 		    		return false;

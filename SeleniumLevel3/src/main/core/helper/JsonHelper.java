@@ -41,6 +41,17 @@ public class JsonHelper {
 		}
 	}
 
+	public static <T> T convertJsonToObject(String json, Class<T> clazz) {
+		try {
+			logger.debug("JsonHelper: convertJsonToObject");
+			Gson gson = new Gson();
+			return gson.fromJson(json, clazz);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
+	}
+
 	public static DesiredCapabilities convertJsonToCapabilities(String json) throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		Map<String, String> caps = JsonHelper.convertJsonToMap(json);

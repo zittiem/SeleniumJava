@@ -5,20 +5,47 @@
 
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %x - %m%n" />
+			<param name="ConversionPattern" value="%-5p | %d{yyyy-MM-dd HH:mm:ss} | %C{2} (%F:%L) - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="outputConsoleLog" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="test-log.txt" />
+		<param name="MaxFileSize" value="5MB" />
+		<param name="MaxBackupIndex" value="2" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p | %d{yyyy-MM-dd HH:mm:ss} | %C{2} (%F:%L) - %m%n"/>
 		</layout>
 	</appender>
 
 	<!-- tests package -->
-	<logger name="tests">
-		<level value="ERROR" />
-		<appender-ref ref="console" />
+	<logger name="tests" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="outputConsoleLog" />
 	</logger>
 
 	<!-- utils package -->
-	<logger name="utils">
+	<logger name="utils" additivity="false">
 		<level value="INFO" />
-		<appender-ref ref="console" />
+		<appender-ref ref="outputConsoleLog" />
+	</logger>
+
+	<!-- helper package -->
+	<logger name="helper" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="outputConsoleLog" />
+	</logger>
+	
+	<!-- driver package -->
+	<logger name="driver.manager" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="outputConsoleLog" />
+	</logger>
+	
+	<!-- element.* package -->
+	<logger name="element.*" additivity="false">
+		<level value="DEBUG" />
+		<appender-ref ref="outputConsoleLog" />
 	</logger>
 
 </log4j:configuration>

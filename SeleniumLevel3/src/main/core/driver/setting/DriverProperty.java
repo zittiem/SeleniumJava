@@ -21,7 +21,7 @@ public class DriverProperty {
 	private Map<String, Object> userProfilePreference;
 	private DesiredCapabilities capabilities;
 	private int pageTimeOut = 60; // seconds
-	private int elementTimeOut = 3; // seconds
+	private int elementTimeOut = 0; // seconds
 	
 	public Platform getPlatform() {
 		return platform;

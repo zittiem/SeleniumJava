@@ -41,6 +41,7 @@ public class SelectTravelOptionsPage {
 	protected Element optDerparturPrice = new Element(locator.getLocator("optDerparturPrice"));
 	protected Element optReturnPrice = new Element(locator.getLocator("optReturnPrice"));
 	protected Element btnContinue = new Element(locator.getLocator("btnContinue"));
+	protected Element lblPageTitle = new Element(FindBy.xpath, "//div[@style='float: left']/h1");
 
 	// Method
 
@@ -245,4 +246,8 @@ public class SelectTravelOptionsPage {
 		}
 	}
 
+	public String getPageTitle() {
+		lblPageTitle.waitForDisplayed(30);
+		return DriverUtils.getTitle();
+	}
 }

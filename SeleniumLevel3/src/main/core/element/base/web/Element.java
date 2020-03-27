@@ -394,17 +394,17 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 		logger.debug(String.format("Scroll to %s", getLocator().toString()));
 		int tries = 0;
 		while (tries < Constant.ElementRetryLimit) {
-		    tries++;
-		    try {
-		    	waitForCondition(ElementStatus.PRESENT, Constant.ElementWaitingTime, true);
-		    	DriverUtils.executeJavaScript("arguments[0].scrollIntoView(true);", getElement());
-		    	return;
-		    } catch (StaleElementReferenceException staleEx) {
-		    	if (tries == Constant.ElementRetryLimit)
-		    		throw staleEx;
-		    	logger.warn(String.format("Try to scroll to control %s again", getLocator().toString()));
-		    } catch (Exception e) {
-		    	logger.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
+			tries++;
+			try {
+				waitForCondition(ElementStatus.PRESENT, Constant.ElementWaitingTime, true);
+				DriverUtils.executeJavaScript("arguments[0].scrollIntoView({block: \"center\"});", getElement());
+				return;
+			} catch (StaleElementReferenceException staleEx) {
+				if (tries == Constant.ElementRetryLimit)
+					throw staleEx;
+				logger.warn(String.format("Try to scroll to control %s again", getLocator().toString()));
+			} catch (Exception e) {
+				logger.error(String.format("Exception! - Error with control '%s': %s", getLocator().toString(),
 						e.getMessage()));
 		    	throw e;
 		    }

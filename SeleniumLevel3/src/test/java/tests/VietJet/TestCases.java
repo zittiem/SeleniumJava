@@ -11,7 +11,7 @@ import pages.VietJet.PassengerInformationPage;
 import pages.VietJet.SelectTravelOptionsPage;
 import tests.TestBase;
 import utils.assertion.SoftAssertion;
-import utils.common.Constants;
+import utils.constants.Constants;
 import utils.helper.DataHelper;
 import utils.helper.Logger;
 

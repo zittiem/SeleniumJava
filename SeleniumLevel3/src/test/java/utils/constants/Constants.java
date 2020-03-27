@@ -1,4 +1,4 @@
-package utils.common;
+package utils.constants;
 
 import utils.helper.PropertiesHelper;
 

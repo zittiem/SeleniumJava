@@ -1,0 +1,11 @@
+{
+	"any.chrome": {
+		"originKey": "SGN",
+		"originValue": "Ho Chi Minh",
+		"destinationKey": "HAN",
+		"destinationValue": "Ha Noi",
+		"currency": "VND",
+		"lowestFare": "true",
+		"numberOfAdults": 2
+	}
+}

@@ -3,19 +3,14 @@ package pages.VietJet;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Currency;
 import java.util.Date;
 import java.util.List;
-
-import org.openqa.selenium.support.ui.ExpectedCondition;
-
-import datatype.BookingInfo;
-import datatype.FareItem;
+import datatype.VietJet.BookingInfo;
+import datatype.VietJet.FareItem;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
-import utils.common.Constants;
-import utils.helper.Logger;
+import utils.constants.Constants;
 
 public class SelectFarePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
@@ -49,15 +44,6 @@ public class SelectFarePage {
 	public int convertFareFromStringToInt(String fare) {
 		int intFare = Integer.parseInt(fare.replace(" VND", "").replace(",", ""));
 		return intFare;
-	}
-	
-	public int waitForNumberOfDepFareLowItemChanged(int numberOfPreFareLowItem) {
-		eleSelectedDepMonthLbl.waitForClickable(30);
-		List<Element> lstDepFareLow = eleDepFareLow.getWrapperElements();
-		while(lstDepFareLow.size() == numberOfPreFareLowItem) {
-			lstDepFareLow = eleDepFareLow.getWrapperElements();
-		}
-		return lstDepFareLow.size();
 	}
 	
 	public int waitForNumberOfRetFareLowItemChanged(int numberOfPreFareLowItem) {
@@ -130,12 +116,12 @@ public class SelectFarePage {
 			}
 		}
 		
-		System.out.print("finalCheapestFareDepID: " + finalCheapestFareID + "/n");
+		System.out.print("finalCheapestFareDepID: " + finalCheapestFareID + "\n");
 		
 		//View month that contain the cheapest return fare
 		if(finalCheapestFareID != null) {
 			for(int index=0; index < numberOfMonth; index++) {
-				Element eleCheapestFare = eleCheapestDepFare.Dynamic(finalCheapestFareID);
+				Element eleCheapestFare = eleCheapestDepFare.generateDynamic(finalCheapestFareID);
 				if(!eleCheapestFare.isDisplayed()) {
 					eleDepPrevLnk.click();
 					System.out.print("eleDepPrevLnk.click(): " + index + " \n");
@@ -144,7 +130,7 @@ public class SelectFarePage {
 				}
 			}
 			
-			finalCheapestFareItem.setFareItem(finalCheapestFareID, finalCheapestFare);
+			finalCheapestFareItem = new FareItem(finalCheapestFareID, finalCheapestFare);
 		}
 		
 		return finalCheapestFareItem;
@@ -177,20 +163,21 @@ public class SelectFarePage {
 				
 				System.out.print("lstRetFareLow:" + numberOfFareLowItem + " \n");
 				
-				if(finalCheapestFareExist == false) {
-					finalCheapestFare = convertFareFromStringToInt(lstRetFareLow.get(0).getText());
-					finalCheapestFareID = eleMonthCheapestRetFare.Dynamic(1).getAttribute("id");
-					finalCheapestFareExist = true;
-				}
-				
 				for(int i = 0; i < numberOfFareLowItem; i++)
 				{
 					monthCheapestFare = convertFareFromStringToInt(lstRetFareLow.get(i).getText());
-					monthCheapestFareID = eleMonthCheapestRetFare.Dynamic(i+1).getAttribute("id");
+					monthCheapestFareID = eleMonthCheapestRetFare.generateDynamic(i+1).getAttribute("id");
 					String strFareDate = monthCheapestFareID.substring(17, 25);
 					Date fareDate = formatter.parse(strFareDate);
 					
-					if(monthCheapestFare < finalCheapestFare && fareDate.compareTo(maxDate) <= 0 && fareDate.compareTo(minDate) >= 0) {
+					if(finalCheapestFareExist == false && fareDate.compareTo(minDate) > 0) {
+						finalCheapestFare = monthCheapestFare;
+						finalCheapestFareID = monthCheapestFareID;
+						finalCheapestFareExist = true;
+					}
+					
+					if(monthCheapestFare < finalCheapestFare && fareDate.compareTo(maxDate) <= 0 
+							&& fareDate.compareTo(minDate) >= 0 && finalCheapestFareExist == true) {
 						finalCheapestFare = monthCheapestFare;
 						finalCheapestFareID = monthCheapestFareID;
 					}
@@ -199,19 +186,15 @@ public class SelectFarePage {
 			
 			String selectedMonth = eleSelectedRetMonthLbl.getText();
 			eleRetNextLnk.click();
-			
-			String afterSelectedMonth = eleSelectedRetMonthLbl.getText();
-			while(selectedMonth.equals(afterSelectedMonth)) {
-				
-			}
+			eleSelectedRetMonthLbl.waitForTextChanged(selectedMonth, 10);
 		}
 		
-		System.out.print("finalCheapestFareRetID: " + finalCheapestFareID + "/n");
+		System.out.print("finalCheapestFareRetID: " + finalCheapestFareID + "\n");
 		
 		//View month that contain the cheapest return fare
 		if(finalCheapestFareID != null) {
 			for(int index=0; index < numberOfMonth; index++) {
-				Element eleCheapestFare = eleCheapestRetFare.Dynamic(finalCheapestFareID);
+				Element eleCheapestFare = eleCheapestRetFare.generateDynamic(finalCheapestFareID);
 				if(!eleCheapestFare.isDisplayed()) {
 					eleRetPrevLnk.click();
 				} else {
@@ -219,18 +202,21 @@ public class SelectFarePage {
 				}
 			}
 			
-			finalCheapestFareItem.setFareItem(finalCheapestFareID, finalCheapestFare);
+			finalCheapestFareItem = new FareItem(finalCheapestFareID, finalCheapestFare);
 		}
 		
 		return finalCheapestFareItem;
-		
 	}
 	
-	public BookingInfo selectCheapestFareForReturnFightFareInNextMonths(int numberOfMonth, BookingInfo booking) throws ParseException {
+	public BookingInfo selectCheapestFareForReturnFightInNextMonths(int numberOfMonth, BookingInfo booking) throws ParseException {
 		FareItem depFareItem = getCheapestDepatureFareInNextMonths(numberOfMonth);
 		FareItem retFareItem = getCheapestReturnFareInNextMonths(depFareItem.getDate(),numberOfMonth);
-		eleDepFareLow.Dynamic(depFareItem.getID()).click();
-		eleRetFareLow.Dynamic(retFareItem.getID()).click();
+		
+		System.out.print("depFareItem.getID(): " + depFareItem.getID() + "\n");
+		System.out.print("retFareItem.getID(): " + retFareItem.getID() + "\n");
+		
+		eleCheapestDepFare.generateDynamic(depFareItem.getID()).click();
+		eleCheapestRetFare.generateDynamic(retFareItem.getID()).click();
 		eleContinueBtn.click();
 		
 		booking.setDepartDate(depFareItem.getDate());
@@ -243,22 +229,22 @@ public class SelectFarePage {
 		
 		eleDepFromLbl.waitForDisplayed(30);
 		
-		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + actualBookingInfo.getOrigin().getValue() + " \n");
-		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + actualBookingInfo.getDestination().getValue() + " \n");
-		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + actualBookingInfo.getDestination().getValue() + " \n");
-		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + actualBookingInfo.getOrigin().getValue() + " \n");
-		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.Dynamic(actualBookingInfo.getCurrency()).isDisplayed() + " \n");
+		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + actualBookingInfo.getOriginValue() + " \n");
+		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + actualBookingInfo.getDestinationValue() + " \n");
+		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + actualBookingInfo.getDestinationValue() + " \n");
+		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + actualBookingInfo.getOriginValue() + " \n");
+		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.generateDynamic(actualBookingInfo.getCurrency()).isDisplayed() + " \n");
 		System.out.print("eleNumberOfAdults: " + eleNumberOfAdults.getText() + " vs " + actualBookingInfo.getNumberOfAdults() + " \n");
-		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + actualBookingInfo.getNumberOfChildens() + " \n");
+		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + actualBookingInfo.getNumberOfChildren() + " \n");
 		System.out.print("eleNumberOfInfants: " + eleNumberOfInfants.getText() + " vs " + actualBookingInfo.getNumberOfInfants() + " \n");
 		
-		return eleDepFromLbl.getText().contains(actualBookingInfo.getOrigin().getValue())
-				&& eleDepToLbl.getText().contains(actualBookingInfo.getDestination().getValue())
-				&& eleRetFromLbl.getText().contains(actualBookingInfo.getDestination().getValue())
-				&& eleRetToLbl.getText().contains(actualBookingInfo.getOrigin().getValue())
-				&& eleDisplayCurrencyLbl.Dynamic(actualBookingInfo.getCurrency()).isDisplayed()
+		return eleDepFromLbl.getText().contains(actualBookingInfo.getOriginValue())
+				&& eleDepToLbl.getText().contains(actualBookingInfo.getDestinationValue())
+				&& eleRetFromLbl.getText().contains(actualBookingInfo.getDestinationValue())
+				&& eleRetToLbl.getText().contains(actualBookingInfo.getOriginValue())
+				&& eleDisplayCurrencyLbl.generateDynamic(actualBookingInfo.getCurrency()).isDisplayed()
 				&& eleNumberOfAdults.getText().contains(Integer.toString(actualBookingInfo.getNumberOfAdults()))
-				&& eleNumberOfChildren.getText().contains(Integer.toString(actualBookingInfo.getNumberOfChildens()))
+				&& eleNumberOfChildren.getText().contains(Integer.toString(actualBookingInfo.getNumberOfChildren()))
 				&& eleNumberOfInfants.getText().contains(Integer.toString(actualBookingInfo.getNumberOfInfants()));
 	}
 	

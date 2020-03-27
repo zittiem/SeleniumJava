@@ -16,7 +16,7 @@ public class BookingInfo {
 	private int numberOfAdults = 0;
 	private boolean lowestFare = false;
 	private String promoCode = null;
-	private int numberOfChilden = 0;
+	private int numberOfChildren = 0;
 	private int numberOfInfants = 0;
 
 	public String getFlightOption() {
@@ -107,12 +107,12 @@ public class BookingInfo {
 		this.promoCode = promoCode;
 	}
 
-	public int getNumberOfChilden() {
-		return numberOfChilden;
+	public int getNumberOfChildren() {
+		return numberOfChildren;
 	}
 
 	public void setNumberOfChilden(int numberOfChilden) {
-		this.numberOfChilden = numberOfChilden;
+		this.numberOfChildren = numberOfChilden;
 	}
 
 	public int getNumberOfInfants() {
@@ -122,13 +122,21 @@ public class BookingInfo {
 	public void setNumberOfInfants(int numberOfInfants) {
 		this.numberOfInfants = numberOfInfants;
 	}
+	
+	public void setDepartDate(Date depDate) {
+		this.departDate = DateTimeHelper.getDateString(depDate, "dd/MM/yyyy");
+	}
+	
+	public void setReturnDate(Date retDate) {
+		this.returnDate = DateTimeHelper.getDateString(retDate, "dd/MM/yyyy");
+	}
 
 	public void showInfo() {
 		System.out.println("===================Flight Information===================" + "\nFlight Option: "
 				+ this.flightOption + "\nOrigin: " + this.originValue + "\nDepart Date: " + this.departDate
 				+ "\nDestination :" + this.destinationValue + "\nReturn Date: " + this.returnDate + "\nCurrency: "
 				+ this.currency + "\nNumber Of Adults: " + this.numberOfAdults + "\nSelect lowest fare: "
-				+ this.lowestFare + "\nPromo Code: " + this.promoCode + "\nNumber of Childrens: " + this.numberOfChilden
+				+ this.lowestFare + "\nPromo Code: " + this.promoCode + "\nNumber of Childrens: " + this.numberOfChildren
 				+ "\nNumber of Infants: " + this.numberOfInfants
 				+ "\n=========================================================");
 	}

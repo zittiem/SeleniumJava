@@ -68,8 +68,8 @@ public class TextBox extends Element {
 		super(parentElement, by, value, arguments);
 	}
 
-	public TextBox Dynamic(Object... arguments) {
-		super.Dynamic(arguments);
+	public TextBox generateDynamic(Object... arguments) {
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

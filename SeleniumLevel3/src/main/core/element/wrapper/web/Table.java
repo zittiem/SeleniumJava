@@ -65,9 +65,9 @@ public class Table extends Element {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public Table Dynamic(Object... arguments)
+	public Table generateDynamic(Object... arguments)
 	{
-		super.Dynamic(arguments);
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

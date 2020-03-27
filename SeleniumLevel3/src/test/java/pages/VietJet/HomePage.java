@@ -49,7 +49,7 @@ public class HomePage {
 			vector = "Prev";
 		}
 		while (currentYear != year) {
-			lblCurrentYear.Dynamic(vector).click();
+			lblCurrentYear.generateDynamic(vector).click();
 			currentYear = Integer.parseInt(lblCurrentYear.getAttribute("innerText"));
 		}
 
@@ -60,7 +60,7 @@ public class HomePage {
 	}
 
 	private void selectDay(int day) {
-		celDay.Dynamic(day).click();
+		celDay.generateDynamic(day).click();
 	}
 
 	public void selectFlightOption(String option) {
@@ -74,13 +74,13 @@ public class HomePage {
 	public void selectOrigin(String location) {
 		spanOrigin.click();
 		txtSearch.enter(location);
-		liLocationItem.Dynamic(location).click();
+		liLocationItem.generateDynamic(location).click();
 	}
 
 	public void selectDestination(String location) {
 		spanDestination.click();
 		txtSearch.enter(location);
-		liLocationItem.Dynamic(location).click();
+		liLocationItem.generateDynamic(location).click();
 	}
 
 	private void selectCal(String date) {
@@ -112,10 +112,10 @@ public class HomePage {
 	}
 
 	private void selectNumberOfPassenger(String passenger, int number) {
-		int currentNumber = Integer.parseInt(txtNumberOfPassengers.Dynamic(passenger).getAttribute("value"));
+		int currentNumber = Integer.parseInt(txtNumberOfPassengers.generateDynamic(passenger).getAttribute("value"));
 		if (currentNumber != number) {
-			btnNumberOfPassengers.Dynamic(passenger).click();
-			listNumberOfPassengersOption.Dynamic(passenger, number).click();
+			btnNumberOfPassengers.generateDynamic(passenger).click();
+			listNumberOfPassengersOption.generateDynamic(passenger, number).click();
 		}
 	}
 

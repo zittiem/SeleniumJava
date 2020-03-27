@@ -17,7 +17,7 @@ import element.setting.ElementStatus;
 public interface IWaiter extends ILocator {
 	public static Logger logger = Logger.getLogger(IWaiter.class);
 	
-	public default void waitForCondition(ElementStatus condition, int timeOut, boolean throwable) {
+	public default void waitForCondition(ElementStatus condition, int timeOut, boolean throwable, Object... args) {
 		try {
 			WebDriverWait wait = new WebDriverWait(DriverManager.getDriver(), timeOut);
 			
@@ -82,6 +82,42 @@ public interface IWaiter extends ILocator {
 					}
 				});
 				break;
+			case TEXT_TO_BE:
+				wait.until(ExpectedConditions.textToBe(getLocator(), args[0].toString()));
+				break;
+			case TEXT_CHANGED:
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return !(DriverUtils.findElement(getLocator()).getText().equals(args[0].toString()));
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
+				break;
+			case ATTRIBUTE_TO_BE:
+				wait.until(ExpectedConditions.attributeToBe(getLocator(), args[0].toString(), args[1].toString()));
+				break;
+			case ATTRIBUTE_CHANGED:
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return !(DriverUtils.findElement(getLocator()).getAttribute(args[0].toString()).equals(args[1].toString()));
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
+				break;
 			default:
 				break;
 			}
@@ -136,8 +172,20 @@ public interface IWaiter extends ILocator {
 		waitForCondition(ElementStatus.SELECTED, timeOut, true);
 	}
 	
-	public default void waitForNotSelected(int timeOut) {
-		waitForCondition(ElementStatus.NOT_SELECTED, timeOut, true);
+	public default void waitForTextToBe(String text, int timeOut) {
+		waitForCondition(ElementStatus.TEXT_TO_BE, timeOut, true, text);
+	}
+	
+	public default void waitForTextChanged(String originText, int timeOut) {
+		waitForCondition(ElementStatus.TEXT_CHANGED, timeOut, true, originText);
+	}
+	
+	public default void waitForAttributeToBe(String attributeName, String value, int timeOut) {
+		waitForCondition(ElementStatus.ATTRIBUTE_TO_BE, timeOut, true, attributeName, value);
+	}
+	
+	public default void waitForAttributeChanged(String attributeName, String originValue, int timeOut) {
+		waitForCondition(ElementStatus.ATTRIBUTE_CHANGED, timeOut, true, attributeName, originValue);
 	}
 
 }

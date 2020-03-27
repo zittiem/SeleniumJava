@@ -65,9 +65,9 @@ public class CheckBox extends Element {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public CheckBox Dynamic(Object... arguments)
+	public CheckBox generateDynamic(Object... arguments)
 	{
-		super.Dynamic(arguments);
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

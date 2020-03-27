@@ -64,7 +64,7 @@ public class SelectTravelOptionsPage {
 			element = optReturnPrice;
 		}
 
-		List<Element> elements = element.Dynamic(flightClass.getValue()).getWrapperElements();
+		List<Element> elements = element.generateDynamic(flightClass.getValue()).getWrapperElements();
 		double price = getCastValue(elements.get(0).getText());
 		outputElement = elements.get(0);
 		for (int i = 1; i < elements.size(); i++) {
@@ -156,7 +156,7 @@ public class SelectTravelOptionsPage {
 	// Assert
 
 	public boolean isCurrency(String currency) {
-		return lblDisplayCurrency.Dynamic(currency).getAttribute("innerText").equals(currency);
+		return lblDisplayCurrency.generateDynamic(currency).getAttribute("innerText").equals(currency);
 	}
 
 	public BookingInfo getCurrentBookingInfo() {

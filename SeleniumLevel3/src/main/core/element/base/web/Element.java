@@ -99,7 +99,7 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 		this.parentElement = parentElement;
 	}
 	
-	public Element Dynamic(Object... arguments)
+	public Element generateDynamic(Object... arguments)
 	{
 		if (this.pairLocator != null)
 			this.byLocator = getByLocator(this.pairLocator.getValue0(), String.format(this.pairLocator.getValue1(), arguments));

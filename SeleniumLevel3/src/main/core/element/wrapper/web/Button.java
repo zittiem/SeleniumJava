@@ -65,9 +65,9 @@ public class Button extends Element {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public Button Dynamic(Object... arguments)
+	public Button generateDynamic(Object... arguments)
 	{
-		super.Dynamic(arguments);
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

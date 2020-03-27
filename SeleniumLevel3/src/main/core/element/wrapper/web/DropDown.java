@@ -71,9 +71,9 @@ public class DropDown extends Element {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public DropDown Dynamic(Object... arguments)
+	public DropDown generateDynamic(Object... arguments)
 	{
-		super.Dynamic(arguments);
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

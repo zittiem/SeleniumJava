@@ -65,9 +65,9 @@ public class RadioButton extends Element {
 		super(parentElement, by, value, arguments);
 	}
 	
-	public RadioButton Dynamic(Object... arguments)
+	public RadioButton generateDynamic(Object... arguments)
 	{
-		super.Dynamic(arguments);
+		super.generateDynamic(arguments);
 		return this;
 	}
 	

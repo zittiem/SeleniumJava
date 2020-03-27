@@ -92,7 +92,7 @@ public class MobileNativeElement implements IMobileFinder, IMobileWaiter, IMobil
 		this.parentElement = parentElement;
 	}
 	
-	public MobileNativeElement Dynamic(Object... arguments)
+	public MobileNativeElement generateDynamic(Object... arguments)
 	{
 		if (this.pairLocator != null)
 			this.byLocator = getByLocator(this.pairLocator.getValue0(), String.format(this.pairLocator.getValue1(), arguments));

@@ -8,7 +8,7 @@ import element.wrapper.web.DropDown;
 import element.wrapper.web.RadioButton;
 import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
-import utils.common.Constants;
+import utils.constants.Constants;
 
 public class HomePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
@@ -141,7 +141,7 @@ public class HomePage {
 		selectNumberOfAdults(flight.getNumberOfAdults());
 		chxInfare.setState(flight.isLowestFare());
 		txtPromoCode.enter(flight.getPromoCode());
-		selectNumberOfChildrens(flight.getNumberOfChilden());
+		selectNumberOfChildrens(flight.getNumberOfChildren());
 		selectNumberOfInfans(flight.getNumberOfInfants());
 	}
 
@@ -158,6 +158,15 @@ public class HomePage {
 	// Assertion
 	public boolean isLanguage(LanguageType language) {
 		return cbxLanguage.getSelectedOption().equals(language.getText());
-
+	}
+	
+	public String getSelectedLanguage() {
+		return cbxLanguage.getSelectedOption();
+	}
+	
+	public SelectFarePage searchCheapestFlights(BookingInfo booking) {
+		enterSearchData(booking);
+		btnSearch.click();
+		return new SelectFarePage();
 	}
 }

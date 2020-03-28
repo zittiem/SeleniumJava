@@ -5,10 +5,12 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
-import datatype.LanguageType;
+
+import datatype.VietJet.LanguageType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
-import utils.common.Constants;
+import utils.constants.Constants;
+import utils.helper.Logger;
 
 public class TestBase {
 
@@ -23,8 +25,8 @@ public class TestBase {
 
 	@AfterMethod(alwaysRun = true)
 	public void cleanUp(ITestResult result) {
-		
-		DriverUtils.quit();
+		Logger.info("Post Condition: Clean up.");
+		//DriverUtils.quit();
 	}
 	
 	public void launchApp(String appName, LanguageType lang) {
@@ -45,6 +47,5 @@ public class TestBase {
 			DriverUtils.navigate(Constants.logigearEmail_URL);
 			break;
 		}
-		System.out.println(DriverUtils.getURL());
 	}
 }

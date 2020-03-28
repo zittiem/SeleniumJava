@@ -11,11 +11,11 @@ import com.google.gson.JsonParser;
 
 import driver.manager.DriverManager;
 import driver.setting.Platform;
-import element.resource.web.DropdownElement;
 import element.setting.FindBy;
+import element.wrapper.web.DropDown;
 
 public class LocatorHelper {
-	private static Logger logger = Logger.getLogger(DropdownElement.class);
+	private static Logger logger = Logger.getLogger(DropDown.class);
 
 	private JsonObject _jsonObject;
 	private final String _defaultPlatform = Platform.ANY.toString().toLowerCase();

@@ -1,89 +1,44 @@
 package pages.VietJet;
 
-import java.util.Date;
-
-import datatype.BookingInfo;
-import datatype.BookingInfo.FlightOption;
-import datatype.BookingInfo.LocationOption;
-import datatype.LanguageType;
-import element.resource.web.Element;
-import element.setting.FindBy;
-import element.resource.web.CheckableElement;
-import element.resource.web.DropdownElement;
-import element.resource.web.EditableElement;
+import datatype.VietJet.BookingInfo;
+import datatype.VietJet.LanguageType;
+import element.base.web.Element;
+import element.wrapper.web.CheckBox;
+import element.wrapper.web.DropDown;
+import element.wrapper.web.RadioButton;
+import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
-import utils.assertion.SoftAssertion;
-import utils.common.Constants;
-import utils.helper.DateTimeHelper;
+import utils.constants.Constants;
 
 public class HomePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
-
-//	// Elements
-//	protected CheckableElement rbxRoundTrip = new CheckableElement(locator.getLocator("rbxRoundTrip"));
-//	protected CheckableElement rbxRbOneWay = new CheckableElement(locator.getLocator("rbxRbOneWay"));
-//	protected Element calDepartDate = new Element(locator.getLocator("calDepartDate"));
-//	protected Element calReturnDate = new Element(locator.getLocator("calReturnDate"));
-//	protected EditableElement txtNumberOfAdults = new EditableElement(locator.getLocator("txtNumberOfAdults"));
-//	protected CheckableElement chxInfare = new CheckableElement(locator.getLocator("chxInfare"));
-//	protected EditableElement txtPromoCode = new EditableElement(locator.getLocator("txtPromoCode"));
-//	protected EditableElement txtNumberOfChildrens = new EditableElement(locator.getLocator("txtNumberOfChildrens"));
-//	protected EditableElement txtNumberOfInfants = new EditableElement(locator.getLocator("txtNumberOfInfants"));
-//	protected Element btnSearch = new Element(locator.getLocator("btnSearch"));
-//
-//	protected Element eleOrigin = new Element(locator.getLocator("eleOrigin"));
-//	protected Element eleDestination = new Element(locator.getLocator("eleDestination"));
-//	protected DropdownElement cbxCurrency = new DropdownElement(locator.getLocator("cbxCurrency"));
-//	
-//	// Select Location
-//	protected EditableElement txtSearch = new EditableElement(locator.getLocator("txtSearch"));
-//	protected Element liLocationItem = new Element(locator.getLocator("liLocationItem"));
-//
-//	// Select Date
-//	protected Element linkDatePickerNavigation = new Element(locator.getLocator("linkDatePickerNavigation"));
-//	protected Element lblCurrentYear = new Element(locator.getLocator("lblCurrentYear"));
-//	protected Element celDay = new Element(locator.getLocator("celDay"));
-//	protected DropdownElement cbxMonth = new DropdownElement(locator.getLocator("cbxMonth"));
-//
-//	// Select Passengers
-//	protected EditableElement txtNumberOfPassengers = new EditableElement(FindBy.id, "ctl00_UcRightV31_Cbb%s_TextBox");
-//	protected Element btnNumberOfPassengers = new Element(FindBy.id, "ctl00_UcRightV31_Cbb%s_Button");
-//	protected Element listNumberOfPassengersOption = new Element(FindBy.xpath,
-//			"//ul[@id='ctl00_UcRightV31_Cbb%s_OptionList']/li[text()='%s']");
-	// Methods
 	// Elements
 
-	protected DropdownElement cbxLanguage = new DropdownElement(FindBy.id, "ctl00_UcHeaderV31_DrLang");
-	protected CheckableElement rbxRoundTrip = new CheckableElement(FindBy.id, "ctl00_UcRightV31_RbRoundTrip");
-	protected CheckableElement rbxRbOneWay = new CheckableElement(FindBy.id, "ctl00_UcRightV31_RbOneWay");
-	protected Element spanOrigin = new Element(FindBy.id, "select2-selectOrigin-container");
-	protected Element spanDestination = new Element(FindBy.id, "select2-selectDestination-container");
+	protected DropDown cbxLanguage = new DropDown(locator.getLocator("cbxLanguage"));
+	protected RadioButton rbxRoundTrip = new RadioButton(locator.getLocator("rbxRoundTrip"));
+	protected RadioButton rbxRbOneWay = new RadioButton(locator.getLocator("rbxRbOneWay"));
+	protected Element spanOrigin = new Element(locator.getLocator("spanOrigin"));
+	protected Element spanDestination = new Element(locator.getLocator("spanDestination"));
+	protected Element calDepartDate = new Element(locator.getLocator("calDepartDate"));
+	protected Element calReturnDate = new Element(locator.getLocator("calReturnDate"));
+	protected Element cbxCurrency = new Element(locator.getLocator("cbxCurrency"));
+	protected CheckBox chxInfare = new CheckBox(locator.getLocator("chxInfare"));
+	protected TextBox txtPromoCode = new TextBox(locator.getLocator("txtPromoCode"));
+	protected Element btnSearch = new Element(locator.getLocator("btnSearch"));
+	protected TextBox txtNumberOfPassengers = new TextBox(locator.getLocator("txtNumberOfPassengers"));
+	protected Element btnNumberOfPassengers = new Element(locator.getLocator("btnNumberOfPassengers"));
+	protected Element listNumberOfPassengersOption = new Element(locator.getLocator("listNumberOfPassengersOption"));
+	protected TextBox txtSearch = new TextBox(locator.getLocator("txtSearch"));
+	protected Element liLocationItem = new Element(locator.getLocator("liLocationItem"));
+	protected Element linkDatePickerNavigation = new Element(locator.getLocator("linkDatePickerNavigation"));
+	protected Element lblCurrentYear = new Element(locator.getLocator("lblCurrentYear"));
+	protected DropDown cbxMonth = new DropDown(locator.getLocator("cbxMonth"));
+	protected Element celDay = new Element(locator.getLocator("celDay"));
 
-	protected Element calDepartDate = new Element(FindBy.id, "ctl00_UcRightV31_TxtDepartDate");
-	protected Element calReturnDate = new Element(FindBy.id, "ctl00_UcRightV31_TxtReturnDate");
-	protected Element cbxCurrency = new Element(FindBy.id, "ctl00_UcRightV31_CbbCurrency_TextBox");
-	protected CheckableElement chxInfare = new CheckableElement(FindBy.id, "ctl00_UcRightV31_ChkInfare");
-	protected EditableElement txtPromoCode = new EditableElement(FindBy.id, "ctl00_UcRightV31_TxtPromoCode");
-	protected Element btnSearch = new Element(FindBy.id, "ctl00_UcRightV31_BtSearch");
-
-	// Select Passengers
-	protected EditableElement txtNumberOfPassengers = new EditableElement(FindBy.id, "ctl00_UcRightV31_Cbb%s_TextBox");
-	protected Element btnNumberOfPassengers = new Element(FindBy.id, "ctl00_UcRightV31_Cbb%s_Button");
-	protected Element listNumberOfPassengersOption = new Element(FindBy.xpath,
-			"//ul[@id='ctl00_UcRightV31_Cbb%s_OptionList']/li[text()='%s']");
-
-	// Select Location
-	protected EditableElement txtSearch = new EditableElement(FindBy.xpath,
-			"//input [@class='select2-search__field' and @type='search']");
-	protected Element liLocationItem = new Element(FindBy.xpath, "//li[contains(@id, '%s')]");
-	// Select Date
-	protected Element linkDatePickerNavigation = new Element(FindBy.xpath,
-			"//a[@class='ui-datepicker-%s ui-corner-all']");
-	protected Element lblCurrentYear = new Element(FindBy.xpath, "//span[@class='ui-datepicker-year']");
-	protected DropdownElement cbxMonth = new DropdownElement(FindBy.xpath, "//select[@class='ui-datepicker-month']");
-	protected Element celDay = new Element(FindBy.xpath,
-			"//table[@class='ui-datepicker-calendar']/tbody//td[./a[text()=%s]]");
 	// Methods
+	public void waitForPageLoad() {
+		btnSearch.waitForDisabled(Constants.LONG_TIME);
+	}
 
 	private void selectYear(int year) {
 		int currentYear = Integer.parseInt(lblCurrentYear.getAttribute("innerText"));
@@ -94,7 +49,7 @@ public class HomePage {
 			vector = "Prev";
 		}
 		while (currentYear != year) {
-			lblCurrentYear.Dynamic(vector).click();
+			lblCurrentYear.generateDynamic(vector).click();
 			currentYear = Integer.parseInt(lblCurrentYear.getAttribute("innerText"));
 		}
 
@@ -105,46 +60,45 @@ public class HomePage {
 	}
 
 	private void selectDay(int day) {
-		celDay.Dynamic(day).click();
+		celDay.generateDynamic(day).click();
 	}
 
-	public void selectFlightOption(FlightOption option) {
-		if (option.getValue() == "One Way") {
-			rbxRbOneWay.check();
-		} else {
-			rbxRoundTrip.check();
+	public void selectFlightOption(String option) {
+		if (option.equals("One Way")) {
+			rbxRbOneWay.select();
+		} else if (option.equals("Return")) {
+			rbxRoundTrip.select();
 		}
 	}
 
-	public void selectOrigin(LocationOption location) {
+	public void selectOrigin(String location) {
 		spanOrigin.click();
-		txtSearch.enter(location.getKey());
-		liLocationItem.Dynamic(location.getKey()).click();
+		txtSearch.enter(location);
+		liLocationItem.generateDynamic(location).click();
 	}
 
-	public void selectDestination(LocationOption location) {
+	public void selectDestination(String location) {
 		spanDestination.click();
-		txtSearch.enter(location.getKey());
-		liLocationItem.Dynamic(location.getKey()).click();
+		txtSearch.enter(location);
+		liLocationItem.generateDynamic(location).click();
 	}
 
-	private void selectCal(Date date) {
-		String _date = DateTimeHelper.getDate(date, "d/M/yyyy");
-		String[] dateComponent = _date.split("/");
+	private void selectCal(String date) {
+		String[] dateComponent = date.split("/");
 		selectYear(Integer.parseInt(dateComponent[2]));
 		selectMonth(Integer.parseInt(dateComponent[1]));
 		selectDay(Integer.parseInt(dateComponent[0]));
 	}
 
-	public void selectDepartDate(Date date) {
-		if (!calDepartDate.getAttribute("value").trim().equals(DateTimeHelper.getDate(date, "dd/MM/yyyy"))) {
+	public void selectDepartDate(String date) {
+		if (!calDepartDate.getAttribute("value").trim().equals(date)) {
 			calDepartDate.click();
 			selectCal(date);
 		}
 	}
 
-	public void selectReturnDate(Date date) {
-		if (!calReturnDate.getAttribute("value").trim().equals(DateTimeHelper.getDate(date, "dd/MM/yyyy"))) {
+	public void selectReturnDate(String date) {
+		if (!calReturnDate.getAttribute("value").trim().equals(date)) {
 			calReturnDate.click();
 			selectCal(date);
 		}
@@ -158,10 +112,10 @@ public class HomePage {
 	}
 
 	private void selectNumberOfPassenger(String passenger, int number) {
-		int currentNumber = Integer.parseInt(txtNumberOfPassengers.Dynamic(passenger).getAttribute("value"));
+		int currentNumber = Integer.parseInt(txtNumberOfPassengers.generateDynamic(passenger).getAttribute("value"));
 		if (currentNumber != number) {
-			btnNumberOfPassengers.Dynamic(passenger).click();
-			listNumberOfPassengersOption.Dynamic(passenger, number).click();
+			btnNumberOfPassengers.generateDynamic(passenger).click();
+			listNumberOfPassengersOption.generateDynamic(passenger, number).click();
 		}
 	}
 
@@ -179,52 +133,40 @@ public class HomePage {
 
 	public void enterSearchData(BookingInfo flight) {
 		selectFlightOption(flight.getFlightOption());
-		selectOrigin(flight.getOrigin());
+		selectOrigin(flight.getOriginKey());
 		selectDepartDate(flight.getDepartDate());
-		selectDestination(flight.getDestination());
+		selectDestination(flight.getDestinationKey());
 		selectReturnDate(flight.getReturnDate());
 		selectCurrency(flight.getCurrency());
 		selectNumberOfAdults(flight.getNumberOfAdults());
 		chxInfare.setState(flight.isLowestFare());
 		txtPromoCode.enter(flight.getPromoCode());
-		selectNumberOfChildrens(flight.getNumberOfChildens());
+		selectNumberOfChildrens(flight.getNumberOfChildren());
 		selectNumberOfInfans(flight.getNumberOfInfants());
 	}
 
-	public SelectTravelOptionsPage searchFlight(BookingInfo flight) {
+	public void searchFlight(BookingInfo flight) {
 		enterSearchData(flight);
 		btnSearch.click();
-		return new SelectTravelOptionsPage();
 	}
 
-	public SelectFarePage searchLowestFareFlight(BookingInfo flight) {
+	public void searchLowestFareFlight(BookingInfo flight) {
 		enterSearchData(flight);
 		btnSearch.click();
-		return new SelectFarePage();
 	}
 
-	public SelectTravelOptionsPage submitSearchFlight(BookingInfo flight) {
-		enterSearchData(flight);
-		btnSearch.click();
-		return new SelectTravelOptionsPage();
+	// Assertion
+	public boolean isLanguage(LanguageType language) {
+		return cbxLanguage.getSelectedOption().equals(language.getText());
 	}
-
-	// Thanh test method-Start
-
+	
+	public String getSelectedLanguage() {
+		return cbxLanguage.getSelectedOption();
+	}
+	
 	public SelectFarePage searchCheapestFlights(BookingInfo booking) {
 		enterSearchData(booking);
 		btnSearch.click();
 		return new SelectFarePage();
-	}
-
-	// Thanh test method-End
-
-	// Assertion
-
-	SoftAssertion softAssert = new SoftAssertion();
-
-	public boolean isLanguage(LanguageType language) {
-		return cbxLanguage.getSelectedOption().equals(language.getText());
-
 	}
 }

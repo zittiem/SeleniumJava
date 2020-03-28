@@ -1,104 +1,107 @@
 package pages.VietJet;
 
 import java.util.List;
-
-import datatype.BookingInfo;
-import datatype.TicketInfo;
-import datatype.TicketInfo.FlightClass;
+import datatype.VietJet.BookingInfo;
+import datatype.VietJet.TicketInfo;
+import datatype.VietJet.BookingInfo.LocationOption;
+import datatype.VietJet.TicketInfo.FlightClass;
 import driver.manager.DriverUtils;
-import element.resource.web.CheckableElement;
-import element.resource.web.Element;
+import element.base.web.Element;
 import element.setting.FindBy;
+import element.wrapper.web.RadioButton;
 import helper.LocatorHelper;
-import utils.assertion.SoftAssertion;
-import utils.common.Constants;
+import utils.constants.Constants;
 import utils.helper.DateTimeHelper;
 
 public class SelectTravelOptionsPage {
-	LocatorHelper locator = new LocatorHelper(getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
 	// Element
-	protected Element formTravelOption = new Element(FindBy.id, "TravelOptions");
-	protected Element lblPageTitle = new Element(FindBy.xpath, "//div[@style='float: left']/h1");
-	// Booking Summary
-	protected Element lblDisplayCurrency = new Element(FindBy.xpath, "//span[@class='BSGrandTotal' and text()='%s']");
-	protected Element lblDepartureFrom = new Element(FindBy.xpath, "//table[@id='tblLeg1APs']//td[1]");
-	protected Element lblDepartureTo = new Element(FindBy.xpath, "//table[@id='tblLeg1APs']//td[2]");
-	protected Element lblDepartureDate = new Element(FindBy.id, "Leg1Date");
-	protected Element lblDepartureTime = new Element(FindBy.id, "Leg1Time");
-	protected Element lblDepartureFare = new Element(FindBy.id, "Leg1BSFare");
-	protected Element lblDepartureCharges = new Element(FindBy.id, "Leg1BSCharges");
-	protected Element lblDepartureTax = new Element(FindBy.id, "Leg1BSFareTax");
-	protected Element lblDepartureTotalFare = new Element(FindBy.id, "Leg1BSTotalFare");
-
-	protected Element lblReturnFrom = new Element(FindBy.xpath, "//table[@id='tblLeg2APs']//td[1]");
-	protected Element lblReturnTo = new Element(FindBy.xpath, "//table[@id='tblLeg2APs']//td[2]");
-	protected Element lblReturnDate = new Element(FindBy.id, "Leg2Date");
-	protected Element lblReturnTime = new Element(FindBy.id, "Leg2Time");
-	protected Element lblReturnFare = new Element(FindBy.id, "Leg2BSFare");
-	protected Element lblReturnCharges = new Element(FindBy.id, "Leg2BSCharges");
-	protected Element lblReturnTax = new Element(FindBy.id, "Leg2BSFareTax");
-	protected Element lblReturnTotalFare = new Element(FindBy.id, "Leg2BSTotalFare");
-	protected Element lblGrandTotal = new Element(FindBy.id, "BSGrandTotal");
-
-	protected Element lblNumberOfAdults = new Element(FindBy.xpath, "//table[@id='tblPaxCountsInfo']//td[1]");
-	protected Element lblNumberOfChildrens = new Element(FindBy.xpath, "//table[@id='tblPaxCountsInfo']//td[2]");
-	protected Element lblNumberOfInfants = new Element(FindBy.xpath, "//table[@id='tblPaxCountsInfo']//td[3]");
-	// ***For element that capture by index -> will update when having solution for
-	// multi-languages
-
-	// Select ticket
-	protected Element optDerparturPrice = new Element(FindBy.xpath,
-			"//tr[contains(@id,'gridTravelOptDep')]//td[@data-familyid='%s']");
-	protected Element optReturnPrice = new Element(FindBy.xpath,
-			"//tr[contains(@id,'gridTravelOptRet')]//td[@data-familyid='%s']");
-	protected Element btnContinue = new Element(FindBy.xpath, "//a[contains(@href,'continue')]");
+	protected Element formTravelOption = new Element(locator.getLocator("formTravelOption"));
+	protected Element lblDisplayCurrency = new Element(locator.getLocator("lblDisplayCurrency"));
+	protected Element lblDepartureFrom = new Element(locator.getLocator("lblDepartureFrom"));
+	protected Element lblDepartureTo = new Element(locator.getLocator("lblDepartureTo"));
+	protected Element lblDepartureDate = new Element(locator.getLocator("lblDepartureDate"));
+	protected Element lblDepartureTime = new Element(locator.getLocator("lblDepartureTime"));
+	protected Element lblDepartureFare = new Element(locator.getLocator("lblDepartureFare"));
+	protected Element lblDepartureCharges = new Element(locator.getLocator("lblDepartureCharges"));
+	protected Element lblDepartureTax = new Element(locator.getLocator("lblDepartureTax"));
+	protected Element lblDepartureTotalFare = new Element(locator.getLocator("lblDepartureTotalFare"));
+	protected Element lblReturnFrom = new Element(locator.getLocator("lblReturnFrom"));
+	protected Element lblReturnTo = new Element(locator.getLocator("lblReturnTo"));
+	protected Element lblReturnDate = new Element(locator.getLocator("lblReturnDate"));
+	protected Element lblReturnTime = new Element(locator.getLocator("lblReturnTime"));
+	protected Element lblReturnFare = new Element(locator.getLocator("lblReturnFare"));
+	protected Element lblReturnCharges = new Element(locator.getLocator("lblReturnCharges"));
+	protected Element lblReturnTax = new Element(locator.getLocator("lblReturnTax"));
+	protected Element lblReturnTotalFare = new Element(locator.getLocator("lblReturnTotalFare"));
+	protected Element lblGrandTotal = new Element(locator.getLocator("lblGrandTotal"));
+	protected Element lblNumberOfAdults = new Element(locator.getLocator("lblNumberOfAdults"));
+	protected Element lblNumberOfChildren = new Element(locator.getLocator("lblNumberOfChildren"));
+	protected Element lblNumberOfInfants = new Element(locator.getLocator("lblNumberOfInfants"));
+	protected Element optDerparturPrice = new Element(locator.getLocator("optDerparturPrice"));
+	protected Element optReturnPrice = new Element(locator.getLocator("optReturnPrice"));
+	protected Element btnContinue = new Element(locator.getLocator("btnContinue"));
+	protected Element lblPageTitle = new Element(locator.getLocator("lblPageTitle"));
 
 	// Method
 
-	public SelectTravelOptionsPage waitForPageLoad() {
+	public void waitForPageLoad() {
 		this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
-		return this;
 	}
 
 	public boolean isDisplayed() {
+		waitForPageLoad();
 		return DriverUtils.getURL().contains("TravelOptions.aspx");
 	}
 
 	// Find the cheapest flight option
-	public void selectCheapestDeparture(FlightClass flightClass) {
-		List<Element> elements = optDerparturPrice.Dynamic(flightClass.getValue()).getWrapperElements();
-		double price = getMonney(elements.get(0));
-		Element expElement = elements.get(0);
+	public void findLowestFare(Trips ways, FlightClass flightClass) {
+		Element element = null;
+		Element outputElement = null;
+		if (ways.getValue().equals("Departure")) {
+			element = optDerparturPrice;
+
+		} else if (ways.getValue().equals("Return")) {
+			element = optReturnPrice;
+		}
+
+		List<Element> elements = element.generateDynamic(flightClass.getValue()).getWrapperElements();
+		double price = getCastValue(elements.get(0).getText());
+		outputElement = elements.get(0);
 		for (int i = 1; i < elements.size(); i++) {
-			if (getMonney(elements.get(i)) < price) {
-				price = getMonney(elements.get(i));
-				expElement = elements.get(i);
+			if (getCastValue(elements.get(i).getText()) < price) {
+				price = getCastValue(elements.get(i).getText());
+				outputElement = elements.get(i);
 			}
 		}
-		String _xpath = expElement.getLocator().toString().substring(10) + "/input[@id='gridTravelOptDep']";
-		CheckableElement rdxCheapestDeparture = new CheckableElement(FindBy.xpath, _xpath);
-		rdxCheapestDeparture.scrollIntoView();
-		rdxCheapestDeparture.check();
+
+		if (ways.getValue().equals("Departure")) {
+			this.optDerparturPrice = outputElement;
+
+		} else if (ways.getValue().equals("Return")) {
+			this.optReturnPrice = outputElement;
+		}
+	}
+
+	public void selectCheapestDeparture(FlightClass flightClass) {
+		findLowestFare(Trips.DEPARTURE, flightClass);
+		String _xpath = optDerparturPrice.getLocator().toString().substring(10)
+				.concat("/input[@id='gridTravelOptDep']");
+		RadioButton rdxCheapest = new RadioButton(FindBy.xpath, _xpath);
+		rdxCheapest.scrollIntoView();
+		rdxCheapest.select();
 	}
 
 	public void selectCheapestReturn(FlightClass flightClass) {
-		List<Element> elements = optReturnPrice.Dynamic(flightClass.getValue()).getWrapperElements();
-		double price = getMonney(elements.get(0));
-		Element expElement = elements.get(0);
-		for (int i = 1; i < elements.size(); i++) {
-			if (getMonney(elements.get(i)) < price) {
-				price = getMonney(elements.get(i));
-				expElement = elements.get(i);
-			}
-		}
-		String _xpath = expElement.getLocator().toString().substring(10) + "/input[@id='gridTravelOptRet']";
-		CheckableElement rdxCheapestReturn = new CheckableElement(FindBy.xpath, _xpath);
-		rdxCheapestReturn.scrollIntoView();
-		rdxCheapestReturn.check();
+		findLowestFare(Trips.RETURN, flightClass);
+		String _xpath = optReturnPrice.getLocator().toString().substring(10).concat("/input[@id='gridTravelOptRet']");
+		RadioButton rdxCheapest = new RadioButton(FindBy.xpath, _xpath);
+		rdxCheapest.scrollIntoView();
+		rdxCheapest.select();
 	}
 
-	private double getMonney(Element element) {
-		return Double.parseDouble(element.getText().split(" ")[0].replace(",", ""));
+	private double getCastValue(String value) {
+		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
 	public String getDepartureFromInfo() {
@@ -110,7 +113,13 @@ public class SelectTravelOptionsPage {
 	}
 
 	public String getDepartureDateInfo() {
-		return lblDepartureDate.getText().trim();
+		String xpath = optDerparturPrice.getLocator().toString().substring(10)
+				+ "//ancestor::tr//tr[@class='gridFlightEvenchecked']//td[@class='SegInfo' and contains(text(),'/')]";
+		return new Element(FindBy.xpath, xpath).getText();
+	}
+	
+	public String getDepartureDateInfoInSummary() {
+		return lblDepartureDate.getText();
 	}
 
 	public String getReturnFromInfo() {
@@ -122,15 +131,21 @@ public class SelectTravelOptionsPage {
 	}
 
 	public String getReturnDateInfo() {
-		return lblReturnDate.getText().trim();
+		String xpath = optReturnPrice.getLocator().toString().substring(10)
+				+ "//ancestor::tr//tr[@class='gridFlightEvenchecked']//td[@class='SegInfo' and contains(text(),'/')]";
+		return new Element(FindBy.xpath, xpath).getText();
+	}
+	
+	public String getReturnDateInfoInSummary() {
+		return lblReturnDate.getText();
 	}
 
 	public int getNumberOfAdultsInfo() {
 		return Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim());
 	}
 
-	public int getNumberOfChildrensInfo() {
-		return Integer.parseInt(lblNumberOfChildrens.getText().split(":")[1].trim());
+	public int getNumberOfChildrenInfo() {
+		return Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim());
 	}
 
 	public int getNumberOfInfantsInfo() {
@@ -142,49 +157,127 @@ public class SelectTravelOptionsPage {
 		selectCheapestReturn(flightClass);
 	}
 
-	public PassengerInformationPage submitPage() {
+	public void submitPage() {
 		btnContinue.moveToElement();
 		btnContinue.click();
-		return new PassengerInformationPage();
 	}
 
 	// Assert
-	SoftAssertion softAssert = new SoftAssertion();
-	// SoftAssert softAssert = new SoftAssert();
 
 	public boolean isCurrency(String currency) {
-		System.out.println(lblDisplayCurrency.Dynamic(currency).getAttribute("innerText"));
-		return lblDisplayCurrency.Dynamic(currency).getAttribute("innerText").equals(currency);
+		return lblDisplayCurrency.generateDynamic(currency).getAttribute("innerText").equals(currency);
 	}
 
-	public boolean isBookingInfoCorrect(BookingInfo booking) {
-		return getDepartureFromInfo().equals(booking.getOrigin().getValue())
-				&& getDepartureToInfo().equals(booking.getDestination().getValue())
-				&& getDepartureDateInfo().equals(DateTimeHelper.getDate(booking.getDepartDate()))
-				&& getReturnFromInfo().equals(booking.getDestination().getValue())
-				&& getReturnToInfo().equals(booking.getOrigin().getValue())
-				&& getReturnDateInfo().equals(DateTimeHelper.getDate((booking.getReturnDate())))
-				&& getNumberOfAdultsInfo() == booking.getNumberOfAdults()
-				&& getNumberOfChildrensInfo() == booking.getNumberOfChildens()
-				&& getNumberOfInfantsInfo() == booking.getNumberOfInfants();
+	public BookingInfo getCurrentBookingInfo() {
+		BookingInfo booking = new BookingInfo();
+		booking.setOriginKey(LocationOption.getCode(lblDepartureFrom.getText().split(":")[1].trim()));
+		booking.setOriginValue(lblDepartureFrom.getText().split(":")[1].trim());
+		booking.setDepartDate(
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), "dd/MM/yyyy"));
+		booking.setDestinationKey(LocationOption.getCode(lblReturnFrom.getText().split(":")[1].trim()));
+		booking.setDestinationValue(lblReturnFrom.getText().split(":")[1].trim());
+		booking.setReturnDate(
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
+		booking.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
+		booking.setNumberOfChilden(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
+		booking.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
+		return booking;
 	}
 
 	// Section Store data for next page verifying
-	TicketInfo ticketInfo = new TicketInfo();
-
-	public TicketInfo getTicketInfo() {
-		ticketInfo.setDepartureFare(getMonney(lblDepartureFare));
-		ticketInfo.setDepartureTax(getMonney(lblDepartureTax));
-		ticketInfo.setDepartureCharge(getMonney(lblDepartureCharges));
-		ticketInfo.setDepartureTotal(getMonney(lblDepartureTotalFare));
-		ticketInfo.setDepartureTime(lblDepartureTime.getText().trim());
-		ticketInfo.setReturnFare(getMonney(lblReturnFare));
-		ticketInfo.setReturnTax(getMonney(lblReturnTax));
-		ticketInfo.setReturnCharge(getMonney(lblReturnCharges));
-		ticketInfo.setReturnTotal(getMonney(lblReturnTotalFare));
-		ticketInfo.setReturnTime(lblReturnTime.getText().trim());
-		ticketInfo.setGrandTotal(getMonney(lblGrandTotal));
+	public TicketInfo getTicketDetails() {
+		TicketInfo ticketInfo = new TicketInfo();
+		ticketInfo.setDepartureFrom(getDepartureFromInfo());
+		ticketInfo.setDepartureTo(getDepartureToInfo());
+		ticketInfo.setDepartureDate(
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()), "dd/MM/yyyy"));
+		ticketInfo.setReturnFrom(getReturnFromInfo());
+		ticketInfo.setReturnTo(getReturnToInfo());
+		ticketInfo
+				.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()), "dd/MM/yyyy"));
+		ticketInfo.setNumberOfAdults(getNumberOfAdultsInfo());
+		ticketInfo.setNumberOfChildren(getNumberOfChildrenInfo());
+		ticketInfo.setNumberOfInfants(getNumberOfInfantsInfo());
+		ticketInfo.setDepartureFare(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.FARE))
+				* (ticketInfo.getNumberOfAdults() + ticketInfo.getNumberOfChildren()
+						+ ticketInfo.getNumberOfInfants()));
+		ticketInfo.setDepartureTax(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TAX)));
+		ticketInfo.setDepartureCharge(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.CHARGES)));
+		ticketInfo.setDepartureTotal(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TOTAL)));
+		ticketInfo.setDepartureTime(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TIME));
+		ticketInfo.setReturnFare(
+				getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.FARE)) * (ticketInfo.getNumberOfAdults()
+						+ ticketInfo.getNumberOfChildren() + ticketInfo.getNumberOfInfants()));
+		ticketInfo.setReturnTax(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TAX)));
+		ticketInfo.setReturnCharge(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.CHARGES)));
+		ticketInfo.setReturnTotal(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TOTAL)));
+		ticketInfo.setReturnTime(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TIME));
+		ticketInfo.setGrandTotal(ticketInfo.getDepartureTotal() + ticketInfo.getReturnTotal());
 		return ticketInfo;
 	}
 
+	public String getSelectedTicketInfo(Trips ways, TicketDetails info) {
+		String locator = null;
+		if (ways.getValue().equals("Departure")) {
+			locator = optDerparturPrice.getLocator().toString().substring(10);
+		} else {
+			locator = optReturnPrice.getLocator().toString().substring(10);
+		}
+		String _xpath = String.format(locator.concat("/input[@id='%s']"), info.getValue());
+		return new Element(FindBy.xpath, _xpath).getAttribute("value");
+	}
+
+	enum Trips {
+		DEPARTURE("Departure"), RETURN("Return");
+		private String trip;
+
+		Trips(String trip) {
+			this.trip = trip;
+		}
+
+		public String getValue() {
+			return this.trip;
+		}
+	}
+
+	enum TicketDetails {
+		FARE("fare"), TAX("fare_taxes"), TIME("depTime"), CHARGES("charges"), TOTAL("total_complete_charges");
+
+		private String details;
+
+		TicketDetails(String details) {
+			this.details = details;
+		}
+
+		public String getValue() {
+			return this.details;
+		}
+	}
+
+	public String getPageTitle() {
+		lblPageTitle.waitForDisplayed(30);
+		return DriverUtils.getTitle();
+	}
+	
+	public boolean isBookingInfoCorrect(BookingInfo booking) {
+		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "+ booking.getOriginValue() + "\n");
+		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "+ booking.getDestinationValue() + " \n");
+		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "+ booking.getDepartDate() + " \n");
+		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "+ booking.getDestinationValue() + " \n");
+		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "+ booking.getOriginValue() + " \n");
+		System.out.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs "+ booking.getReturnDate() + " \n");
+		System.out.print("getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs "+ booking.getNumberOfAdults() + " \n");
+		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "+ booking.getNumberOfChildren() + " \n");
+		System.out.print("getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs "+ booking.getNumberOfInfants() + " \n");
+		
+		return getDepartureFromInfo().equals(booking.getOriginValue())
+				&& getDepartureToInfo().equals(booking.getDestinationValue())
+				&& getDepartureDateInfoInSummary().contains(booking.getDepartDate())
+				&& getReturnFromInfo().equals(booking.getDestinationValue())
+				&& getReturnToInfo().equals(booking.getOriginValue())
+				&& getReturnDateInfoInSummary().contains(booking.getReturnDate())
+				&& getNumberOfAdultsInfo() == booking.getNumberOfAdults()
+				&& getNumberOfChildrenInfo() == booking.getNumberOfChildren()
+				&& getNumberOfInfantsInfo() == booking.getNumberOfInfants();
+	}
 }

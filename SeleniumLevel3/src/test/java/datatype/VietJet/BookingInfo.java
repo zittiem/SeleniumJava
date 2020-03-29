@@ -4,18 +4,33 @@ import java.util.Date;
 import utils.helper.DateTimeHelper;
 
 public class BookingInfo {
-
 	private String flightOption = "Return";
-	private String originKey = null;
-	private String originValue = null;
-	private String departDate = DateTimeHelper.getDateString(new Date(), "dd/MM/yyyy");
-	private String destinationKey = null;
-	private String destinationValue = null;
+  private String originKey = null;
+  private String originValue = null;
+	private String flightClass = null;
+	private String departureFrom = null;
+	private String departureTo = null;
+	private String departureDate = DateTimeHelper.getDateString(new Date(), "dd/MM/yyyy");
+  private String destinationKey = null;
+  private String destinationValue = null;
+	private String departureTime = null;
+	private double departureFare = 0;
+	private double departureCharge = 0;
+	private double departureTax = 0;
+	private double departureTotal = 0;
+	private String returnFrom = departureTo;
+	private String returnTo = departureFrom;
 	private String returnDate = DateTimeHelper.getDateString(DateTimeHelper.plusDays(1), "dd/MM/yyyy");
+	private String returnTime = null;
+	private double returnFare = 0;
+	private double returnCharge = 0;
+	private double returnTax = 0;
+	private double returnTotal = 0;
+	private double grandTotal = 0;
 	private String currency = "VND";
-	private int numberOfAdults = 0;
 	private boolean lowestFare = false;
 	private String promoCode = null;
+	private int numberOfAdults = 1;
 	private int numberOfChildren = 0;
 	private int numberOfInfants = 0;
 
@@ -26,45 +41,125 @@ public class BookingInfo {
 	public void setFlightOption(String flightOption) {
 		this.flightOption = flightOption;
 	}
-
-	public String getOriginKey() {
-		return originKey;
+  
+  public String getOriginKey() {
+    return originKey;
+  }
+  
+  public void setOriginKey(String originKey) {
+    this.originKey = originKey;
+  }
+  
+  public String getOriginValue() {
+    return originValue;
+  }
+  
+  public void setOriginValue(String originValue) {
+    this.originValue = originValue;
+  }
+  
+  public String getDestinationKey() {
+    return destinationKey;
+  }
+  
+  public void setDestinationKey(String destinationKey) {
+    this.destinationKey = destinationKey;
+  }
+	
+  public String getDestinationValue() {
+    return destinationValue;
+  }
+  
+  public void setDestinationValue(String destinationValue) {
+    this.destinationValue = destinationValue;
+  }
+  
+  public String getFlightClass() {
+		return flightClass;
+	}
+  
+	public void setFlightClass(String flightClass) {
+		this.flightClass = flightClass;
 	}
 
-	public void setOriginKey(String originKey) {
-		this.originKey = originKey;
+	public String getDepartureFrom() {
+		return departureFrom;
 	}
 
-	public String getOriginValue() {
-		return originValue;
+	public void setDepartureFrom(String departureFrom) {
+		this.departureFrom = departureFrom;
 	}
 
-	public void setOriginValue(String originValue) {
-		this.originValue = originValue;
+	public String getDepartureTo() {
+		return departureTo;
 	}
 
-	public String getDepartDate() {
-		return departDate;
+	public void setDepartureTo(String departureTo) {
+		this.departureTo = departureTo;
 	}
 
-	public void setDepartDate(String departDate) {
-		this.departDate = departDate;
+	public String getDepartureDate() {
+		return departureDate;
 	}
 
-	public String getDestinationKey() {
-		return destinationKey;
+	public void setDepartureDate(String departureDate) {
+		this.departureDate = departureDate;
 	}
 
-	public void setDestinationKey(String destinationKey) {
-		this.destinationKey = destinationKey;
+	public String getDepartureTime() {
+		return departureTime;
 	}
 
-	public String getDestinationValue() {
-		return destinationValue;
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
 	}
 
-	public void setDestinationValue(String destinationValue) {
-		this.destinationValue = destinationValue;
+	public double getDepartureFare() {
+		return departureFare;
+	}
+
+	public void setDepartureFare(double departureFare) {
+		this.departureFare = departureFare;
+	}
+
+	public double getDepartureCharge() {
+		return departureCharge;
+	}
+
+	public void setDepartureCharge(double departureCharge) {
+		this.departureCharge = departureCharge;
+	}
+
+	public double getDepartureTax() {
+		return departureTax;
+	}
+
+	public void setDepartureTax(double departureTax) {
+		this.departureTax = departureTax;
+	}
+
+	public double getDepartureTotal() {
+		return departureTotal;
+	}
+
+	public void setDepartureTotal(double departureTotal) {
+		this.departureTotal = departureTotal;
+	}
+
+	public String getReturnFrom() {
+		return returnFrom;
+	}
+
+	public void setReturnFrom(String returnFrom) {
+		this.returnFrom = returnFrom;
+	}
+
+	public String getReturnTo() {
+		return returnTo;
+	}
+
+	public void setReturnTo(String returnTo) {
+		this.returnTo = returnTo;
 	}
 
 	public String getReturnDate() {
@@ -75,20 +170,60 @@ public class BookingInfo {
 		this.returnDate = returnDate;
 	}
 
+	public String getReturnTime() {
+		return returnTime;
+	}
+
+	public void setReturnTime(String returnTime) {
+		this.returnTime = returnTime;
+	}
+
+	public double getReturnFare() {
+		return returnFare;
+	}
+
+	public void setReturnFare(double returnFare) {
+		this.returnFare = returnFare;
+	}
+
+	public double getReturnCharge() {
+		return returnCharge;
+	}
+
+	public void setReturnCharge(double returnCharge) {
+		this.returnCharge = returnCharge;
+	}
+
+	public double getReturnTax() {
+		return returnTax;
+	}
+
+	public void setReturnTax(double returnTax) {
+		this.returnTax = returnTax;
+	}
+
+	public double getReturnTotal() {
+		return returnTotal;
+	}
+
+	public void setReturnTotal(double returnTotal) {
+		this.returnTotal = returnTotal;
+	}
+
+	public double getGrandTotal() {
+		return grandTotal;
+	}
+
+	public void setGrandTotal(double grandTotal) {
+		this.grandTotal = grandTotal;
+	}
+
 	public String getCurrency() {
 		return currency;
 	}
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
-	}
-
-	public int getNumberOfAdults() {
-		return numberOfAdults;
-	}
-
-	public void setNumberOfAdults(int numberOfAdults) {
-		this.numberOfAdults = numberOfAdults;
 	}
 
 	public boolean isLowestFare() {
@@ -107,12 +242,20 @@ public class BookingInfo {
 		this.promoCode = promoCode;
 	}
 
+	public int getNumberOfAdults() {
+		return numberOfAdults;
+	}
+
+	public void setNumberOfAdults(int numberOfAdults) {
+		this.numberOfAdults = numberOfAdults;
+	}
+
 	public int getNumberOfChildren() {
 		return numberOfChildren;
 	}
 
-	public void setNumberOfChilden(int numberOfChilden) {
-		this.numberOfChildren = numberOfChilden;
+	public void setNumberOfChildren(int numberOfChildren) {
+		this.numberOfChildren = numberOfChildren;
 	}
 
 	public int getNumberOfInfants() {
@@ -122,8 +265,8 @@ public class BookingInfo {
 	public void setNumberOfInfants(int numberOfInfants) {
 		this.numberOfInfants = numberOfInfants;
 	}
-	
-	public void setDepartDate(Date depDate) {
+  
+  public void setDepartDate(Date depDate) {
 		this.departDate = DateTimeHelper.getDateString(depDate, "dd/MM/yyyy");
 	}
 	
@@ -131,28 +274,52 @@ public class BookingInfo {
 		this.returnDate = DateTimeHelper.getDateString(retDate, "dd/MM/yyyy");
 	}
 
-	public void showInfo() {
-		System.out.println("===================Flight Information===================" + "\nFlight Option: "
-				+ this.flightOption + "\nOrigin: " + this.originValue + "\nDepart Date: " + this.departDate
-				+ "\nDestination :" + this.destinationValue + "\nReturn Date: " + this.returnDate + "\nCurrency: "
-				+ this.currency + "\nNumber Of Adults: " + this.numberOfAdults + "\nSelect lowest fare: "
-				+ this.lowestFare + "\nPromo Code: " + this.promoCode + "\nNumber of Childrens: " + this.numberOfChildren
-				+ "\nNumber of Infants: " + this.numberOfInfants
-				+ "\n=========================================================");
-	}
-
+	// Update all the values if need to calculate after providing data.
 	public BookingInfo compileData() {
-		if (this.departDate.contains("Days")) {
-			setDepartDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departDate),"dd/MM/yyyy"));
-		}
-		if (this.returnDate.contains("Days")) {
-			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate),"dd/MM/yyyy"));
-		}
+		if (this.departureDate.contains(":"))
+			setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departureDate), "dd/MM/yyyy"));
+		if (this.returnDate.contains(":"))
+			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate), "dd/MM/yyyy"));
+		setReturnFrom(getDepartureTo());
+		setReturnTo(getDepartureFrom());
 		return this;
 	}
 
+	@Override
+	public String toString() {
+		return "New_BookingInfo [flightOption=" + flightOption + ", flightClass=" + flightClass + ", departureFrom="
+				+ departureFrom + ", departureTo=" + departureTo + ", departureDate=" + departureDate
+				+ ", departureTime=" + departureTime + ", departureFare=" + departureFare + ", departureCharge="
+				+ departureCharge + ", departureTax=" + departureTax + ", departureTotal=" + departureTotal
+				+ ", returnFrom=" + returnFrom + ", returnTo=" + returnTo + ", returnDate=" + returnDate
+				+ ", returnTime=" + returnTime + ", returnFare=" + returnFare + ", returnCharge=" + returnCharge
+				+ ", returnTax=" + returnTax + ", returnTotal=" + returnTotal + ", grandTotal=" + grandTotal
+				+ ", numberOfAdults=" + numberOfAdults + ", numberOfChildren=" + numberOfChildren + ", numberOfInfants="
+				+ numberOfInfants + "]";
+	}
+
+	public enum FlightClass {
+		ECO("Eco", "Eco"), PROMO("Promo", "Promo"), SKYBOSS("", "Skyboss"), NONE("", "");
+
+		private String key;
+		private String value;
+
+		FlightClass(String key, String value) {
+			this.key = key;
+			this.value = value;
+		}
+
+		public String getValue() {
+			return this.value;
+		}
+
+		public String getKey() {
+			return this.key;
+		}
+	}
+
 	public enum FlightOption {
-		ONEWAY("One Way"), RETURN("Return");
+		ONEWAY("One Way"), RETURN("Return"), NONE("");
 		private String option;
 
 		FlightOption(String option) {
@@ -177,7 +344,7 @@ public class BookingInfo {
 		DEL("DEL", "New Delhi"), DPS("DPS", "Ngurah Rai - Bali"), KIX("KIX", "Osaka - Terminal 1"),
 		PNH("PNH", "Phnom Penh"), ICN("ICN", "Seoul"), REP("REP", "Siem Reap"), SIN("SIN", "Singapore - Terminal 4"),
 		RMQ("RMQ", "Taichung"), TNN("TNN", "Tainan"), TPE("TPE", "Taipei - Terminal 1"), NRT("NRT", "Tokyo Narita"),
-		RGN("RGN", "Yangon");
+		RGN("RGN", "Yangon"), NONE("", "");
 
 		private String key;
 		private String value;
@@ -210,6 +377,5 @@ public class BookingInfo {
 			}
 			return null;
 		}
-
 	}
 }

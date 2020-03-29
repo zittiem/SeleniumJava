@@ -1,18 +1,18 @@
 package tests.VietJet;
 
-import org.testng.annotations.Test;
+import java.util.Date;
 
+import org.testng.annotations.Test;
 import datatype.VietJet.BookingInfo;
 import datatype.VietJet.LanguageType;
-import datatype.VietJet.TicketInfo;
-import datatype.VietJet.TicketInfo.FlightClass;
 import pages.VietJet.HomePage;
 import pages.VietJet.PassengerInformationPage;
 import pages.VietJet.SelectTravelOptionsPage;
 import tests.TestBase;
 import utils.assertion.SoftAssertion;
-import utils.constants.Constants;
+import utils.common.Constants;
 import utils.helper.DataHelper;
+import utils.helper.DateTimeHelper;
 import utils.helper.Logger;
 
 public class TestCases extends TestBase {
@@ -24,6 +24,7 @@ public class TestCases extends TestBase {
 		SoftAssertion softAssert = new SoftAssertion();
 		HomePage homePage = new HomePage();
 		BookingInfo booking = dataHelper.mapDataToObject(BookingInfo.class).compileData();
+		System.out.println(booking.toString());
 		Logger.info("1. Navigate to 'https://www.vietjetair.com/Sites/Web/en-US/Home'.");
 		launchApp("VietJet", LanguageType.US);
 		Logger.info("2. Search the ticket with the following information");
@@ -38,23 +39,29 @@ public class TestCases extends TestBase {
 		Logger.verify("The departure and arrival places are correct.");
 		Logger.verify("Number of passenger is correct");
 		BookingInfo actBooking = traveloptionPage.getCurrentBookingInfo();
-		actBooking.showInfo();
 		softAssert.assertObjectEquals(actBooking, booking, "Booking info does not display properly.");
 		Logger.info("3. Choose the cheapest tickets and click 'Continue' button");
-		traveloptionPage.selectCheapestTicket(FlightClass.PROMO);
-		TicketInfo ticket = traveloptionPage.getTicketDetails();
+		traveloptionPage.selectCheapestTickets();
+		BookingInfo expTicketDetails = traveloptionPage.getTicketDetails();
 		traveloptionPage.submitPage();
 		PassengerInformationPage passengerInfoPage = new PassengerInformationPage();
 		Logger.verify("Passenger Information page is displayed");
 		softAssert.assertTrue(passengerInfoPage.isDisplayed(), "Passenger Information Page display.");
 		Logger.verify("Tickets information is correct");
-		TicketInfo actTicket = passengerInfoPage.getCurrentTicketInfo();
-		softAssert.assertObjectEquals(actTicket, ticket, "Tickets information is not correct");
+		BookingInfo actTicketDetails = passengerInfoPage.getCurrentTicketInfo();
+		softAssert.assertObjectEquals(actTicketDetails, expTicketDetails, "Tickets information is not correct");
 		softAssert.assertAll();
 	}
 
 	@Test(description = "TC_VJ_003, Verify that user can search and choose cheapest tickets on next 3 months successfully.")
 	public void TC03() {
-	}
+		String _dateTime = "31/03/2020 Tue 07:00";
+		String _dateTime2 = "31/03/2020 Tue 07:20";
+		System.out.println(_dateTime);
+		Date dateTime = DateTimeHelper.getDate(_dateTime, "dd/MM/yyyy EEE HH:mm");
+		Date dateTime2 = DateTimeHelper.getDate(_dateTime2, "dd/MM/yyyy EEE HH:mm");
+		System.out.println(dateTime.after(dateTime2));
+		System.out.println(dateTime2.after(dateTime));
 
+	}
 }

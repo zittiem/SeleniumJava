@@ -1,10 +1,11 @@
 {
-	"any.chrome": {
+	"BookingInfo": {
 		"flightOption": "Return",
 		"departureFrom": "SGN",
 		"departureTo": "HAN",
-		"departureDate": "Days:+3",
-		"returnDate": "Days:+3",
+		"departureDate": "Days:+1",
+		"returnDate": "Days:+4",
+		"currency": "VND",
 		"numberOfAdults": 2
 	}
 }

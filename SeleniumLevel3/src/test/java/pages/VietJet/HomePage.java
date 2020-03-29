@@ -1,7 +1,7 @@
 package pages.VietJet;
 
 import datatype.VietJet.BookingInfo;
-import datatype.VietJet.LanguageType;
+import datatype.VietJet.DataManager;
 import element.base.web.Element;
 import element.wrapper.web.CheckBox;
 import element.wrapper.web.DropDown;
@@ -11,7 +11,7 @@ import helper.LocatorHelper;
 import utils.constants.Constants;
 
 public class HomePage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
 	// Elements
 
 	protected DropDown cbxLanguage = new DropDown(locator.getLocator("cbxLanguage"));
@@ -48,8 +48,9 @@ public class HomePage {
 		} else if (currentYear > year) {
 			vector = "Prev";
 		}
-		while (currentYear != year) {
+		while (Math.abs(currentYear - year) > 0) {
 			lblCurrentYear.generateDynamic(vector).click();
+			lblCurrentYear.waitForAttributeChanged("innerText", String.valueOf(currentYear), Constants.SHORT_TIME);
 			currentYear = Integer.parseInt(lblCurrentYear.getAttribute("innerText"));
 		}
 
@@ -131,22 +132,22 @@ public class HomePage {
 		selectNumberOfPassenger("Infants", number);
 	}
 
-	public void enterSearchData(BookingInfo flight) {
-		selectFlightOption(flight.getFlightOption());
-		selectOrigin(flight.getOriginKey());
-		selectDepartDate(flight.getDepartDate());
-		selectDestination(flight.getDestinationKey());
-		selectReturnDate(flight.getReturnDate());
-		selectCurrency(flight.getCurrency());
-		selectNumberOfAdults(flight.getNumberOfAdults());
-		chxInfare.setState(flight.isLowestFare());
-		txtPromoCode.enter(flight.getPromoCode());
-		selectNumberOfChildrens(flight.getNumberOfChildren());
-		selectNumberOfInfans(flight.getNumberOfInfants());
+	public void enterSearchData(BookingInfo bookingInfo) {
+		selectFlightOption(bookingInfo.getFlightOption());
+		selectOrigin(bookingInfo.getDepartureFrom());
+		selectDepartDate(bookingInfo.getDepartureDate());
+		selectDestination(bookingInfo.getReturnFrom());
+		selectReturnDate(bookingInfo.getReturnDate());
+		selectCurrency(bookingInfo.getCurrency());
+		chxInfare.setState(bookingInfo.isLowestFare());
+		txtPromoCode.enter(bookingInfo.getPromoCode());
+		selectNumberOfAdults(bookingInfo.getNumberOfAdults());
+		selectNumberOfChildrens(bookingInfo.getNumberOfChildren());
+		selectNumberOfInfans(bookingInfo.getNumberOfInfants());
 	}
 
-	public void searchFlight(BookingInfo flight) {
-		enterSearchData(flight);
+	public void searchFlight(BookingInfo bookingInfo) {
+		enterSearchData(bookingInfo);
 		btnSearch.click();
 	}
 
@@ -156,8 +157,8 @@ public class HomePage {
 	}
 
 	// Assertion
-	public boolean isLanguage(LanguageType language) {
-		return cbxLanguage.getSelectedOption().equals(language.getText());
+	public boolean isLanguage(String language) {
+		return cbxLanguage.getSelectedOption().equals(language);
 	}
 	
 	public String getSelectedLanguage() {

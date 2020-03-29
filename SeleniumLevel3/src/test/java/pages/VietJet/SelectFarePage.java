@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import datatype.VietJet.BookingInfo;
+import datatype.VietJet.DataManager;
 import datatype.VietJet.FareItem;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
@@ -13,7 +14,7 @@ import helper.LocatorHelper;
 import utils.constants.Constants;
 
 public class SelectFarePage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
 
 	//Element
 	protected Element eleDepFareLow = new Element(locator.getLocator("eleDepFareLow"));
@@ -219,7 +220,7 @@ public class SelectFarePage {
 		eleCheapestRetFare.generateDynamic(retFareItem.getID()).click();
 		eleContinueBtn.click();
 		
-		booking.setDepartDate(depFareItem.getDate());
+		booking.setDepartureDate(depFareItem.getDate());
 		booking.setReturnDate(retFareItem.getDate());
 		
 		return booking;

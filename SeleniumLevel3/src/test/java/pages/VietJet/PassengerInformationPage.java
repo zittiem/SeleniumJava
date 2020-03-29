@@ -1,6 +1,7 @@
 package pages.VietJet;
 
 import datatype.VietJet.BookingInfo;
+import datatype.VietJet.DataManager;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
@@ -8,7 +9,8 @@ import utils.constants.Constants;
 import utils.helper.DateTimeHelper;
 
 public class PassengerInformationPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
+	
 	// Element
 	protected Element formDetail = new Element(locator.getLocator("formDetail"));
 	protected Element lblDepartureFrom = new Element(locator.getLocator("lblDepartureFrom"));

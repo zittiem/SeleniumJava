@@ -4,10 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import datatype.VietJet.BookingInfo;
-import datatype.VietJet.BookingInfo.LocationOption;
-import datatype.VietJet.BookingInfo.FlightClass;
+import datatype.VietJet.DataManager;
+import datatype.VietJet.Enums.FlightClass;
+import datatype.VietJet.Enums.LocationOption;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
+import element.setting.ElementStatus;
 import element.setting.FindBy;
 import element.wrapper.web.RadioButton;
 import helper.LocatorHelper;
@@ -15,7 +17,8 @@ import utils.constants.Constants;
 import utils.helper.DateTimeHelper;
 
 public class SelectTravelOptionsPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
+	
 	// Element
 	protected Element formTravelOption = new Element(locator.getLocator("formTravelOption"));
 	protected Element lblDisplayCurrency = new Element(locator.getLocator("lblDisplayCurrency"));
@@ -49,7 +52,8 @@ public class SelectTravelOptionsPage {
 	// Method
 
 	public void waitForPageLoad() {
-		this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
+		btnContinue.waitForCondition(ElementStatus.DISPLAYED, Constants.LONG_TIME, false);
+		//this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
 	}
 
 	public boolean isDisplayed() {
@@ -365,7 +369,7 @@ public class SelectTravelOptionsPage {
 	public boolean isBookingInfoCorrect(BookingInfo booking) {
 		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "+ booking.getOriginValue() + "\n");
 		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "+ booking.getDestinationValue() + " \n");
-		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "+ booking.getDepartDate() + " \n");
+		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "+ booking.getDepartureDate() + " \n");
 		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "+ booking.getDestinationValue() + " \n");
 		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "+ booking.getOriginValue() + " \n");
 		System.out.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs "+ booking.getReturnDate() + " \n");
@@ -375,7 +379,7 @@ public class SelectTravelOptionsPage {
 		
 		return getDepartureFromInfo().equals(booking.getOriginValue())
 				&& getDepartureToInfo().equals(booking.getDestinationValue())
-				&& getDepartureDateInfoInSummary().contains(booking.getDepartDate())
+				&& getDepartureDateInfoInSummary().contains(booking.getDepartureDate())
 				&& getReturnFromInfo().equals(booking.getDestinationValue())
 				&& getReturnToInfo().equals(booking.getOriginValue())
 				&& getReturnDateInfoInSummary().contains(booking.getReturnDate())

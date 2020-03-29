@@ -1,5 +1,7 @@
 package datatype.VietJet;
 
+import helper.JsonHelper;
+
 public class TicketInfo {
 
 	private String departureFrom = null;
@@ -26,7 +28,7 @@ public class TicketInfo {
 	public TicketInfo setBookingInfo(BookingInfo bI) {
 		this.departureFrom = bI.getOriginValue();
 		this.departureTo = bI.getDestinationValue();
-		this.departureDate = bI.getDepartDate();
+		this.departureDate = bI.getDepartureDate();
 		this.returnFrom = bI.getDestinationValue();
 		this.returnTo = bI.getOriginValue();
 		this.returnDate = bI.getReturnDate();
@@ -196,36 +198,8 @@ public class TicketInfo {
 		this.numberOfInfants = numberOfInfants;
 	}
 
-	
-	
-	
-	
-	public void showInfo() {
-		System.out.println("===================Ticket Information===================" + "\n- DepartureFrom: "
-				+ this.departureFrom + "\n- DepartureTo: " + this.departureTo + "\n- DepartureDate: "
-				+ this.departureDate + "\n- DepartureTime: " + this.departureTime + "\n- DepartureFare: "
-				+ this.departureFare + "\n- DepartureCharge: " + this.departureCharge + "\n- DepartureTax: "
-				+ this.departureTax + "\n- DepartureTotal: " + this.departureTotal + "\n- ReturnFrom: "
-				+ this.returnFrom + "\n- ReturnTo: " + this.returnTo + "\n- ReturnDate: " + this.returnDate
-				+ "\n- ReturnTime: " + this.returnTime + "\n- ReturnFare: " + this.returnFare + "\n- ReturnCharge: "
-				+ this.returnCharge + "\n- ReturnTax: " + this.returnTax + "\n- ReturnTotal: " + this.returnTotal
-				+ "\n- GrandTotal: " + this.grandTotal + "\n- NumberOfAdults: " + this.numberOfAdults
-				+ "\n- NumberOfChildren: " + this.numberOfChildren + "\n- NumberOfInfants: " + this.numberOfInfants
-				+ "\n=========================================================");
+	@Override
+	public String toString() {
+		return String.format("<pre>=================== Ticket Information ===================\n%s</pre>", JsonHelper.convertObjectToPrettyJsonString(this));
 	}
-
-	public enum FlightClass {
-		ECO("Eco"), PROMO("Promo"), SKYBOSS("Skyboss");
-
-		private String flightClass;
-
-		FlightClass(String flightClass) {
-			this.flightClass = flightClass;
-		}
-
-		public String getValue() {
-			return this.flightClass;
-		}
-	}
-
 }

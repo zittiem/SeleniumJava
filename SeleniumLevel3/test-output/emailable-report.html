@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+<title>TestNG Report</title>
+<style type="text/css">table {margin-bottom:10px;border-collapse:collapse;empty-cells:show}th,td {border:1px solid #009;padding:.25em .5em}th {vertical-align:bottom}td {vertical-align:top}table a {font-weight:bold}.stripe td {background-color: #E6EBF9}.num {text-align:right}.passedodd td {background-color: #3F3}.passedeven td {background-color: #0A0}.skippedodd td {background-color: #DDD}.skippedeven td {background-color: #CCC}.failedodd td,.attn {background-color: #F33}.failedeven td,.stripe .attn {background-color: #D00}.stacktrace {white-space:pre;font-family:monospace}.totop {font-size:85%;text-align:center;border-bottom:2px solid #000}.invisible {display:none}</style>
+</head>
+<body>
+<table>
+<tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Retried</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
+<tr><th colspan="7">Suite</th></tr>
+<tr><td><a href="#t0">Run Chrome</a></td><td class="num">0</td><td class="num">0</td><td class="num">0</td><td class="num attn">1</td><td class="num">690,480</td><td></td><td></td></tr>
+</table>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Run Chrome &#8212; failed</th></tr><tr class="failedeven"><td rowspan="1">tests.VietJet.TS_VietJet_ThanhHoang</td><td><a href="#m0">TC02</a></td><td rowspan="1">1585276655724</td><td rowspan="1">683608</td></tr></tbody>
+</table>
+<h2>Run Chrome</h2><h3 id="m0">tests.VietJet.TS_VietJet_ThanhHoang#TC02</h3><table class="result"><tr><th>Messages</th></tr><tr><td><div class="messages"><b>INFO: </b>1. Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home.<br/><b style="color: blue;word-break:break-word;"><i style="color: #00af00">VERIFY POINT: </i>The home page is displayed in Vietnamese</b><br/><b>INFO: </b>PASS<br/><b>INFO: </b>2. Search a ticket<br/><b style="color: blue;word-break:break-word;"><i style="color: #00af00">VERIFY POINT: </i>'Chọn giá vé' page is displayed.</b><br/><b>INFO: </b>PASS<br/><b style="color: blue;word-break:break-word;"><i style="color: #00af00">VERIFY POINT: </i>The flight information is correct</b><br/><b>INFO: </b>PASS<br/><b>INFO: </b>3. Choose the cheapest tickets in next 3 months and click 'Tiếp tục' button<br/><b style="color: blue;word-break:break-word;"><i style="color: #00af00">VERIFY POINT: </i>'Lựa chọn chuyến đi' page is displayed.</b></div></td></tr><tr><th>Exception</th></tr><tr><td><div class="stacktrace">org.openqa.selenium.TimeoutException: Timeout when wait for element &apos;By.xpath: //div[@style=&apos;float: left&apos;]/h1&apos; is &apos;displayed&apos; within 30 seconds
+Build info: version: &apos;3.11.0&apos;, revision: &apos;e59cfb3&apos;, time: &apos;2018-03-11T20:26:55.152Z&apos;
+System info: host: &apos;LGVN14410&apos;, ip: &apos;192.168.170.212&apos;, os.name: &apos;Windows 10&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;1.8.0_66&apos;
+Driver info: driver.version: unknown
+	at element.base.web.IWaiter.waitForCondition(IWaiter.java:95)
+	at element.base.web.IWaiter.waitForDisplayed(IWaiter.java:120)
+	at pages.VietJet.SelectTravelOptionsPage.getPageTitle(SelectTravelOptionsPage.java:191)
+	at tests.VietJet.TS_VietJet_ThanhHoang.TC02(TS_VietJet_ThanhHoang.java:52)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+... Removed 12 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+</body>
+</html>

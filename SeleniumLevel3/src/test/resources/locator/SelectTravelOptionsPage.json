@@ -25,5 +25,6 @@
 		"optDerparturPrice": "xpath=//tr[contains(@id,'gridTravelOptDep')]//td[contains(@id,'gridTravelOptDep') and contains(@data-familyid,'%s')]",
 		"optReturnPrice": "xpath=//tr[contains(@id,'gridTravelOptRet')]//td[contains(@id,'gridTravelOptRet') and contains(@data-familyid,'%s')]",
 		"btnContinue": "xpath=//a[contains(@href,'continue')]"
+		"lblPageTitle": "xpath=(//div[@id='contentwsb']/h1)[1]"
 	}
 }

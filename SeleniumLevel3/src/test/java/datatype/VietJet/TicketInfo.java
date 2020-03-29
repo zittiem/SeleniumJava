@@ -31,7 +31,7 @@ public class TicketInfo {
 		this.returnTo = bI.getOriginValue();
 		this.returnDate = bI.getReturnDate();
 		this.numberOfAdults = bI.getNumberOfAdults();
-		this.numberOfChildren = bI.getNumberOfChilden();
+		this.numberOfChildren = bI.getNumberOfChildren();
 		this.numberOfInfants = bI.getNumberOfInfants();
 		return this;
 	}

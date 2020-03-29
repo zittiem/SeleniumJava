@@ -4,7 +4,7 @@ import datatype.VietJet.BookingInfo;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
-import utils.common.Constants;
+import utils.constants.Constants;
 import utils.helper.DateTimeHelper;
 
 public class PassengerInformationPage {

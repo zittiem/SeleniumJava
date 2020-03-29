@@ -9,7 +9,7 @@ import org.testng.annotations.Parameters;
 import datatype.VietJet.LanguageType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
-import utils.common.Constants;
+import utils.constants.Constants;
 import utils.helper.Logger;
 
 public class TestBase {
@@ -26,7 +26,7 @@ public class TestBase {
 	@AfterMethod(alwaysRun = true)
 	public void cleanUp(ITestResult result) {
 		Logger.info("Post Condition: Clean up.");
-		DriverUtils.quit();
+		//DriverUtils.quit();
 	}
 	
 	public void launchApp(String appName, LanguageType lang) {

@@ -5,10 +5,14 @@ import utils.helper.DateTimeHelper;
 
 public class BookingInfo {
 	private String flightOption = "Return";
+  private String originKey = null;
+  private String originValue = null;
 	private String flightClass = null;
 	private String departureFrom = null;
 	private String departureTo = null;
 	private String departureDate = DateTimeHelper.getDateString(new Date(), "dd/MM/yyyy");
+  private String destinationKey = null;
+  private String destinationValue = null;
 	private String departureTime = null;
 	private double departureFare = 0;
 	private double departureCharge = 0;
@@ -37,11 +41,43 @@ public class BookingInfo {
 	public void setFlightOption(String flightOption) {
 		this.flightOption = flightOption;
 	}
-
-	public String getFlightClass() {
+  
+  public String getOriginKey() {
+    return originKey;
+  }
+  
+  public void setOriginKey(String originKey) {
+    this.originKey = originKey;
+  }
+  
+  public String getOriginValue() {
+    return originValue;
+  }
+  
+  public void setOriginValue(String originValue) {
+    this.originValue = originValue;
+  }
+  
+  public String getDestinationKey() {
+    return destinationKey;
+  }
+  
+  public void setDestinationKey(String destinationKey) {
+    this.destinationKey = destinationKey;
+  }
+	
+  public String getDestinationValue() {
+    return destinationValue;
+  }
+  
+  public void setDestinationValue(String destinationValue) {
+    this.destinationValue = destinationValue;
+  }
+  
+  public String getFlightClass() {
 		return flightClass;
 	}
-
+  
 	public void setFlightClass(String flightClass) {
 		this.flightClass = flightClass;
 	}
@@ -228,6 +264,14 @@ public class BookingInfo {
 
 	public void setNumberOfInfants(int numberOfInfants) {
 		this.numberOfInfants = numberOfInfants;
+	}
+  
+  public void setDepartDate(Date depDate) {
+		this.departDate = DateTimeHelper.getDateString(depDate, "dd/MM/yyyy");
+	}
+	
+	public void setReturnDate(Date retDate) {
+		this.returnDate = DateTimeHelper.getDateString(retDate, "dd/MM/yyyy");
 	}
 
 	// Update all the values if need to calculate after providing data.

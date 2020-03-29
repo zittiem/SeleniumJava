@@ -1,6 +1,6 @@
 package pages.VietJet;
 
-import datatype.VietJet.TicketInfo;
+import datatype.VietJet.BookingInfo;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
@@ -38,8 +38,8 @@ public class PassengerInformationPage {
 		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
-	public TicketInfo getCurrentTicketInfo() {
-		TicketInfo ticketInfo = new TicketInfo();
+	public BookingInfo getCurrentTicketInfo() {
+		BookingInfo ticketInfo = new BookingInfo();
 		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
 		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
 		ticketInfo.setDepartureDate(
@@ -54,6 +54,9 @@ public class PassengerInformationPage {
 		ticketInfo.setReturnDate(
 				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
 		ticketInfo.setReturnTime(lblReturnTime.getText());
+		System.out.println("DKM");
+		System.out.println(lblReturnTime.getText());
+		System.out.println("---------------");
 		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
 		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));
 		ticketInfo.setReturnTax(getCastValue(lblReturnTax.getText()));

@@ -17,8 +17,9 @@ import utils.constants.Constants;
 import utils.helper.DateTimeHelper;
 
 public class SelectTravelOptionsPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
-	
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName,
+			getClass().getSimpleName());
+
 	// Element
 	protected Element formTravelOption = new Element(locator.getLocator("formTravelOption"));
 	protected Element lblDisplayCurrency = new Element(locator.getLocator("lblDisplayCurrency"));
@@ -53,7 +54,7 @@ public class SelectTravelOptionsPage {
 
 	public void waitForPageLoad() {
 		btnContinue.waitForCondition(ElementStatus.DISPLAYED, Constants.LONG_TIME, false);
-		//this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
+		// this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
 	}
 
 	public boolean isDisplayed() {
@@ -101,15 +102,16 @@ public class SelectTravelOptionsPage {
 		boolean flagSaveData = true;
 		List<Element> eleRows = new Element(FindBy.xpath, eleRowXpath).getWrapperElements();
 		if (!(date + time).isEmpty()) {
-			Date expDateTime = DateTimeHelper.getDate(date + " " + time, "dd/MM/yyyy HH:mm");
+			Date expDateTime = DateTimeHelper.getDate(date + " " + time, DataManager.SHARED_DATA.get().date_format.concat(" HH:mm"));
 			for (int i = 1; i <= eleRows.size(); i++) {
 				String actualDate = DateTimeHelper.getDateString(
 						DateTimeHelper.getDate(new Element(FindBy.xpath,
 								eleRowXpath + "[" + i + "]" + "//table[not(@class)]//td" + "[1]").getText()),
-						"dd/MM/yyyy");
+						DataManager.SHARED_DATA.get().date_format);
 				String actualDepartTime = new Element(FindBy.xpath,
 						eleRowXpath + "[" + i + "]" + "//table[not(@class)]//td" + "[2]").getText().substring(0, 5);
-				Date actualDateTime = DateTimeHelper.getDate(actualDate + " " + actualDepartTime, "dd/MM/yyyy HH:mm");
+				Date actualDateTime = DateTimeHelper.getDate(actualDate + " " + actualDepartTime,
+						DataManager.SHARED_DATA.get().date_format.concat(" HH:mm"));
 				if (actualDateTime.after(expDateTime)) {
 					String actualPriceTableXpath = String.format(eleRowXpath + "[" + i + "]"
 							+ "//table[@class='FaresGrid']//td[contains(@id,'gridTravelOpt') and contains(@data-familyid,'%s')]",
@@ -152,7 +154,8 @@ public class SelectTravelOptionsPage {
 
 	private void findCheapestTickets(FlightClass flightClass) {
 		findCheapestTicket(Trips.DEPARTURE, flightClass);
-		findCheapestTicketAfterDateTime(Trips.RETURN, flightClass, getDepartureDateInfo("dd/MM/yyyy"),
+		findCheapestTicketAfterDateTime(Trips.RETURN, flightClass,
+				getDepartureDateInfo(DataManager.SHARED_DATA.get().date_format),
 				getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.ARR_TIME));
 	}
 
@@ -208,7 +211,7 @@ public class SelectTravelOptionsPage {
 	public String getDepartureDateInfo(String format) {
 		return DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()), format);
 	}
-	
+
 	public String getDepartureDateInfoInSummary() {
 		return lblDepartureDate.getText();
 	}
@@ -229,7 +232,7 @@ public class SelectTravelOptionsPage {
 	public String getReturnDateInfo(String format) {
 		return DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()), format);
 	}
-	
+
 	public String getReturnDateInfoInSummary() {
 		return lblReturnDate.getText();
 	}
@@ -261,12 +264,12 @@ public class SelectTravelOptionsPage {
 		Booking booking = new Booking();
 		booking.setDepartureFrom(LocationOption.getCode(lblDepartureFrom.getText().split(":")[1].trim()));
 		booking.setDepartureTo(LocationOption.getCode(lblDepartureTo.getText().split(":")[1].trim()));
-		booking.setDepartureDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), "dd/MM/yyyy"));
+		booking.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()),
+				DataManager.SHARED_DATA.get().date_format));
 		booking.setReturnFrom(LocationOption.getCode(lblReturnFrom.getText().split(":")[1].trim()));
 		booking.setReturnTo(LocationOption.getCode(lblReturnTo.getText().split(":")[1].trim()));
-		booking.setReturnDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
+		booking.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()),
+				DataManager.SHARED_DATA.get().date_format));
 		booking.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
 		booking.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
 		booking.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
@@ -278,12 +281,12 @@ public class SelectTravelOptionsPage {
 		Booking ticketDetails = new Booking();
 		ticketDetails.setDepartureFrom(getDepartureFromInfo());
 		ticketDetails.setDepartureTo(getDepartureToInfo());
-		ticketDetails.setDepartureDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()), "dd/MM/yyyy"));
+		ticketDetails.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()),
+				DataManager.SHARED_DATA.get().date_format));
 		ticketDetails.setReturnFrom(getReturnFromInfo());
 		ticketDetails.setReturnTo(getReturnToInfo());
-		ticketDetails
-				.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()), "dd/MM/yyyy"));
+		ticketDetails.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()),
+				DataManager.SHARED_DATA.get().date_format));
 		ticketDetails.setNumberOfAdults(getNumberOfAdultsInfo());
 		ticketDetails.setNumberOfChildren(getNumberOfChildrenInfo());
 		ticketDetails.setNumberOfInfants(getNumberOfInfantsInfo());
@@ -365,18 +368,27 @@ public class SelectTravelOptionsPage {
 		lblPageTitle.waitForDisplayed(30);
 		return DriverUtils.getTitle();
 	}
-	
+
 	public boolean isBookingInfoCorrect(Booking booking) {
-		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "+ LocationOption.getValue(booking.getDepartureFrom()) + "\n");
-		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "+ LocationOption.getValue(booking.getDepartureTo()) + " \n");
-		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "+ booking.getDepartureDate() + " \n");
-		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "+ LocationOption.getValue(booking.getReturnFrom()) + " \n");
-		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "+ LocationOption.getValue(booking.getReturnTo() + " \n"));
-		System.out.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs "+ booking.getReturnDate() + " \n");
-		System.out.print("getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs "+ booking.getNumberOfAdults() + " \n");
-		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "+ booking.getNumberOfChildren() + " \n");
-		System.out.print("getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs "+ booking.getNumberOfInfants() + " \n");
-		
+		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "
+				+ LocationOption.getValue(booking.getDepartureFrom()) + "\n");
+		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "
+				+ LocationOption.getValue(booking.getDepartureTo()) + " \n");
+		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "
+				+ booking.getDepartureDate() + " \n");
+		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "
+				+ LocationOption.getValue(booking.getReturnFrom()) + " \n");
+		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "
+				+ LocationOption.getValue(booking.getReturnTo() + " \n"));
+		System.out
+				.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs " + booking.getReturnDate() + " \n");
+		System.out.print(
+				"getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs " + booking.getNumberOfAdults() + " \n");
+		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "
+				+ booking.getNumberOfChildren() + " \n");
+		System.out.print(
+				"getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs " + booking.getNumberOfInfants() + " \n");
+
 		return getDepartureFromInfo().equals(LocationOption.getValue(booking.getDepartureFrom()))
 				&& getDepartureToInfo().equals(LocationOption.getValue(booking.getDepartureTo()))
 				&& getDepartureDateInfoInSummary().contains(booking.getDepartureDate())
@@ -386,6 +398,6 @@ public class SelectTravelOptionsPage {
 				&& getNumberOfAdultsInfo() == booking.getNumberOfAdults()
 				&& getNumberOfChildrenInfo() == booking.getNumberOfChildren()
 				&& getNumberOfInfantsInfo() == booking.getNumberOfInfants();
-		
+
 	}
 }

@@ -45,7 +45,7 @@ public class PassengerInformationPage {
 		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
 		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
 		ticketInfo.setDepartureDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), "dd/MM/yyyy"));
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), DataManager.SHARED_DATA.get().date_format));
 		ticketInfo.setDepartureTime(lblDepartureTime.getText());
 		ticketInfo.setDepartureFare(getCastValue(lblDepartureFare.getText()));
 		ticketInfo.setDepartureCharge(getCastValue(lblDepartureCharges.getText()));
@@ -54,11 +54,8 @@ public class PassengerInformationPage {
 		ticketInfo.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
 		ticketInfo.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
 		ticketInfo.setReturnDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), DataManager.SHARED_DATA.get().date_format));
 		ticketInfo.setReturnTime(lblReturnTime.getText());
-		System.out.println("DKM");
-		System.out.println(lblReturnTime.getText());
-		System.out.println("---------------");
 		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
 		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));
 		ticketInfo.setReturnTax(getCastValue(lblReturnTax.getText()));

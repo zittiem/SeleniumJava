@@ -9,7 +9,7 @@ public class Booking {
 	private String flightClass = null;
 	private String departureFrom = null;
 	private String departureTo = null;
-	private String departureDate = DateTimeHelper.getDateString(new Date(), "dd/MM/yyyy");
+	private String departureDate = DateTimeHelper.getDateString(new Date(), DataManager.SHARED_DATA.get().date_format);
 	private String departureTime = null;
 	private double departureFare = 0;
 	private double departureCharge = 0;
@@ -17,7 +17,7 @@ public class Booking {
 	private double departureTotal = 0;
 	private String returnFrom = departureTo;
 	private String returnTo = departureFrom;
-	private String returnDate = DateTimeHelper.getDateString(DateTimeHelper.plusDays(1), "dd/MM/yyyy");
+	private String returnDate = DateTimeHelper.getDateString(DateTimeHelper.plusDays(1), DataManager.SHARED_DATA.get().date_format);
 	private String returnTime = null;
 	private double returnFare = 0;
 	private double returnCharge = 0;
@@ -242,9 +242,9 @@ public class Booking {
 	// Update all the values if need to calculate after providing data.
 	public Booking compileData() {
 		if (this.departureDate.contains(":"))
-			setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departureDate), "dd/MM/yyyy"));
+			setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departureDate), DataManager.SHARED_DATA.get().date_format));
 		if (this.returnDate.contains(":"))
-			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate), "dd/MM/yyyy"));
+			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate), DataManager.SHARED_DATA.get().date_format));
 		setReturnFrom(getDepartureTo());
 		setReturnTo(getDepartureFrom());
 		return this;

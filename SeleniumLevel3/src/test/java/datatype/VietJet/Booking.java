@@ -140,7 +140,7 @@ public class Booking {
 	}
 
 	public void setReturnDate(Date returnDate) {
-		this.departureDate = DateTimeHelper.getDateString(returnDate, DataManager.SHARED_DATA.get().date_format);
+		this.returnDate = DateTimeHelper.getDateString(returnDate, DataManager.SHARED_DATA.get().date_format);
 	}
 
 	public String getReturnTime() {

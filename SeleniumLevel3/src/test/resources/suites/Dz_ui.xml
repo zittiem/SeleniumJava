@@ -10,11 +10,11 @@
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />
 		<parameter name="appName" value="VietJet" />
-		<parameter name="language" value="vi-VN" />
+		<parameter name="language" value="en-US" />
 		<classes>
 			<class name="tests.VietJet.TS_VietJet">
 				<methods>
-					<include name="TC02" />
+					<include name="TC01" />
 				</methods>
 			</class>
 		</classes>

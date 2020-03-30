@@ -2,7 +2,7 @@ package datatype.VietJet;
 
 import helper.JsonHelper;
 
-public class TicketInfo {
+public class Ticket {
 
 	private String departureFrom = null;
 	private String departureTo = null;
@@ -25,7 +25,7 @@ public class TicketInfo {
 	private int numberOfChildren = 0;
 	private int numberOfInfants = 0;
 
-	public TicketInfo setBookingInfo(BookingInfo bI) {
+	public Ticket setBookingInfo(Booking bI) {
 		this.departureFrom = bI.getOriginValue();
 		this.departureTo = bI.getDestinationValue();
 		this.departureDate = bI.getDepartureDate();

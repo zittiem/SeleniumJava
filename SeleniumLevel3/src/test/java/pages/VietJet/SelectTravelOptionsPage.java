@@ -3,7 +3,7 @@ package pages.VietJet;
 import java.util.Date;
 import java.util.List;
 
-import datatype.VietJet.BookingInfo;
+import datatype.VietJet.Booking;
 import datatype.VietJet.DataManager;
 import datatype.VietJet.Enums.FlightClass;
 import datatype.VietJet.Enums.LocationOption;
@@ -257,8 +257,8 @@ public class SelectTravelOptionsPage {
 		return lblDisplayCurrency.generateDynamic(currency).getAttribute("innerText").equals(currency);
 	}
 
-	public BookingInfo getCurrentBookingInfo() {
-		BookingInfo booking = new BookingInfo();
+	public Booking getCurrentBookingInfo() {
+		Booking booking = new Booking();
 		booking.setDepartureFrom(LocationOption.getCode(lblDepartureFrom.getText().split(":")[1].trim()));
 		booking.setDepartureTo(LocationOption.getCode(lblDepartureTo.getText().split(":")[1].trim()));
 		booking.setDepartureDate(
@@ -274,8 +274,8 @@ public class SelectTravelOptionsPage {
 	}
 
 	// Section Store data for next page verifying
-	public BookingInfo getTicketDetails() {
-		BookingInfo ticketDetails = new BookingInfo();
+	public Booking getTicketDetails() {
+		Booking ticketDetails = new Booking();
 		ticketDetails.setDepartureFrom(getDepartureFromInfo());
 		ticketDetails.setDepartureTo(getDepartureToInfo());
 		ticketDetails.setDepartureDate(
@@ -366,25 +366,26 @@ public class SelectTravelOptionsPage {
 		return DriverUtils.getTitle();
 	}
 	
-	public boolean isBookingInfoCorrect(BookingInfo booking) {
-		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "+ booking.getOriginValue() + "\n");
-		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "+ booking.getDestinationValue() + " \n");
+	public boolean isBookingInfoCorrect(Booking booking) {
+		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "+ LocationOption.getValue(booking.getDepartureFrom()) + "\n");
+		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "+ LocationOption.getValue(booking.getDepartureTo()) + " \n");
 		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "+ booking.getDepartureDate() + " \n");
-		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "+ booking.getDestinationValue() + " \n");
-		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "+ booking.getOriginValue() + " \n");
+		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "+ LocationOption.getValue(booking.getReturnFrom()) + " \n");
+		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "+ LocationOption.getValue(booking.getReturnTo() + " \n"));
 		System.out.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs "+ booking.getReturnDate() + " \n");
 		System.out.print("getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs "+ booking.getNumberOfAdults() + " \n");
 		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "+ booking.getNumberOfChildren() + " \n");
 		System.out.print("getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs "+ booking.getNumberOfInfants() + " \n");
 		
-		return getDepartureFromInfo().equals(booking.getOriginValue())
-				&& getDepartureToInfo().equals(booking.getDestinationValue())
+		return getDepartureFromInfo().equals(LocationOption.getValue(booking.getDepartureFrom()))
+				&& getDepartureToInfo().equals(LocationOption.getValue(booking.getDepartureTo()))
 				&& getDepartureDateInfoInSummary().contains(booking.getDepartureDate())
-				&& getReturnFromInfo().equals(booking.getDestinationValue())
-				&& getReturnToInfo().equals(booking.getOriginValue())
+				&& getReturnFromInfo().equals(LocationOption.getValue(booking.getReturnFrom()))
+				&& getReturnToInfo().equals(LocationOption.getValue(booking.getReturnTo()))
 				&& getReturnDateInfoInSummary().contains(booking.getReturnDate())
 				&& getNumberOfAdultsInfo() == booking.getNumberOfAdults()
 				&& getNumberOfChildrenInfo() == booking.getNumberOfChildren()
 				&& getNumberOfInfantsInfo() == booking.getNumberOfInfants();
+		
 	}
 }

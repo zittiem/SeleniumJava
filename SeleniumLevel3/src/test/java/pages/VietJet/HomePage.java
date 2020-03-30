@@ -1,6 +1,6 @@
 package pages.VietJet;
 
-import datatype.VietJet.BookingInfo;
+import datatype.VietJet.Booking;
 import datatype.VietJet.DataManager;
 import element.base.web.Element;
 import element.wrapper.web.CheckBox;
@@ -132,7 +132,7 @@ public class HomePage {
 		selectNumberOfPassenger("Infants", number);
 	}
 
-	public void enterSearchData(BookingInfo bookingInfo) {
+	public void enterSearchData(Booking bookingInfo) {
 		selectFlightOption(bookingInfo.getFlightOption());
 		selectOrigin(bookingInfo.getDepartureFrom());
 		selectDepartDate(bookingInfo.getDepartureDate());
@@ -146,12 +146,12 @@ public class HomePage {
 		selectNumberOfInfans(bookingInfo.getNumberOfInfants());
 	}
 
-	public void searchFlight(BookingInfo bookingInfo) {
+	public void searchFlight(Booking bookingInfo) {
 		enterSearchData(bookingInfo);
 		btnSearch.click();
 	}
 
-	public void searchLowestFareFlight(BookingInfo flight) {
+	public void searchLowestFareFlight(Booking flight) {
 		enterSearchData(flight);
 		btnSearch.click();
 	}
@@ -165,7 +165,7 @@ public class HomePage {
 		return cbxLanguage.getSelectedOption();
 	}
 	
-	public SelectFarePage searchCheapestFlights(BookingInfo booking) {
+	public SelectFarePage searchCheapestFlights(Booking booking) {
 		enterSearchData(booking);
 		btnSearch.click();
 		return new SelectFarePage();

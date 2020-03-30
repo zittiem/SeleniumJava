@@ -1,6 +1,6 @@
 package pages.VietJet;
 
-import datatype.VietJet.BookingInfo;
+import datatype.VietJet.Booking;
 import datatype.VietJet.DataManager;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
@@ -40,8 +40,8 @@ public class PassengerInformationPage {
 		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
-	public BookingInfo getCurrentTicketInfo() {
-		BookingInfo ticketInfo = new BookingInfo();
+	public Booking getCurrentTicketInfo() {
+		Booking ticketInfo = new Booking();
 		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
 		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
 		ticketInfo.setDepartureDate(

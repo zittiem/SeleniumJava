@@ -86,7 +86,7 @@ public class DateTimeHelper {
 
 	public static Date mapDate(String sDate) {
 		Date outDate = null;
-		if (!sDate.isBlank() && !sDate.equals("null")) {
+		if (!sDate.isEmpty() && !sDate.equals("null")) {
 			if (sDate.contains(":")) {
 				String _unit = sDate.split(":")[0];
 				long _number = Long.parseLong(sDate.split(":")[1]);

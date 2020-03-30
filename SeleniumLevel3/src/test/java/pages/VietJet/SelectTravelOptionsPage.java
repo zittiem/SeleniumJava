@@ -379,7 +379,7 @@ public class SelectTravelOptionsPage {
 		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "
 				+ LocationOption.getValue(booking.getReturnFrom()) + " \n");
 		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "
-				+ LocationOption.getValue(booking.getReturnTo() + " \n"));
+				+ LocationOption.getValue(booking.getReturnTo()) + " \n");
 		System.out
 				.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs " + booking.getReturnDate() + " \n");
 		System.out.print(

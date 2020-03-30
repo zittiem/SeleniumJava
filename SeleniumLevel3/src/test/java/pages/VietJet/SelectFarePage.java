@@ -110,12 +110,9 @@ public class SelectFarePage {
 			String selectedMonth = eleSelectedDepMonthLbl.getText();
 			System.out.print("selectedMonth:" + selectedMonth + " \n");
 			eleDepNextLnk.click();
+			eleSelectedDepMonthLbl.waitForTextChanged(selectedMonth, 10);
 			
-			String afterSelectedMonth = eleSelectedDepMonthLbl.getText();
-			System.out.print("afterSelectedMonth:" + afterSelectedMonth + " \n");
-			while(selectedMonth.equals(afterSelectedMonth)) {
-				afterSelectedMonth = eleSelectedDepMonthLbl.getText();
-			}
+			System.out.print("afterSelectedMonth:" + eleSelectedDepMonthLbl.getText() + " \n");
 		}
 		
 		System.out.print("finalCheapestFareDepID: " + finalCheapestFareID + "\n");
@@ -125,7 +122,9 @@ public class SelectFarePage {
 			for(int index=0; index < numberOfMonth; index++) {
 				Element eleCheapestFare = eleCheapestDepFare.generateDynamic(finalCheapestFareID);
 				if(!eleCheapestFare.isDisplayed()) {
+					String selectedMonth = eleSelectedDepMonthLbl.getText();
 					eleDepPrevLnk.click();
+					eleSelectedDepMonthLbl.waitForTextChanged(selectedMonth, 10);
 					System.out.print("eleDepPrevLnk.click(): " + index + " \n");
 				} else {
 					index = numberOfMonth;
@@ -198,7 +197,9 @@ public class SelectFarePage {
 			for(int index=0; index < numberOfMonth; index++) {
 				Element eleCheapestFare = eleCheapestRetFare.generateDynamic(finalCheapestFareID);
 				if(!eleCheapestFare.isDisplayed()) {
+					String selectedMonth = eleSelectedRetMonthLbl.getText();
 					eleRetPrevLnk.click();
+					eleSelectedRetMonthLbl.waitForTextChanged(selectedMonth, 10);
 				} else {
 					index = numberOfMonth;
 				}
@@ -221,8 +222,14 @@ public class SelectFarePage {
 		eleCheapestRetFare.generateDynamic(retFareItem.getID()).click();
 		eleContinueBtn.click();
 		
+		System.out.print("depFareItem.getDate(): " + depFareItem.getDate() + "\n");
+		System.out.print("retFareItem.getDate(): " + retFareItem.getDate() + "\n");
+		
 		booking.setDepartureDate(depFareItem.getDate());
 		booking.setReturnDate(retFareItem.getDate());
+		
+		System.out.print("bookingDepDate:" + booking.getDepartureDate() + "\n");
+		System.out.print("bookingRetDate: " + booking.getReturnDate() + "\n");
 		
 		return booking;
 	}

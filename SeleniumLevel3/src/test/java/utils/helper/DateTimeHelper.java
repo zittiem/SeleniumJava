@@ -7,8 +7,6 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 
-import utils.constants.Constants;
-
 public class DateTimeHelper {
 
 	public static String getNowTime(String format) {
@@ -83,12 +81,12 @@ public class DateTimeHelper {
 	}
 
 	public static Date getDate(String sDate) {
-		return getDate(sDate, Constants.DATETIME_FORMAT);
+		return getDate(sDate, "dd/MM/yyyy EEE");
 	}
 
-	public static Date generateDynamicDate(String sDate, String dateTimeFormat) {
+	public static Date mapDate(String sDate) {
 		Date outDate = null;
-		if (!sDate.isEmpty() && !sDate.equals("null")) {
+		if (!sDate.isBlank() && !sDate.equals("null")) {
 			if (sDate.contains(":")) {
 				String _unit = sDate.split(":")[0];
 				long _number = Long.parseLong(sDate.split(":")[1]);
@@ -100,27 +98,8 @@ public class DateTimeHelper {
 					outDate = plusYears(_number);
 				}
 			} else
-				outDate = getDate(sDate, dateTimeFormat);
+				outDate = getDate(sDate);
 		}
 		return outDate;
-	}
-	
-	public static String generateDynamicDateString(String sDate, String dateTimeFormat) {
-		Date outDate = null;
-		if (!sDate.isEmpty() && !sDate.equals("null")) {
-			if (sDate.contains(":")) {
-				String _unit = sDate.split(":")[0];
-				long _number = Long.parseLong(sDate.split(":")[1]);
-				if (_unit.equals("Days")) {
-					outDate = plusDays(_number);
-				} else if (_unit.equals("Months")) {
-					outDate = plusMonths(_number);
-				} else if (_unit.equals("Years")) {
-					outDate = plusYears(_number);
-				}
-				return getDateString(outDate, dateTimeFormat);
-			}
-		}
-		return sDate;
 	}
 }

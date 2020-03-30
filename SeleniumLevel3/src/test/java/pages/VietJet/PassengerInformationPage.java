@@ -56,9 +56,6 @@ public class PassengerInformationPage {
 		ticketInfo.setReturnDate(
 				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
 		ticketInfo.setReturnTime(lblReturnTime.getText());
-		System.out.println("DKM");
-		System.out.println(lblReturnTime.getText());
-		System.out.println("---------------");
 		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
 		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));
 		ticketInfo.setReturnTax(getCastValue(lblReturnTax.getText()));

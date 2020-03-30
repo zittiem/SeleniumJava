@@ -13,7 +13,7 @@ import utils.constants.Constants;
 import utils.helper.DataHelper;
 import utils.helper.Logger;
 
-public abstract class TestBase {
+public class TestBase {
 	protected String appName;
 	protected String language;
 	
@@ -35,7 +35,7 @@ public abstract class TestBase {
 		DriverUtils.quit();
 	}
 	
-	protected void prepareAppData() {
+	private void prepareAppData() {
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
 		SharedData shared = dataHelper.getDataObject(SharedData.class, this.language);
 		shared.appName = this.appName;

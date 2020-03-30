@@ -1,14 +1,16 @@
 package tests;
 
-
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
+import datatype.VietJet.DataManager;
+import datatype.VietJet.DataManager.SharedData;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import utils.constants.Constants;
+import utils.helper.DataHelper;
 import utils.helper.Logger;
 
 public abstract class TestBase {
@@ -24,6 +26,7 @@ public abstract class TestBase {
 		DriverManager.loadDriverProperty(Constants.DRIVER_SETTING_FILE, platform, driverConfig);
 		DriverManager.initDriver();
 		prepareAppData();
+		launchApp();
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -32,7 +35,16 @@ public abstract class TestBase {
 		DriverUtils.quit();
 	}
 	
-	protected abstract void prepareAppData();
+	protected void prepareAppData() {
+		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
+		SharedData shared = dataHelper.getDataObject(SharedData.class, this.language);
+		shared.appName = this.appName;
+		shared.language = this.language;
+		DataManager.SHARED_DATA.set(shared);
+	}
 	
-	protected abstract void launchApp();
+	protected void launchApp() {
+		DriverUtils.maximizeBrowser();
+		DriverUtils.navigate(DataManager.SHARED_DATA.get().url);
+	}
 }

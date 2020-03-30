@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="3" data-provider-thread-count="1"
+<suite name="Suite" thread-count="2" data-provider-thread-count="2"
 	parallel="methods">
 	<listeners>
 		<listener class-name="utils.config.TestListener" />
 	</listeners>
-
 	<test name="Run Chrome - en-US">
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />	
@@ -15,6 +14,19 @@
 			<class name="tests.VietJet.TS_VietJet">
 				<methods>
 					<include name="TC01" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+	<test name="Run Chrome - vi-VN">
+		<parameter name="driverConfig" value="chrome.local" />
+		<parameter name="platform" value="any" />	
+		<parameter name="appName" value="VietJet" />
+		<parameter name="language" value="vi-VN" />	
+		<classes>
+			<class name="tests.VietJet.TS_VietJet">
+				<methods>
+					<include name="TC02" />
 				</methods>
 			</class>
 		</classes>

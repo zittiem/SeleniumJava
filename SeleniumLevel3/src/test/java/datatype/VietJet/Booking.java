@@ -5,7 +5,7 @@ import java.util.Date;
 import helper.JsonHelper;
 import utils.helper.DateTimeHelper;
 
-public class BookingInfo {
+public class Booking {
 	private String flightOption = "Return";
 	private String originKey = null;
 	private String originValue = null;
@@ -278,7 +278,7 @@ public class BookingInfo {
 
 
 	// Update all the values if need to calculate after providing data.
-	public BookingInfo compileData() {
+	public Booking compileData() {
 		setDepartureDate(this.departureDate);
 		setReturnDate(this.returnDate);
 		this.returnFrom = this.departureTo;

@@ -5,9 +5,10 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
-import datatype.VietJet.BookingInfo;
+import datatype.VietJet.Booking;
 import datatype.VietJet.DataManager;
 import datatype.VietJet.FareItem;
+import datatype.VietJet.Enums.LocationOption;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
@@ -209,7 +210,7 @@ public class SelectFarePage {
 		return finalCheapestFareItem;
 	}
 	
-	public BookingInfo selectCheapestFareForReturnFightInNextMonths(int numberOfMonth, BookingInfo booking) throws ParseException {
+	public Booking selectCheapestFareForReturnFightInNextMonths(int numberOfMonth, Booking booking) throws ParseException {
 		FareItem depFareItem = getCheapestDepatureFareInNextMonths(numberOfMonth);
 		FareItem retFareItem = getCheapestReturnFareInNextMonths(depFareItem.getDate(),numberOfMonth);
 		
@@ -226,27 +227,27 @@ public class SelectFarePage {
 		return booking;
 	}
 	
-	public Boolean isFightInfoCorrect(BookingInfo actualBookingInfo) {
+	public Boolean isFightInfoCorrect(Booking actualBooking) {
 		
 		eleDepFromLbl.waitForDisplayed(30);
 		
-		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + actualBookingInfo.getOriginValue() + " \n");
-		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + actualBookingInfo.getDestinationValue() + " \n");
-		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + actualBookingInfo.getDestinationValue() + " \n");
-		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + actualBookingInfo.getOriginValue() + " \n");
-		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.generateDynamic(actualBookingInfo.getCurrency()).isDisplayed() + " \n");
-		System.out.print("eleNumberOfAdults: " + eleNumberOfAdults.getText() + " vs " + actualBookingInfo.getNumberOfAdults() + " \n");
-		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + actualBookingInfo.getNumberOfChildren() + " \n");
-		System.out.print("eleNumberOfInfants: " + eleNumberOfInfants.getText() + " vs " + actualBookingInfo.getNumberOfInfants() + " \n");
+		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getDepartureFrom()) + " \n");
+		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getDepartureTo()) + " \n");
+		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getReturnFrom()) + " \n");
+		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getReturnTo()) + " \n");
+		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.generateDynamic(actualBooking.getCurrency()).isDisplayed() + " \n");
+		System.out.print("eleNumberOfAdults: " + eleNumberOfAdults.getText() + " vs " + actualBooking.getNumberOfAdults() + " \n");
+		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + actualBooking.getNumberOfChildren() + " \n");
+		System.out.print("eleNumberOfInfants: " + eleNumberOfInfants.getText() + " vs " + actualBooking.getNumberOfInfants() + " \n");
 		
-		return eleDepFromLbl.getText().contains(actualBookingInfo.getOriginValue())
-				&& eleDepToLbl.getText().contains(actualBookingInfo.getDestinationValue())
-				&& eleRetFromLbl.getText().contains(actualBookingInfo.getDestinationValue())
-				&& eleRetToLbl.getText().contains(actualBookingInfo.getOriginValue())
-				&& eleDisplayCurrencyLbl.generateDynamic(actualBookingInfo.getCurrency()).isDisplayed()
-				&& eleNumberOfAdults.getText().contains(Integer.toString(actualBookingInfo.getNumberOfAdults()))
-				&& eleNumberOfChildren.getText().contains(Integer.toString(actualBookingInfo.getNumberOfChildren()))
-				&& eleNumberOfInfants.getText().contains(Integer.toString(actualBookingInfo.getNumberOfInfants()));
+		return eleDepFromLbl.getText().contains(LocationOption.getValue(actualBooking.getDepartureFrom()))
+				&& eleDepToLbl.getText().contains(LocationOption.getValue(actualBooking.getDepartureTo()))
+				&& eleRetFromLbl.getText().contains(LocationOption.getValue(actualBooking.getReturnFrom()))
+				&& eleRetToLbl.getText().contains(LocationOption.getValue(actualBooking.getReturnTo()))
+				&& eleDisplayCurrencyLbl.generateDynamic(actualBooking.getCurrency()).isDisplayed()
+				&& eleNumberOfAdults.getText().contains(Integer.toString(actualBooking.getNumberOfAdults()))
+				&& eleNumberOfChildren.getText().contains(Integer.toString(actualBooking.getNumberOfChildren()))
+				&& eleNumberOfInfants.getText().contains(Integer.toString(actualBooking.getNumberOfInfants()));
 	}
 	
 	public String getPageTitle() {

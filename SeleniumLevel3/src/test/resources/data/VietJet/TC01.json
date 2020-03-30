@@ -1,5 +1,5 @@
 {
-	"BookingInfo": {
+	"Booking": {
 		"flightOption": "Return",
 		"departureFrom": "SGN",
 		"departureTo": "HAN",

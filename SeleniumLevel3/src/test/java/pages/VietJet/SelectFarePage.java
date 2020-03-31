@@ -12,10 +12,10 @@ import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
 import utils.constant.Constants;
-import utils.helper.DataHelper;
+import utils.helper.ResourceHelper;
 
 public class SelectFarePage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
 
 	//Element
 	protected Element eleDepFareLow = new Element(locator.getLocator("eleDepFareLow"));

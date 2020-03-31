@@ -5,11 +5,11 @@ import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
 import utils.constant.Constants;
-import utils.helper.DataHelper;
+import utils.helper.ResourceHelper;
 import utils.helper.DateTimeHelper;
 
 public class PassengerInformationPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
 	
 	// Element
 	protected Element formDetail = new Element(locator.getLocator("formDetail"));
@@ -45,7 +45,7 @@ public class PassengerInformationPage {
 		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
 		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
 		ticketInfo.setDepartureDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), DataHelper.SHARED_DATA.get().date_format));
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
 		ticketInfo.setDepartureTime(lblDepartureTime.getText());
 		ticketInfo.setDepartureFare(getCastValue(lblDepartureFare.getText()));
 		ticketInfo.setDepartureCharge(getCastValue(lblDepartureCharges.getText()));
@@ -54,7 +54,7 @@ public class PassengerInformationPage {
 		ticketInfo.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
 		ticketInfo.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
 		ticketInfo.setReturnDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), DataHelper.SHARED_DATA.get().date_format));
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
 		ticketInfo.setReturnTime(lblReturnTime.getText());
 		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
 		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));

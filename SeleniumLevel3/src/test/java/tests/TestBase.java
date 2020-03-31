@@ -8,10 +8,10 @@ import org.testng.annotations.Parameters;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import utils.constant.Constants;
-import utils.helper.DaoHelper;
 import utils.helper.DataHelper;
+import utils.helper.ResourceHelper;
 import utils.helper.Logger;
-import utils.helper.DataHelper.SharedData;
+import utils.helper.ResourceHelper.SharedData;
 
 public class TestBase {
 	protected String appName;
@@ -36,15 +36,15 @@ public class TestBase {
 	}
 	
 	private void prepareAppData() {
-		DaoHelper dataHelper = new DaoHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
+		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
 		SharedData shared = dataHelper.getDataObject(SharedData.class, this.language);
 		shared.appName = this.appName;
 		shared.language = this.language;
-		DataHelper.SHARED_DATA.set(shared);
+		ResourceHelper.SHARED_DATA.set(shared);
 	}
 	
 	protected void launchApp() {
 		DriverUtils.maximizeBrowser();
-		DriverUtils.navigate(DataHelper.SHARED_DATA.get().url);
+		DriverUtils.navigate(ResourceHelper.SHARED_DATA.get().url);
 	}
 }

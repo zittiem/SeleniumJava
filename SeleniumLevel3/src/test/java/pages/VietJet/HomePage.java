@@ -1,17 +1,17 @@
 package pages.VietJet;
 
 import datatype.VietJet.Booking;
-import datatype.VietJet.DataManager;
 import element.base.web.Element;
 import element.wrapper.web.CheckBox;
 import element.wrapper.web.DropDown;
 import element.wrapper.web.RadioButton;
 import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.DataHelper;
 
 public class HomePage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
 	// Elements
 
 	protected DropDown cbxLanguage = new DropDown(locator.getLocator("cbxLanguage"));

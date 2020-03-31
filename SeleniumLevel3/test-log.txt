@@ -128,3 +128,11 @@ DEBUG | 2020-03-30 00:09:34 | manager.DriverUtils (DriverUtils.java:63) - Naviga
 DEBUG | 2020-03-30 00:10:29 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
 DEBUG | 2020-03-30 00:10:29 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
 DEBUG | 2020-03-30 00:10:31 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 08:49:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 08:49:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 08:49:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 08:49:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-31 08:50:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 08:50:47 | manager.DriverUtils (DriverUtils.java:117) - Quit browser

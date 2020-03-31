@@ -10,8 +10,8 @@ import pages.VietJet.SelectFarePage;
 import pages.VietJet.SelectTravelOptionsPage;
 import tests.TestBase;
 import utils.assertion.SoftAssertion;
-import utils.constants.Constants;
-import utils.helper.DataHelper;
+import utils.constant.Constants;
+import utils.helper.DaoHelper;
 import utils.helper.Logger;
 
 public class TS_VietJet extends TestBase {
@@ -22,7 +22,7 @@ public class TS_VietJet extends TestBase {
 		SoftAssertion softAssert = new SoftAssertion();
 		
 		Logger.info("Precondition: Initial Data");
-		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC01");
+		DaoHelper dataHelper = new DaoHelper(Constants.DATA_FOLDER + this.appName, "TC01");
 		HomePage homePage = new HomePage();
 		Booking booking = dataHelper.getDataObject(Booking.class).compileData();
 		Logger.info(booking.toString());
@@ -73,7 +73,7 @@ public class TS_VietJet extends TestBase {
 		
 		SoftAssertion softAssert = new SoftAssertion();
 		
-		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + "VietJet", new Object() {
+		DaoHelper dataHelper = new DaoHelper(Constants.DATA_FOLDER + "VietJet", new Object() {
 		}.getClass().getEnclosingMethod().getName());
 		
 		Logger.info("1. Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home.");

@@ -2,7 +2,7 @@ package datatype.VietJet;
 
 import java.util.Date;
 
-import utils.constants.Constants;
+import utils.constant.Constants;
 import utils.helper.DateTimeHelper;
 
 public class FareItem {

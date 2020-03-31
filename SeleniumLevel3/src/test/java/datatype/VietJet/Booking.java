@@ -2,6 +2,7 @@ package datatype.VietJet;
 
 import java.util.Date;
 
+import utils.helper.DataHelper;
 import utils.helper.DateTimeHelper;
 
 public class Booking {
@@ -9,7 +10,7 @@ public class Booking {
 	private String flightClass = null;
 	private String departureFrom = null;
 	private String departureTo = null;
-	private String departureDate = DateTimeHelper.getDateString(new Date(), DataManager.SHARED_DATA.get().date_format);
+	private String departureDate = DateTimeHelper.getDateString(new Date(), DataHelper.SHARED_DATA.get().date_format);
 	private String departureTime = null;
 	private double departureFare = 0;
 	private double departureCharge = 0;
@@ -17,7 +18,7 @@ public class Booking {
 	private double departureTotal = 0;
 	private String returnFrom = departureTo;
 	private String returnTo = departureFrom;
-	private String returnDate = DateTimeHelper.getDateString(DateTimeHelper.plusDays(1), DataManager.SHARED_DATA.get().date_format);
+	private String returnDate = DateTimeHelper.getDateString(DateTimeHelper.plusDays(1), DataHelper.SHARED_DATA.get().date_format);
 	private String returnTime = null;
 	private double returnFare = 0;
 	private double returnCharge = 0;
@@ -72,7 +73,7 @@ public class Booking {
 	}
 
 	public void setDepartureDate(Date departureDate) {
-		this.departureDate = DateTimeHelper.getDateString(departureDate, DataManager.SHARED_DATA.get().date_format);
+		this.departureDate = DateTimeHelper.getDateString(departureDate, DataHelper.SHARED_DATA.get().date_format);
 	}
 
 	public String getDepartureTime() {
@@ -140,7 +141,7 @@ public class Booking {
 	}
 
 	public void setReturnDate(Date returnDate) {
-		this.returnDate = DateTimeHelper.getDateString(returnDate, DataManager.SHARED_DATA.get().date_format);
+		this.returnDate = DateTimeHelper.getDateString(returnDate, DataHelper.SHARED_DATA.get().date_format);
 	}
 
 	public String getReturnTime() {
@@ -242,9 +243,9 @@ public class Booking {
 	// Update all the values if need to calculate after providing data.
 	public Booking compileData() {
 		if (this.departureDate.contains(":"))
-			setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departureDate), DataManager.SHARED_DATA.get().date_format));
+			setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.departureDate), DataHelper.SHARED_DATA.get().date_format));
 		if (this.returnDate.contains(":"))
-			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate), DataManager.SHARED_DATA.get().date_format));
+			setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.returnDate), DataHelper.SHARED_DATA.get().date_format));
 		setReturnFrom(getDepartureTo());
 		setReturnTo(getDepartureFrom());
 		return this;

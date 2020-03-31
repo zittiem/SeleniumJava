@@ -5,13 +5,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-import datatype.VietJet.DataManager;
-import datatype.VietJet.DataManager.SharedData;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.DaoHelper;
 import utils.helper.DataHelper;
 import utils.helper.Logger;
+import utils.helper.DataHelper.SharedData;
 
 public class TestBase {
 	protected String appName;
@@ -36,15 +36,15 @@ public class TestBase {
 	}
 	
 	private void prepareAppData() {
-		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
+		DaoHelper dataHelper = new DaoHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
 		SharedData shared = dataHelper.getDataObject(SharedData.class, this.language);
 		shared.appName = this.appName;
 		shared.language = this.language;
-		DataManager.SHARED_DATA.set(shared);
+		DataHelper.SHARED_DATA.set(shared);
 	}
 	
 	protected void launchApp() {
 		DriverUtils.maximizeBrowser();
-		DriverUtils.navigate(DataManager.SHARED_DATA.get().url);
+		DriverUtils.navigate(DataHelper.SHARED_DATA.get().url);
 	}
 }

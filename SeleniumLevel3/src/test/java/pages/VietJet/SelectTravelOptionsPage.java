@@ -4,7 +4,6 @@ import java.util.Date;
 import java.util.List;
 
 import datatype.VietJet.Booking;
-import datatype.VietJet.DataManager;
 import datatype.VietJet.Enums.FlightClass;
 import datatype.VietJet.Enums.LocationOption;
 import driver.manager.DriverUtils;
@@ -13,11 +12,12 @@ import element.setting.ElementStatus;
 import element.setting.FindBy;
 import element.wrapper.web.RadioButton;
 import helper.LocatorHelper;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.DataHelper;
 import utils.helper.DateTimeHelper;
 
 public class SelectTravelOptionsPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName,
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataHelper.SHARED_DATA.get().appName,
 			getClass().getSimpleName());
 
 	// Element
@@ -102,16 +102,16 @@ public class SelectTravelOptionsPage {
 		boolean flagSaveData = true;
 		List<Element> eleRows = new Element(FindBy.xpath, eleRowXpath).getWrapperElements();
 		if (!(date + time).isEmpty()) {
-			Date expDateTime = DateTimeHelper.getDate(date + " " + time, DataManager.SHARED_DATA.get().date_format.concat(" HH:mm"));
+			Date expDateTime = DateTimeHelper.getDate(date + " " + time, DataHelper.SHARED_DATA.get().date_format.concat(" HH:mm"));
 			for (int i = 1; i <= eleRows.size(); i++) {
 				String actualDate = DateTimeHelper.getDateString(
 						DateTimeHelper.getDate(new Element(FindBy.xpath,
 								eleRowXpath + "[" + i + "]" + "//table[not(@class)]//td" + "[1]").getText()),
-						DataManager.SHARED_DATA.get().date_format);
+						DataHelper.SHARED_DATA.get().date_format);
 				String actualDepartTime = new Element(FindBy.xpath,
 						eleRowXpath + "[" + i + "]" + "//table[not(@class)]//td" + "[2]").getText().substring(0, 5);
 				Date actualDateTime = DateTimeHelper.getDate(actualDate + " " + actualDepartTime,
-						DataManager.SHARED_DATA.get().date_format.concat(" HH:mm"));
+						DataHelper.SHARED_DATA.get().date_format.concat(" HH:mm"));
 				if (actualDateTime.after(expDateTime)) {
 					String actualPriceTableXpath = String.format(eleRowXpath + "[" + i + "]"
 							+ "//table[@class='FaresGrid']//td[contains(@id,'gridTravelOpt') and contains(@data-familyid,'%s')]",
@@ -155,7 +155,7 @@ public class SelectTravelOptionsPage {
 	private void findCheapestTickets(FlightClass flightClass) {
 		findCheapestTicket(Trips.DEPARTURE, flightClass);
 		findCheapestTicketAfterDateTime(Trips.RETURN, flightClass,
-				getDepartureDateInfo(DataManager.SHARED_DATA.get().date_format),
+				getDepartureDateInfo(DataHelper.SHARED_DATA.get().date_format),
 				getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.ARR_TIME));
 	}
 
@@ -265,11 +265,11 @@ public class SelectTravelOptionsPage {
 		booking.setDepartureFrom(LocationOption.getCode(lblDepartureFrom.getText().split(":")[1].trim()));
 		booking.setDepartureTo(LocationOption.getCode(lblDepartureTo.getText().split(":")[1].trim()));
 		booking.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()),
-				DataManager.SHARED_DATA.get().date_format));
+				DataHelper.SHARED_DATA.get().date_format));
 		booking.setReturnFrom(LocationOption.getCode(lblReturnFrom.getText().split(":")[1].trim()));
 		booking.setReturnTo(LocationOption.getCode(lblReturnTo.getText().split(":")[1].trim()));
 		booking.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()),
-				DataManager.SHARED_DATA.get().date_format));
+				DataHelper.SHARED_DATA.get().date_format));
 		booking.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
 		booking.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
 		booking.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
@@ -282,11 +282,11 @@ public class SelectTravelOptionsPage {
 		ticketDetails.setDepartureFrom(getDepartureFromInfo());
 		ticketDetails.setDepartureTo(getDepartureToInfo());
 		ticketDetails.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()),
-				DataManager.SHARED_DATA.get().date_format));
+				DataHelper.SHARED_DATA.get().date_format));
 		ticketDetails.setReturnFrom(getReturnFromInfo());
 		ticketDetails.setReturnTo(getReturnToInfo());
 		ticketDetails.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()),
-				DataManager.SHARED_DATA.get().date_format));
+				DataHelper.SHARED_DATA.get().date_format));
 		ticketDetails.setNumberOfAdults(getNumberOfAdultsInfo());
 		ticketDetails.setNumberOfChildren(getNumberOfChildrenInfo());
 		ticketDetails.setNumberOfInfants(getNumberOfInfantsInfo());

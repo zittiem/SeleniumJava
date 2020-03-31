@@ -6,16 +6,16 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import datatype.VietJet.Booking;
-import datatype.VietJet.DataManager;
 import datatype.VietJet.FareItem;
 import datatype.VietJet.Enums.LocationOption;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.DataHelper;
 
 public class SelectFarePage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataManager.SHARED_DATA.get().appName, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + DataHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
 
 	//Element
 	protected Element eleDepFareLow = new Element(locator.getLocator("eleDepFareLow"));

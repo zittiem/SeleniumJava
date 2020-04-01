@@ -160,6 +160,7 @@ public class SelectTravelOptionsPage {
 	}
 
 	public void selectCheapestTickets() {
+		lblNumberOfAdults.waitForDisplayed(90);
 		findCheapestTickets();
 		rdxDeparture.scrollIntoView();
 		rdxDeparture.select();

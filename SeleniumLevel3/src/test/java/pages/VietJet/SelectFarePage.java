@@ -2,36 +2,34 @@ package pages.VietJet;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import datatype.VietJet.Booking;
+import datatype.VietJet.Enums;
 import datatype.VietJet.FareItem;
+import datatype.VietJet.Enums.FlightType;
 import datatype.VietJet.Enums.LocationOption;
+import datatype.VietJet.Enums.Month;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
 import utils.constant.Constants;
+import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
 public class SelectFarePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
 
 	//Element
-	protected Element eleDepFareLow = new Element(locator.getLocator("eleDepFareLow"));
-	protected Element eleCheapestDepFare = new Element(locator.getLocator("eleCheapestDepFare"));
-	protected Element eleMonthCheapestDepFare = new Element(locator.getLocator("eleMonthCheapestDepFare"));
-	protected Element eleSelectedDepMonthLbl = new Element(locator.getLocator("eleSelectedDepMonthLbl"));
-	protected Element eleDepErrorCaption = new Element(locator.getLocator("eleDepErrorCaption"));
-	protected Element eleRetFareLow = new Element(locator.getLocator("eleRetFareLow"));
-	protected Element eleCheapestRetFare = new Element(locator.getLocator("eleCheapestRetFare"));
-	protected Element eleMonthCheapestRetFare = new Element(locator.getLocator("eleMonthCheapestRetFare"));
-	protected Element eleSelectedRetMonthLbl = new Element(locator.getLocator("eleSelectedRetMonthLbl"));
-	protected Element eleRetErrorCaption = new Element(locator.getLocator("eleRetErrorCaption"));
-	protected Element eleDepNextLnk = new Element(locator.getLocator("eleDepNextLnk"));
-	protected Element eleDepPrevLnk = new Element(locator.getLocator("eleDepPrevLnk"));
-	protected Element eleRetNextLnk = new Element(locator.getLocator("eleRetNextLnk"));
-	protected Element eleRetPrevLnk = new Element(locator.getLocator("eleRetPrevLnk"));
+	protected Element elesFare = new Element(locator.getLocator("elesFare"));
+	protected Element elesFareID = new Element(locator.getLocator("elesFareID"));
+	protected Element eleFareID = new Element(locator.getLocator("eleFareID"));
+	protected Element eleSelectedMonthLbl = new Element(locator.getLocator("eleSelectedMonthLbl"));
+	protected Element eleErrorCaption = new Element(locator.getLocator("eleErrorCaption"));
+	protected Element eleNextLnk = new Element(locator.getLocator("eleNextLnk"));
+	protected Element elePrevLnk = new Element(locator.getLocator("elePrevLnk"));
 	protected Element eleContinueBtn = new Element(locator.getLocator("eleContinueBtn"));
 	protected Element eleDepFromLbl = new Element(locator.getLocator("eleDepFromLbl"));
 	protected Element eleDepToLbl = new Element(locator.getLocator("eleDepToLbl"));
@@ -46,192 +44,6 @@ public class SelectFarePage {
 	public int convertFareFromStringToInt(String fare) {
 		int intFare = Integer.parseInt(fare.replace(" VND", "").replace(",", ""));
 		return intFare;
-	}
-	
-	public int waitForNumberOfRetFareLowItemChanged(int numberOfPreFareLowItem) {
-		eleSelectedDepMonthLbl.waitForClickable(30);
-		
-		if(eleRetErrorCaption.isDisplayed()) {
-			return 0;
-		} else {
-			
-		List<Element> lstRetFareLow = eleRetFareLow.getWrapperElements();
-		while(lstRetFareLow.size() == numberOfPreFareLowItem) {
-			lstRetFareLow = eleRetFareLow.getWrapperElements();
-		}
-		return lstRetFareLow.size();
-		}
-	}
-	
-	public FareItem getCheapestDepatureFareInNextMonths(int numberOfMonth) throws ParseException {
-		int monthCheapestFare;
-		int finalCheapestFare = 0;
-		int numberOfFareLowItem = 0;
-		String monthCheapestFareID = null;
-		String finalCheapestFareID = null;
-		Boolean finalCheapestFareExist = false;
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");  
-		FareItem finalCheapestFareItem = new FareItem();
-		
-		//Define Max Date to select fare. Min Date is today, Max Date is the date after <numberOfMonth> months)
-		Calendar cal = Calendar.getInstance();
-	    cal.add(Calendar.MONTH, numberOfMonth);
-	    Date maxDate = cal.getTime();
-		
-		//Search the cheapest departure fare in defined time frame
-		for(int index=0; index < numberOfMonth; index++) {
-			System.out.print("for loop search" + index + " \n");
-			System.out.print("eleDepErrorCaption.isDisplayed(): " + eleDepErrorCaption.isDisplayed() + " \n");
-			
-			if(!eleDepErrorCaption.isDisplayed()) {
-				//Get current number of FareLowItem
-				List<Element> lstDepFareLow = eleDepFareLow.getWrapperElements();
-				numberOfFareLowItem = lstDepFareLow.size();
-				
-				System.out.print("lstDepFareLow:" + numberOfFareLowItem + " \n");
-				
-				if(finalCheapestFareExist == false) {
-					finalCheapestFare = convertFareFromStringToInt(lstDepFareLow.get(0).getText());
-					finalCheapestFareID = eleMonthCheapestDepFare.getAttribute("id");
-					finalCheapestFareExist = true;
-				}
-				
-				monthCheapestFare = convertFareFromStringToInt(lstDepFareLow.get(0).getText());
-				monthCheapestFareID = eleMonthCheapestDepFare.getAttribute("id");
-				String strFareDate = monthCheapestFareID.substring(17, 25);
-				Date fareDate = formatter.parse(strFareDate);
-				
-				if(monthCheapestFare < finalCheapestFare && fareDate.compareTo(maxDate) <= 0) {
-					finalCheapestFare = monthCheapestFare;
-					finalCheapestFareID = monthCheapestFareID;
-				}
-			}
-			
-			String selectedMonth = eleSelectedDepMonthLbl.getText();
-			System.out.print("selectedMonth:" + selectedMonth + " \n");
-			eleDepNextLnk.click();
-			eleSelectedDepMonthLbl.waitForTextChanged(selectedMonth, 10);
-			
-			System.out.print("afterSelectedMonth:" + eleSelectedDepMonthLbl.getText() + " \n");
-		}
-		
-		System.out.print("finalCheapestFareDepID: " + finalCheapestFareID + "\n");
-		
-		//View month that contain the cheapest return fare
-		if(finalCheapestFareID != null) {
-			for(int index=0; index < numberOfMonth; index++) {
-				Element eleCheapestFare = eleCheapestDepFare.generateDynamic(finalCheapestFareID);
-				if(!eleCheapestFare.isDisplayed()) {
-					String selectedMonth = eleSelectedDepMonthLbl.getText();
-					eleDepPrevLnk.click();
-					eleSelectedDepMonthLbl.waitForTextChanged(selectedMonth, 10);
-					System.out.print("eleDepPrevLnk.click(): " + index + " \n");
-				} else {
-					index = numberOfMonth;
-				}
-			}
-			
-			finalCheapestFareItem = new FareItem(finalCheapestFareID, finalCheapestFare);
-		}
-		
-		return finalCheapestFareItem;
-	}
-	
-	public FareItem getCheapestReturnFareInNextMonths(Date depDate, int numberOfMonth) throws ParseException {
-		int monthCheapestFare;
-		int finalCheapestFare = 0;
-		int numberOfFareLowItem = 0;
-		String monthCheapestFareID = null;
-		String finalCheapestFareID = null;
-		Boolean finalCheapestFareExist = false;
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");  
-		FareItem finalCheapestFareItem = new FareItem();
-		
-		//Define Min Date and Max Date to select return fare. Min Date is the departure date, Max Date is the date after <numberOfMonth> months from now)   
-	    Calendar cal = Calendar.getInstance();
-	    cal.add(Calendar.MONTH, numberOfMonth);
-	    Date maxDate = cal.getTime();
-	    Date minDate = depDate;
-		
-		//Search the cheapest return fare in defined time frame
-		for(int index=0; index < numberOfMonth; index++) {
-			System.out.print("for loop search" + index + " \n");
-			
-			if(!eleRetErrorCaption.isDisplayed()) {
-				//Get current number of FareLowItem
-				List<Element> lstRetFareLow = eleRetFareLow.getWrapperElements();
-				numberOfFareLowItem = lstRetFareLow.size();
-				
-				System.out.print("lstRetFareLow:" + numberOfFareLowItem + " \n");
-				
-				for(int i = 0; i < numberOfFareLowItem; i++)
-				{
-					monthCheapestFare = convertFareFromStringToInt(lstRetFareLow.get(i).getText());
-					monthCheapestFareID = eleMonthCheapestRetFare.generateDynamic(i+1).getAttribute("id");
-					String strFareDate = monthCheapestFareID.substring(17, 25);
-					Date fareDate = formatter.parse(strFareDate);
-					
-					if(finalCheapestFareExist == false && fareDate.compareTo(minDate) > 0) {
-						finalCheapestFare = monthCheapestFare;
-						finalCheapestFareID = monthCheapestFareID;
-						finalCheapestFareExist = true;
-					}
-					
-					if(monthCheapestFare < finalCheapestFare && fareDate.compareTo(maxDate) <= 0 
-							&& fareDate.compareTo(minDate) >= 0 && finalCheapestFareExist == true) {
-						finalCheapestFare = monthCheapestFare;
-						finalCheapestFareID = monthCheapestFareID;
-					}
-				}
-			}
-			
-			String selectedMonth = eleSelectedRetMonthLbl.getText();
-			eleRetNextLnk.click();
-			eleSelectedRetMonthLbl.waitForTextChanged(selectedMonth, 10);
-		}
-		
-		System.out.print("finalCheapestFareRetID: " + finalCheapestFareID + "\n");
-		
-		//View month that contain the cheapest return fare
-		if(finalCheapestFareID != null) {
-			for(int index=0; index < numberOfMonth; index++) {
-				Element eleCheapestFare = eleCheapestRetFare.generateDynamic(finalCheapestFareID);
-				if(!eleCheapestFare.isDisplayed()) {
-					String selectedMonth = eleSelectedRetMonthLbl.getText();
-					eleRetPrevLnk.click();
-					eleSelectedRetMonthLbl.waitForTextChanged(selectedMonth, 10);
-				} else {
-					index = numberOfMonth;
-				}
-			}
-			
-			finalCheapestFareItem = new FareItem(finalCheapestFareID, finalCheapestFare);
-		}
-		
-		return finalCheapestFareItem;
-	}
-	
-	public Booking selectCheapestFareForReturnFightInNextMonths(int numberOfMonth, Booking booking) throws ParseException {
-		FareItem depFareItem = getCheapestDepatureFareInNextMonths(numberOfMonth);
-		FareItem retFareItem = getCheapestReturnFareInNextMonths(depFareItem.getDate(),numberOfMonth);
-		
-		System.out.print("depFareItem.getID(): " + depFareItem.getID() + "\n");
-		System.out.print("retFareItem.getID(): " + retFareItem.getID() + "\n");
-		
-		eleCheapestDepFare.generateDynamic(depFareItem.getID()).click();
-		eleCheapestRetFare.generateDynamic(retFareItem.getID()).click();
-		eleContinueBtn.click();
-		
-		System.out.print("depFareItem.getDate(): " + depFareItem.getDate() + "\n");
-		System.out.print("retFareItem.getDate(): " + retFareItem.getDate() + "\n");
-		
-		booking.setDepartureDate(depFareItem.getDate());
-		booking.setReturnDate(retFareItem.getDate());
-		
-		System.out.print("bookingDepDate:" + booking.getDepartureDate() + "\n");
-		System.out.print("bookingRetDate: " + booking.getReturnDate() + "\n");
-		
-		return booking;
 	}
 	
 	public Boolean isFightInfoCorrect(Booking actualBooking) {
@@ -258,7 +70,159 @@ public class SelectFarePage {
 	}
 	
 	public String getPageTitle() {
-		eleContinueBtn.waitForClickable(30);
+		eleContinueBtn.waitForClickable(90);
 		return DriverUtils.getTitle();
+	}
+	
+	public void submitPage() {
+		eleContinueBtn.moveToElement();
+		eleContinueBtn.click();
+	}
+
+	public Date getDateFromFareId(String fareID) throws ParseException {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");  
+		String strFareDate = fareID.substring(17, 25);
+		Date fareDate = formatter.parse(strFareDate);
+		return fareDate;
+	}
+	
+	public List<FareItem> getFareItemsInDefinedTimeFrame(Enums.FlightType fareItemType, Date minDate, Date maxDate) throws ParseException{
+		List<FareItem> lstFareItem = new ArrayList<FareItem>();
+		
+		elesFare = elesFare.generateDynamic(fareItemType);
+		elesFareID = elesFareID.generateDynamic(fareItemType);
+	 	eleSelectedMonthLbl = eleSelectedMonthLbl.generateDynamic(fareItemType);
+	 	eleNextLnk = eleNextLnk.generateDynamic(fareItemType);
+	 	elePrevLnk = elePrevLnk.generateDynamic(fareItemType);
+	 	eleErrorCaption = eleErrorCaption.generateDynamic(fareItemType);
+	 	
+	 	eleSelectedMonthLbl.waitForDisplayed(30);
+	 	
+		@SuppressWarnings("deprecation")
+		int maxMonth = maxDate.getMonth();
+		int selectedMonth = Enums.Month.getKey(eleSelectedMonthLbl.getText());
+		
+		System.out.print("maxMonth: " + maxMonth + " \n");
+		System.out.print("selectedMonth: " + selectedMonth + " \n");
+		
+		while(selectedMonth <= maxMonth) {
+			if(!eleErrorCaption.isDisplayed()) {
+				
+				List<Element> lstFareId = elesFareID.getWrapperElements();
+				List<Element> lstFare = elesFare.getWrapperElements();
+				
+				for(int i=0; i<lstFareId.size(); i++) {
+					String fareId = lstFareId.get(i).getAttribute("id");
+					Date fareDate = getDateFromFareId(fareId);
+					int fare = convertFareFromStringToInt(lstFare.get(i).getText());
+					
+					if(fareDate.compareTo(minDate)>=0 && fareDate.compareTo(maxDate)<=0) {
+						FareItem fareItem = new FareItem(fareId, fareDate, fare);
+						lstFareItem.add(fareItem);
+					}
+				}
+			} 
+			
+			String strSelectedMonth = eleSelectedMonthLbl.getText();
+			System.out.print("selectedMonth:" + selectedMonth + " \n");
+			eleNextLnk.click();
+			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
+			
+			selectedMonth = Enums.Month.getKey(eleSelectedMonthLbl.getText());
+			System.out.print("lst" + fareItemType + "FareItem.size():" + lstFareItem.size() + " \n");
+		} 
+		
+		while(elePrevLnk.isDisplayed()) {
+			String strSelectedMonth = eleSelectedMonthLbl.getText();
+			elePrevLnk.click();
+			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
+		}
+		
+		return lstFareItem;
+	}
+	
+	public void selectFareItem(Enums.FlightType fareItemType, FareItem fareItem) {
+		@SuppressWarnings("deprecation")
+		int fareMonth = fareItem.getDate().getMonth();
+		int selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
+		
+		while(fareMonth > selectedMonth) {
+			String strSelectedMonth = eleSelectedMonthLbl.getText();
+			elePrevLnk.click();
+			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
+			selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
+		}
+		
+		while(fareMonth < selectedMonth) {
+			String strSelectedMonth = eleSelectedMonthLbl.getText();
+			eleNextLnk.click();
+			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
+			selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
+		}
+		
+		String dynamicFareId = fareItemType + fareItem.getID().substring(17, 25);
+		eleFareID.generateDynamic(dynamicFareId).click();
+	}
+
+	public void selectReturnFlightCheapestFareInDefinedTimeFrame(Date minDate, Date maxDate) throws ParseException{
+		List<FareItem> lstDepFareItem = getFareItemsInDefinedTimeFrame(FlightType.Dep, minDate, maxDate);
+		List<FareItem> lstRetFareItem = getFareItemsInDefinedTimeFrame(FlightType.Ret, minDate, maxDate);
+		
+		int totalCheapestFare = 0;
+		int finalTotalCheapeastFare = 0;
+		Boolean finalTotalCheapestFareExist = false;
+		FareItem finalDepFareItem = new FareItem();
+		FareItem finalRetFareItem = new FareItem();
+		
+		// Filter combo cheapest fare for the return flight
+		if(lstDepFareItem.size() != 0 || lstRetFareItem.size() != 0) {
+			for(int i=0; i<lstDepFareItem.size(); i++) {
+				Date depFareDate = lstDepFareItem.get(i).getDate();
+				int depFare = lstDepFareItem.get(i).getFare();
+				
+				// Set return date (after depature date 3 days)
+				Calendar c = Calendar.getInstance(); 
+				c.setTime(depFareDate); 
+				c.add(Calendar.DATE, 3);
+				Date expRetFareDate = c.getTime();	
+				
+				// Filter combo cheapest fare for the return flight
+				for(int j=0; j<lstRetFareItem.size(); j++) {
+					Date retFareDate = lstRetFareItem.get(j).getDate();
+					int retFare = lstRetFareItem.get(j).getFare();
+					
+					System.out.print("retFareDate:" + retFareDate + " \n");
+					System.out.print("expRetFareDate:" + expRetFareDate + " \n");
+					System.out.print("retFareDate.compareTo(expRetFareDate):" + retFareDate.compareTo(expRetFareDate) + " \n");
+					
+					if(retFareDate.compareTo(expRetFareDate) == 0) {
+						if(finalTotalCheapestFareExist == false) {
+							finalTotalCheapeastFare = depFare + retFare;
+							finalDepFareItem = lstDepFareItem.get(i);
+							finalRetFareItem = lstRetFareItem.get(j);
+							finalTotalCheapestFareExist = true;
+						} else {
+							totalCheapestFare = depFare + retFare;
+							if (finalTotalCheapeastFare > totalCheapestFare) {
+								finalTotalCheapeastFare = totalCheapestFare;
+								finalDepFareItem = lstDepFareItem.get(i);
+								finalRetFareItem = lstRetFareItem.get(j);
+							}
+						}
+						break;
+					}
+				}
+			}	
+		} else {
+			Logger.warning("No ticket is available.");
+		}
+		
+		System.out.print("finalDepFareItem:" + finalDepFareItem.getID() + " \n");
+		System.out.print("finalRetFareItem:" + finalRetFareItem.getID() + " \n");
+		System.out.print("finalTotalCheapeastFare:" + finalTotalCheapeastFare + " \n");
+		
+		// Select combo cheapest fare for the return flight
+		selectFareItem(FlightType.Dep, finalDepFareItem);
+		selectFareItem(FlightType.Ret, finalRetFareItem);
 	}
 }

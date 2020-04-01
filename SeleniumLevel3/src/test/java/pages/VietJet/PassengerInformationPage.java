@@ -40,31 +40,33 @@ public class PassengerInformationPage {
 		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
-	public Booking getCurrentTicketInfo() {
-		Booking ticketInfo = new Booking();
-		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
-		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
-		ticketInfo.setDepartureDate(
+	public Booking getCurrentBookingInfo() {
+		Booking booking = new Booking();
+		lblGrandTotal.waitForDisplayed(30);
+		lblGrandTotal.waitForTextChanged("0", 30);
+		booking.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
+		booking.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
+		booking.setDepartureDate(
 				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
-		ticketInfo.setDepartureTime(lblDepartureTime.getText());
-		ticketInfo.setDepartureFare(getCastValue(lblDepartureFare.getText()));
-		ticketInfo.setDepartureCharge(getCastValue(lblDepartureCharges.getText()));
-		ticketInfo.setDepartureTax(getCastValue(lblDepartureTax.getText()));
-		ticketInfo.setDepartureTotal(getCastValue(lblDepartureTotalFare.getText()));
-		ticketInfo.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
-		ticketInfo.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
-		ticketInfo.setReturnDate(
+		booking.setDepartureTime(lblDepartureTime.getText());
+		booking.setDepartureFare(getCastValue(lblDepartureFare.getText()));
+		booking.setDepartureCharge(getCastValue(lblDepartureCharges.getText()));
+		booking.setDepartureTax(getCastValue(lblDepartureTax.getText()));
+		booking.setDepartureTotal(getCastValue(lblDepartureTotalFare.getText()));
+		booking.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
+		booking.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
+		booking.setReturnDate(
 				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
-		ticketInfo.setReturnTime(lblReturnTime.getText());
-		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
-		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));
-		ticketInfo.setReturnTax(getCastValue(lblReturnTax.getText()));
-		ticketInfo.setReturnTotal(getCastValue(lblReturnTotalFare.getText()));
-		ticketInfo.setGrandTotal(getCastValue(lblGrandTotal.getText()));
-		ticketInfo.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
-		ticketInfo.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
-		ticketInfo.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
-		return ticketInfo;
+		booking.setReturnTime(lblReturnTime.getText());
+		booking.setReturnFare(getCastValue(lblReturnFare.getText()));
+		booking.setReturnCharge(getCastValue(lblReturnCharges.getText()));
+		booking.setReturnTax(getCastValue(lblReturnTax.getText()));
+		booking.setReturnTotal(getCastValue(lblReturnTotalFare.getText()));
+		booking.setGrandTotal(getCastValue(lblGrandTotal.getText()));
+		booking.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
+		booking.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
+		booking.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
+		return booking;
 	}
 
 	public void waitForPageLoad() {

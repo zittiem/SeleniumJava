@@ -124,4 +124,54 @@ public class Enums {
 			this.text = text;
 		}
 	}
+	
+	public enum Month {
+		Jan(0, "Tháng Một"), Feb(1, "Tháng Hai"), Mar(2, "Tháng Ba"), Apr(3, "Tháng Tư"), May(4, "Tháng Năm"), 
+		Jun(5, "Tháng Sáu"), Jul(6, "Tháng Bảy"), Aug(7, "Tháng Tám"), Sep(8, "Tháng Chín"), Oct(9, "Tháng Mười"), 
+		Nov(10, "Tháng Mười Một"), Dec(11, "Tháng Mười Hai");
+		
+		private int key;
+		private String value;
+
+		Month(int key, String value) {
+			this.key = key;
+			this.value = value;
+		}
+
+		public String getValue() {
+			return this.value;
+		}
+
+		public int getKey() {
+			return this.key;
+		}
+		
+		public static int getKey(String value) {
+			for (Month e : Month.values()) {
+				if (value.contains(e.value))
+					return e.key;
+			}
+			return 100;
+		}
+	}
+	
+	public enum FlightType {
+		Dep("Dep", "Depart"), Ret("Ret", "Return");
+
+		private String key;
+		private String value;
+
+		FlightType(String key, String value) {
+			this.key = key;
+			this.value = value;
+		}
+
+		public String getValue() {
+			return this.value;
+		}
+
+		public String getKey() {
+			return this.key;
+		}
+	}
 }

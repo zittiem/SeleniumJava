@@ -136,3 +136,195 @@ DEBUG | 2020-03-31 08:50:44 | manager.DriverUtils (DriverUtils.java:58) - Execut
 DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
 DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
 DEBUG | 2020-03-31 08:50:47 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 15:56:32 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 15:56:33 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 15:56:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 15:56:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-31 15:58:43 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 15:58:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 16:03:18 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:03:19 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-03-31 16:03:44 | helper.DataHelper (DataHelper.java:31) - Exception! - Error when load Data from path src\test\resources\data\VietJet\TC03.json
+DEBUG | 2020-03-31 16:07:03 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:07:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 16:18:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:18:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 16:24:25 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:24:26 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:00:37 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:00:39 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:06:27 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:06:29 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:09:18 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:09:19 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:12:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:12:57 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:14:50 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:14:52 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:19:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:19:31 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:23:59 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:24:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:36:32 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:36:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:38:34 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:38:35 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:40:31 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:40:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:03:56 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:03:57 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:14:06 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:14:07 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:16:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:16:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:20:47 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:20:49 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:31:13 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:31:15 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:40:10 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:40:12 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 10:42:12 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.002
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58139}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: a487bb3efc45a15367c7034bfb49a2d7
+DEBUG | 2020-04-01 10:46:29 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:46:30 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:51:46 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:51:47 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:58:35 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:58:36 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:05:25 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:05:26 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:08:58 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:09:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:13:28 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:13:29 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:25:14 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:25:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:39:03 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:39:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:46:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:46:31 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:47:12 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:47:13 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:55:09 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:55:10 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:12:05 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:12:06 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:16:07 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 12:16:08 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 12:23:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:23:54 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:27:22 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:27:23 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:12:07 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:12:09 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:17:03 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 14:17:03 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 14:59:14 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:59:15 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:59:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:59:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:05:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:05:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:05:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:05:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 15:07:17 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.080
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:60333}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 599d9e34e5d8f79e80eb31cbcb997390
+DEBUG | 2020-04-01 15:08:35 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:09:52 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:16:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:16:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:16:55 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:16:55 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 15:18:55 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.023
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:54102}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 807998b7eaf9eeaed2a766a6c0f74807
+DEBUG | 2020-04-01 15:19:34 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:19:59 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:21:07 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:21:08 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:23:55 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:24:01 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:24:02 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:29:43 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:29:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:30:01 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:39:00 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:39:00 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:39:01 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:39:02 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:43:18 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:44:15 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:44:21 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:44:34 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:47:02 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:47:02 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:47:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:47:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:48:26 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:48:27 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:52:19 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:52:19 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:52:20 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:52:20 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+ERROR | 2020-04-01 15:54:21 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.132
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:56478}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: f3bea0ec11e6e3606071923d124f8a0c
+DEBUG | 2020-04-01 15:55:22 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:57:22 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:57:22 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:57:33 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 16:53:31 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 16:53:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 16:53:58 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:01:51 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:01:52 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:02:18 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:07:52 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:07:52 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:07:53 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 17:07:53 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 17:09:39 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:10:31 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 17:10:32 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 17:10:41 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:13:58 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:13:59 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:14:16 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:17:59 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:18:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:19:26 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:24:29 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:24:30 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:26:08 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:41:11 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:41:12 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:41:37 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:42:21 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:42:22 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:42:45 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:43:43 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:43:44 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:44:07 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:48:41 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:48:42 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:49:08 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:50:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:50:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/

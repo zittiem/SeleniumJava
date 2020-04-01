@@ -8,7 +8,7 @@ import utils.helper.DateTimeHelper;
 public class FareItem {
 	String itemID = null;
 	Date itemDate = null;
-	Integer itemFare = null;
+	int itemFare = 0;
 
 	public FareItem() {
 

@@ -6,7 +6,7 @@
 		"eleOriginSpan": "id=select2-selectOrigin-container",
 		"eleDestinationSpan": "id=select2-selectDestination-container",
 		"eleDateCal": "id=ctl00_UcRightV31_Txt%sDate",
-		"cbxCurrency": "id=ctl00_UcRightV31_CbbCurrency_TextBox",
+		"eleCurrencyCbx": "id=ctl00_UcRightV31_CbbCurrency_TextBox",
 		"chxInfare": "id=ctl00_UcRightV31_ChkInfare",
 		"txtPromoCode": "id=ctl00_UcRightV31_TxtPromoCode",
 		"eleSearchBtn": "id=ctl00_UcRightV31_BtSearch",

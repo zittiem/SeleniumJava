@@ -5,15 +5,15 @@
 	<listeners>
 		<listener class-name="utils.config.TestListener" />
 	</listeners>
-	<test name="Run Chrome - vi-VN">
+	<test name="Run Chrome - Agoda">
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />	
-		<parameter name="appName" value="VietJet" />
-		<parameter name="language" value="vi-VN" />	
+		<parameter name="appName" value="Agoda" />
+		<parameter name="language" value="default" />	
 		<classes>
-			<class name="tests.VietJet.TS_VietJet">
+			<class name="tests.Agoda.TS_Agoda">
 				<methods>
-					<include name="TC02" />
+					<include name="TC01" />
 				</methods>
 			</class>
 		</classes>

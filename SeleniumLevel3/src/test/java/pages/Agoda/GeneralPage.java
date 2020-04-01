@@ -15,8 +15,9 @@ import utils.helper.ResourceHelper;
 import utils.helper.DateTimeHelper;
 
 public class GeneralPage extends TestBase{
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.getResource("appName"),
-			getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
+	
+	// Static Elements
 	protected Button btnShowFields = new Button(locator.getLocator("btnShowFields"));
 	protected TextBox txtDestination = new TextBox(locator.getLocator("txtDestination"));
 	protected Element calCheckIn = new Element(locator.getLocator("calCheckIn"));
@@ -32,10 +33,10 @@ public class GeneralPage extends TestBase{
 
 	// Dynamic Elements
 
-	protected Button btnShowDestination = new Button(btnShowFields, FindBy.xpath, "search-box");
-	protected Button btnShowCheckIn = new Button(btnShowFields, FindBy.xpath, "check-in");
-	protected Button btnShowCheckOut = new Button(btnShowFields, FindBy.xpath, "check-out");
-	protected Button btnShowTraveler = new Button(btnShowFields, FindBy.xpath, "travelers");
+	protected Button btnShowDestination = btnShowFields.generateDynamic("search-box");
+	protected Button btnShowCheckIn = btnShowFields.generateDynamic("check-in");
+	protected Button btnShowCheckOut = btnShowFields.generateDynamic("check-out");
+	protected Button btnShowTraveler = btnShowFields.generateDynamic("travelers");
 
 	protected Button btnDay = null;
 

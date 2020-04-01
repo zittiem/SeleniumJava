@@ -1,0 +1,12 @@
+{
+	"TravellingInfo": {
+		"destination": "Da Nang",
+		"checkInDate": "Fr:Days:+0",
+		"checkOutDate": "Fr:Days:+3",
+		"travelOption": "Family",
+		"numberOfRoom": 2,
+		"numberOfAdult": 2,
+		"numberOfChildren": 0,
+		"childrenAge": 0
+	}
+}

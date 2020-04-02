@@ -1,12 +1,12 @@
 {
 	"any.chrome": {
 		"btnShowFields": "xpath=//i[contains(@class,'%s')]",
-		"txtDestination": "class=SearchBoxTextEditor SearchBoxTextEditor--autocomplete",
+		"txtDestination": "xpath=//input[@aria-label='Enter a destination or property']",
 		"calCheckIn": "xpath=//div[@data-element-name='search-box-check-in']",
 		"calCheckOut": "xpath=//div[@data-element-name='search-box-check-out']",
 		"btnTravelingOption": "xpath=//div[@data-element-name='traveler-%s']",
 		"btnMinus": "xpath=//span [@data-selenium='minus' and contains(@data-element-name,'%s')]",
-		"btnPlus": "xpath=//div[@data-selenium = 'occupancy%s']/span [@data-selenium='plus']",
+		"btnPlus": "xpath=//span[@data-selenium='plus' and contains(@data-element-name,'%s')]",
 		"lblDisplayValue": "xpath=//span[@data-component='desktop-occ-%s-value']",
 		"btnSearch": "xpath=//button[@data-element-name='search-button']",
 		"btnPreviousMonth": "xpath=//span[@data-selenium='calendar-previous-month-button']",

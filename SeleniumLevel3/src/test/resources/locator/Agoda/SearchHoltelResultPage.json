@@ -6,6 +6,6 @@
 		"btnDeleteFilter":"xpath=//a[@class='filter-btn clear-filter-box']",		
 		"btnNextPage":"id=paginationNext",	
 		"eleSearchOption":"xpath=//a[@data-element-name='%s']",
-		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item'][1]"
+		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item']"
 	}
 }

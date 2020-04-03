@@ -10,6 +10,7 @@ import element.wrapper.web.Button;
 import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
 import utils.constant.Constants;
+import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
 public class SearchHoltelResultPage {
@@ -143,14 +144,15 @@ public class SearchHoltelResultPage {
 	public void chooseSortOption(SortOption sortOption) {
 		eleSearchOption = eleSearchOption.generateDynamic(sortOption.getCode());
 		eleSearchOption.click();
-		eleLoadingSignal.waitForDisplayed(30);
-		eleLoadingSignal.waitForNotDisplayed(30);
+		eleLoadingSignal.waitForDisplayed(Constants.SHORT_TIME);
+		eleLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
 	}
 	
 	public boolean isResultSortedByCheapestPrice(int records) {
 		List<Element> elements = eleResultItem.getWrapperElements();
+		
 		if (elements.size() >= records) {
-
+			
 			for (int i = 1; i <= records; i++) {
 				
 				Element eleCurrentResultPriceItem = eleResultPriceItem.generateDynamic(i);
@@ -160,7 +162,11 @@ public class SearchHoltelResultPage {
 					return false;
 				}
 			}
+			return true;
+		} else {
+
+			Logger.warning("No or less than " + records + " result is available. Total results are " + elements.size());
 		}
-		return true;
+		return false;
 	}
 }

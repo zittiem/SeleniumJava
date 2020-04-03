@@ -113,9 +113,6 @@ public class GeneralPage extends TestBase {
 	}
 
 	protected void selectTravelerType(String type) {
-		System.out.print("type:" + type + "/n");
-		System.out.print("TravelTypes.getName(type):" + TravelTypes.getName(type) + "/n");
-		System.out.print("TravelTypes.getName(type).getCode():" + TravelTypes.getName(type).getCode() + "/n");
 		btnTravelingOption = btnTravelingOption.generateDynamic(TravelTypes.getName(type).getCode());
 		btnTravelingOption.click();
 	}
@@ -160,6 +157,7 @@ public class GeneralPage extends TestBase {
 
 	public void searchHoltel(TravellingInfo travel) {
 		enterTravelingInfo(travel);
+		btnSearch.waitForDisplayed(60);
 		btnSearch.click();
 	}
 }

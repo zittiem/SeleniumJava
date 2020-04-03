@@ -1,8 +1,6 @@
 package datatype.Agoda;
 
-import datatype.VietJet.Booking;
 import utils.helper.DateTimeHelper;
-import utils.helper.ResourceHelper;
 
 public class TravellingInfo {
 	private String destination = null;

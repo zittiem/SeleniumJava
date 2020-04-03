@@ -168,4 +168,27 @@ public class Enums {
 		}
 
 	}
+	
+	public enum SortOption {
+		BestMatch("search-sort-recommended", "Best match"), CheapestPrice("search-sort-price", "Cheapest price"), 
+		NearestTo("search-sort-distance-landmark", "Nearest to"), TopReviewed("search-sort-guest-rating", "Top Reviewed"), 
+		SecretDeals("search-sort-secret-deals", "Secret deals");
+
+		private String code;
+		private String value;
+		
+		SortOption(String code, String value) {
+			this.code= code;
+			this.value = value;
+		}
+
+		public String getValue() {
+			return value;
+		}
+		
+		public String getCode() {
+			return code;
+		}
+
+	}
 }

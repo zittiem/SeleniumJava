@@ -3,6 +3,7 @@ package pages.Agoda;
 import java.util.List;
 
 import datatype.Agoda.Enums.Filter;
+import datatype.Agoda.Enums.SortOption;
 import element.base.web.Element;
 import element.setting.FindBy;
 import element.wrapper.web.Button;
@@ -20,11 +21,14 @@ public class SearchHoltelResultPage {
 	protected Button btnFilter = new Button(locator.getLocator("btnFilter"));
 	protected Button btnNextPage = new Button(locator.getLocator("btnNextPage"));
 	protected Button btnDeleteFilter = new Button(locator.getLocator("btnDeleteFilter"));
+	protected Button eleLoadingSignal = new Button(locator.getLocator("eleLoadingSignal"));
 
 	// Dynamic Elements
 	protected Button btnFilterPopular = btnFilter.generateDynamic("Popular");
 	protected Button btnFilterLocation = btnFilter.generateDynamic("LocationFilters");
 	protected Button btnFilterMore = btnFilter.generateDynamic("more");
+	protected Button eleSearchOption = new Button(locator.getLocator("eleSearchOption"));
+	protected Button eleResultPriceItem = new Button(locator.getLocator("eleResultPriceItem"));
 
 	// filter Price
 
@@ -131,6 +135,30 @@ public class SearchHoltelResultPage {
 		for (int i = 0; i < filters.length; i++) {
 			if (!btnFilter.generateDynamic(filters[i]).getAttribute("class").contains("Button--select")) {
 				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void chooseSortOption(SortOption sortOption) {
+		eleSearchOption = eleSearchOption.generateDynamic(sortOption.getCode());
+		eleSearchOption.click();
+		eleLoadingSignal.waitForDisplayed(30);
+		eleLoadingSignal.waitForNotDisplayed(30);
+	}
+	
+	public boolean isResultSortedByCheapestPrice(int records) {
+		List<Element> elements = eleResultItem.getWrapperElements();
+		if (elements.size() >= records) {
+
+			for (int i = 1; i <= records; i++) {
+				
+				Element eleCurrentResultPriceItem = eleResultPriceItem.generateDynamic(i);
+				Element eleNextResultPriceItem = eleResultPriceItem.generateDynamic(i+1);
+
+				if (Double.parseDouble(eleCurrentResultPriceItem.getText().replace(",", "")) > Double.parseDouble(eleNextResultPriceItem.getText().replace(",", ""))) {
+					return false;
+				}
 			}
 		}
 		return true;

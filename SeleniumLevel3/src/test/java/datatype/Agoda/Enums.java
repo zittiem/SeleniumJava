@@ -44,33 +44,99 @@ public class Enums {
 			return null;
 		}
 
-		public static int getMonthFromSortMonth(String sortMonth) {
+		public static int getMonth(String value) {
 			for (Month e : Month.values()) {
-				if (e.sortMonth.equals(sortMonth))
-					return e.intMont;
-			}
-			return 0;
-		}
-
-		public static int getMonthFromFullMonth(String fullMonth) {
-			for (Month e : Month.values()) {
-				if (e.sortMonth.equals(fullMonth))
+				if (e.sortMonth.equals(value) || e.fullMonth.equals(value))
 					return e.intMont;
 			}
 			return 0;
 		}
 	}
+
+	public enum WeekDays {
+		MO("Mo", "Mon", "Monday"), TU("Tu", "Tue", "Tuesday"), WE("We", "Wed", "Wednesday"),
+		TH("Th", "Thu", "Thursday"), FR("Fr", "Fri", "Friday"), SA("Sa", "Sat", "Saturday"), SU("Su", "Sun", "Sunday");
+
+		private String key = null;
+		private String sortName = null;
+		private String fullName = null;
+
+		WeekDays(String key) {
+			this.key = key;
+		}
+
+		WeekDays(String key, String sortName, String fullName) {
+			this.key = key;
+			this.sortName = sortName;
+			this.fullName = fullName;
+		}
+
+		public String getKey() {
+			return key;
+		}
+
+		public String getSortName() {
+			return sortName;
+		}
+
+		public String getFullName() {
+			return fullName;
+		}
+
+		public String getKey(String value) {
+			for (WeekDays e : WeekDays.values()) {
+				if (e.sortName.equals(value) || e.fullName.equals(value))
+					return e.key;
+			}
+			return null;
+		}
+
+		public String getSortName(String value) {
+			for (WeekDays e : WeekDays.values()) {
+				if (e.key.equals(value) || e.fullName.equals(value))
+					return e.sortName;
+			}
+			return null;
+		}
+
+		public String getFullName(String value) {
+			for (WeekDays e : WeekDays.values()) {
+				if (e.sortName.equals(value) || e.key.equals(value))
+					return e.fullName;
+			}
+			return null;
+		}
+
+	}
+
 	public enum TravelTypes {
-		SOLO("solo"), COUPLE("couples"), FAMILY("families"), GROUP("group"), BUSINESS("business");
+		SOLO("Solo traveler", "solo"), COUPLE("Couple/Pair", "couples"), FAMILY("Family travelers", "families"),
+		GROUP("Group travelers", "group"), BUSINESS("Business travelers", "business");
 
 		private String value;
+		private String code;
 
-		TravelTypes(String value) {
+		TravelTypes(String value, String code) {
 			this.value = value;
+			this.code = code;
 		}
 
 		public String getValue() {
 			return this.value;
+		}
+
+		public String getCode() {
+			return this.code;
+		}
+
+		public static TravelTypes getName(String value) {
+			for (TravelTypes travel : TravelTypes.values()) {
+
+				if (travel.getValue().contentEquals(value) || travel.getCode().equals(value)) {
+					return travel;
+				}
+			}
+			return null;
 		}
 	}
 
@@ -86,5 +152,20 @@ public class Enums {
 		public String getValue() {
 			return this.value;
 		}
+	}
+
+	public enum Filter {
+		Popular("Popular"), Price("PriceFilterRange"), Rating("StarRating"), Locaton("LocationFilters"), More("more");
+
+		Filter(String value) {
+			this.value = value;
+		}
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
 	}
 }

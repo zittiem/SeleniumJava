@@ -1,0 +1,8 @@
+{
+	"any.chrome": {
+		"eleResultItem": "xpath=//section[@class='hotel-item-box']",
+		"btnFilter": "xpath=//div[contains(@data-element-value,'%s')]/button",
+		"btnDeleteFilter":"xpath=//a[@class='filter-btn clear-filter-box']",		
+		"btnNextPage":"id=paginationNext"		
+	}
+}

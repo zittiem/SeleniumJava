@@ -1,8 +1,11 @@
 {
 	"any.chrome": {
 		"eleResultItem": "xpath=//section[@class='hotel-item-box']",
+		"eleResultPriceItem": "xpath=(//section[@class='hotel-item-box']//span[@class='price-box__price__amount'])[%s]",
 		"btnFilter": "xpath=//div[contains(@data-element-value,'%s')]/button",
 		"btnDeleteFilter":"xpath=//a[@class='filter-btn clear-filter-box']",		
-		"btnNextPage":"id=paginationNext"		
+		"btnNextPage":"id=paginationNext",	
+		"eleSearchOption":"xpath=//a[@data-element-name='%s']",
+		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item']"
 	}
 }

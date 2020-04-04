@@ -3,12 +3,14 @@ package pages.Agoda;
 import java.util.List;
 
 import datatype.Agoda.Enums.Filter;
+import datatype.Agoda.Enums.SortOption;
 import element.base.web.Element;
 import element.setting.FindBy;
 import element.wrapper.web.Button;
 import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
 import utils.constant.Constants;
+import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
 public class SearchHoltelResultPage {
@@ -20,11 +22,14 @@ public class SearchHoltelResultPage {
 	protected Button btnFilter = new Button(locator.getLocator("btnFilter"));
 	protected Button btnNextPage = new Button(locator.getLocator("btnNextPage"));
 	protected Button btnDeleteFilter = new Button(locator.getLocator("btnDeleteFilter"));
+	protected Button eleLoadingSignal = new Button(locator.getLocator("eleLoadingSignal"));
 
 	// Dynamic Elements
 	protected Button btnFilterPopular = btnFilter.generateDynamic("Popular");
 	protected Button btnFilterLocation = btnFilter.generateDynamic("LocationFilters");
 	protected Button btnFilterMore = btnFilter.generateDynamic("more");
+	protected Button eleSearchOption = new Button(locator.getLocator("eleSearchOption"));
+	protected Button eleResultPriceItem = new Button(locator.getLocator("eleResultPriceItem"));
 
 	// filter Price
 
@@ -134,5 +139,34 @@ public class SearchHoltelResultPage {
 			}
 		}
 		return true;
+	}
+	
+	public void chooseSortOption(SortOption sortOption) {
+		eleSearchOption = eleSearchOption.generateDynamic(sortOption.getCode());
+		eleSearchOption.click();
+		eleLoadingSignal.waitForDisplayed(Constants.SHORT_TIME);
+		eleLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
+	}
+	
+	public boolean isResultSortedByCheapestPrice(int records) {
+		List<Element> elements = eleResultItem.getWrapperElements();
+		
+		if (elements.size() >= records) {
+			
+			for (int i = 1; i <= records; i++) {
+				
+				Element eleCurrentResultPriceItem = eleResultPriceItem.generateDynamic(i);
+				Element eleNextResultPriceItem = eleResultPriceItem.generateDynamic(i+1);
+
+				if (Double.parseDouble(eleCurrentResultPriceItem.getText().replace(",", "")) > Double.parseDouble(eleNextResultPriceItem.getText().replace(",", ""))) {
+					return false;
+				}
+			}
+			return true;
+		} else {
+
+			Logger.warning("No or less than " + records + " result is available. Total results are " + elements.size());
+		}
+		return false;
 	}
 }

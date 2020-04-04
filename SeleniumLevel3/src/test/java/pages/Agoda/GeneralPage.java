@@ -27,6 +27,7 @@ public class GeneralPage extends TestBase {
 	protected Element calCheckIn = new Element(locator.getLocator("calCheckIn"));
 	protected Element calCheckOut = new Element(locator.getLocator("calCheckOut"));
 	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
+	protected Button btnShowTravelingOption = new Button(locator.getLocator("btnShowTravelingOption"));
 	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
 	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
 	protected Element lblDisplayValue = new Element(locator.getLocator("lblDisplayValue"));
@@ -112,8 +113,8 @@ public class GeneralPage extends TestBase {
 	}
 
 	protected void selectTravelerType(String type) {
-		Element eleTraveler = btnTravelingOption.generateDynamic(TravelTypes.getName(type).getCode());
-		eleTraveler.click();
+		btnTravelingOption = btnTravelingOption.generateDynamic(TravelTypes.getName(type).getCode());
+		btnTravelingOption.click();
 	}
 
 	protected void selectNumber(TravelFields field, int number) {
@@ -156,6 +157,7 @@ public class GeneralPage extends TestBase {
 
 	public void searchHoltel(TravellingInfo travel) {
 		enterTravelingInfo(travel);
+		btnSearch.waitForDisplayed(60);
 		btnSearch.click();
 	}
 }

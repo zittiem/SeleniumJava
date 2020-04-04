@@ -1,0 +1,8 @@
+{
+	"EmailInfo": {
+		"to": "dung.vu@logigear.com",
+		"subject": "[Random]",
+		"attachedFiles": "TestAttachFile.jpg",
+		"content": "[Random]"
+	}
+}

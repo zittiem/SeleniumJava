@@ -1,0 +1,8 @@
+{
+	"any.chrome": {
+		"btnChooseFiles": "xpath=//div[not(@style='display: none')]/input[contains(@id,'file')]",
+		"btnChooseMoreFiles": "id=lnkAdd",
+		"btnInsert": "id=btnAttch",
+		"btnCancel": "id=btnCncl"
+	}
+}

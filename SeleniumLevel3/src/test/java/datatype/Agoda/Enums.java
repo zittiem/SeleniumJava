@@ -191,4 +191,19 @@ public class Enums {
 		}
 
 	}
+	
+	public enum ReviewCategory {
+		Cleanliness("Cleanliness"), Facilities("Facilities"), Location("Location"), Service("Service"), ValueForMoney("Value for money");
+
+		ReviewCategory(String value) {
+			this.value = value;
+		}
+
+		private String value;
+
+		public String getValue() {
+			return value;
+		}
+
+	}
 }

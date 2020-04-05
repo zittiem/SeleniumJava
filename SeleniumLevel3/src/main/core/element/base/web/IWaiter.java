@@ -7,14 +7,11 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import driver.manager.DriverManager;
-import driver.manager.DriverUtils;
 import element.setting.ElementStatus;
 
-public interface IWaiter extends ILocator {
+public interface IWaiter extends IFinder {
 	public static Logger logger = Logger.getLogger(IWaiter.class);
 	
 	public default void waitForCondition(ElementStatus condition, int timeOut, boolean throwable, Object... args) {
@@ -23,14 +20,24 @@ public interface IWaiter extends ILocator {
 			
 			switch (condition) {
 			case PRESENT:
-				wait.until(ExpectedConditions.presenceOfElementLocated(getLocator()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							getElement();
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						return true;
+					}
+				});
 				break;
 			case NOT_PRESENT:
 				wait.until(new Function<WebDriver, Boolean>() {
 					@Override
 					public Boolean apply(WebDriver driver) {
 						try {
-							DriverUtils.findElement(getLocator());
+							getElement();
 						} catch (NoSuchElementException e) {
 							return true;
 						}
@@ -39,14 +46,50 @@ public interface IWaiter extends ILocator {
 				});
 				break;
 			case DISPLAYED:
-				wait.until(ExpectedConditions.visibilityOfElementLocated(getLocator()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return getElement().isDisplayed();
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
 				break;
 			case NOT_DISPLAYED:
-				wait.until(ExpectedConditions.invisibilityOfElementLocated(getLocator()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return !(getElement().isDisplayed());
+						} catch (NoSuchElementException e) {
+							return true;
+						}
+						catch (StaleElementReferenceException e) {
+							return true;
+						}
+					}
+				});
 				break;
 			case CLICKABLE:
 			case ENABLED:
-				wait.until(ExpectedConditions.elementToBeClickable(getLocator()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return getElement().isDisplayed() && getElement().isEnabled();
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
 				break;
 			case NOT_CLICKABLE:
 			case DISABLED:
@@ -54,43 +97,67 @@ public interface IWaiter extends ILocator {
 					@Override
 					public Boolean apply(WebDriver driver) {
 						try {
-							return !(DriverUtils.findElement(getLocator()).isEnabled());
+							return !(getElement().isDisplayed() && getElement().isEnabled());
 						} catch (NoSuchElementException e) {
-							return true;
+							return false;
 						}
 						catch (StaleElementReferenceException e) {
-							return true;
+							return false;
 						}
 					}
 				});
 				break;
 			case SELECTED:
-				wait.until(ExpectedConditions.elementToBeSelected(getLocator()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return getElement().isSelected();
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
 				break;
 			case NOT_SELECTED:
 				wait.until(new Function<WebDriver, Boolean>() {
 					@Override
 					public Boolean apply(WebDriver driver) {
 						try {
-							return !(DriverUtils.findElement(getLocator()).isSelected());
+							return !(getElement().isSelected());
 						} catch (NoSuchElementException e) {
-							return true;
+							return false;
 						}
 						catch (StaleElementReferenceException e) {
-							return true;
+							return false;
 						}
 					}
 				});
 				break;
 			case TEXT_TO_BE:
-				wait.until(ExpectedConditions.textToBe(getLocator(), args[0].toString()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return getElement().getText().equals(args[0].toString());
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
 				break;
 			case TEXT_CHANGED:
 				wait.until(new Function<WebDriver, Boolean>() {
 					@Override
 					public Boolean apply(WebDriver driver) {
 						try {
-							return !(DriverUtils.findElement(getLocator()).getText().equals(args[0].toString()));
+							return !(getElement().getText().equals(args[0].toString()));
 						} catch (NoSuchElementException e) {
 							return false;
 						}
@@ -101,14 +168,26 @@ public interface IWaiter extends ILocator {
 				});
 				break;
 			case ATTRIBUTE_TO_BE:
-				wait.until(ExpectedConditions.attributeToBe(getLocator(), args[0].toString(), args[1].toString()));
+				wait.until(new Function<WebDriver, Boolean>() {
+					@Override
+					public Boolean apply(WebDriver driver) {
+						try {
+							return getElement().getAttribute(args[0].toString()).equals(args[1].toString());
+						} catch (NoSuchElementException e) {
+							return false;
+						}
+						catch (StaleElementReferenceException e) {
+							return false;
+						}
+					}
+				});
 				break;
 			case ATTRIBUTE_CHANGED:
 				wait.until(new Function<WebDriver, Boolean>() {
 					@Override
 					public Boolean apply(WebDriver driver) {
 						try {
-							return !(DriverUtils.findElement(getLocator()).getAttribute(args[0].toString()).equals(args[1].toString()));
+							return !(getElement().getAttribute(args[0].toString()).equals(args[1].toString()));
 						} catch (NoSuchElementException e) {
 							return false;
 						}

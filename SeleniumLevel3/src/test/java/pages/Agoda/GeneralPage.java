@@ -6,6 +6,7 @@ import datatype.Agoda.Enums.Month;
 import datatype.Agoda.Enums.TravelFields;
 import datatype.Agoda.Enums.TravelTypes;
 import datatype.Agoda.TravellingInfo;
+import driver.manager.DriverUtils;
 import element.base.web.Element;
 import element.setting.FindBy;
 import element.wrapper.web.Button;
@@ -19,7 +20,7 @@ import utils.helper.DateTimeHelper;
 
 public class GeneralPage extends TestBase {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			GeneralPage.class);
 
 	// Static Elements
 	protected Button btnShowFields = new Button(locator.getLocator("btnShowFields"));
@@ -38,10 +39,10 @@ public class GeneralPage extends TestBase {
 
 	// Dynamic Elements
 
-	protected Button btnShowDestination = btnShowFields.generateDynamic("search-box");
-	protected Button btnShowCheckIn = btnShowFields.generateDynamic("check-in");
-	protected Button btnShowCheckOut = btnShowFields.generateDynamic("check-out");
-	protected Button btnShowTraveler = btnShowFields.generateDynamic("travelers");
+	protected Button btnShowDestination = new Button(locator.getLocator("btnShowFields"), "search-box");
+	protected Button btnShowCheckIn = new Button(locator.getLocator("btnShowFields"), "check-in");
+	protected Button btnShowCheckOut = new Button(locator.getLocator("btnShowFields"), "check-out");
+	protected Button btnShowTraveler = new Button(locator.getLocator("btnShowFields"), "travelers");
 
 	// Methods
 	protected void enterDestination(String city) {
@@ -159,5 +160,9 @@ public class GeneralPage extends TestBase {
 		enterTravelingInfo(travel);
 		btnSearch.waitForDisplayed(60);
 		btnSearch.click();
+	}
+	
+	public void scrollToTop() {
+		DriverUtils.executeJavaScript("window.scrollTo(0, 0);");
 	}
 }

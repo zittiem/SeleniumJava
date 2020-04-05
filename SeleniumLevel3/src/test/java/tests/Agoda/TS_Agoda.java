@@ -1,8 +1,5 @@
 package tests.Agoda;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.testng.annotations.Test;
 
 import datatype.Agoda.Enums.SortOption;
@@ -38,7 +35,7 @@ public class TS_Agoda extends TestBase {
 		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination).");
 		
 		searchHoltelResultPage.waitForPageLoad();
-		softAssert.assertTrue(searchHoltelResultPage.isDestinationDisplayed(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(travel.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels. Please check.");
 		
 		Logger.info("3. Sort hotels by lowest prices");
@@ -49,7 +46,7 @@ public class TS_Agoda extends TestBase {
 				"5 first hotels are NOT sorted with the right order. Please check.");
 		
 		Logger.verify("The hotel destination is still correct.");
-		softAssert.assertTrue(searchHoltelResultPage.isDestinationDisplayed(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(travel.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels. Please check.");
 		
 		softAssert.assertAll();

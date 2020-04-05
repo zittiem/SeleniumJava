@@ -32,7 +32,7 @@ public class TestBase {
 	@AfterMethod(alwaysRun = true)
 	public void cleanUp(ITestResult result) {
 		Logger.info("Post Condition: Clean up.");
-		//DriverUtils.quit();
+		DriverUtils.quit();
 	}
 	
 	private void prepareAppData() {

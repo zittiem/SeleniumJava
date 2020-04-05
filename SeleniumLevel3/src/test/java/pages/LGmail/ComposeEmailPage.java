@@ -18,7 +18,7 @@ import utils.helper.ResourceHelper;
 
 public class ComposeEmailPage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			ComposeEmailPage.class);
 
 	protected Element eleActions = new Element(locator.getLocator("eleActions"));
 	protected TextBox txtTo = new TextBox(locator.getLocator("txtTo"));

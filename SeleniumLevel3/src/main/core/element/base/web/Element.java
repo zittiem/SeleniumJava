@@ -15,14 +15,13 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import driver.manager.DriverUtils;
-import driver.setting.DriverProperty;
 import element.base.web.Element;
 import element.setting.ElementStatus;
 import element.setting.FindBy;
 import helper.Constant;
 import helper.LocatorHelper;
 
-public class Element implements IFinder, IWaiter, IAction, IInfo {
+public class Element implements IWaiter, IAction, IInfo {
 	private static Logger logger = Logger.getLogger(Element.class);
 
 	private By byLocator;
@@ -110,6 +109,13 @@ public class Element implements IFinder, IWaiter, IAction, IInfo {
 	@Override
 	public By getLocator() {
 		return this.byLocator;
+	}
+	
+	@Override
+	public By getParentLocator() {
+		if (parentElement != null)
+			return parentElement.getLocator();
+		return null;
 	}
 	
 	// ---------------------- Finder ---------------------------- //

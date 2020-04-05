@@ -10,6 +10,8 @@ public interface ILocator {
 	
 	By getLocator();
 	
+	By getParentLocator();
+	
 	public default By getByLocator(FindBy by, String value) {
 		switch (by) {
 		case id:

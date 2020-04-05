@@ -96,6 +96,27 @@ public class DriverUtils {
 			logger.error("An error occurred when switching window: " + e.getMessage());
 		}
 	}
+	
+	public static void switchToFirst() {
+		try {
+			logger.debug("Switch to first window");
+			getDriver().switchTo().window(getWindowHandles().get(0));
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching first window: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToLatest() {
+		try {
+			logger.debug("Switch to latest window");
+			List<String> windows = getWindowHandles();
+			getDriver().switchTo().window(windows.get(windows.size() - 1));
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching latest window: " + e.getMessage());
+		}
+	}
 
 	public static void maximizeBrowser() {
 		try {

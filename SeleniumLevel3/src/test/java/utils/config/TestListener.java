@@ -46,23 +46,31 @@ public class TestListener implements ITestListener {
 
 	public void onTestFailure(ITestResult result) {
 
-		// capture screenshot
-		String screenshotFileName = UUID.randomUUID().toString();
-		String screenshotFilePath = "";
-		try {
-			screenshotFilePath = DriverUtils.takeScreenShot(screenshotFileName, ExtentReportManager.getScreenshotFolder());
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+		if (result.getThrowable() instanceof AssertionError)
+		{
+			ExtentTestManager.getTest().fail("*** TEST EXECUTION COMPLETE - FAILED: " + result.getMethod().getMethodName() + " - " + result.getThrowable().getMessage());
+		}
+		else
+		{
+			// capture screenshot
+			String screenshotFileName = UUID.randomUUID().toString();
+			String screenshotFilePath = "";
+			try {
+				screenshotFilePath = DriverUtils.takeScreenShot(screenshotFileName, ExtentReportManager.getScreenshotFolder());
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			
+			// attach screenshots to report
+			try {
+					ExtentTestManager.getTest().error("*** TEST EXECUTION COMPLETE - ERROR: " + result.getMethod().getMethodName() + " - " + result.getThrowable().getMessage(),
+								MediaEntityBuilder.createScreenCaptureFromPath(screenshotFilePath).build());
+			} catch (IOException e) {
+				ExtentTestManager.getTest().error("*** TEST EXECUTION COMPLETE - ERROR: " + result.getMethod().getMethodName() + " - " + result.getThrowable().getMessage());
+				Logger.info("An exception occured while taking screenshot " + e.getCause());
+			}
 		}
 		
-		// attach screenshots to report
-		try {
-				ExtentTestManager.getTest().fail("*** TEST EXECUTION COMPLETE - FAILED: " + result.getMethod().getMethodName() + " - " + result.getThrowable().getMessage(),
-							MediaEntityBuilder.createScreenCaptureFromPath(screenshotFilePath).build());
-		} catch (IOException e) {
-		Logger.info("An exception occured while taking screenshot " + e.getCause());
-		}
 	}
 
 	public void onTestSkipped(ITestResult result) {

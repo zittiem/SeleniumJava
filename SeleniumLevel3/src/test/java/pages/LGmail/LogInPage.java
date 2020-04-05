@@ -11,7 +11,7 @@ import utils.helper.ResourceHelper;
 public class LogInPage {
 
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			LogInPage.class);
 	protected TextBox txtUserName = new TextBox(locator.getLocator("txtUserName"));
 	protected TextBox txtPassword = new TextBox(locator.getLocator("txtPassword"));
 	protected Button btnSignIn = new Button(locator.getLocator("btnSignIn"));

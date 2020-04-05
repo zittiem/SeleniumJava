@@ -15,7 +15,7 @@ import element.setting.SwipeDirection;
 import helper.LocatorHelper;
 import io.appium.java_client.MobileElement;
 
-public class MobileNativeElement implements IMobileFinder, IMobileWaiter, IMobileAction, IMobileInfo {
+public class MobileNativeElement implements IMobileWaiter, IMobileAction, IMobileInfo {
 	private static Logger logger = Logger.getLogger(MobileNativeElement.class);
 
 	private By byLocator;
@@ -103,6 +103,13 @@ public class MobileNativeElement implements IMobileFinder, IMobileWaiter, IMobil
 	@Override
 	public By getLocator() {
 		return this.byLocator;
+	}
+	
+	@Override
+	public By getParentLocator() {
+		if (parentElement != null)
+			return parentElement.getLocator();
+		return null;
 	}
 	
 	// ---------------------- Finder ---------------------------- //

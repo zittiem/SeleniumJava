@@ -7,7 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import element.setting.FindBy;
 
-public interface IFinder {
+public interface IFinder extends ILocator {
 	
 	WebElement getElement();
 	

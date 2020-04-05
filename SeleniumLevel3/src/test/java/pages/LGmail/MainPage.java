@@ -14,7 +14,7 @@ import utils.helper.ResourceHelper;
 
 public class MainPage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			MainPage.class);
 	protected Element eleMessageToolbar = new Element(locator.getLocator("eleMessageToolbar"));
 	protected Element eleMailTreeItem = new Element(locator.getLocator("eleMailTreeItem"));
 	protected Element eleMailSubject = new Element(locator.getLocator("eleMailSubject"));

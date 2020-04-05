@@ -9,7 +9,7 @@ import utils.helper.ResourceHelper;
 
 public class UploadFilePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			UploadFilePage.class);
 	protected Button btnChooseFiles = new Button(locator.getLocator("btnChooseFiles"));
 	protected Button btnChooseMoreFiles = new Button(locator.getLocator("btnChooseMoreFiles"));
 	protected Button btnInsert = new Button(locator.getLocator("btnInsert"));

@@ -1,5 +1,5 @@
 package element.base.mobile;
 
-public interface IMobileWaiter extends IMobileLocator {
+public interface IMobileWaiter extends IMobileFinder {
 
 }

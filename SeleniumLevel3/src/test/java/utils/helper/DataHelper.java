@@ -1,6 +1,8 @@
 package utils.helper;
 
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
 import com.google.gson.JsonElement;
@@ -39,6 +41,26 @@ public class DataHelper {
 	public <T> T getDataObject(Class<T> clazz) {
 		JsonElement content = _jsonObject.get(clazz.getSimpleName());
 		return JsonHelper.convertJsonToObject(content.toString(), clazz);
+	}
+	
+	public List<String> getDataStringList(String key) {
+		JsonElement content = _jsonObject.get(key);
+		try {
+			return JsonHelper.convertJsonToList(content.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public <T, Y> Map<String, Y> getDataMap(String key) {
+		JsonElement content = _jsonObject.get(key);
+		try {
+			return JsonHelper.convertJsonToMap(content.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	public <T> T getDataObject(Class<T> clazz, String key) {

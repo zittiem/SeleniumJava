@@ -28,11 +28,11 @@ public class TC_02 extends TestBase {
 				+ "\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
 		homePage.searchHoltel(travel);
 
-		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination).");
+		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
 		SearchHoltelResultPage searchHotel = new SearchHoltelResultPage();
 		searchHotel.waitForPageLoad();
-		softAssert.assertTrue(searchHotel.isDestinationDisplayed(travel.getDestination(), 5),
-				"Search Result is not displayed correctly with first 5 hotels. Please check.");
+		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5),
+				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
 
 		Logger.info("3. Filter the hotels with the following info:\r\n\t-Price: 500000-1000000VND\r\n\t-Star:3");
 		searchHotel.filterPrice(500000, 1000000);
@@ -42,10 +42,13 @@ public class TC_02 extends TestBase {
 		softAssert.assertTrue(searchHotel.isFiltersHighted(Filter.Price, Filter.Rating),
 				"The price or star filtered not highlighted. Please check.");
 
-		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination, price, star).");
-		softAssert.assertTrue(searchHotel.isDestinationDisplayed(travel.getDestination(), 5));
-		softAssert.assertTrue(searchHotel.isPriceDisplayed(500000, 1000000, 5));
-		softAssert.assertTrue(searchHotel.isStartRatingDisplayed(3, 5));
+		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination, price, star).");
+		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5), 
+				"Search Result is displayed correctly with first 5 hotels (destination).");
+		softAssert.assertTrue(searchHotel.isHotelPriceCorrect(500000, 1000000, 5), 
+				"Search Result is displayed correctly with first 5 hotels (price).");
+		softAssert.assertTrue(searchHotel.isHotelStarRatingCorrect(3, 5), 
+				"Search Result is displayed correctly with first 5 hotels (star).");
 
 		Logger.info("4. Remove price filter");
 		searchHotel.deleteFilter(Filter.Price);

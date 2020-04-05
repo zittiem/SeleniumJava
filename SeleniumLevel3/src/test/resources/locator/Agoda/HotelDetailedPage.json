@@ -1,0 +1,12 @@
+{
+	"any.chrome": {
+		"eleHotelName": "xpath=//*[@data-selenium='hotel-header-name']",
+		"eleHotelAddress": "xpath=//span[@data-selenium='hotel-address-map']",
+		"eleHotelReviewScoreNumber": "xpath=//span[@data-selenium='hotel-header-review-score']",
+		"eleReviewCardPopup": "xpath=//div[@role='dialog']//div[@data-selenium='review-card-popup']",
+		"eleReviewCategory": "xpath=.//span[contains(@class,'Review-travelerGradeCategory') and text()='%s']",
+		"eleReviewScore": "xpath=.//span[contains(@class,'Review-travelerGradeCategory') and text()='%s']/following-sibling::span[contains(@class,'Review-travelerGradeScore')]",
+		"eleHotelFeatures": "id=abouthotel-features",
+		"eleHotelFacility": "xpath=//*[@id='abouthotel-features']//div[@data-element-name='property-feature' and ./span[contains(text(),'%s')]]"
+	}
+}

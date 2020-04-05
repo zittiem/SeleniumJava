@@ -6,6 +6,19 @@
 		"btnDeleteFilter":"xpath=//a[@class='filter-btn clear-filter-box']",		
 		"btnNextPage":"id=paginationNext",	
 		"eleSearchOption":"xpath=//a[@data-element-name='%s']",
-		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item']"
+		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item']",
+		"eleMoreFilterCategory":"xpath=//section[contains(@class,'MoreFilter__Category') and .//span[@data-component='fliter-label' and .='%s']]",
+		"btnDoneMoreFilter":"xpath=//button[contains(@class, 'MoreFilter__Button') and .='Done']",
+		"eleMoreFilter":"xpath=.//span[@data-selenium='filter-item-text' and normalize-space(text())='%s']",
+		"eleStarRatingFilter":"xpath=.//following-sibling::div//span[@data-element-value='%d']",
+		"elePriceFilter":"xpath=.//input[@id='price_box_%s']",
+		"eleName":"xpath=.//*[@data-selenium='hotel-name']",
+		"eleDestination":"xpath=.//span[@data-selenium='area-city-text']",
+		"eleStarRating":"xpath=.//i[@data-selenium='hotel-star-rating']",
+		"elePrice":"xpath=.//span[@data-selenium='display-price']",
+		"elePriceSlider":"xpath=.//div[contains(@class,'slider-track') and contains(@style,'width: 100%')]",
+		"eleReviewScoreNumber":"xpath=.//span[contains(@class, 'ReviewScore-Number')]",
+		"eleReviewPointPopup":"xpath=(//div[@data-selenium='demographics-review-container'])[1]",
+		"eleReviewPoint":"xpath=//span[@data-selenium='review-name' and text()='%s']/following-sibling::*[@data-selenium='review-point']"
 	}
 }

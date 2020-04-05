@@ -1,9 +1,17 @@
 package pages.Agoda;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.time.StopWatch;
+import org.javatuples.Pair;
 
 import datatype.Agoda.Enums.Filter;
+import datatype.Agoda.Enums.ReviewCategory;
 import datatype.Agoda.Enums.SortOption;
+import datatype.Agoda.FilterOptions;
 import element.base.web.Element;
 import element.setting.FindBy;
 import element.wrapper.web.Button;
@@ -13,56 +21,78 @@ import utils.constant.Constants;
 import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
-public class SearchHoltelResultPage {
+public class SearchHoltelResultPage extends GeneralPage {
 
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			getClass().getSimpleName());
+			SearchHoltelResultPage.class);
 	// Static Elements
 	protected Element eleResultItem = new Element(locator.getLocator("eleResultItem"));
 	protected Button btnFilter = new Button(locator.getLocator("btnFilter"));
 	protected Button btnNextPage = new Button(locator.getLocator("btnNextPage"));
 	protected Button btnDeleteFilter = new Button(locator.getLocator("btnDeleteFilter"));
 	protected Button eleLoadingSignal = new Button(locator.getLocator("eleLoadingSignal"));
+	protected Button btnDoneMoreFilter = new Button(locator.getLocator("btnDoneMoreFilter"));
+	protected Element eleReviewPointPopup = new Button(locator.getLocator("eleReviewPointPopup"));
 
 	// Dynamic Elements
-	protected Button btnFilterPopular = btnFilter.generateDynamic("Popular");
-	protected Button btnFilterLocation = btnFilter.generateDynamic("LocationFilters");
-	protected Button btnFilterMore = btnFilter.generateDynamic("more");
 	protected Button eleSearchOption = new Button(locator.getLocator("eleSearchOption"));
 	protected Button eleResultPriceItem = new Button(locator.getLocator("eleResultPriceItem"));
-
-	// filter Price
-
-	// protected Element eleSliderTrack = new Element(btnFilterPriceRange,
-	// FindBy.xpath,"//div[contains(@class,'slider-track')]");
-
+	protected Element eleMoreFilterCategory = new Element(locator.getLocator("eleMoreFilterCategory"));
+	protected Element eleReviewPoint = new Element(locator.getLocator("eleReviewPoint"));
+	
+	// Special Locators
+	protected Pair<FindBy, String> moreFilterLocator = locator.getLocator("eleMoreFilter");
+	protected Pair<FindBy, String> starRatingFilterLocator = locator.getLocator("eleStarRatingFilter");
+	protected Pair<FindBy, String> priceFilterLocator = locator.getLocator("elePriceFilter");
+	protected Pair<FindBy, String> destinationLocator = locator.getLocator("eleDestination");
+	protected Pair<FindBy, String> nameLocator = locator.getLocator("eleName");
+	protected Pair<FindBy, String> starRatingLocator = locator.getLocator("eleStarRating");
+	protected Pair<FindBy, String> priceLocator = locator.getLocator("elePrice");
+	protected Pair<FindBy, String> priceSliderLocator = locator.getLocator("elePriceSlider");
+	protected Pair<FindBy, String> reviewScoreNumberLocator = locator.getLocator("eleReviewScoreNumber");
+	
 	// Methods
-
 	public void waitForPageLoad() {
 		btnNextPage.waitForDisplayed(Constants.LONG_TIME);
 	}
 
 	public void filterPrice(double min, double max) {
-		btnFilter.generateDynamic("PriceFilterRange").click();
-		new TextBox(btnFilter.generateDynamic("PriceFilterRange"), FindBy.xpath, "//input[@id='price_box_0']")
+		scrollToTop();
+		btnFilter.generateDynamic(Filter.Price.getValue()).click();
+		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 0)
 				.waitForDisplayed(Constants.SHORT_TIME);
-		new TextBox(btnFilter.generateDynamic("PriceFilterRange"), FindBy.xpath, "//input[@id='price_box_0']")
+		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 0)
 				.enter(min);
-		new TextBox(btnFilter.generateDynamic("PriceFilterRange"), FindBy.xpath, "//input[@id='price_box_1']")
+		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 1)
 				.enter(max);
-		btnFilter.generateDynamic("PriceFilterRange").click();
+		btnFilter.generateDynamic(Filter.Price.getValue()).click();
 	}
 
 	public void filterStarRating(int... stars) {
-		btnFilter.generateDynamic("StarRating").click();
+		scrollToTop();
+		btnFilter.generateDynamic(Filter.Rating.getValue()).click();
 		Element eleRating = null;
 		for (int i = 0; i < stars.length; i++) {
-			eleRating = new Element(btnFilter.generateDynamic("StarRating"), FindBy.xpath,
-					"//following-sibling::div//span[@data-element-value='%d']").generateDynamic(stars[i]);
-			eleRating.waitForDisplayed(Constants.SHORT_TIME);
+			eleRating = new Element(btnFilter.generateDynamic(Filter.Rating.getValue()), starRatingFilterLocator).generateDynamic(stars[i]);
 			eleRating.click();
 		}
-		btnFilter.generateDynamic("StarRating").click();
+		btnFilter.generateDynamic(Filter.Rating.getValue()).click();
+	}
+	
+	public void filterMore(FilterOptions filerOptions) {
+		scrollToTop();
+		btnFilter.generateDynamic(Filter.More.getValue()).click();
+		btnDoneMoreFilter.waitForDisplayed(Constants.SHORT_TIME);
+		Element eleFilterOption = null;
+		for (String filerCategory : filerOptions.getCategories()) {
+			eleFilterOption = new Element(eleMoreFilterCategory.generateDynamic(filerCategory), moreFilterLocator);
+			for (Object filterOption : filerOptions.getOptions(filerCategory)) {
+				eleFilterOption.generateDynamic(filterOption);
+				eleFilterOption.click();
+			}
+		}
+		btnDoneMoreFilter.click();
+		btnDoneMoreFilter.waitForNotDisplayed(Constants.SHORT_TIME);
 	}
 
 	public void deleteFilter(Filter filter, boolean hide) {
@@ -73,60 +103,109 @@ public class SearchHoltelResultPage {
 	}
 
 	public void deleteFilter(Filter filter) {
+		scrollToTop();
 		btnFilter.generateDynamic(filter.getValue()).click();
-		btnDeleteFilter.waitForDisplayed(Constants.SHORT_TIME);
 		btnDeleteFilter.click();
 	}
+	
+	public void selectHotel(int index) {
+		moveToHotel(index);
+		eleResultItem.getWrapperElements().get(index - 1).click();
+	}
+	
+	public void moveToHotel(int index) {
+		eleResultItem.waitForDisplayed(Constants.SHORT_TIME);
+		StopWatch sw = new StopWatch();
+		sw.start();
+		int size = 0;
+		List<Element> elements;
+		do
+		{
+			elements = eleResultItem.getWrapperElements();
+			size = elements.size();
+			if (size == 0) return;
+			if (size >= index)
+			{
+				elements.get(index - 1).moveToElement();
+				break;
+			}
+			else
+			{
+				elements.get(size - 1).moveToElement();
+			}
+		}
+		while (sw.getTime(TimeUnit.SECONDS) < Constants.SHORT_TIME);
+	}
+	
+	public String getHotelName(int index) {
+		moveToHotel(index);
+		Element eleName = new Element(eleResultItem.getWrapperElements().get(index-1), nameLocator);
+		return eleName.getText();
+	}
+	
+	public Map<String, String> getHotelScores(int index) {
+		Map<String, String> scoreMap = new HashMap<String, String>();
+		moveToHotel(index);
+		Element eleScoreNumber = new Element(eleResultItem.getWrapperElements().get(index-1), reviewScoreNumberLocator);
+		eleScoreNumber.moveToElement();
+		eleReviewPointPopup.waitForDisplayed(Constants.SHORT_TIME);
+		for (ReviewCategory category : ReviewCategory.values()) {
+			scoreMap.put(category.getValue(), eleReviewPoint.generateDynamic(category.getValue()).getText());
+		}
+		return scoreMap;
+	}
+	
 	// Verify
 
-	public boolean isDestinationDisplayed(String destination, int records) {
+	public boolean isHotelDestinationCorrect(String destination, int records) {
+		moveToHotel(records);
+		Element eleDestination = null;
 		List<Element> elements = eleResultItem.getWrapperElements();
-		if (elements.size() >= records) {
-			Element eleDestination = null;
-			for (int i = 1; i <= records; i++) {
-				eleDestination = new Element(elements.get(i), FindBy.xpath,
-						"//span[@data-selenium='area-city-text' and contains(text(),'%s')]", destination);
-				if (!eleDestination.isDisplayed()) {
-					return false;
-				}
+		if (elements.size() < records)
+			return false;
+		for (int i = 0; i < records; i++) {
+			eleDestination = new Element(elements.get(i), destinationLocator, destination);
+			if (!eleDestination.getText().contains(destination)) {
+				return false;
 			}
 		}
 		return true;
 	}
 
-	public boolean isStartRatingDisplayed(int stars, int records) {
+	public boolean isHotelStarRatingCorrect(int stars, int records) {
+		moveToHotel(records);
+		Element eleStarRating = null;
 		List<Element> elements = eleResultItem.getWrapperElements();
-		if (elements.size() >= records) {
-			Element eleStarRating = null;
-			for (int i = 1; i <= records; i++) {
-				eleStarRating = new Element(elements.get(i), FindBy.xpath, "//i[@data-selenium='hotel-star-rating']");
-				if (Double.parseDouble(eleStarRating.getAttribute("title").split(" ")[0]) >= stars) {
-					return false;
-				}
+		if (elements.size() < records)
+			return false;
+		for (int i = 0; i < records; i++) {
+			eleStarRating = new Element(elements.get(i), starRatingLocator);
+			if (Double.parseDouble(eleStarRating.getAttribute("title").split(" ")[0]) >= stars) {
+				return false;
 			}
 		}
 		return true;
 	}
 
-	public boolean isPriceDisplayed(double min, double max, int records) {
+	public boolean isHotelPriceCorrect(double min, double max, int records) {
+		moveToHotel(records);
+		Element elePrice = null;
+		double currentPrice = 0;
 		List<Element> elements = eleResultItem.getWrapperElements();
-		if (elements.size() >= records) {
-			Element eleStarRating = null;
-			double currentPrice = 0;
-			for (int i = 1; i <= records; i++) {
-				eleStarRating = new Element(elements.get(i), FindBy.xpath, "//i[@data-selenium='hotel-star-rating']");
-				currentPrice = Double.parseDouble(eleStarRating.getAttribute("title").split(" ")[0].replace(".", ""));
-				if (currentPrice > max || currentPrice < min) {
-					return false;
-				}
+		if (elements.size() < records)
+			return false;
+		for (int i = 0; i <= records; i++) {
+			elePrice = new Element(elements.get(i), priceLocator);
+			currentPrice = Double.parseDouble(elePrice.getText().replace(",", ""));
+			if (currentPrice > max || currentPrice < min) {
+				return false;
 			}
 		}
 		return true;
 	}
 
 	public boolean isPriceSliderReset() {
-		if (!new Element(btnFilter.generateDynamic("PriceFilterRange"), FindBy.xpath,
-				"//div[contains(@class,'slider-track') and contains(@style,'width: 100%')]").isDisplayed()) {
+		if (!new Element(btnFilter.generateDynamic("PriceFilterRange"), priceSliderLocator).isDisplayed()) {
 			return false;
 		}
 		return true;
@@ -142,8 +221,7 @@ public class SearchHoltelResultPage {
 	}
 	
 	public void chooseSortOption(SortOption sortOption) {
-		eleSearchOption = eleSearchOption.generateDynamic(sortOption.getCode());
-		eleSearchOption.click();
+		eleSearchOption.generateDynamic(sortOption.getCode()).click();
 		eleLoadingSignal.waitForDisplayed(Constants.SHORT_TIME);
 		eleLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
 	}
@@ -155,10 +233,10 @@ public class SearchHoltelResultPage {
 			
 			for (int i = 1; i <= records; i++) {
 				
-				Element eleCurrentResultPriceItem = eleResultPriceItem.generateDynamic(i);
-				Element eleNextResultPriceItem = eleResultPriceItem.generateDynamic(i+1);
+				String currentResultPrice = eleResultPriceItem.generateDynamic(i).getText().replace(",", "");
+				String nextResultPrice = eleResultPriceItem.generateDynamic(i+1).getText().replace(",", "");
 
-				if (Double.parseDouble(eleCurrentResultPriceItem.getText().replace(",", "")) > Double.parseDouble(eleNextResultPriceItem.getText().replace(",", ""))) {
+				if (Double.parseDouble(currentResultPrice) > Double.parseDouble(nextResultPrice)) {
 					return false;
 				}
 			}

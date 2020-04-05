@@ -1,0 +1,10 @@
+{
+	"any.chrome": {
+		"eleActions": "xpath=//a[@name='lnkB' and @id='%s']",
+		"txtTo": "xpath=//div[@id='divTo']",
+		"txtCC": "xpath=//div[@id='divCc']",
+		"txtSubject": "id=txtSubj",
+		"eleAttachments": "xpath=//span[@id='spnAtmt']",
+		"txtBody": "xpath=//body[@ocsi]"
+	}
+}

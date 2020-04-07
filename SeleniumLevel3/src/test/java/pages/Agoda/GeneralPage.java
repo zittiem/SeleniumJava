@@ -1,7 +1,6 @@
 package pages.Agoda;
 
 import java.util.List;
-
 import datatype.Agoda.Enums.Month;
 import datatype.Agoda.Enums.TravelFields;
 import datatype.Agoda.Enums.TravelTypes;
@@ -21,36 +20,32 @@ import utils.helper.DateTimeHelper;
 public class GeneralPage extends TestBase {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
 			GeneralPage.class);
-
+	
 	// Static Elements
-	protected Button btnShowFields = new Button(locator.getLocator("btnShowFields"));
+	protected Button btnShowDestination = new Button(locator.getLocator("btnShowDestination"));
+	protected Button btnShowCheckIn = new Button(locator.getLocator("btnShowCheckIn"));
+	protected Button btnShowCheckOut = new Button(locator.getLocator("btnShowCheckOut"));
+	protected Button btnShowTraveler = new Button(locator.getLocator("btnShowTraveler"));
 	protected TextBox txtDestination = new TextBox(locator.getLocator("txtDestination"));
-	protected Element calCheckIn = new Element(locator.getLocator("calCheckIn"));
-	protected Element calCheckOut = new Element(locator.getLocator("calCheckOut"));
+	protected Element eleCheckInCal = new Element(locator.getLocator("eleCheckInCal"));
+	protected Element eleCheckOutCal = new Element(locator.getLocator("eleCheckOutCal"));
 	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
 	protected Button btnShowTravelingOption = new Button(locator.getLocator("btnShowTravelingOption"));
 	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
 	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
-	protected Element lblDisplayValue = new Element(locator.getLocator("lblDisplayValue"));
+	protected Element eleDisplayValueLbl = new Element(locator.getLocator("eleDisplayValueLbl"));
 	protected Button btnSearch = new Button(locator.getLocator("btnSearch"));
 	protected Button btnPreviousMonth = new Button(locator.getLocator("btnPreviousMonth"));
 	protected Button btnNextMonth = new Button(locator.getLocator("btnNextMonth"));
 	protected DropDown cbxChildAge = new DropDown(locator.getLocator("cbxChildAge"));
-
-	// Dynamic Elements
-
-	protected Button btnShowDestination = new Button(locator.getLocator("btnShowFields"), "search-box");
-	protected Button btnShowCheckIn = new Button(locator.getLocator("btnShowFields"), "check-in");
-	protected Button btnShowCheckOut = new Button(locator.getLocator("btnShowFields"), "check-out");
-	protected Button btnShowTraveler = new Button(locator.getLocator("btnShowFields"), "travelers");
+	protected Element eleFirstSuggestionItem = new Element(locator.getLocator("eleFirstSuggestionItem"));
 
 	// Methods
-	protected void enterDestination(String city) {
-		if (!city.isEmpty()) {
+	protected void enterDestination(String destination) {
+		if (!destination.isEmpty()) {
 			btnShowDestination.click();
-			txtDestination.enter(city);
-			Element eleSearchPopup = new Element(FindBy.xpath, "//li[@data-element-place-type=1]");
-			eleSearchPopup.click();
+			txtDestination.enter(destination);
+			eleFirstSuggestionItem.click();
 		}
 	}
 
@@ -120,7 +115,7 @@ public class GeneralPage extends TestBase {
 
 	protected void selectNumber(TravelFields field, int number) {
 		if (number != 0) {
-			int currentNumber = Integer.parseInt(lblDisplayValue.generateDynamic(field.getValue()).getText());
+			int currentNumber = Integer.parseInt(eleDisplayValueLbl.generateDynamic(field.getValue()).getText());
 
 			Button btnClick = null;
 			if (currentNumber < number) {
@@ -130,7 +125,7 @@ public class GeneralPage extends TestBase {
 			}
 			while (currentNumber != number) {
 				btnClick.click();
-				currentNumber = Integer.parseInt(lblDisplayValue.generateDynamic(field.getValue()).getText());
+				currentNumber = Integer.parseInt(eleDisplayValueLbl.generateDynamic(field.getValue()).getText());
 			}
 		}
 	}
@@ -161,8 +156,9 @@ public class GeneralPage extends TestBase {
 		btnSearch.waitForDisplayed(60);
 		btnSearch.click();
 	}
-	
+		
 	public void scrollToTop() {
 		DriverUtils.executeJavaScript("window.scrollTo(0, 0);");
 	}
+
 }

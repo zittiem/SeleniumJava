@@ -16,6 +16,7 @@ public class HotelDetailedPage extends GeneralPage {
 
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
 			HotelDetailedPage.class);
+	
 	// Static Elements
 	protected Element eleHotelName = new Element(locator.getLocator("eleHotelName"));
 	protected Element eleHotelAddress = new Element(locator.getLocator("eleHotelAddress"));

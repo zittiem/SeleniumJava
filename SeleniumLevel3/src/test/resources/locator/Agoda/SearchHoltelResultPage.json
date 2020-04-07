@@ -1,11 +1,14 @@
 {
 	"any.chrome": {
 		"eleResultItem": "xpath=//section[@class='hotel-item-box']",
-		"eleResultPriceItem": "xpath=(//section[@class='hotel-item-box']//span[@class='price-box__price__amount'])[%s]",
+		"txtPriceMin": "id=price_box_0",
+		"txtPriceMax": "id=price_box_1",
+		"eleStarRatingCkb": "xpath=//span[@data-element-value='%s']//span[@class='checkbox-icon']",
+		"btnResultPriceItem": "xpath=(//section[@class='hotel-item-box']//span[@class='price-box__price__amount'])[%s]",
 		"btnFilter": "xpath=//div[contains(@data-element-value,'%s')]/button",
 		"btnDeleteFilter":"xpath=//a[@class='filter-btn clear-filter-box']",		
 		"btnNextPage":"id=paginationNext",	
-		"eleSearchOption":"xpath=//a[@data-element-name='%s']",
+		"btnSearchOption":"xpath=//a[@data-element-name='%s']",
 		"eleLoadingSignal":"xpath=//div[@data-selenium='loading-item']",
 		"eleMoreFilterCategory":"xpath=//section[contains(@class,'MoreFilter__Category') and .//span[@data-component='fliter-label' and .='%s']]",
 		"btnDoneMoreFilter":"xpath=//button[contains(@class, 'MoreFilter__Button') and .='Done']",

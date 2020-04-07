@@ -13,29 +13,32 @@ import utils.helper.ResourceHelper;
 
 public class HomePage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
-	// Elements
-
+	
+	// Static Elements
 	protected DropDown cbxLanguage = new DropDown(locator.getLocator("cbxLanguage"));
 	protected RadioButton rbxRoundTrip = new RadioButton(locator.getLocator("rbxRoundTrip"));
 	protected RadioButton rbxRbOneWay = new RadioButton(locator.getLocator("rbxRbOneWay"));
 	protected Element eleOriginSpan = new Element(locator.getLocator("eleOriginSpan"));
 	protected Element eleDestinationSpan = new Element(locator.getLocator("eleDestinationSpan"));
-	protected Element eleDateCal = new Element(locator.getLocator("eleDateCal"));
 	protected Element eleCurrencyCbx = new Element(locator.getLocator("eleCurrencyCbx"));
 	protected CheckBox chxInfare = new CheckBox(locator.getLocator("chxInfare"));
 	protected TextBox txtPromoCode = new TextBox(locator.getLocator("txtPromoCode"));
 	protected Element eleSearchBtn = new Element(locator.getLocator("eleSearchBtn"));
+	protected TextBox txtSearch = new TextBox(locator.getLocator("txtSearch"));
+	protected Element eleCurrentYearLbl = new Element(locator.getLocator("eleCurrentYearLbl"));
+	protected DropDown cbxMonth = new DropDown(locator.getLocator("cbxMonth"));
+	
+	// Dynamic Elements
+	protected Element eleDateCal = new Element(locator.getLocator("eleDateCal"));
 	protected TextBox txtNumberOfPassengers = new TextBox(locator.getLocator("txtNumberOfPassengers"));
 	protected Element eleNumberOfPassengersBtn = new Element(locator.getLocator("eleNumberOfPassengersBtn"));
 	protected Element eleNumberOfPassengersOptionLst = new Element(locator.getLocator("eleNumberOfPassengersOptionLst"));
-	protected TextBox txtSearch = new TextBox(locator.getLocator("txtSearch"));
 	protected Element eleLocationItemLi = new Element(locator.getLocator("eleLocationItemLi"));
 	protected Element eleDatePickerNavigationLnk = new Element(locator.getLocator("eleDatePickerNavigationLnk"));
-	protected Element eleCurrentYearLbl = new Element(locator.getLocator("eleCurrentYearLbl"));
-	protected DropDown cbxMonth = new DropDown(locator.getLocator("cbxMonth"));
 	protected Element eleDayCel = new Element(locator.getLocator("eleDayCel"));
-
+	
 	// Methods
+	
 	public void waitForPageLoad() {
 		eleSearchBtn.waitForDisabled(Constants.LONG_TIME);
 	}

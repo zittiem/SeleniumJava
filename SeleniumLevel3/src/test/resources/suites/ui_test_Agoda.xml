@@ -13,7 +13,7 @@
 		<classes>
 			<class name="tests.Agoda.TS_Agoda">
 				<methods>
-					<include name="TC01" />
+					<include name="TC02" />
 				</methods>
 			</class>
 		</classes>

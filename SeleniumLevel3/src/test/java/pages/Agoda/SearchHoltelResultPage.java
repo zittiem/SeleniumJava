@@ -32,11 +32,13 @@ public class SearchHoltelResultPage extends GeneralPage {
 	protected Button btnFilter = new Button(locator.getLocator("btnFilter"));
 	protected Button btnNextPage = new Button(locator.getLocator("btnNextPage"));
 	protected Button btnDeleteFilter = new Button(locator.getLocator("btnDeleteFilter"));
-	protected Element eleLoadingSignal = new Button(locator.getLocator("eleLoadingSignal"));
+	protected Element elesLoadingSignal = new Element(locator.getLocator("elesLoadingSignal"));
+	protected Element eleFirstLoadingSignal = new Element(locator.getLocator("eleFirstLoadingSignal"));
 	protected Button btnDoneMoreFilter = new Button(locator.getLocator("btnDoneMoreFilter"));
 	protected Element eleReviewPointPopup = new Button(locator.getLocator("eleReviewPointPopup"));
 	protected TextBox txtPriceMin = new TextBox(locator.getLocator("txtPriceMin"));
 	protected TextBox txtPriceMax = new TextBox(locator.getLocator("txtPriceMax"));
+	protected Element elePriceSliderReset = new Element(locator.getLocator("elePriceSliderReset"));
 
 	// Dynamic Elements
 	protected Button btnSearchOption = new Button(locator.getLocator("btnSearchOption"));
@@ -68,12 +70,14 @@ public class SearchHoltelResultPage extends GeneralPage {
 		btnFilter.click();
 	}
 	
-	public void filterPrice(double min, double max) {
+	public void filterPrice(int min, int max) {
 		clickFilterButton(Filter.Price);
 		txtPriceMin.waitForDisplayed(Constants.SHORT_TIME);
 		txtPriceMin.enter(min);
+		waitForItemLoad();
 		txtPriceMax.enter(max);
 		clickFilterButton(Filter.Price);
+		waitForItemLoad();
 	}
 
 	public void filterPriceDung(double min, double max) {
@@ -94,6 +98,7 @@ public class SearchHoltelResultPage extends GeneralPage {
 			eleStarRatingCkb.generateDynamic(stars[i]).click();
 		}
 		clickFilterButton(Filter.Rating);
+		waitForItemLoad();
 	}
 
 	public void filterStarRatingDung(int... stars) {
@@ -134,7 +139,8 @@ public class SearchHoltelResultPage extends GeneralPage {
 		scrollToTop();
 		btnFilter.generateDynamic(filter.getValue()).click();
 		btnDeleteFilter.click();
-		btnDeleteFilter.waitForNotPresent(Constants.SHORT_TIME);
+		waitForItemLoad();
+		btnDeleteFilter.waitForClickable(Constants.SHORT_TIME);
 	}
 	
 	public void selectHotel(int index) {
@@ -184,6 +190,26 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return scoreMap;
 	}
 	
+	public void chooseSortOption(SortOption sortOption) {
+		btnSearchOption.generateDynamic(sortOption.getCode()).moveToElement();
+		btnSearchOption.click();
+		btnNextPage.waitForDisplayed(Constants.SHORT_TIME);
+		btnNextPage.moveToElement();
+		waitForItemLoad();
+	}
+	
+	public void waitForItemLoad() {
+		eleFirstLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
+/*		Boolean firstItemExist = eleFirstLoadingSignal.isDisplayed(Constants.SLEEP_TIME);
+		if(firstItemExist) {
+			List<Element> loadingItemLst = elesLoadingSignal.getWrapperElements();
+			System.out.print("loadingItemLst.size():" + loadingItemLst.size() +"\n");
+			if(loadingItemLst.size() != 0) {
+				loadingItemLst.get(loadingItemLst.size()-1).waitForNotPresent(Constants.LONG_TIME);
+			}
+		}*/
+	}
+	
 	// Verify
 
 	public boolean isHotelDestinationCorrect(String destination, int records) {
@@ -204,12 +230,15 @@ public class SearchHoltelResultPage extends GeneralPage {
 	public boolean isHotelStarRatingCorrect(int stars, int records) {
 		moveToHotel(records);
 		Element eleStarRating = null;
+		double currentStar = 0;
 		List<Element> elements = eleResultItem.getWrapperElements();
 		if (elements.size() < records)
 			return false;
 		for (int i = 0; i < records; i++) {
 			eleStarRating = new Element(elements.get(i), starRatingLocator);
-			if (Double.parseDouble(eleStarRating.getAttribute("title").split(" ")[0]) >= stars) {
+			currentStar = Double.parseDouble(eleStarRating.getAttribute("title").split(" ")[0]);
+			if (currentStar < stars || currentStar >= stars + 1) {
+				Logger.warning("There is a record with invalid stars (" + currentStar + " star).");
 				return false;
 			}
 		}
@@ -221,12 +250,15 @@ public class SearchHoltelResultPage extends GeneralPage {
 		Element elePrice = null;
 		double currentPrice = 0;
 		List<Element> elements = eleResultItem.getWrapperElements();
-		if (elements.size() < records)
+		if (elements.size() < records) {
+			Logger.warning("There is less than " + records + "records. Total records is: " + elements.size());
 			return false;
+		}
 		for (int i = 0; i <= records; i++) {
 			elePrice = new Element(elements.get(i), priceLocator);
 			currentPrice = Double.parseDouble(elePrice.getText().replace(",", ""));
 			if (currentPrice > max || currentPrice < min) {
+				Logger.warning("There is a record which price (" + currentPrice + ") is larger than max or less than min.");
 				return false;
 			}
 		}
@@ -234,7 +266,7 @@ public class SearchHoltelResultPage extends GeneralPage {
 	}
 
 	public boolean isPriceSliderReset() {
-		return new Element(btnFilter.generateDynamic("PriceFilterRange"), priceSliderLocator).isDisplayed();
+		return elePriceSliderReset.isDisplayed();
 	}
 
 	public boolean isFiltersHighLighted(Filter... filters) {
@@ -244,15 +276,6 @@ public class SearchHoltelResultPage extends GeneralPage {
 			}
 		}
 		return true;
-	}
-	
-	public void chooseSortOption(SortOption sortOption) {
-		btnSearchOption.generateDynamic(sortOption.getCode()).moveToElement();
-		btnSearchOption.click();
-		btnNextPage.waitForDisplayed(Constants.SHORT_TIME);
-		btnNextPage.moveToElement();
-		eleLoadingSignal.waitForDisplayed(Constants.SHORT_TIME);
-		eleLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
 	}
 	
 	public boolean isResultSortedByCheapestPrice(int records) {
@@ -276,4 +299,6 @@ public class SearchHoltelResultPage extends GeneralPage {
 		}
 		return false;
 	}
+	
+
 }

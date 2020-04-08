@@ -13,7 +13,6 @@
 		"btnMinus": "xpath=//span [@data-selenium='minus' and contains(@data-element-name,'%s')]",
 		"btnPlus": "xpath=//span[@data-selenium='plus' and contains(@data-element-name,'%s')]",
 		"eleDisplayValueLbl": "xpath=//span[@data-component='desktop-occ-%s-value']",
-		"btnSearch": "xpath=//button[@data-element-name='search-button']",
 		"btnPreviousMonth": "xpath=//span[@data-selenium='calendar-previous-month-button']",
 		"btnNextMonth": "xpath=//span[@data-selenium='calendar-next-month-button']",
 		"cbxChildAge": "xpath=//li[@data-selenium='occ-child-age-dropdown']//select"

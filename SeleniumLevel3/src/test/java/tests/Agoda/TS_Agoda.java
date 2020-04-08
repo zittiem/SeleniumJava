@@ -12,7 +12,7 @@ import datatype.Agoda.FilterOptions;
 import datatype.Agoda.TravellingInfo;
 import pages.Agoda.HomePage;
 import pages.Agoda.HotelDetailedPage;
-import pages.Agoda.SearchHoltelResultPage;
+import pages.Agoda.SearchHotelResultPage;
 import tests.TestBase;
 import utils.assertion.SoftAssertion;
 import utils.constant.Constants;
@@ -27,7 +27,7 @@ public class TS_Agoda extends TestBase {
 			
 		Logger.info("Precondition: Initial Data");
 		HomePage homePage = new HomePage();
-		SearchHoltelResultPage searchHoltelResultPage = new SearchHoltelResultPage();
+		SearchHotelResultPage searchHoltelResultPage = new SearchHotelResultPage();
 		
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC01");
 		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
@@ -68,7 +68,7 @@ public class TS_Agoda extends TestBase {
 		Logger.info("Precondition: Initial Data");
 		
 		HomePage homePage = new HomePage();
-		SearchHoltelResultPage searchHotel = new SearchHoltelResultPage();
+		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
 		
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC02");
 		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
@@ -132,7 +132,7 @@ public class TS_Agoda extends TestBase {
 		homePage.searchHoltel(travel);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
-		SearchHoltelResultPage searchHotel = new SearchHoltelResultPage();
+		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
 		searchHotel.waitForPageLoad();
 		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");

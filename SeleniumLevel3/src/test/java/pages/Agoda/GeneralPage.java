@@ -29,27 +29,43 @@ public class GeneralPage extends TestBase {
 	protected TextBox txtDestination = new TextBox(locator.getLocator("txtDestination"));
 	protected Element eleCheckInCal = new Element(locator.getLocator("eleCheckInCal"));
 	protected Element eleCheckOutCal = new Element(locator.getLocator("eleCheckOutCal"));
-	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
 	protected Button btnShowTravelingOption = new Button(locator.getLocator("btnShowTravelingOption"));
-	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
-	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
-	protected Element eleDisplayValueLbl = new Element(locator.getLocator("eleDisplayValueLbl"));
 	protected Button btnSearch = new Button(locator.getLocator("btnSearch"));
 	protected Button btnPreviousMonth = new Button(locator.getLocator("btnPreviousMonth"));
 	protected Button btnNextMonth = new Button(locator.getLocator("btnNextMonth"));
 	protected DropDown cbxChildAge = new DropDown(locator.getLocator("cbxChildAge"));
 	protected Element eleFirstSuggestionItem = new Element(locator.getLocator("eleFirstSuggestionItem"));
 
+	// Dynamic Elements
+	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
+	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
+	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
+	protected Element eleDisplayValueLbl = new Element(locator.getLocator("eleDisplayValueLbl"));
+	
 	// Methods
-	protected void enterDestination(String destination) {
-		if (!destination.isEmpty()) {
+    /**
+     * Enter a destination or property into SearchBoxTextEditor
+     *
+     * @param  keyWord
+     *         A destination or property (String)
+     *
+     */
+	protected void enterSearchKeyWord(String keyWord) {
+		if (!keyWord.isEmpty()) {
 			btnShowDestination.click();
-			txtDestination.enter(destination);
+			txtDestination.enter(keyWord);
 			eleFirstSuggestionItem.click();
 		}
 	}
 
-	private void findYear(int year) {
+    /**
+     * Find and select a year in the calendar
+     *
+     * @param  year
+     *         The specific year that should be selected (int)
+     *
+     */
+	private void selectYear(int year) {
 		List<Element> eles = new Element(FindBy.xpath, "//div[@class='DayPicker-Caption']").getWrapperElements();
 		eles.get(0).waitForDisplayed(Constants.SHORT_TIME);
 		String currentFirtMonthYear = eles.get(0).getText();
@@ -71,7 +87,14 @@ public class GeneralPage extends TestBase {
 		}
 	}
 
-	private void findMonth(int month) {
+    /**
+     * Find and select a month in the calendar
+     *
+     * @param  month
+     *         The specific month that should be selected (int)
+     *
+     */
+	private void selectMonth(int month) {
 		List<Element> eles = new Element(FindBy.xpath, "//div[@class='DayPicker-Caption']").getWrapperElements();
 		String currentFirtMonthYear = eles.get(0).getText();
 		int firstMonth = Month.getMonth(currentFirtMonthYear.split(" ")[0]);
@@ -92,14 +115,24 @@ public class GeneralPage extends TestBase {
 		}
 	}
 
+    /**
+     * Find and select a date in the calendar
+     *
+     * @param  type [in|out]
+     *         in: select check-in date
+     *         out: select check-out date
+     * @param  date
+     *         The specific date that should be selected (String)
+     *
+     */
 	protected void selectDate(String type, String date) {
 		if (!date.isEmpty()) {
 			int year = Integer.parseInt(date.split("/")[2]);
 			int month = Integer.parseInt(date.split("/")[1]);
 			String strDateTime = DateTimeHelper.getDateString(DateTimeHelper.getDate(date, "dd/MM/yyyy"),
 					"EEE MMM dd yyyy");
-			findYear(year);
-			findMonth(month);
+			selectYear(year);
+			selectMonth(month);
 			Element eleDate = new Element(FindBy.xpath, String.format("//div[@aria-label='%s']", strDateTime));
 			eleDate.click();
 			if (type.contentEquals("out")) {
@@ -108,11 +141,28 @@ public class GeneralPage extends TestBase {
 		}
 	}
 
+    /**
+     * Select traveler type
+     *
+     * @param  type [Solo traveler|Couple/Pair|Family travelers|Group travelers|Business travelers]
+     *         traveler type (String)
+     *
+     */
 	protected void selectTravelerType(String type) {
 		btnTravelingOption = btnTravelingOption.generateDynamic(TravelTypes.getName(type).getCode());
 		btnTravelingOption.click();
 	}
 
+    /**
+     * Select number of room or adult or children
+     *
+     * @param  field
+     *         travel field such as room or adult or children (TravelFields)
+     *
+     *@param	number
+     *			number of room or adult or children depends on the input field
+     *
+     */
 	protected void selectNumber(TravelFields field, int number) {
 		if (number != 0) {
 			int currentNumber = Integer.parseInt(eleDisplayValueLbl.generateDynamic(field.getValue()).getText());
@@ -130,6 +180,13 @@ public class GeneralPage extends TestBase {
 		}
 	}
 
+    /**
+     * Select age for each child
+     *
+     * @param  age
+     *         age of a child (String)
+     *
+     */
 	protected void selectChildAge(String age) {
 		if (!age.isEmpty()) {
 			if (!cbxChildAge.getSelectedOption().equals(age)) {
@@ -137,26 +194,30 @@ public class GeneralPage extends TestBase {
 			}
 		}
 	}
-
+	
+    /**
+     * Enter traveling info to search a suitable hotel
+     *
+     * @param  travel
+     *         travel info (TravellingInfo)
+     *
+     */
 	protected void enterTravelingInfo(TravellingInfo travel) {
-		enterDestination(travel.getDestination());
+		enterSearchKeyWord(travel.getDestination());
 		selectDate("in", travel.getCheckInDate());
 		selectDate("out", travel.getCheckOutDate());
 		selectTravelerType(travel.getTravelOption());
 		selectNumber(TravelFields.ROOM, travel.getNumberOfRoom());
-		selectNumber(TravelFields.ADULT, travel.getNumberOfChildren());
+		selectNumber(TravelFields.ADULT, travel.getNumberOfAdult());
 		selectNumber(TravelFields.CHILDREN, travel.getNumberOfChildren());
 		if (travel.getChildrenAge().equals("<0") || Integer.parseInt(travel.getChildrenAge()) != 0) {
 			selectChildAge(travel.getChildrenAge());
 		}
 	}
-
-	public void searchHoltel(TravellingInfo travel) {
-		enterTravelingInfo(travel);
-		btnSearch.waitForDisplayed(60);
-		btnSearch.click();
-	}
 		
+    /**
+     * scroll to top of page
+     */
 	public void scrollToTop() {
 		DriverUtils.executeJavaScript("window.scrollTo(0, 0);");
 	}

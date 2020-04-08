@@ -22,10 +22,9 @@ import utils.constant.Constants;
 import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
-public class SearchHoltelResultPage extends GeneralPage {
-
+public class SearchHotelResultPage extends GeneralPage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
-			SearchHoltelResultPage.class);
+			SearchHotelResultPage.class);
 	
 	// Static Elements
 	protected Element eleResultItem = new Element(locator.getLocator("eleResultItem"));
@@ -59,17 +58,38 @@ public class SearchHoltelResultPage extends GeneralPage {
 	protected Pair<FindBy, String> reviewScoreNumberLocator = locator.getLocator("eleReviewScoreNumber");
 	
 	// Methods
+	
+    /**
+     * Wait for page load completely. Time out is Constants.LONG_TIME.
+     */
 	public void waitForPageLoad() {
 		btnNextPage.waitForDisplayed(Constants.LONG_TIME);
 		btnNextPage.moveToElement();
 	}
 	
+    /**
+     * Click filter button. 
+     * 
+     * @param	filter
+     * 			Name of filter button. Such as Popular, Price, Rating, Location, More
+     * 
+     */
 	public void clickFilterButton(Filter filter) {
 		btnFilter = btnFilter.generateDynamic(filter.getValue());
 		scrollToTop();
 		btnFilter.click();
 	}
 	
+    /**
+     * Filter results per price
+     * 
+     * @param	min
+     * 			Minimum price used to filter results
+     * 
+     * @param	max
+     * 			Maximum price used to filter results
+     * 
+     */
 	public void filterPrice(int min, int max) {
 		clickFilterButton(Filter.Price);
 		txtPriceMin.waitForDisplayed(Constants.SHORT_TIME);
@@ -79,19 +99,14 @@ public class SearchHoltelResultPage extends GeneralPage {
 		clickFilterButton(Filter.Price);
 		waitForItemLoad();
 	}
-
-	public void filterPriceDung(double min, double max) {
-		scrollToTop();
-		btnFilter.generateDynamic(Filter.Price.getValue()).click();
-		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 0)
-				.waitForDisplayed(Constants.SHORT_TIME);
-		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 0)
-				.enter(min);
-		new TextBox(btnFilter.generateDynamic(Filter.Price.getValue()), priceFilterLocator, 1)
-				.enter(max);
-		btnFilter.generateDynamic(Filter.Price.getValue()).click();
-	}
 	
+    /**
+     * Filter results per star rating
+     * 
+     * @param	stars
+     * 			Array int of star options that user want to filter
+     * 
+     */
 	public void filterStarRating(int... stars) {
 		clickFilterButton(Filter.Rating);
 		for (int i = 0; i < stars.length; i++) {
@@ -100,21 +115,17 @@ public class SearchHoltelResultPage extends GeneralPage {
 		clickFilterButton(Filter.Rating);
 		waitForItemLoad();
 	}
-
-	public void filterStarRatingDung(int... stars) {
-		scrollToTop();
-		btnFilter.generateDynamic(Filter.Rating.getValue()).click();
-		Element eleRating = null;
-		for (int i = 0; i < stars.length; i++) {
-			eleRating = new Element(btnFilter.generateDynamic(Filter.Rating.getValue()), starRatingFilterLocator).generateDynamic(stars[i]);
-			eleRating.click();
-		}
-		btnFilter.generateDynamic(Filter.Rating.getValue()).click();
-	}
 	
+    /**
+     * Filter results per more categories
+     * 
+     * @param	filerOptions
+     * 			List of filter options which should be applied (FilterOptions)
+     * 
+     */
 	public void filterMore(FilterOptions filerOptions) {
 		scrollToTop();
-		btnFilter.generateDynamic(Filter.More.getValue()).click();
+		clickFilterButton(Filter.More);
 		btnDoneMoreFilter.waitForDisplayed(Constants.SHORT_TIME);
 		Element eleFilterOption = null;
 		for (String filerCategory : filerOptions.getCategories()) {
@@ -128,6 +139,15 @@ public class SearchHoltelResultPage extends GeneralPage {
 		btnDoneMoreFilter.waitForNotDisplayed(Constants.SHORT_TIME);
 	}
 
+    /**
+     * Clear a specific filter
+     * 
+     * @param	filter
+     * 			Type of filter. It includesPopular, Price, Rating, Location, More
+     * 
+     * @param	hide
+     * 			
+     */
 	public void deleteFilter(Filter filter, boolean hide) {
 		deleteFilter(filter);
 		if (hide) {
@@ -135,6 +155,13 @@ public class SearchHoltelResultPage extends GeneralPage {
 		}
 	}
 
+    /**
+     * Clear a specific filter
+     * 
+     * @param	filter
+     * 			Type of filter. It includesPopular, Price, Rating, Location, More
+     * 
+     */
 	public void deleteFilter(Filter filter) {
 		scrollToTop();
 		btnFilter.generateDynamic(filter.getValue()).click();
@@ -143,11 +170,25 @@ public class SearchHoltelResultPage extends GeneralPage {
 		btnDeleteFilter.waitForClickable(Constants.SHORT_TIME);
 	}
 	
+    /**
+     * Select a hotel per index
+     * 
+     * @param	index
+     * 			index of hotel (int)
+     * 
+     */
 	public void selectHotel(int index) {
 		moveToHotel(index);
 		eleResultItem.getWrapperElements().get(index - 1).click();
 	}
 	
+    /**
+     * Move to a specific hotel per index
+     * 
+     * @param	index
+     * 			index of hotel (int)
+     * 
+     */
 	public void moveToHotel(int index) {
 		eleResultItem.waitForDisplayed(Constants.SHORT_TIME);
 		StopWatch sw = new StopWatch();
@@ -172,12 +213,30 @@ public class SearchHoltelResultPage extends GeneralPage {
 		while (sw.getTime(TimeUnit.SECONDS) < Constants.SHORT_TIME);
 	}
 	
+    /**
+     * Get hotel name per index
+     * 
+     * @param	index
+     * 			index of hotel (int)
+     * 
+     * @return	Return hotel name (String)
+     * 
+     */
 	public String getHotelName(int index) {
 		moveToHotel(index);
 		Element eleName = new Element(eleResultItem.getWrapperElements().get(index-1), nameLocator);
 		return eleName.getText();
 	}
 	
+    /**
+     * Get all detailed review score of a hotel per index
+     * 
+     * @param	index
+     * 			index of hotel (int)
+     * 
+     * @return	Return Map<Category, Score> of a hotel
+     * 
+     */
 	public Map<String, String> getHotelScores(int index) {
 		Map<String, String> scoreMap = new HashMap<String, String>();
 		moveToHotel(index);
@@ -190,6 +249,13 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return scoreMap;
 	}
 	
+    /**
+     * Choose a specific sort option. 
+     * 
+     * @param	sortOption
+     * 			Any sort option includes BestMatch, CheapestPrice, NearestTo, TopReviewed, SecretDeal
+     * 
+     */
 	public void chooseSortOption(SortOption sortOption) {
 		btnSearchOption.generateDynamic(sortOption.getCode()).moveToElement();
 		btnSearchOption.click();
@@ -198,6 +264,10 @@ public class SearchHoltelResultPage extends GeneralPage {
 		waitForItemLoad();
 	}
 	
+    /**
+     * Wait for the loading signal of the first item disappears. It also means items loaded completely.
+     * Timeout is Constants.LONG_TIME
+     */
 	public void waitForItemLoad() {
 		eleFirstLoadingSignal.waitForNotDisplayed(Constants.LONG_TIME);
 /*		Boolean firstItemExist = eleFirstLoadingSignal.isDisplayed(Constants.SLEEP_TIME);
@@ -212,6 +282,20 @@ public class SearchHoltelResultPage extends GeneralPage {
 	
 	// Verify
 
+	 /**
+     * Return a Boolean value to indicate whether hotel destination is correct
+     *
+     * @param	destination
+     *			Expected Hotel destination (String)
+     *
+     * @param	records
+     * 			Number of record that need to be verified the hotel destination (int)
+     *
+     * @return  true|false
+     * 			true: the hotel destinations of all records match with the expected destination
+     * 			false: destination of any record does not match with the expected destination
+     * 
+     */
 	public boolean isHotelDestinationCorrect(String destination, int records) {
 		moveToHotel(records);
 		Element eleDestination = null;
@@ -227,6 +311,20 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return true;
 	}
 
+	 /**
+     * Return a Boolean value to indicate whether hotel star rating is correct
+     *
+     * @param	stars
+     *			Expected Hotel Star (int)
+     *
+     * @param	records
+     * 			Number of record that need to be verified the hotel destination (int)
+     *
+     * @return  true|false
+     * 			true: the hotel star rating of all records are correct
+     * 			false: star rating of any record is incorrect
+     * 
+     */
 	public boolean isHotelStarRatingCorrect(int stars, int records) {
 		moveToHotel(records);
 		Element eleStarRating = null;
@@ -245,6 +343,23 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return true;
 	}
 
+	 /**
+     * Return a Boolean value to indicate whether hotel price is correct
+     *
+     * @param	min
+     *			Minimum price used to verify the hotel price (int)
+     *
+     * @param	max
+     *			Maximum price used to verify the hotel price (int)
+     *
+     * @param	records
+     * 			Number of record that need to be verified the hotel destination (int)
+     *
+     * @return  true|false
+     * 			true: the hotel prices of all records are correct
+     * 			false: the hotel prices of any record is incorrect
+     * 
+     */
 	public boolean isHotelPriceCorrect(double min, double max, int records) {
 		moveToHotel(records);
 		Element elePrice = null;
@@ -265,10 +380,29 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return true;
 	}
 
+	 /**
+     * Return a Boolean value to indicate whether the price slider is reset
+     *
+     * @return  true|false
+     * 			true: the price slider is reset
+     * 			false: the price slider is not reset
+     * 
+     */
 	public boolean isPriceSliderReset() {
 		return elePriceSliderReset.isDisplayed();
 	}
 
+	 /**
+     * Return a Boolean value to indicate whether filter(s) is highlighted
+     *
+     * @param	filters
+     *			List of filters that need to be verified
+     *
+     * @return  true|false
+     * 			true: filter(s) is highlighted
+     * 			false: filter(s) is not highlighted
+     * 
+     */
 	public boolean isFiltersHighLighted(Filter... filters) {
 		for (int i = 0; i < filters.length; i++) {
 			if (!btnFilter.generateDynamic(filters[i]).getAttribute("class").contains("Button--select")) {
@@ -278,6 +412,17 @@ public class SearchHoltelResultPage extends GeneralPage {
 		return true;
 	}
 	
+	 /**
+     * Return a Boolean value to indicate whether results are sorted by cheapest price
+     *
+     * @param	records
+     *			Number of records (int)
+     *
+     * @return  true|false
+     * 			true: all records are sorted by cheapest prices
+     * 			false: records are not sorted by cheapest prices
+     * 
+     */
 	public boolean isResultSortedByCheapestPrice(int records) {
 		List<Element> elements = eleResultItem.getWrapperElements();
 		

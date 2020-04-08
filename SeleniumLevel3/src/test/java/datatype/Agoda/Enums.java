@@ -141,7 +141,7 @@ public class Enums {
 	}
 
 	public enum TravelFields {
-		ROOM("room"), ADULT("couples"), CHILDREN("families");
+		ROOM("room"), ADULT("adult"), CHILDREN("children");
 
 		private String value;
 

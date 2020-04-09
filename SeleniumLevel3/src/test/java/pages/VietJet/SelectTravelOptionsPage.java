@@ -2,8 +2,9 @@ package pages.VietJet;
 
 import java.util.Date;
 import java.util.List;
-
 import datatype.VietJet.Booking;
+import datatype.VietJet.Enums.Trips;
+import datatype.VietJet.Enums.TicketDetails;
 import datatype.VietJet.Enums.FlightClass;
 import datatype.VietJet.Enums.LocationOption;
 import driver.manager.DriverUtils;
@@ -52,22 +53,41 @@ public class SelectTravelOptionsPage {
 
 	// Method
 
+    /**
+     * Wait for page load completely. Time out is Constants.LONG_TIME.
+     */
 	public void waitForPageLoad() {
 		btnContinue.waitForCondition(ElementStatus.DISPLAYED, Constants.LONG_TIME, false);
-		// this.btnContinue.waitForDisplayed(Constants.LONG_TIME);
 	}
 
-	public boolean isDisplayed() {
-		waitForPageLoad();
-		return DriverUtils.getURL().contains("TravelOptions.aspx");
-	}
-
-	// Find the cheapest flight option
-
+    /**
+     * find cheapest ticket regardless the flight class
+     *
+     * @param  trip
+     *         Trips.DEPARTURE | Trips.RETURN
+     *
+     */
 	private void findCheapestTicket(Trips trip) {
 		findCheapestTicket(trip, FlightClass.NONE);
 	}
+	
+    /**
+     * find cheapest ticket regardless the flight class
+     *
+     */
+	private void findCheapestTickets() {
+		findCheapestTickets(FlightClass.NONE);
+	}
 
+    /**
+     * find cheapest ticket bases on the flight class
+     *
+     * @param  trip
+     *         DEPARTURE | RETURN
+     *
+     * @param	flightClass
+     * 			ECO|PROMO|SKYBOSS|NONE("", "")		
+     */
 	private void findCheapestTicket(Trips trip, FlightClass flightClass) {
 		Element element = null;
 		if (trip.getValue().equals("Departure"))
@@ -75,11 +95,11 @@ public class SelectTravelOptionsPage {
 		else if (trip.getValue().equals("Return"))
 			element = optReturnPrice;
 		List<Element> elements = element.generateDynamic(flightClass.getValue()).getWrapperElements();
-		double price = getCastValue(elements.get(0).getText());
+		double price = convertMoneyFromStringToDouble(elements.get(0).getText());
 		Element outputElement = elements.get(0);
 		for (int i = 1; i < elements.size(); i++) {
-			if (getCastValue(elements.get(i).getText()) < price) {
-				price = getCastValue(elements.get(i).getText());
+			if (convertMoneyFromStringToDouble(elements.get(i).getText()) < price) {
+				price = convertMoneyFromStringToDouble(elements.get(i).getText());
 				outputElement = elements.get(i);
 			}
 		}
@@ -92,10 +112,26 @@ public class SelectTravelOptionsPage {
 			this.optReturnPrice = outputElement;
 			this.rdxReturn = new RadioButton(FindBy.xpath,
 					optReturnPrice.getLocator().toString().substring(10) + "//input[@id='gridTravelOptRet']");
-		}
+			}
 	}
 
-	private void findCheapestTicketAfterDateTime(Trips trip, FlightClass clazz, String date, String time) {
+    /**
+     * find cheapest ticket after the specific date time
+     *
+     * @param  trip
+     *         DEPARTURE | RETURN
+     *
+     * @param	flightClass
+     * 			ECO|PROMO|SKYBOSS|NONE("", "")		
+     * 
+     * @param	date
+     * 			date
+     * 
+     * @param	time
+     * 			time
+     * 
+     */
+	private void findCheapestTicketAfterDateTime(Trips trip, FlightClass flightClass, String date, String time) {
 		String eleRowXpath = String.format("//tr[contains(@id,'gridTravelOpt%s')]", trip.getKey());
 		String finalXpath = null;
 		double finalPrice = 0;
@@ -115,19 +151,19 @@ public class SelectTravelOptionsPage {
 				if (actualDateTime.after(expDateTime)) {
 					String actualPriceTableXpath = String.format(eleRowXpath + "[" + i + "]"
 							+ "//table[@class='FaresGrid']//td[contains(@id,'gridTravelOpt') and contains(@data-familyid,'%s')]",
-							clazz.getValue());
+							flightClass.getValue());
 					List<Element> eleCellPrices = new Element(FindBy.xpath, actualPriceTableXpath).getWrapperElements();
 
 					for (int j = 1; j <= eleCellPrices.size(); j++) {
 						if (flagSaveData) {
-							finalPrice = getCastValue(
+							finalPrice = convertMoneyFromStringToDouble(
 									new Element(FindBy.xpath, actualPriceTableXpath + "[" + j + "]").getText());
 							finalXpath = actualPriceTableXpath + "[" + j + "]";
 							flagSaveData = false;
 						}
-						if (getCastValue(new Element(FindBy.xpath, actualPriceTableXpath + "[" + j + "]")
+						if (convertMoneyFromStringToDouble(new Element(FindBy.xpath, actualPriceTableXpath + "[" + j + "]")
 								.getText()) < finalPrice) {
-							finalPrice = getCastValue(
+							finalPrice = convertMoneyFromStringToDouble(
 									new Element(FindBy.xpath, actualPriceTableXpath + "[" + j + "]").getText());
 							finalXpath = actualPriceTableXpath + "[" + j + "]";
 						}
@@ -148,10 +184,13 @@ public class SelectTravelOptionsPage {
 		}
 	}
 
-	private void findCheapestTickets() {
-		findCheapestTickets(FlightClass.NONE);
-	}
-
+    /**
+     * find combo of cheapest tickets (departure and return) bases on the flight class
+     *
+     * @param	flightClass
+     * 			ECO|PROMO|SKYBOSS|NONE("", "")	
+     *     	
+     */
 	private void findCheapestTickets(FlightClass flightClass) {
 		findCheapestTicket(Trips.DEPARTURE, flightClass);
 		findCheapestTicketAfterDateTime(Trips.RETURN, flightClass,
@@ -159,6 +198,9 @@ public class SelectTravelOptionsPage {
 				getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.ARR_TIME));
 	}
 
+    /**
+     * select combo of cheapest tickets (departure and return) regardless flightclass
+     */
 	public void selectCheapestTickets() {
 		lblNumberOfAdults.waitForDisplayed(90);
 		findCheapestTickets();
@@ -168,6 +210,13 @@ public class SelectTravelOptionsPage {
 		rdxReturn.select();
 	}
 
+    /**
+     * select combo of cheapest tickets (departure and return) base on flightclass
+     * 
+     * @param	flightClass
+     * 			ECO|PROMO|SKYBOSS|NONE("", "")	
+     * 
+     */
 	public void selectCheapestTickets(FlightClass flightClass) {
 		findCheapestTickets(flightClass);
 		rdxDeparture.scrollIntoView();
@@ -176,6 +225,13 @@ public class SelectTravelOptionsPage {
 		rdxReturn.select();
 	}
 
+    /**
+     * select cheapest ticket regardless the flight class
+     *
+     * @param  trip
+     *         Trips.DEPARTURE | Trips.RETURN
+     *
+     */
 	public void selectCheapestTicket(Trips trip) {
 		findCheapestTicket(trip);
 		rdxDeparture.scrollIntoView();
@@ -184,6 +240,13 @@ public class SelectTravelOptionsPage {
 		rdxReturn.select();
 	}
 
+    /**
+     * find combo of cheapest tickets (departure and return) bases on the flight class
+     *
+     * @param	flightClass
+     * 			ECO|PROMO|SKYBOSS|NONE("", "")	
+     *     	
+     */
 	public void selectCheapestTicket(FlightClass flightClass) {
 		findCheapestTickets(flightClass);
 		rdxDeparture.scrollIntoView();
@@ -192,75 +255,168 @@ public class SelectTravelOptionsPage {
 		rdxReturn.select();
 	}
 
-	private double getCastValue(String value) {
+    /**
+     * Convert money from string to double
+     *
+     * @param  value
+     *         money in string format. Ex: 10,000 VND
+     *         
+     * @return	money with double type
+     *
+     */
+	private double convertMoneyFromStringToDouble(String value) {
 		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
+    /**
+     * Get departure from information
+     *         
+     * @return	a string of departure from
+     *
+     */
 	public String getDepartureFromInfo() {
 		return lblDepartureFrom.getText().split(":")[1].trim();
 	}
 
+    /**
+     * Get departure to information
+     *         
+     * @return	a string of departure to
+     *
+     */
 	public String getDepartureToInfo() {
 		return lblDepartureTo.getText().split(":")[1].trim();
 	}
 
+    /**
+     * Get departure date
+     *         
+     * @return	a string of departure date
+     *
+     */
 	public String getDepartureDateInfo() {
 		String xpath = "//ancestor::tr[contains(@id,'gridTravelOptDep')]//td[@class='SegInfo' and contains(text(),'/')]";
 		return new Element(optDerparturPrice, FindBy.xpath, xpath).getText();
 	}
 
+    /**
+     * Get departure date with input format
+     *         
+     * @return	a string of departure date with input format
+     *
+     */
 	public String getDepartureDateInfo(String format) {
 		return DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()), format);
 	}
 
+    /**
+     * Get departure date in summary section
+     *         
+     * @return	a string of departure date
+     *
+     */
 	public String getDepartureDateInfoInSummary() {
 		return lblDepartureDate.getText();
 	}
 
+    /**
+     * Get return from location
+     *         
+     * @return	a string of return from location
+     *
+     */
 	public String getReturnFromInfo() {
 		return lblReturnFrom.getText().split(":")[1].trim();
 	}
 
+    /**
+     * Get return to location
+     *         
+     * @return	a string of return to location
+     *
+     */
 	public String getReturnToInfo() {
 		return lblReturnTo.getText().split(":")[1].trim();
 	}
 
+    /**
+     * Get return date
+     *         
+     * @return	a string of return date
+     *
+     */
 	public String getReturnDateInfo() {
 		String xpath = "//ancestor::tr[contains(@id,'gridTravelOptRet')]//td[@class='SegInfo' and contains(text(),'/')]";
 		return new Element(optReturnPrice, FindBy.xpath, xpath).getText();
 	}
 
+    /**
+     * Get return date with input format
+     *         
+     * @return	a string of return date with input format
+     *
+     */
 	public String getReturnDateInfo(String format) {
 		return DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()), format);
 	}
 
+    /**
+     * Get return date in summary section
+     *         
+     * @return	a string of return date
+     *
+     */
 	public String getReturnDateInfoInSummary() {
 		return lblReturnDate.getText();
 	}
 
+    /**
+     * Get number of adults
+     *         
+     * @return	number of adults (int)
+     *
+     */
 	public int getNumberOfAdultsInfo() {
 		return Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim());
 	}
 
+    /**
+     * Get number of children
+     *         
+     * @return	number of children (int)
+     *
+     */
 	public int getNumberOfChildrenInfo() {
 		return Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim());
 	}
 
+    /**
+     * Get number of infants
+     *         
+     * @return	number of infants (int)
+     *
+     */
 	public int getNumberOfInfantsInfo() {
 		return Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim());
 	}
 
+    /**
+     * Submit a page by clicking on the Continue button
+     *         
+     * @return	number of infants (int)
+     *
+     */
 	public void submitPage() {
 		btnContinue.moveToElement();
 		btnContinue.click();
 	}
-
-	// Assert
-
-	public boolean isCurrency(String currency) {
-		return lblDisplayCurrency.generateDynamic(currency).getAttribute("innerText").equals(currency);
-	}
-
+	
+    /**
+     * Get current booking information
+     *         
+     * @return	booking
+     *
+     */
 	public Booking getCurrentBookingInfo() {
 		Booking booking = new Booking();
 		booking.setDepartureFrom(LocationOption.getCode(lblDepartureFrom.getText().split(":")[1].trim()));
@@ -277,38 +433,55 @@ public class SelectTravelOptionsPage {
 		return booking;
 	}
 
-	// Section Store data for next page verifying
-	public Booking getTicketDetails() {
-		Booking ticketDetails = new Booking();
-		ticketDetails.setDepartureFrom(getDepartureFromInfo());
-		ticketDetails.setDepartureTo(getDepartureToInfo());
-		ticketDetails.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()),
+    /**
+     * Get booking details
+     *         
+     * @return	booking
+     *
+     */
+	public Booking getBookingDetails() {
+		Booking booking = new Booking();
+		booking.setDepartureFrom(getDepartureFromInfo());
+		booking.setDepartureTo(getDepartureToInfo());
+		booking.setDepartureDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getDepartureDateInfo()),
 				ResourceHelper.SHARED_DATA.get().date_format));
-		ticketDetails.setReturnFrom(getReturnFromInfo());
-		ticketDetails.setReturnTo(getReturnToInfo());
-		ticketDetails.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()),
+		booking.setReturnFrom(getReturnFromInfo());
+		booking.setReturnTo(getReturnToInfo());
+		booking.setReturnDate(DateTimeHelper.getDateString(DateTimeHelper.getDate(getReturnDateInfo()),
 				ResourceHelper.SHARED_DATA.get().date_format));
-		ticketDetails.setNumberOfAdults(getNumberOfAdultsInfo());
-		ticketDetails.setNumberOfChildren(getNumberOfChildrenInfo());
-		ticketDetails.setNumberOfInfants(getNumberOfInfantsInfo());
-		ticketDetails.setDepartureFare(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.FARE))
-				* (ticketDetails.getNumberOfAdults() + ticketDetails.getNumberOfChildren()
-						+ ticketDetails.getNumberOfInfants()));
-		ticketDetails.setDepartureTax(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TAX)));
-		ticketDetails.setDepartureCharge(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.CHARGES)));
-		ticketDetails.setDepartureTotal(getCastValue(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TOTAL)));
-		ticketDetails.setDepartureTime(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.DEP_TIME));
-		ticketDetails.setReturnFare(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.FARE))
-				* (ticketDetails.getNumberOfAdults() + ticketDetails.getNumberOfChildren()
-						+ ticketDetails.getNumberOfInfants()));
-		ticketDetails.setReturnTax(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TAX)));
-		ticketDetails.setReturnCharge(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.CHARGES)));
-		ticketDetails.setReturnTotal(getCastValue(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TOTAL)));
-		ticketDetails.setReturnTime(getSelectedTicketInfo(Trips.RETURN, TicketDetails.DEP_TIME));
-		ticketDetails.setGrandTotal(ticketDetails.getDepartureTotal() + ticketDetails.getReturnTotal());
-		return ticketDetails;
+		booking.setNumberOfAdults(getNumberOfAdultsInfo());
+		booking.setNumberOfChildren(getNumberOfChildrenInfo());
+		booking.setNumberOfInfants(getNumberOfInfantsInfo());
+		booking.setDepartureFare(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.FARE))
+				* (booking.getNumberOfAdults() + booking.getNumberOfChildren()
+						+ booking.getNumberOfInfants()));
+		booking.setDepartureTax(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TAX)));
+		booking.setDepartureCharge(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.CHARGES)));
+		booking.setDepartureTotal(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.TOTAL)));
+		booking.setDepartureTime(getSelectedTicketInfo(Trips.DEPARTURE, TicketDetails.DEP_TIME));
+		booking.setReturnFare(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.RETURN, TicketDetails.FARE))
+				* (booking.getNumberOfAdults() + booking.getNumberOfChildren()
+						+ booking.getNumberOfInfants()));
+		booking.setReturnTax(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TAX)));
+		booking.setReturnCharge(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.RETURN, TicketDetails.CHARGES)));
+		booking.setReturnTotal(convertMoneyFromStringToDouble(getSelectedTicketInfo(Trips.RETURN, TicketDetails.TOTAL)));
+		booking.setReturnTime(getSelectedTicketInfo(Trips.RETURN, TicketDetails.DEP_TIME));
+		booking.setGrandTotal(booking.getDepartureTotal() + booking.getReturnTotal());
+		return booking;
 	}
 
+    /**
+     * Get selected ticket info
+     * 
+     * @param	trip
+     *         	DEPARTURE|RETURN
+     *         
+     * @param	info
+     * 			FARE|TAX|DEP_TIME|ARR_TIME|CHARGES|TOTAL
+     * 
+     * @return	a string of ticket info
+     *
+     */
 	public String getSelectedTicketInfo(Trips trip, TicketDetails info) {
 		Element element = null;
 		String infoXpath = null;
@@ -330,75 +503,81 @@ public class SelectTravelOptionsPage {
 		return returnValue;
 	}
 
-	enum Trips {
-		DEPARTURE("Dep", "Departure"), RETURN("Ret", "Return");
-
-		private String key;
-		private String value;
-
-		Trips(String key, String value) {
-			this.key = key;
-			this.value = value;
-		}
-
-		public String getValue() {
-			return this.value;
-		}
-
-		public String getKey() {
-			return this.key;
-		}
-	}
-
-	enum TicketDetails {
-		FARE("fare"), TAX("fare_taxes"), DEP_TIME("depTime"), ARR_TIME("arriveTime"), CHARGES("charges"),
-		TOTAL("total_complete_charges");
-
-		private String details;
-
-		TicketDetails(String details) {
-			this.details = details;
-		}
-
-		public String getValue() {
-			return this.details;
-		}
-	}
-
+    /**
+     * Get page title
+     * 
+     * @return	a string of page title
+     *
+     */
 	public String getPageTitle() {
 		lblPageTitle.waitForDisplayed(30);
 		return DriverUtils.getTitle();
 	}
 
-	public boolean isBookingInfoCorrect(Booking booking) {
-		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "
-				+ LocationOption.getValue(booking.getDepartureFrom()) + "\n");
-		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "
-				+ LocationOption.getValue(booking.getDepartureTo()) + " \n");
-		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "
-				+ booking.getDepartureDate() + " \n");
-		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "
-				+ LocationOption.getValue(booking.getReturnFrom()) + " \n");
-		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "
-				+ LocationOption.getValue(booking.getReturnTo()) + " \n");
-		System.out
-				.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs " + booking.getReturnDate() + " \n");
-		System.out.print(
-				"getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs " + booking.getNumberOfAdults() + " \n");
-		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "
-				+ booking.getNumberOfChildren() + " \n");
-		System.out.print(
-				"getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs " + booking.getNumberOfInfants() + " \n");
+	// Verify
+	
+	 /**
+     * Return a Boolean value to indicate whether this page is displayed
+     *
+     * @return  true|false
+     * 			true: This page is displayed
+     * 			false: This page is not displayed
+     * 
+     */
+	public boolean isDisplayed() {
+		waitForPageLoad();
+		return DriverUtils.getURL().contains("TravelOptions.aspx");
+	}
 
-		return getDepartureFromInfo().equals(LocationOption.getValue(booking.getDepartureFrom()))
-				&& getDepartureToInfo().equals(LocationOption.getValue(booking.getDepartureTo()))
-				&& getDepartureDateInfoInSummary().contains(booking.getDepartureDate())
-				&& getReturnFromInfo().equals(LocationOption.getValue(booking.getReturnFrom()))
-				&& getReturnToInfo().equals(LocationOption.getValue(booking.getReturnTo()))
-				&& getReturnDateInfoInSummary().contains(booking.getReturnDate())
-				&& getNumberOfAdultsInfo() == booking.getNumberOfAdults()
-				&& getNumberOfChildrenInfo() == booking.getNumberOfChildren()
-				&& getNumberOfInfantsInfo() == booking.getNumberOfInfants();
+	 /**
+     * Return a Boolean value to indicate whether the displaying currency matches with the expected
+     *
+     * @return  true|false
+     * 			true: the displaying currency matches with the expected
+     * 			false: the displaying currency does not match with the expected
+     * 
+     */
+	public boolean isCurrency(String expecteCurrency) {
+		return lblDisplayCurrency.generateDynamic(expecteCurrency).getAttribute("innerText").equals(expecteCurrency);
+	}
+	
+	 /**
+     * Return a Boolean value to indicate whether the booking information matches with the expected
+     *
+     * @return  true|false
+     * 			true: the displaying booking information matches with the expected
+     * 			false: the displaying booking information does not match with the expected
+     * 
+     */
+	public boolean isBookingInfoCorrect(Booking expectedBooking) {
+		System.out.print("getDepartureFromInfo: " + getDepartureFromInfo() + " vs "
+				+ LocationOption.getValue(expectedBooking.getDepartureFrom()) + "\n");
+		System.out.print("getDepartureToInfo: " + getDepartureToInfo() + " vs "
+				+ LocationOption.getValue(expectedBooking.getDepartureTo()) + " \n");
+		System.out.print("getDepartureDateInfo: " + getDepartureDateInfoInSummary() + " vs "
+				+ expectedBooking.getDepartureDate() + " \n");
+		System.out.print("getReturnFromInfo: " + getReturnFromInfo() + " vs "
+				+ LocationOption.getValue(expectedBooking.getReturnFrom()) + " \n");
+		System.out.print("getReturnToInfo: " + getReturnToInfo() + " vs "
+				+ LocationOption.getValue(expectedBooking.getReturnTo()) + " \n");
+		System.out
+				.print("getReturnDateInfo: " + getReturnDateInfoInSummary() + " vs " + expectedBooking.getReturnDate() + " \n");
+		System.out.print(
+				"getNumberOfAdultsInfo: " + getNumberOfAdultsInfo() + " vs " + expectedBooking.getNumberOfAdults() + " \n");
+		System.out.print("getNumberOfChildrenInfo: " + getNumberOfChildrenInfo() + " vs "
+				+ expectedBooking.getNumberOfChildren() + " \n");
+		System.out.print(
+				"getNumberOfInfantsInfo: " + getNumberOfInfantsInfo() + " vs " + expectedBooking.getNumberOfInfants() + " \n");
+
+		return getDepartureFromInfo().equals(LocationOption.getValue(expectedBooking.getDepartureFrom()))
+				&& getDepartureToInfo().equals(LocationOption.getValue(expectedBooking.getDepartureTo()))
+				&& getDepartureDateInfoInSummary().contains(expectedBooking.getDepartureDate())
+				&& getReturnFromInfo().equals(LocationOption.getValue(expectedBooking.getReturnFrom()))
+				&& getReturnToInfo().equals(LocationOption.getValue(expectedBooking.getReturnTo()))
+				&& getReturnDateInfoInSummary().contains(expectedBooking.getReturnDate())
+				&& getNumberOfAdultsInfo() == expectedBooking.getNumberOfAdults()
+				&& getNumberOfChildrenInfo() == expectedBooking.getNumberOfChildren()
+				&& getNumberOfInfantsInfo() == expectedBooking.getNumberOfInfants();
 
 	}
 }

@@ -18,6 +18,7 @@
 		"cbxChildAge": "xpath=//li[@data-selenium='occ-child-age-dropdown']//select",
 		"elesDatePicker": "xpath=//div[@class='DayPicker-Caption']",
 		"eleDatePicker1": "xpath=//div[@class='DayPicker-Caption'][1]",
-		"eleDatePicker2": "xpath=//div[@class='DayPicker-Caption'][2]"
+		"eleDatePicker2": "xpath=//div[@class='DayPicker-Caption'][2]",
+		"eleDate": "xpath=//div[@aria-label='%s']"
 	}
 }

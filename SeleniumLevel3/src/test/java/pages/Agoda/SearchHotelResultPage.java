@@ -164,7 +164,6 @@ public class SearchHotelResultPage extends GeneralPage {
 		btnFilter.generateDynamic(filter.getValue()).click();
 		btnDeleteFilter.click();
 		waitForItemLoad();
-		btnDeleteFilter.waitForClickable(Constants.SHORT_TIME);
 	}
 	
     /**

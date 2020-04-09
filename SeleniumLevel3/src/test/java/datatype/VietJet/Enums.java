@@ -174,4 +174,39 @@ public class Enums {
 			return this.key;
 		}
 	}
+	
+	public enum TicketDetails {
+		FARE("fare"), TAX("fare_taxes"), DEP_TIME("depTime"), ARR_TIME("arriveTime"), CHARGES("charges"),
+		TOTAL("total_complete_charges");
+
+		private String details;
+
+		TicketDetails(String details) {
+			this.details = details;
+		}
+
+		public String getValue() {
+			return this.details;
+		}
+	}
+	
+	public enum Trips {
+		DEPARTURE("Dep", "Departure"), RETURN("Ret", "Return");
+
+		private String key;
+		private String value;
+
+		Trips(String key, String value) {
+			this.key = key;
+			this.value = value;
+		}
+
+		public String getValue() {
+			return this.value;
+		}
+
+		public String getKey() {
+			return this.key;
+		}
+	}
 }

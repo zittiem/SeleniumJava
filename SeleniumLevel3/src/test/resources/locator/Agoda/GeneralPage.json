@@ -15,6 +15,9 @@
 		"eleDisplayValueLbl": "xpath=//span[@data-component='desktop-occ-%s-value']",
 		"btnPreviousMonth": "xpath=//span[@data-selenium='calendar-previous-month-button']",
 		"btnNextMonth": "xpath=//span[@data-selenium='calendar-next-month-button']",
-		"cbxChildAge": "xpath=//li[@data-selenium='occ-child-age-dropdown']//select"
+		"cbxChildAge": "xpath=//li[@data-selenium='occ-child-age-dropdown']//select",
+		"elesDatePicker": "xpath=//div[@class='DayPicker-Caption']",
+		"eleDatePicker1": "xpath=//div[@class='DayPicker-Caption'][1]",
+		"eleDatePicker2": "xpath=//div[@class='DayPicker-Caption'][2]"
 	}
 }

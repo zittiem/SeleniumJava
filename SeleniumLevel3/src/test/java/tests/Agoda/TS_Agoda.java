@@ -26,9 +26,12 @@ public class TS_Agoda extends TestBase {
 		SoftAssertion softAssert = new SoftAssertion();
 			
 		Logger.info("Precondition: Initial Data");
+		
+		// Pages
 		HomePage homePage = new HomePage();
 		SearchHotelResultPage searchHoltelResultPage = new SearchHotelResultPage();
 		
+		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC01");
 		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
 		
@@ -67,9 +70,11 @@ public class TS_Agoda extends TestBase {
 
 		Logger.info("Precondition: Initial Data");
 		
+		// Pages
 		HomePage homePage = new HomePage();
 		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
 		
+		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC02");
 		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
 
@@ -113,16 +118,23 @@ public class TS_Agoda extends TestBase {
 	
 	@Test(description = "Verify that user can add hotel into Favourite successfully .")
 	public void TC03() throws InterruptedException {
-		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC03");
+		
 		SoftAssertion softAssert = new SoftAssertion();
 
 		Logger.info("Precondition: Initial Data");
+		
+		// Pages
+		HomePage homePage = new HomePage();
+		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
+		HotelDetailedPage hotelDetailed = new HotelDetailedPage();
+		
+		// Test Data
+		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC03");
 		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
 		FilterOptions filter = new FilterOptions(dataHelper.getDataMap(FilterOptions.class.getSimpleName()));
 		List<String> hotelFacilities1 = dataHelper.getDataStringList("HotelFacilities1");
 		List<String> hotelFacilities2 = dataHelper.getDataStringList("HotelFacilities2");
-			
-		HomePage homePage = new HomePage();
+		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
 
@@ -132,7 +144,6 @@ public class TS_Agoda extends TestBase {
 		homePage.searchHoltel(travel);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
-		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
 		searchHotel.waitForPageLoad();
 		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
@@ -144,7 +155,6 @@ public class TS_Agoda extends TestBase {
 		DriverUtils.switchToLatest();
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Name)");
-		HotelDetailedPage hotelDetailed = new HotelDetailedPage();
 		hotelDetailed.waitForPageLoad();
 		softAssert.assertEquals(hotelDetailed.getHotelName(), expectedHotelName,
 				"The hotel detailed page is not displayed with correct info (Name). Please check.");
@@ -156,16 +166,17 @@ public class TS_Agoda extends TestBase {
 		Logger.verify("The hotel detailed page is displayed with correct info (Have swimming pool)");
 		softAssert.assertTrue(hotelDetailed.isHotelFacilityCorrect(hotelFacilities1),
 				"The hotel detailed page is not displayed with correct info (Have swimming pool). Please check.");
-			
+		DriverUtils.close();	
+		
 		Logger.info("4. Move mouse to point of the hotel to show detailed review points");
-		hotelDetailed.openReviewScorePopup();
+		DriverUtils.switchToFirst();
+		searchHotel.viewHotelReviewScores(1);
+		
 		Logger.verify("Detailed review popup appears and show the following information: Cleanliness, Facilities, Service, Location, Value for money");
-		softAssert.assertTrue(hotelDetailed.isHotelReviewCategoryCorrect(),
+		softAssert.assertTrue(searchHotel.doesAllHotelReviewCategoriesExist(),
 				"Detailed review popup doesn't show the following information: Cleanliness, Facilities, Service, Location, Value for money. Please check.");
-		DriverUtils.close();
 			
 		Logger.info("5. Choose the first hotel");
-		DriverUtils.switchToFirst();
 		expectedHotelName = searchHotel.getHotelName(1);
 		Map<String, String> expectedreviewScore = searchHotel.getHotelScores(1);
 		searchHotel.selectHotel(1);

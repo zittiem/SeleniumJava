@@ -4,11 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.commons.lang3.time.StopWatch;
 import org.javatuples.Pair;
-import org.openqa.selenium.Keys;
-
 import datatype.Agoda.Enums.Filter;
 import datatype.Agoda.Enums.ReviewCategory;
 import datatype.Agoda.Enums.SortOption;
@@ -229,6 +226,20 @@ public class SearchHotelResultPage extends GeneralPage {
 	}
 	
     /**
+     * Hover mouse over the hotel score to show detailed review scores
+     * 
+     * @param	index
+     * 			index of hotel (int)
+     * 
+     */
+	public void viewHotelReviewScores(int index) {
+		moveToHotel(index);
+		Element eleScoreNumber = new Element(eleResultItem.getWrapperElements().get(index-1), reviewScoreNumberLocator);
+		eleScoreNumber.moveToElement();
+		eleReviewPointPopup.waitForDisplayed(Constants.SHORT_TIME);
+	}
+	
+    /**
      * Get all detailed review score of a hotel per index
      * 
      * @param	index
@@ -389,7 +400,8 @@ public class SearchHotelResultPage extends GeneralPage {
      * 
      */
 	public boolean isPriceSliderReset() {
-		return elePriceSliderReset.isDisplayed();
+		
+		return elePriceSliderReset.isDisplayed(Constants.LONG_TIME);
 	}
 
 	 /**
@@ -445,5 +457,22 @@ public class SearchHotelResultPage extends GeneralPage {
 		return false;
 	}
 	
-
+	 /**
+	 * 
+     * Return a Boolean value to indicate whether all review categories of a hotel exist
+     * 
+     * @return  true|false
+     * 			true: all review categories of a hotel exist
+     * 			false: any review category of a hotel does not exist
+     * 
+     */
+	public Boolean doesAllHotelReviewCategoriesExist() {
+		for (ReviewCategory category : ReviewCategory.values()) {
+			if(!eleReviewPoint.generateDynamic(category.getValue()).isDisplayed()) {
+				Logger.warning("The review category does not exist: " + category.getValue());
+				return false;
+			}
+		}
+		return true;
+	}
 }

@@ -30,11 +30,13 @@ public class GeneralPage extends TestBase {
 	protected Element eleCheckInCal = new Element(locator.getLocator("eleCheckInCal"));
 	protected Element eleCheckOutCal = new Element(locator.getLocator("eleCheckOutCal"));
 	protected Button btnShowTravelingOption = new Button(locator.getLocator("btnShowTravelingOption"));
-	protected Button btnSearch = new Button(locator.getLocator("btnSearch"));
 	protected Button btnPreviousMonth = new Button(locator.getLocator("btnPreviousMonth"));
 	protected Button btnNextMonth = new Button(locator.getLocator("btnNextMonth"));
 	protected DropDown cbxChildAge = new DropDown(locator.getLocator("cbxChildAge"));
 	protected Element eleFirstSuggestionItem = new Element(locator.getLocator("eleFirstSuggestionItem"));
+	protected Element elesDatePicker = new Element(locator.getLocator("elesDatePicker"));
+	protected Element eleDatePicker1 = new Element(locator.getLocator("eleDatePicker1"));
+	protected Element eleDatePicker2 = new Element(locator.getLocator("eleDatePicker2"));
 
 	// Dynamic Elements
 	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
@@ -66,7 +68,7 @@ public class GeneralPage extends TestBase {
      *
      */
 	private void selectYear(int year) {
-		List<Element> eles = new Element(FindBy.xpath, "//div[@class='DayPicker-Caption']").getWrapperElements();
+		List<Element> eles = elesDatePicker.getWrapperElements();
 		eles.get(0).waitForDisplayed(Constants.SHORT_TIME);
 		String currentFirtMonthYear = eles.get(0).getText();
 		int firstYear = Integer.parseInt(currentFirtMonthYear.split(" ")[1]);
@@ -76,12 +78,10 @@ public class GeneralPage extends TestBase {
 		while (year != firstYear && year != secondYear) {
 			if (year < firstYear) {
 				btnClick = btnNextMonth;
-				firstYear = Integer.parseInt(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][1]").getText().split(" ")[1]);
+				firstYear = Integer.parseInt(eleDatePicker1.getText().split(" ")[1]);
 			} else if (year > secondYear) {
 				btnClick = btnPreviousMonth;
-				secondYear = Integer.parseInt(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][1]").getText().split(" ")[1]);
+				secondYear = Integer.parseInt(eleDatePicker2.getText().split(" ")[1]);
 			}
 			btnClick.click();
 		}

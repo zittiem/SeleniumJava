@@ -7,7 +7,6 @@ import datatype.Agoda.Enums.TravelTypes;
 import datatype.Agoda.TravellingInfo;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
-import element.setting.FindBy;
 import element.wrapper.web.Button;
 import element.wrapper.web.DropDown;
 import element.wrapper.web.TextBox;
@@ -30,17 +29,20 @@ public class GeneralPage extends TestBase {
 	protected Element eleCheckInCal = new Element(locator.getLocator("eleCheckInCal"));
 	protected Element eleCheckOutCal = new Element(locator.getLocator("eleCheckOutCal"));
 	protected Button btnShowTravelingOption = new Button(locator.getLocator("btnShowTravelingOption"));
-	protected Button btnSearch = new Button(locator.getLocator("btnSearch"));
 	protected Button btnPreviousMonth = new Button(locator.getLocator("btnPreviousMonth"));
 	protected Button btnNextMonth = new Button(locator.getLocator("btnNextMonth"));
 	protected DropDown cbxChildAge = new DropDown(locator.getLocator("cbxChildAge"));
 	protected Element eleFirstSuggestionItem = new Element(locator.getLocator("eleFirstSuggestionItem"));
+	protected Element elesDatePicker = new Element(locator.getLocator("elesDatePicker"));
+	protected Element eleDatePicker1 = new Element(locator.getLocator("eleDatePicker1"));
+	protected Element eleDatePicker2 = new Element(locator.getLocator("eleDatePicker2"));
 
 	// Dynamic Elements
 	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
 	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
 	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
 	protected Element eleDisplayValueLbl = new Element(locator.getLocator("eleDisplayValueLbl"));
+	protected Element eleDate = new Element(locator.getLocator("eleDate"));
 	
 	// Methods
     /**
@@ -66,7 +68,7 @@ public class GeneralPage extends TestBase {
      *
      */
 	private void selectYear(int year) {
-		List<Element> eles = new Element(FindBy.xpath, "//div[@class='DayPicker-Caption']").getWrapperElements();
+		List<Element> eles = elesDatePicker.getWrapperElements();
 		eles.get(0).waitForDisplayed(Constants.SHORT_TIME);
 		String currentFirtMonthYear = eles.get(0).getText();
 		int firstYear = Integer.parseInt(currentFirtMonthYear.split(" ")[1]);
@@ -76,12 +78,10 @@ public class GeneralPage extends TestBase {
 		while (year != firstYear && year != secondYear) {
 			if (year < firstYear) {
 				btnClick = btnNextMonth;
-				firstYear = Integer.parseInt(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][1]").getText().split(" ")[1]);
+				firstYear = Integer.parseInt(eleDatePicker1.getText().split(" ")[1]);
 			} else if (year > secondYear) {
 				btnClick = btnPreviousMonth;
-				secondYear = Integer.parseInt(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][1]").getText().split(" ")[1]);
+				secondYear = Integer.parseInt(eleDatePicker2.getText().split(" ")[2]);
 			}
 			btnClick.click();
 		}
@@ -95,7 +95,7 @@ public class GeneralPage extends TestBase {
      *
      */
 	private void selectMonth(int month) {
-		List<Element> eles = new Element(FindBy.xpath, "//div[@class='DayPicker-Caption']").getWrapperElements();
+		List<Element> eles = elesDatePicker.getWrapperElements();
 		String currentFirtMonthYear = eles.get(0).getText();
 		int firstMonth = Month.getMonth(currentFirtMonthYear.split(" ")[0]);
 		String currentSecondMonthYear = eles.get(1).getText();
@@ -104,12 +104,10 @@ public class GeneralPage extends TestBase {
 		while (month != firstMonth && month != secondMonth) {
 			if (month < firstMonth) {
 				btnClick = btnNextMonth;
-				firstMonth = Month.getMonth(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][1]").getText().split(" ")[0]);
+				firstMonth = Month.getMonth(eleDatePicker1.getText().split(" ")[0]);
 			} else if (month > secondMonth) {
 				btnClick = btnPreviousMonth;
-				secondMonth = Month.getMonth(
-						new Element(FindBy.xpath, "//div[@class='DayPicker-Caption'][2]").getText().split(" ")[0]);
+				secondMonth = Month.getMonth(eleDatePicker2.getText().split(" ")[0]);
 			}
 			btnClick.click();
 		}
@@ -133,8 +131,7 @@ public class GeneralPage extends TestBase {
 					"EEE MMM dd yyyy");
 			selectYear(year);
 			selectMonth(month);
-			Element eleDate = new Element(FindBy.xpath, String.format("//div[@aria-label='%s']", strDateTime));
-			eleDate.click();
+			eleDate.generateDynamic(strDateTime).click();
 			if (type.contentEquals("out")) {
 				eleDate.waitForNotDisplayed(10);
 			}

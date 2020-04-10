@@ -41,44 +41,51 @@ public class SelectFarePage {
 	protected Element eleNumberOfInfants = new Element(locator.getLocator("eleNumberOfInfants"));
 	
 	//Method
+	
+    /**
+     * Convert money from string to int
+     *
+     * @param  value
+     *         money in string format. Ex: 10,000 VND
+     *         
+     * @return	money with int type
+     *
+     */
 	public int convertFareFromStringToInt(String fare) {
 		int intFare = Integer.parseInt(fare.replace(" VND", "").replace(",", ""));
 		return intFare;
 	}
-	
-	public Boolean isFightInfoCorrect(Booking actualBooking) {
-		
-		eleDepFromLbl.waitForDisplayed(30);
-		
-		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getDepartureFrom()) + " \n");
-		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getDepartureTo()) + " \n");
-		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getReturnFrom()) + " \n");
-		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + LocationOption.getValue(actualBooking.getReturnTo()) + " \n");
-		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.generateDynamic(actualBooking.getCurrency()).isDisplayed() + " \n");
-		System.out.print("eleNumberOfAdults: " + eleNumberOfAdults.getText() + " vs " + actualBooking.getNumberOfAdults() + " \n");
-		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + actualBooking.getNumberOfChildren() + " \n");
-		System.out.print("eleNumberOfInfants: " + eleNumberOfInfants.getText() + " vs " + actualBooking.getNumberOfInfants() + " \n");
-		
-		return eleDepFromLbl.getText().contains(LocationOption.getValue(actualBooking.getDepartureFrom()))
-				&& eleDepToLbl.getText().contains(LocationOption.getValue(actualBooking.getDepartureTo()))
-				&& eleRetFromLbl.getText().contains(LocationOption.getValue(actualBooking.getReturnFrom()))
-				&& eleRetToLbl.getText().contains(LocationOption.getValue(actualBooking.getReturnTo()))
-				&& eleDisplayCurrencyLbl.generateDynamic(actualBooking.getCurrency()).isDisplayed()
-				&& eleNumberOfAdults.getText().contains(Integer.toString(actualBooking.getNumberOfAdults()))
-				&& eleNumberOfChildren.getText().contains(Integer.toString(actualBooking.getNumberOfChildren()))
-				&& eleNumberOfInfants.getText().contains(Integer.toString(actualBooking.getNumberOfInfants()));
-	}
-	
+
+    /**
+     * Get page title
+     *         
+     * @return	page title (String)
+     *
+     */
 	public String getPageTitle() {
 		eleContinueBtn.waitForClickable(90);
 		return DriverUtils.getTitle();
 	}
 	
+    /**
+     * Submit page by clicking on Continue button
+     */
 	public void submitPage() {
 		eleContinueBtn.moveToElement();
 		eleContinueBtn.click();
 	}
 
+    /**
+     * Get date from a fareID
+     * 
+     * @param	fareID
+     * 			a string of fareID
+     *         
+     * @return	date
+     * 
+     * @exception	throw ParseException
+     *
+     */
 	public Date getDateFromFareId(String fareID) throws ParseException {
 		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");  
 		String strFareDate = fareID.substring(17, 25);
@@ -86,6 +93,23 @@ public class SelectFarePage {
 		return fareDate;
 	}
 	
+    /**
+     * Get list of fare items in a defined time frame
+     * 
+     * @param	fareItemType
+     * 			FlightType.Dep | FlightType.Ret
+     * 
+     * @param	minDate
+     * 			minimum date to get the list of fare items
+     *         
+     * @param	maxDate
+     * 			maximum date to get the list of fare items
+     * 
+     * @return	list of fare items
+     * 
+     * @exception	throw ParseException
+     *
+     */
 	public List<FareItem> getFareItemsInDefinedTimeFrame(Enums.FlightType fareItemType, Date minDate, Date maxDate) throws ParseException{
 		List<FareItem> lstFareItem = new ArrayList<FareItem>();
 		
@@ -141,6 +165,18 @@ public class SelectFarePage {
 		return lstFareItem;
 	}
 	
+    /**
+     * Select a fare item
+     * 
+     * @param	fareItemType
+     * 			FlightType.Dep | FlightType.Ret
+     * 
+     * @param	fareItem
+     * 			fare item
+     * 
+     * @exception	throw ParseException
+     *
+     */
 	public void selectFareItem(Enums.FlightType fareItemType, FareItem fareItem) {
 		@SuppressWarnings("deprecation")
 		int fareMonth = fareItem.getDate().getMonth();
@@ -164,6 +200,18 @@ public class SelectFarePage {
 		eleFareID.generateDynamic(dynamicFareId).click();
 	}
 
+    /**
+     * Select combo cheapest fares of the return flight in defined time frame
+     * 
+     * @param	minDate
+     * 			minimum date to define time frame
+     * 
+     * @param	maxDate
+     * 			maximum date to define time frame
+     * 
+     * @exception	throw ParseException
+     *
+     */
 	public void selectReturnFlightCheapestFareInDefinedTimeFrame(Date minDate, Date maxDate) throws ParseException{
 		List<FareItem> lstDepFareItem = getFareItemsInDefinedTimeFrame(FlightType.Dep, minDate, maxDate);
 		List<FareItem> lstRetFareItem = getFareItemsInDefinedTimeFrame(FlightType.Ret, minDate, maxDate);
@@ -224,5 +272,41 @@ public class SelectFarePage {
 		// Select combo cheapest fare for the return flight
 		selectFareItem(FlightType.Dep, finalDepFareItem);
 		selectFareItem(FlightType.Ret, finalRetFareItem);
+	}
+	
+	// Verify
+	
+	 /**
+     * Return a Boolean value to indicate whether the flight information is correct
+     * 
+     * @param	expectedBooking
+     * 			Expected booking information
+     *
+     * @return  true|false
+     * 			true: The displaying booking info match with the expected data
+     * 			false: The displaying booking info does not match with the expected data
+     * 
+     */
+	public Boolean isFightInfoCorrect(Booking expectedBooking) {
+		
+		eleDepFromLbl.waitForDisplayed(30);
+		
+		System.out.print("eleDepFromLbl: " + eleDepFromLbl.getText() + " vs " + LocationOption.getValue(expectedBooking.getDepartureFrom()) + " \n");
+		System.out.print("eleDepToLbl: " + eleDepToLbl.getText() + " vs " + LocationOption.getValue(expectedBooking.getDepartureTo()) + " \n");
+		System.out.print("eleRetFromLbl: " + eleRetFromLbl.getText() + " vs " + LocationOption.getValue(expectedBooking.getReturnFrom()) + " \n");
+		System.out.print("eleRetToLbl: " + eleRetToLbl.getText() + " vs " + LocationOption.getValue(expectedBooking.getReturnTo()) + " \n");
+		System.out.print("eleDisplayCurrencyLbl: " + eleDisplayCurrencyLbl.generateDynamic(expectedBooking.getCurrency()).isDisplayed() + " \n");
+		System.out.print("eleNumberOfAdults: " + eleNumberOfAdults.getText() + " vs " + expectedBooking.getNumberOfAdults() + " \n");
+		System.out.print("eleNumberOfChildren: " + eleNumberOfChildren.getText() + " vs " + expectedBooking.getNumberOfChildren() + " \n");
+		System.out.print("eleNumberOfInfants: " + eleNumberOfInfants.getText() + " vs " + expectedBooking.getNumberOfInfants() + " \n");
+		
+		return eleDepFromLbl.getText().contains(LocationOption.getValue(expectedBooking.getDepartureFrom()))
+				&& eleDepToLbl.getText().contains(LocationOption.getValue(expectedBooking.getDepartureTo()))
+				&& eleRetFromLbl.getText().contains(LocationOption.getValue(expectedBooking.getReturnFrom()))
+				&& eleRetToLbl.getText().contains(LocationOption.getValue(expectedBooking.getReturnTo()))
+				&& eleDisplayCurrencyLbl.generateDynamic(expectedBooking.getCurrency()).isDisplayed()
+				&& eleNumberOfAdults.getText().contains(Integer.toString(expectedBooking.getNumberOfAdults()))
+				&& eleNumberOfChildren.getText().contains(Integer.toString(expectedBooking.getNumberOfChildren()))
+				&& eleNumberOfInfants.getText().contains(Integer.toString(expectedBooking.getNumberOfInfants()));
 	}
 }

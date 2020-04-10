@@ -1601,3 +1601,136 @@ DEBUG | 2020-04-06 00:20:25 | manager.DriverUtils (DriverUtils.java:102) - Switc
 DEBUG | 2020-04-06 00:20:27 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
 DEBUG | 2020-04-06 00:20:34 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
 DEBUG | 2020-04-06 00:20:37 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 11:53:58 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 11:54:00 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 11:55:56 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 11:55:58 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:08:47 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:08:48 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:10:31 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:10:32 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:11:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:18 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:11:31 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:35 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:11:35 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:11:39 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:11:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:37:45 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:37:46 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:38:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:38:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:38:29 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:38:39 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:38:39 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:38:46 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:38:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:44:46 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:44:47 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:45:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:45:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:45:31 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:45:42 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:45:43 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:45:48 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:45:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:48:19 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:48:20 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:49:01 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 12:49:05 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:49:07 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:49:39 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:43 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:50:31 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 12:50:35 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:50:36 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:51:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:17 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:51:29 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:51:30 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:51:37 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:51:48 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:53 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:50:54 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:50:55 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:51:38 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:51:42 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:51:44 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:52:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:32 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:06 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:53:10 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:53:12 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:53:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:54 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 16:54:05 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 16:54:05 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 16:54:13 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 16:54:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:54:27 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:58:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:58:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:59:58 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:00:02 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:00:03 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:00:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:00:40 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:01:43 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:01:48 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:01:49 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:04:32 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:04:33 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:06:22 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:06:26 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:06:28 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:07:36 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:07:41 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:07:42 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:08:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:08:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:08:50 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:09:06 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 17:09:07 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 17:09:22 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:09:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:09:43 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:11:30 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:11:32 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:12:36 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:12:40 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:12:41 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:13:28 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:31 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:34 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:45 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:13:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:13:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:15:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:15:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:15:32 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:15:44 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 17:15:44 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 17:15:51 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:16:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:16:07 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:26:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:26:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:27:01 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-09 17:27:01 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-09 17:28:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:28:37 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:29:14 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:30:26 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:30:26 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:30:32 | manager.DriverUtils (DriverUtils.java:146) - Quit browser

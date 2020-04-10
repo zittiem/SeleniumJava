@@ -52,15 +52,15 @@ public class TS_VietJet extends TestBase {
 		
 		Logger.info("3. Choose the cheapest tickets and click 'Continue' button");
 		travelOptionPage.selectCheapestTickets();
-		Booking expTicketDetails = travelOptionPage.getTicketDetails();
+		Booking expectedBooking = travelOptionPage.getBookingDetails();
 		travelOptionPage.submitPage();
 		
 		Logger.verify("Passenger Information page is displayed");
 		softAssert.assertTrue(passengerInfoPage.isDisplayed(), "Passenger Information Page display.");
 		
 		Logger.verify("Tickets information is correct");
-		Booking actTicketDetails = passengerInfoPage.getCurrentBookingInfo();
-		softAssert.assertObjectEquals(actTicketDetails, expTicketDetails, "Tickets information is not correct");
+		Booking actualBooking = passengerInfoPage.getCurrentBookingInfo();
+		softAssert.assertObjectEquals(actualBooking, expectedBooking, "Tickets information is not correct");
 		
 		softAssert.assertAll();
 	}
@@ -107,15 +107,15 @@ public class TS_VietJet extends TestBase {
 	    
 	    Logger.info("4. Choose the cheapest tickets and click 'Continue' button");
 	    selectTravelOptionsPage.selectCheapestTickets();
-		Booking expBookingDetails = selectTravelOptionsPage.getTicketDetails();
+		Booking expectedBooking = selectTravelOptionsPage.getBookingDetails();
 		selectTravelOptionsPage.submitPage();
 		
 		Logger.verify("Passenger Information page is displayed");
 		softAssert.assertTrue(passengerInfoPage.isDisplayed(), "Passenger Information Page display.");
 		
 		Logger.verify("Tickets information is correct");
-		Booking actBookingDetails = passengerInfoPage.getCurrentBookingInfo();
-		softAssert.assertObjectEquals(actBookingDetails, expBookingDetails, "Tickets information is not correct");
+		Booking actualBooking = passengerInfoPage.getCurrentBookingInfo();
+		softAssert.assertObjectEquals(actualBooking, expectedBooking, "Tickets information is not correct");
 		
 		softAssert.assertAll();
 	}

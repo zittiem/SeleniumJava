@@ -86,6 +86,46 @@ public class DriverUtils {
 			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
 		}
 	}
+	
+	public static void switchToFrame(String nameOrId) {
+		try {
+			logger.debug("Switch frame");
+			getDriver().switchTo().frame(nameOrId);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by name or id: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToFrame(int index) {
+		try {
+			logger.debug("Switch frame");
+			getDriver().switchTo().frame(index);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by frame index: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToParentFrame() {
+		try {
+			logger.debug("Switch to parent frame");
+			getDriver().switchTo().parentFrame();
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching to parent frame: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToDefaultFrame() {
+		try {
+			logger.debug("Switch to default frame");
+			getDriver().switchTo().defaultContent();
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching to default frame: " + e.getMessage());
+		}
+	}
 
 	public static void switchTo(String windowHandle) {
 		try {

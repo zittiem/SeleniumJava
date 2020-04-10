@@ -2,7 +2,7 @@ package datatype.LGmail;
 
 import utils.helper.RandomHelper;
 
-public class EmailInfo {
+public class Email {
 
 	private String to = null;
 	private String ccList = null;
@@ -69,7 +69,7 @@ public class EmailInfo {
 		this.content = content;
 	}
 
-	public EmailInfo compileData() {
+	public Email compileData() {
 		if (getSubject().equals("[Random]")) {
 			setSubject(RandomHelper.getRandomString("Subject-"));
 		}

@@ -1,8 +1,9 @@
 package pages.LGmail;
 
+import java.util.Iterator;
 import java.util.Set;
 
-import datatype.LGmail.EmailInfo;
+import datatype.LGmail.Email;
 import datatype.LGmail.Enums.ComposeActions;
 import datatype.LGmail.Enums.MailTreeItem;
 import datatype.LGmail.Enums.MessageToolbarItem;
@@ -23,58 +24,51 @@ public class MainPage {
 	protected String composeWindow = null;
 
 	// Methods
-	private String getNewWindow(String title) {
-		Set<String> listWindows = DriverUtils.getDriver().getWindowHandles();
-		for (String handle : listWindows) {
-			String curTitle = DriverUtils.getDriver().switchTo().window(handle).getTitle();
-			if (curTitle.contains(title)) {
-				return handle;
-			}
-		}
-		return null;
-	}
 
 	public void selectMailTree(MailTreeItem option) {
 		eleMailTreeItem.generateDynamic(option.getValue()).click();
 	}
 
 	public void selectMessageToolbar(MessageToolbarItem option) {
-		eleMessageToolbar.generateDynamic(option.getID());
+		eleMessageToolbar.generateDynamic(option.getID()).click();
 	}
+	
+	public String openUntitledMessageWindow() throws InterruptedException {
+		Set<String> listWindowsBefore = DriverUtils.getDriver().getWindowHandles();
+		
+		selectMessageToolbar(MessageToolbarItem.NEW);
 
-	public void composeMewMail(EmailInfo mail) throws InterruptedException {
-
-		eleMessageToolbar.generateDynamic(MessageToolbarItem.NEW.getID()).click();
-		// Wait 2s to make sure compose page display before getting getWindowHandles.
-		Thread.sleep(Constants.LOADING_TIME);
-		composeWindow = getNewWindow("Untitled Message");
-		DriverUtils.getDriver().switchTo().window(composeWindow);
-		ComposeEmailPage cp = new ComposeEmailPage();
-		cp.composeNewMail(mail);
+		Set<String> listWindows = DriverUtils.getDriver().getWindowHandles();
+		Iterator<String> ite=listWindows.iterator();
+		
+		System.out.print(listWindowsBefore.size() + ":" + listWindows.size() + "\n" );
+		while(ite.hasNext())
+		{
+			String popupHandle1=ite.toString();
+			String popupHandle2=ite.next().toString();
+			
+			DriverUtils.switchTo(popupHandle1);
+			System.out.print("\n popupHandle1:" + DriverUtils.getTitle() + ":" + popupHandle1);
+			DriverUtils.switchTo(popupHandle2);
+			System.out.print("\n popupHandle2:" + DriverUtils.getTitle() + ":" + popupHandle2);
+			listWindowsBefore = DriverUtils.getDriver().getWindowHandles();
+			System.out.print("\n listWindowsBeforeSize:" + listWindowsBefore.size());
+			DriverUtils.switchToLatest();
+			System.out.print("\n popupHandleLatest:" + DriverUtils.getTitle() + ":" + DriverUtils.getWindowHandles().get(listWindowsBefore.size()-1));
+			
+			return popupHandle2;
+		}
+		return null;
 	}
 
 	public void selectAction(ComposeActions action) {
 		ComposeEmailPage cp = new ComposeEmailPage();
 		cp.selectAction(action);
 	}
-
-	public void closeComposeNewMail() {
-		DriverUtils.getDriver().switchTo().window(composeWindow);
-		DriverUtils.getDriver().close();
-		DriverUtils.getDriver().switchTo().window(mainWindow);
-	}
-
-	// Verify
-	public EmailInfo getMailInfo(MailTreeItem folder, String subject) throws InterruptedException {
-		EmailInfo curEmai = new EmailInfo();
+	
+	public void openAMail(MailTreeItem folder, String subject) throws InterruptedException {
 		eleMailTreeItem.generateDynamic(folder.getValue()).click();
 		eleMailSubject.generateDynamic(subject).doubleClick();
-		// Wait 2s to make sure compose page display before getting getWindowHandles.
-		Thread.sleep(Constants.LOADING_TIME);
-		composeWindow = getNewWindow(subject);
-		DriverUtils.getDriver().switchTo().window(composeWindow);
-		ComposeEmailPage cp = new ComposeEmailPage();
-		curEmai = cp.getMailInfo();
-		return curEmai;
 	}
+
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 
-import datatype.LGmail.EmailInfo;
+import datatype.LGmail.Email;
 import datatype.LGmail.Enums.ComposeActions;
 import datatype.LGmail.Enums.MailTreeItem;
 import driver.manager.DriverUtils;
@@ -41,6 +41,7 @@ public class ComposeEmailPage {
 
 	public String getAttachmentsName() {
 		List<Element> eleAtt = eleAttachments.getWrapperElements();
+		System.out.print("Attachments: " + eleAtt.size());
 		String attNam = "";
 		for (Element e : eleAtt) {
 			attNam += e.getAttribute("_attname") + ";";
@@ -62,7 +63,7 @@ public class ComposeEmailPage {
 		DriverUtils.getDriver().switchTo().defaultContent();
 	}
 
-	public void composeNewMail(EmailInfo mail) throws InterruptedException {
+	public void composeNewMail(Email mail) throws InterruptedException {
 		txtTo.enter(mail.getTo());
 		txtCC.enter(mail.getCcList());
 		txtSubject.enter(mail.getSubject());
@@ -83,17 +84,19 @@ public class ComposeEmailPage {
 		return cClist;
 	}
 
-	public EmailInfo getMailInfo() throws InterruptedException {
-		EmailInfo curEmai = new EmailInfo();
-		curEmai.setTo(txtTo.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title"));
-		curEmai.setCcList(getCCList());
-		curEmai.setSubject(txtSubject.getAttribute("value"));
-		curEmai.setAttachedFiles(getAttachmentsName());
-		curEmai.setContent(getMailContent());
-		return curEmai;
+	public Email getMailInfo() throws InterruptedException {
+		Email curEmail = new Email();
+		curEmail.setTo(txtTo.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title"));
+		curEmail.setCcList(getCCList());
+		curEmail.setSubject(txtSubject.getAttribute("value"));
+		curEmail.setAttachedFiles(getAttachmentsName());
+		curEmail.setContent(getMailContent());
+		return curEmail;
 	}
 
 	public void selectAction(ComposeActions action) {
 		eleActions.generateDynamic(action.getID()).click();
 	}
+	
+	
 }

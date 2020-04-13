@@ -2,8 +2,7 @@
 	"Email": {
 		"to": "thanh.hoang@logigear.com",
 		"subject": "[Random]",
-		"attachedFiles": "TestAttachFile.jpg",
-		"content": "TestAttachFile.jpg"
+		"insertedPictures": "TestAttachFile.jpg"
 	},
 
 	"UserName": "thanh.hoang",

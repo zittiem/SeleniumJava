@@ -2,6 +2,8 @@
 	"any.chrome": {
 		"eleMessageToolbar": "xpath=//div[@id='divMsgItemTB']//a[@id='%s']",
 		"eleMailSubject":"xpath=//div[@id='divSubject' and contains(text(),'%s')]",
-		"eleMailTreeItem": "xpath=//div[@id='mailtree']//span[@fldrnm='%s']"
+		"eleMailSubjectChild":"xpath=//div[contains(@class,' eclr vlvExpSel')]",
+		"eleMailTreeItem": "xpath=//div[@id='mailtree']//span[@fldrnm='%s']",
+		"eleNewEmailComingSignal": "xpath=//span[@class='nwItmTxtFrm']"
 	}
 }

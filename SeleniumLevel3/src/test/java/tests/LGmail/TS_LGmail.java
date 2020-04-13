@@ -117,5 +117,18 @@ public class TS_LGmail extends TestBase {
 		Logger.verify(
 				"Download the image successfully");
 		softAssert.assertAll();
+		
+		// Check Image is insert into Mail
+				System.out.println("Image is insert from Data file (TestAttachFile.jpg): ?"
+						+ emailDetail.compareImages(email.getInsertedPictures()));
+
+				// Download insert Image
+				// Handle for multi-Images
+				System.out.println("Insert Image is saved as: " + emailDetail.saveImage("C:\\temp\\", "SavedFile").get(0));
+
+				// Check Image Downloaded
+				System.out.println("Are downloaded image same as (TestAttachFile.jpg)?? "
+						+ emailDetail.compareImages("C:\\temp\\SavedFile_01.jpg", email.getInsertedPictures()));
+
 	}
 }

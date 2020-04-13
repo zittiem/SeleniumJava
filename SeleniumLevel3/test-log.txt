@@ -2588,3 +2588,392 @@ DEBUG | 2020-04-12 23:57:09 | manager.DriverUtils (DriverUtils.java:82) - Switch
 DEBUG | 2020-04-12 23:57:09 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
 DEBUG | 2020-04-12 23:57:09 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
 DEBUG | 2020-04-12 23:57:09 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 10:50:22 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 10:50:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 10:51:16 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 10:51:19 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 10:51:25 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 10:51:31 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 10:51:35 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 10:51:35 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 10:51:35 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:04:31 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:04:33 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:04:58 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:05:00 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:05:01 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:05:01 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:05:01 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:05:49 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:05:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:06:34 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:06:38 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:06:40 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:06:40 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:06:40 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:26:17 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:26:18 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:26:35 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:26:38 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:26:40 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:26:40 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:26:40 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:26:41 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 11:26:46 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 11:26:49 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:26:51 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:26:51 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:26:51 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:31:24 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:31:25 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:32:23 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+ERROR | 2020-04-13 11:33:28 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58734}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: cc56389165cf49e42372af0957e253e3
+DEBUG | 2020-04-13 11:33:59 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:34:01 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:34:30 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:34:34 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:34:35 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:34:35 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:34:36 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:35:42 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:35:43 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:36:13 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:36:17 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:36:18 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:36:18 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:36:18 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:39:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:39:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:40:02 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:40:39 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+ERROR | 2020-04-13 11:40:40 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58954}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 67f345d61c87492e9a4e7fda62253697
+DEBUG | 2020-04-13 11:40:40 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:41:33 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:41:36 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:41:37 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:41:37 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:41:38 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:45:21 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:45:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 11:45:54 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:45:57 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 11:45:59 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 11:45:59 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:45:59 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 11:59:35 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 11:59:36 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:00:12 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:00:15 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:00:17 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:00:17 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:00:17 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:01:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:01:11 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:01:37 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:02:05 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:02:06 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:02:40 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:02:43 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:02:45 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:02:45 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:02:45 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:02:45 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 12:04:26 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:04:27 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:05:01 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:05:04 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:05:06 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:05:06 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:05:06 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:12:21 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:12:22 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+ERROR | 2020-04-13 12:13:46 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:2868
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: RemoteWebDriver
+DEBUG | 2020-04-13 12:14:06 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:14:08 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:14:42 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:14:46 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:14:54 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:14:58 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:15:48 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:15:49 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:20:39 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:20:40 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:21:09 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:21:13 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:21:20 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:21:25 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:29:36 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:29:37 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:30:13 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:30:16 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:30:22 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:30:26 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:30:53 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:30:53 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:30:53 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:30:54 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 12:34:35 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:34:36 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:35:34 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:35:37 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+ERROR | 2020-04-13 12:35:37 | manager.DriverUtils (DriverUtils.java:86) - An error occurred when switching frame by web element: no such element: Unable to locate element: {"method":"xpath","selector":"//iframe[@class='wh100']"}
+  (Session info: chrome=80.0.3987.163)
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:60959}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 01b88159754b65023bb50676b59dde43
+*** Element info: {Using=xpath, value=//iframe[@class='wh100']}
+DEBUG | 2020-04-13 12:36:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:36:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:36:28 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:36:31 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:36:37 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:36:42 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:36:44 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:36:44 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:36:44 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:36:45 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 12:38:56 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:38:58 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:39:13 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:39:16 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:39:23 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:39:29 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:40:25 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:40:26 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 12:41:22 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:41:26 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 12:41:32 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 12:41:36 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:41:38 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 12:41:38 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 12:41:38 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 12:41:44 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 13:02:43 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:02:44 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:03:18 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:03:21 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 13:03:22 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 13:03:32 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:05:22 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:05:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:08:51 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:08:52 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:18:08 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:18:09 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:19:28 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:19:29 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:19:43 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:20:37 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:20:38 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:20:54 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:20:57 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 13:20:58 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 13:21:07 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:25:18 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 13:25:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 13:26:06 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 13:26:10 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 13:26:11 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 13:26:20 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 15:13:08 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:13:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:13:50 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 15:16:08 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:16:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:22:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:22:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:22:47 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+ERROR | 2020-04-13 15:24:06 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:10854
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.1.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: driver.version: RemoteWebDriver
+DEBUG | 2020-04-13 15:24:17 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:24:18 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:28:19 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:28:20 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+ERROR | 2020-04-13 15:30:31 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: unknown error: cannot activate web view
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.1.4', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:51354}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 7e181b865df295c51a16c04dc2c36251
+DEBUG | 2020-04-13 15:41:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:41:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:41:55 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 15:41:58 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 15:42:00 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 15:42:13 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 15:43:53 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:43:55 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:46:33 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:46:34 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:47:56 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:47:57 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:53:38 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:53:39 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:54:53 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:54:54 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:56:46 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:56:47 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:58:03 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 15:58:05 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 15:58:51 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:00:07 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:00:08 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:09:53 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:09:54 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:12:52 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:12:54 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:13:26 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:14:22 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:14:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:14:51 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+ERROR | 2020-04-13 16:15:55 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58502}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: a6c05f189a6da2de1b4d75075e643caa
+DEBUG | 2020-04-13 16:17:18 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:17:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:18:08 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:19:10 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:19:11 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:19:40 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+ERROR | 2020-04-13 16:20:24 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58654}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: e341e60a1e089cedc5dd316404d05cfd
+DEBUG | 2020-04-13 16:21:12 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:21:13 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:21:56 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:21:59 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 16:22:01 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 16:22:10 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:26:53 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:26:55 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:27:40 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:27:45 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 16:27:49 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 16:27:59 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:28:10 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:28:10 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:28:10 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 16:28:16 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 16:35:39 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:35:41 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:36:54 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:37:18 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:37:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:38:27 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:38:34 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 16:38:38 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 16:38:50 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:41:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:41:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+ERROR | 2020-04-13 16:43:09 | manager.DriverUtils (DriverUtils.java:231) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.164', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:59186}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 30b30ea21d36cbd7c99d0a7e2ce13915
+DEBUG | 2020-04-13 16:44:20 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:44:21 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:54:05 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:54:06 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 16:54:38 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:54:41 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 16:54:43 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 16:54:53 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:54:54 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:55:08 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:55:20 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 16:55:20 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 16:55:20 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:00:10 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:00:12 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 17:00:42 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:00:44 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 17:00:48 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 17:00:57 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:00:59 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:01:11 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:01:23 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:01:23 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:01:23 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:01:29 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:06:11 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:06:12 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 17:06:43 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:06:45 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 17:06:48 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 17:06:54 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:06:56 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:07:07 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:07:19 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:07:19 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:07:19 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:07:25 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:15:40 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:15:41 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 17:16:06 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:16:09 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 17:16:11 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 17:16:21 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:16:23 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:16:35 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:16:46 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:16:46 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:16:46 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:16:51 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:42:09 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:42:11 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 17:42:37 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:42:39 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:42:40 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 17:42:44 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:42:45 | manager.DriverUtils (DriverUtils.java:172) - Close browser
+DEBUG | 2020-04-13 17:42:45 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 17:42:53 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:42:57 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:42:58 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://sgmail.logigear.com
+DEBUG | 2020-04-13 17:43:46 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:43:48 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:43:48 | manager.DriverUtils (DriverUtils.java:82) - Switch frame
+DEBUG | 2020-04-13 17:43:51 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:43:51 | manager.DriverUtils (DriverUtils.java:142) - Switch to first window
+DEBUG | 2020-04-13 17:43:59 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:44:01 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:44:01 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:44:02 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:44:02 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:44:02 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:44:03 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame
+DEBUG | 2020-04-13 17:44:03 | manager.DriverUtils (DriverUtils.java:152) - Switch to latest window
+DEBUG | 2020-04-13 17:44:03 | manager.DriverUtils (DriverUtils.java:163) - Maximize browser
+DEBUG | 2020-04-13 17:44:03 | manager.DriverUtils (DriverUtils.java:92) - Switch frame
+DEBUG | 2020-04-13 17:44:09 | manager.DriverUtils (DriverUtils.java:122) - Switch to default frame

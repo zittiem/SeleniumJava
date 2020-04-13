@@ -1,16 +1,7 @@
 package pages.LGmail;
 
-import java.util.Iterator;
-import java.util.Set;
-
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import datatype.LGmail.Email;
-import datatype.LGmail.Enums.ComposeActions;
 import datatype.LGmail.Enums.MailTreeItem;
 import datatype.LGmail.Enums.MessageToolbarItem;
-import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
 import utils.constant.Constants;
@@ -26,16 +17,29 @@ public class MainPage {
 	protected Element eleMailSubject = new Element(locator.getLocator("eleMailSubject"));
 	protected Element eleMailSubjectChild = new Element(locator.getLocator("eleMailSubjectChild"));
 	protected Element eleNewEmailComingSignal = new Element(locator.getLocator("eleNewEmailComingSignal"));
-	protected String mainWindow = DriverUtils.getWindowHandle();
-	protected String composeWindow = null;
 
 	// Methods
 
+	 /**
+     * Select mail folder
+     *
+     * @param	option
+     * 			It should be INBOX|DRAFTS|SENT_ITEMS|DELETED_ITEMS
+     * 
+     */
 	public void selectMailTree(MailTreeItem option) {
 		eleMailTreeItem.generateDynamic(option.getValue()).click();
 	}
 
+	 /**
+     * Select message toolbar
+     *
+     * @param	option
+     * 			It should be NEW|DELETE|MOVE|FILTER|VIEW
+     * 
+     */
 	public void selectMessageToolbar(MessageToolbarItem option) {
+		eleMessageToolbar.generateDynamic(option.getID()).waitForDisplayed(Constants.SHORT_TIME);
 		eleMessageToolbar.generateDynamic(option.getID()).click();
 	}
 	
@@ -66,13 +70,18 @@ public class MainPage {
 		}
 		return null;
 	}*/
-
-	public void selectAction(ComposeActions action) {
-		ComposeEmailPage cp = new ComposeEmailPage();
-		cp.selectAction(action);
-	}
 	
-	public void openAMail(MailTreeItem folder, String subject) throws InterruptedException {
+	 /**
+     * Open an email
+     *
+     * @param	folder
+     * 			It should be INBOX|DRAFTS|SENT_ITEMS|DELETED_ITEMS
+     * 
+     * @param	subject
+     * 			Email subject
+     * 
+     */
+	public void openAMail(MailTreeItem folder, String subject){
 		if(eleNewEmailComingSignal.isDisplayed(Constants.SLEEP_TIME)) {
 			eleNewEmailComingSignal.waitForNotDisplayed(Constants.SHORT_TIME);
 		}

@@ -13,6 +13,7 @@
 		<classes>
 			<class name="tests.LGmail.TS_LGmail">
 				<methods>
+					<include name="TC01" />
 					<include name="TC02" />
 				</methods>
 			</class>

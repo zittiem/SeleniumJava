@@ -1,26 +1,32 @@
 package tests;
 
-
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 
-import datatype.VietJet.LanguageType;
 import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.DataHelper;
+import utils.helper.ResourceHelper;
 import utils.helper.Logger;
+import utils.helper.ResourceHelper.SharedData;
 
 public class TestBase {
-
-	@Parameters({ "driverConfig", "platform" })
+	protected String appName;
+	protected String language;
 	
+	@Parameters({ "driverConfig", "platform", "appName", "language" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeMethod(String driverConfig, String platform)
+	public void beforeMethod(String driverConfig, String platform, String appName, String language)
 			throws Throwable {
+		this.appName = appName;
+		this.language = language;
 		DriverManager.loadDriverProperty(Constants.DRIVER_SETTING_FILE, platform, driverConfig);
 		DriverManager.initDriver();
+		prepareAppData();
+		launchApp();
 	}
 
 	@AfterMethod(alwaysRun = true)
@@ -29,23 +35,16 @@ public class TestBase {
 		//DriverUtils.quit();
 	}
 	
-	public void launchApp(String appName, LanguageType lang) {
+	private void prepareAppData() {
+		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "SharedData");
+		SharedData shared = dataHelper.getDataObject(SharedData.class, this.language);
+		shared.appName = this.appName;
+		shared.language = this.language;
+		ResourceHelper.SHARED_DATA.set(shared);
+	}
+	
+	protected void launchApp() {
 		DriverUtils.maximizeBrowser();
-		appName = appName + lang.getCode();
-		
-		switch(appName) {
-		case "VietJetUS":
-			DriverUtils.navigate(Constants.vietJetEN_URL);
-			break;
-		case "VietJetVI":
-			DriverUtils.navigate(Constants.vietJetVI_URL);
-			break;
-		case "AgodaUS":
-			DriverUtils.navigate(Constants.agoda_URL);
-			break;
-		case "LGEmailUS":
-			DriverUtils.navigate(Constants.logigearEmail_URL);
-			break;
-		}
+		DriverUtils.navigate(ResourceHelper.SHARED_DATA.get().url);
 	}
 }

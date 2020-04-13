@@ -1,9 +1,8 @@
 {
-	"any.chrome": {
-		"originKey": "SGN",
-		"originValue": "Ho Chi Minh",
-		"destinationKey": "HAN",
-		"destinationValue": "Ha Noi",
+	"Booking": {
+		"flightOption": "Return",
+		"departureFrom": "SGN",
+		"departureTo": "HAN",
 		"currency": "VND",
 		"lowestFare": "true",
 		"numberOfAdults": 2

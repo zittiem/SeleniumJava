@@ -26,6 +26,11 @@ public class LocatorHelper {
 		loadLocators(Paths.get(locatorFolderPath, fileName + _fileExtension).normalize().toString());
 	}
 	
+	@SuppressWarnings("rawtypes")
+	public LocatorHelper(String locatorFolderPath, Class clazz) {
+		loadLocators(Paths.get(locatorFolderPath, clazz.getSimpleName() + _fileExtension).normalize().toString());
+	}
+	
 	public LocatorHelper(String filePath) {
 		loadLocators(filePath);
 	}

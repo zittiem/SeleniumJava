@@ -1,13 +1,14 @@
 package datatype.VietJet;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import utils.constant.Constants;
+import utils.helper.DateTimeHelper;
 
 public class FareItem {
 	String itemID = null;
 	Date itemDate = null;
-	Integer itemFare = null;
+	int itemFare = 0;
 
 	public FareItem() {
 
@@ -20,20 +21,8 @@ public class FareItem {
 	}
 	
 	public FareItem(String itemID, int itemFare) {
-		Date itemDate = null;
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd"); 
-		String strDate = itemID.substring(17, 25);
-		
-		try {
-			itemDate = formatter.parse(strDate);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
 		this.itemID = itemID;
-		this.itemDate = itemDate;
+		this.itemDate = DateTimeHelper.getDate(itemID.substring(17, 25), Constants.SIMPLE_DATE_FORMAT);
 		this.itemFare = itemFare;
 	}
 	

@@ -1,0 +1,5 @@
+{
+	"any.chrome": {
+		"btnSearch": "xpath=//button[@data-element-name='search-button']"
+	}
+}

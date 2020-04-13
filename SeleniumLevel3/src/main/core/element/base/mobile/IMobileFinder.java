@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.javatuples.Pair;
 import org.openqa.selenium.By;
+
 import element.setting.FindBy;
 import io.appium.java_client.MobileElement;
 
-public interface IMobileFinder {
+public interface IMobileFinder extends IMobileLocator {
 	
 	MobileElement getElement();
 	

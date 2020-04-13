@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 
 public class JsonHelper {
@@ -62,5 +63,16 @@ public class JsonHelper {
 			}
 		}
 		return capabilities;
+	}
+	
+	public static String convertObjectToPrettyJsonString(Object obj) {
+		try {
+			logger.debug("JsonHelper: convertObjectToPrettyJsonString");
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+			return gson.toJson(obj);
+		} catch (Exception e) {
+			logger.error(e.getMessage());
+			return null;
+		}
 	}
 }

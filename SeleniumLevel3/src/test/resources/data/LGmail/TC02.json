@@ -1,0 +1,11 @@
+{
+	"Email": {
+		"to": "thanh.hoang@logigear.com",
+		"subject": "[Random]",
+		"attachedFiles": "TestAttachFile.jpg",
+		"content": "TestAttachFile.jpg"
+	},
+
+	"UserName": "thanh.hoang",
+	"Password": "p@ssw0rd111"
+}

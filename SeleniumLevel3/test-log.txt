@@ -1,0 +1,1736 @@
+ERROR | 2020-03-29 22:54:43 | manager.DriverFactory (DriverFactory.java:33) - Cannot create new Chrome driver instance. java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at driver.manager.DriverFactory.newInstance(DriverFactory.java:30)
+	at driver.manager.DriverManager.createDriver(DriverManager.java:119)
+	at driver.manager.DriverManager.initDriver(DriverManager.java:100)
+	at tests.TestBase.beforeMethod(TestBase.java:25)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:108)
+	at org.testng.internal.Invoker.invokeConfigurationMethod(Invoker.java:523)
+	at org.testng.internal.Invoker.invokeConfigurations(Invoker.java:224)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:599)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:869)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1193)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:126)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.openqa.selenium.WebDriverException: unknown error: DevToolsActivePort file doesn't exist
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: driver.version: ChromeDriver
+remote stacktrace: Backtrace:
+	Ordinal0 [0x00B30AE3+1706723]
+	Ordinal0 [0x00A968C1+1075393]
+	Ordinal0 [0x00A0DFA9+516009]
+	Ordinal0 [0x0099FB81+64385]
+	Ordinal0 [0x0099CC5B+52315]
+	Ordinal0 [0x009BBFD7+180183]
+	Ordinal0 [0x009BBDDD+179677]
+	Ordinal0 [0x009B9D4B+171339]
+	Ordinal0 [0x009A1D4A+73034]
+	Ordinal0 [0x009A2DC0+77248]
+	Ordinal0 [0x009A2D59+77145]
+	Ordinal0 [0x00AABB37+1162039]
+	GetHandleVerifier [0x00BCA7C6+508998]
+	GetHandleVerifier [0x00BCA504+508292]
+	GetHandleVerifier [0x00BDF617+594583]
+	GetHandleVerifier [0x00BCB036+511158]
+	Ordinal0 [0x00AA3FFC+1130492]
+	Ordinal0 [0x00AAD49B+1168539]
+	Ordinal0 [0x00AAD603+1168899]
+	Ordinal0 [0x00AC5B05+1268485]
+	BaseThreadInitThunk [0x76EF8654+36]
+	RtlGetAppContainerNamedObjectPath [0x77014A77+311]
+	RtlGetAppContainerNamedObjectPath [0x77014A47+263]
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$new$0(W3CHandshakeResponse.java:57)
+	at org.openqa.selenium.remote.W3CHandshakeResponse.lambda$getResponseFunction$2(W3CHandshakeResponse.java:104)
+	at org.openqa.selenium.remote.ProtocolHandshake.lambda$createSession$0(ProtocolHandshake.java:123)
+	at java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:193)
+	at java.util.Spliterators$ArraySpliterator.tryAdvance(Spliterators.java:958)
+	at java.util.stream.ReferencePipeline.forEachWithCancel(ReferencePipeline.java:126)
+	at java.util.stream.AbstractPipeline.copyIntoWithCancel(AbstractPipeline.java:498)
+	at java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:485)
+	at java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:471)
+	at java.util.stream.FindOps$FindOp.evaluateSequential(FindOps.java:152)
+	at java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
+	at java.util.stream.ReferencePipeline.findFirst(ReferencePipeline.java:464)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:126)
+	at org.openqa.selenium.remote.ProtocolHandshake.createSession(ProtocolHandshake.java:73)
+	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:136)
+	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
+	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:545)
+	at org.openqa.selenium.remote.RemoteWebDriver.startSession(RemoteWebDriver.java:209)
+	at org.openqa.selenium.remote.RemoteWebDriver.<init>(RemoteWebDriver.java:132)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:181)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:168)
+	at org.openqa.selenium.chrome.ChromeDriver.<init>(ChromeDriver.java:157)
+	at driver.resource.ChromeDriver.createLocalDriver(ChromeDriver.java:37)
+	... 23 more
+
+DEBUG | 2020-03-29 23:10:35 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:11:59 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:16:21 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:16:22 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:17:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:17:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:18:44 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:18:45 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:23:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:23:31 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:23:37 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:25:02 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:25:03 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:31:00 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:31:01 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:31:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:31:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:31:46 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:46:54 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:46:55 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:47:35 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:47:35 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:47:37 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:48:48 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:48:49 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:49:25 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:49:25 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:49:27 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:52:58 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:52:59 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:53:37 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:53:37 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:53:39 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-29 23:57:33 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-29 23:57:35 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-29 23:58:40 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:58:40 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-29 23:58:43 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-30 00:02:28 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-30 00:02:30 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-30 00:03:08 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-30 00:03:09 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-30 00:03:11 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-30 00:09:33 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-30 00:09:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-30 00:10:29 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-30 00:10:29 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-30 00:10:31 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 08:49:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 08:49:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 08:49:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 08:49:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-31 08:50:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 08:50:45 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 08:50:47 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-03-31 15:56:32 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 15:56:33 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 15:56:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 15:56:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-03-31 15:58:43 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 15:58:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-03-31 16:03:18 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:03:19 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-03-31 16:03:44 | helper.DataHelper (DataHelper.java:31) - Exception! - Error when load Data from path src\test\resources\data\VietJet\TC03.json
+DEBUG | 2020-03-31 16:07:03 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:07:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 16:18:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:18:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 16:24:25 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 16:24:26 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:00:37 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:00:39 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:06:27 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:06:29 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:09:18 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:09:19 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:12:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:12:57 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:14:50 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:14:52 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:19:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:19:31 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:23:59 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:24:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:36:32 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:36:34 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:38:34 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:38:35 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-03-31 17:40:31 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-03-31 17:40:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:03:56 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:03:57 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:14:06 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:14:07 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:16:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:16:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:20:47 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:20:49 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:31:13 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:31:15 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:40:10 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:40:12 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 10:42:12 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.002
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:58139}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: a487bb3efc45a15367c7034bfb49a2d7
+DEBUG | 2020-04-01 10:46:29 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:46:30 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:51:46 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:51:47 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 10:58:35 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 10:58:36 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:05:25 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:05:26 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:08:58 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:09:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:13:28 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:13:29 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:25:14 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:25:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:39:03 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:39:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:46:30 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:46:31 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:47:12 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:47:13 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 11:55:09 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 11:55:10 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:12:05 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:12:06 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:16:07 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 12:16:08 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 12:23:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:23:54 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 12:27:22 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 12:27:23 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:12:07 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:12:09 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:17:03 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 14:17:03 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 14:59:14 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:59:15 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 14:59:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 14:59:16 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:05:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:05:16 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:05:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:05:17 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 15:07:17 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.080
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:60333}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 599d9e34e5d8f79e80eb31cbcb997390
+DEBUG | 2020-04-01 15:08:35 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:09:52 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:16:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:16:53 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:16:55 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:16:55 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+ERROR | 2020-04-01 15:18:55 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.023
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:54102}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 807998b7eaf9eeaed2a766a6c0f74807
+DEBUG | 2020-04-01 15:19:34 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:19:59 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:21:07 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:21:08 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:23:55 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:24:01 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:24:02 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:29:43 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:29:44 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:30:01 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:39:00 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:39:00 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:39:01 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:39:02 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:43:18 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:44:15 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:44:21 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:44:34 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:47:02 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:47:02 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:47:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 15:47:04 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:48:26 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:48:27 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:52:19 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:52:19 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 15:52:20 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 15:52:20 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+ERROR | 2020-04-01 15:54:21 | manager.DriverUtils (DriverUtils.java:67) - An error occurred when nagivating: timeout: Timed out receiving message from renderer: -0.132
+  (Session info: chrome=80.0.3987.149)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'LGVN15236', ip: '192.168.251.170', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_181'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.149, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\THANH~1.HOA\AppDat...}, goog:chromeOptions: {debuggerAddress: localhost:56478}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: f3bea0ec11e6e3606071923d124f8a0c
+DEBUG | 2020-04-01 15:55:22 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 15:57:22 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:57:22 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 15:57:33 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 16:53:31 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 16:53:32 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 16:53:58 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:01:51 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:01:52 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:02:18 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:07:52 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:07:52 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:07:53 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-01 17:07:53 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-01 17:09:39 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:10:31 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 17:10:32 | manager.DriverUtils (DriverUtils.java:58) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-01 17:10:41 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:13:58 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:13:59 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:14:16 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:17:59 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:18:00 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:19:26 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:24:29 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:24:30 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:26:08 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:41:11 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:41:12 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:41:37 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:42:21 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:42:22 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:42:45 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:43:43 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:43:44 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:44:07 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:48:41 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:48:42 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-01 17:49:08 | manager.DriverUtils (DriverUtils.java:117) - Quit browser
+DEBUG | 2020-04-01 17:50:55 | manager.DriverUtils (DriverUtils.java:93) - Maximize browser
+DEBUG | 2020-04-01 17:50:56 | manager.DriverUtils (DriverUtils.java:63) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 08:43:30 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 08:43:31 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 08:52:52 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 08:52:53 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 08:55:15 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 08:55:16 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 08:56:47 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 08:56:48 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 09:01:18 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 09:01:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 09:02:16 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 09:05:12 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 09:05:13 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 09:37:38 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 09:37:39 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 09:38:04 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 09:55:33 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 09:55:34 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 10:39:02 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 10:39:04 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 10:46:58 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 10:46:59 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:04:01 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:04:02 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:04:21 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:09:08 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:09:09 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:10:22 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:10:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:11:11 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:13:55 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:13:56 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:14:12 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:39:44 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:39:45 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:41:09 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:43:42 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:43:43 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:45:03 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:50:08 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:50:09 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:51:06 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:51:07 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:54:03 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:54:04 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:54:23 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 12:55:17 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 12:55:18 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 12:56:38 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 13:00:45 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 13:00:46 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 13:01:23 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 13:02:48 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 13:02:49 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 13:03:10 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 13:09:27 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 13:09:28 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 13:10:05 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 13:11:33 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 13:11:34 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 13:12:18 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:07:04 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:07:06 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:07:26 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:08:12 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:08:13 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:08:36 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:11:24 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:11:25 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:11:50 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:28:14 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:28:15 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:28:50 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:50 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:50 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:50 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:50 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:28:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:04 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:06 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:12 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:15 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:17 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:29:20 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:30:38 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:30:39 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:31:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].focus();
+DEBUG | 2020-04-05 14:34:02 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:34:03 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:34:31 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:42:59 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:43:00 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:43:34 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:48:19 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:48:20 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:48:39 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:54:18 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:54:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:54:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 14:55:33 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:58:05 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:58:06 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:58:23 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 14:58:28 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 14:59:00 | manager.DriverUtils (DriverUtils.java:102) - Maximize browser
+DEBUG | 2020-04-05 14:59:02 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 14:59:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 14:59:24 | manager.DriverUtils (DriverUtils.java:125) - Quit browser
+DEBUG | 2020-04-05 21:39:22 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:39:23 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 21:39:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 21:40:11 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 21:41:12 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 21:43:09 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:43:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 21:43:30 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 21:43:41 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 21:43:47 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 21:44:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}
+DEBUG | 2020-04-05 21:44:30 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 21:49:30 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:49:31 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 21:49:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 21:50:42 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 21:51:16 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:51:17 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 21:51:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 21:51:46 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 21:56:09 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:56:10 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 21:56:30 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 21:56:45 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 21:56:50 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 21:57:03 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}
+DEBUG | 2020-04-05 21:57:35 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 21:59:41 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 21:59:42 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:00:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:00:36 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:00:47 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:00:47 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:01:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('mouseover', true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject) { arguments[0].fireEvent('onmouseover');}
+DEBUG | 2020-04-05 22:01:30 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:05:50 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:05:52 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:06:09 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:13:23 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:13:24 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:14:24 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:14:37 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:14:40 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:14:40 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:15:13 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:15:17 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:16:23 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:16:25 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:16:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:17:08 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:17:13 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:17:13 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:17:46 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:22:54 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:22:55 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:23:27 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:23:41 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:23:46 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:23:46 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:24:09 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:25:10 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:25:11 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+ERROR | 2020-04-05 22:25:12 | manager.DriverUtils (DriverUtils.java:191) - An error occurred when capturing screen shot: chrome not reachable
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\HK\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:53242}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 0ef2534370549f8a33552f081ab080e5
+DEBUG | 2020-04-05 22:25:12 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:25:32 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:25:44 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:25:49 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:25:49 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:26:13 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:26:23 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:30:52 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:30:53 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:31:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:31:23 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:31:57 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:36:18 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:36:19 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:36:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:37:04 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:37:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:37:38 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:38:23 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:38:24 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:38:41 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:38:54 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:38:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:38:58 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:38:58 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:39:31 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:42:34 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:42:35 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:42:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:43:03 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:43:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:43:07 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:43:07 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:50:10 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:50:11 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:50:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:50:56 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:51:00 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:51:01 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:51:01 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:53:51 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:53:52 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:54:11 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:54:23 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:54:25 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:54:26 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 22:54:26 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 22:54:53 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 22:54:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 22:55:02 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 22:58:17 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:58:18 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+ERROR | 2020-04-05 22:58:46 | manager.DriverUtils (DriverUtils.java:191) - An error occurred when capturing screen shot: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:7694
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: driver.version: RemoteWebDriver
+DEBUG | 2020-04-05 22:58:46 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+ERROR | 2020-04-05 22:58:49 | manager.DriverUtils (DriverUtils.java:151) - An error occurred when quiting browser: java.net.ConnectException: Failed to connect to localhost/0:0:0:0:0:0:0:1:7694
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: driver.version: RemoteWebDriver
+DEBUG | 2020-04-05 22:59:38 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 22:59:39 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 22:59:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:00:11 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:00:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:00:15 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:00:15 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:00:19 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:00:23 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:00:26 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:16:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:16:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:17:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:17:35 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:17:38 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:17:41 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:17:41 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:17:44 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:17:51 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:17:54 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:30:47 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:30:48 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:31:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:31:33 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:31:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:31:37 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:31:37 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:31:40 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:31:45 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:31:47 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:33:23 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:33:24 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:33:42 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:33:47 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:33:53 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:34:25 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:35:30 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:35:31 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:35:48 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:35:54 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:36:06 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:36:06 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:36:09 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:36:19 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:37:36 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:37:37 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:37:52 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:38:01 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:38:41 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:39:28 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:39:29 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:39:46 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:39:53 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:40:01 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:40:05 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:40:05 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:40:09 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:40:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:47:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:48:00 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:48:32 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:48:38 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:48:46 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:48:48 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:48:48 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:48:52 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:48:58 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:49:02 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:56:15 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:56:16 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:56:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:56:42 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:56:48 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:57:20 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-05 23:57:56 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-05 23:57:57 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-05 23:58:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:58:38 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:58:45 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:58:48 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-05 23:58:48 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-05 23:58:52 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-05 23:58:57 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-05 23:59:00 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:05:11 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:05:12 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:05:32 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:05:40 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:05:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:05:50 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-06 00:05:50 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-06 00:05:53 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:05:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:06:02 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:06:46 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:06:47 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:07:10 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:07:21 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+ERROR | 2020-04-06 00:07:26 | manager.DriverUtils (DriverUtils.java:191) - An error occurred when capturing screen shot: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\HK\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:60300}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: 5ea64a40dfc659087618eedcd7efeb99
+DEBUG | 2020-04-06 00:07:26 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:07:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:08:00 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:08:18 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:08:28 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:08:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:08:38 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-06 00:08:38 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-06 00:08:41 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:09:56 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:11:34 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:11:35 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:11:55 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:12:05 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:12:14 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:12:16 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-06 00:12:16 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-06 00:12:19 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:12:26 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:12:30 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:15:01 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:15:02 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+ERROR | 2020-04-06 00:15:10 | manager.DriverUtils (DriverUtils.java:191) - An error occurred when capturing screen shot: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=80.0.3987.163)
+Build info: version: '3.11.0', revision: 'e59cfb3', time: '2018-03-11T20:26:55.152Z'
+System info: host: 'ADMIN', ip: '192.168.5.193', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_201'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 80.0.3987.163, chrome: {chromedriverVersion: 80.0.3987.16 (320f6526c1632..., userDataDir: C:\Users\HK\AppData\Local\T...}, goog:chromeOptions: {debuggerAddress: localhost:60831}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
+Session ID: a416d9ea7416d6d3ccdf2a39c5070e87
+DEBUG | 2020-04-06 00:15:10 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:16:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:16:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:17:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:17:18 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:18:19 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-06 00:19:31 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-06 00:19:32 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-06 00:20:08 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:20:15 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:20:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:20:24 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-06 00:20:25 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-06 00:20:27 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-06 00:20:34 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-06 00:20:37 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 11:53:58 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 11:54:00 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 11:55:56 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 11:55:58 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:08:47 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:08:48 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:10:31 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:10:32 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:11:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:07 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:18 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:11:31 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:11:35 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:11:35 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:11:39 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:11:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:37:45 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:37:46 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:38:19 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:38:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:38:29 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:38:39 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:38:39 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:38:46 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:38:54 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:44:46 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:44:47 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:45:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:45:20 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:45:31 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:45:42 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:45:43 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:45:48 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:45:59 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:48:19 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:48:20 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:49:01 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 12:49:05 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:49:07 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:49:39 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:43 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:47 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:49:56 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:50:31 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 12:50:35 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 12:50:36 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 12:51:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:05 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:17 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:51:29 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 12:51:30 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 12:51:37 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 12:51:48 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 12:51:53 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:50:54 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:50:55 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:51:38 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:51:42 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:51:44 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:52:13 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:16 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:52:32 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:06 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:53:10 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:53:12 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:53:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:53:54 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 16:54:05 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 16:54:05 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 16:54:13 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 16:54:22 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 16:54:27 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 16:58:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 16:58:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 16:59:58 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:00:02 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:00:03 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:00:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:00:40 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:01:43 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:01:48 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:01:49 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:04:32 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:04:33 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:06:22 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:06:26 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:06:28 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:07:36 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:07:41 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:07:42 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:08:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:08:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:08:50 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:09:06 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 17:09:07 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 17:09:22 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:09:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:09:43 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:11:30 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:11:32 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:12:36 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:12:40 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:12:41 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:13:28 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:31 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:34 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:35 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:44 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:13:45 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:13:49 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:13:50 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.agoda.com/
+DEBUG | 2020-04-09 17:15:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:15:21 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:15:32 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:15:44 | manager.DriverUtils (DriverUtils.java:132) - Close browser
+DEBUG | 2020-04-09 17:15:44 | manager.DriverUtils (DriverUtils.java:102) - Switch to first window
+DEBUG | 2020-04-09 17:15:51 | manager.DriverUtils (DriverUtils.java:112) - Switch to latest window
+DEBUG | 2020-04-09 17:16:02 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript window.scrollTo(0, 0);
+DEBUG | 2020-04-09 17:16:07 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:26:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:26:59 | manager.DriverUtils (DriverUtils.java:123) - Maximize browser
+DEBUG | 2020-04-09 17:27:01 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home 
+DEBUG | 2020-04-09 17:27:01 | manager.DriverUtils (DriverUtils.java:62) - Navigate to https://www.vietjetair.com/Sites/Web/en-US/Home
+DEBUG | 2020-04-09 17:28:36 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:28:37 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:29:14 | manager.DriverUtils (DriverUtils.java:146) - Quit browser
+DEBUG | 2020-04-09 17:30:26 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:30:26 | manager.DriverUtils (DriverUtils.java:57) - Execute javascript arguments[0].scrollIntoView({block: "center"});
+DEBUG | 2020-04-09 17:30:32 | manager.DriverUtils (DriverUtils.java:146) - Quit browser

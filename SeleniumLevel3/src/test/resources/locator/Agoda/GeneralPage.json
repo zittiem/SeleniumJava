@@ -1,0 +1,24 @@
+{
+	"any.chrome": {
+		"btnShowDestination": "xpath=//i[contains(@class,'search-box')]",
+		"eleFirstSuggestionItem": "xpath=//li[@data-element-name='search-box-sub-suggestion'][1]",
+		"btnShowCheckIn": "xpath=//i[contains(@class,'check-in')]",
+		"btnShowCheckOut": "xpath=//i[contains(@class,'check-out')]",
+		"btnShowTraveler": "xpath=//i[contains(@class,'travelers')]",
+		"txtDestination": "xpath=//input[@data-selenium='textInput']",
+		"eleCheckInCal": "xpath=//div[@data-element-name='search-box-check-in']",
+		"eleCheckOutCal": "xpath=//div[@data-element-name='search-box-check-out']",
+		"btnTravelingOption": "xpath=//div[@data-element-name='traveler-%s']",
+		"btnShowTravelingOption": "class=SearchBoxTextDescription__child",
+		"btnMinus": "xpath=//span [@data-selenium='minus' and contains(@data-element-name,'%s')]",
+		"btnPlus": "xpath=//span[@data-selenium='plus' and contains(@data-element-name,'%s')]",
+		"eleDisplayValueLbl": "xpath=//span[@data-component='desktop-occ-%s-value']",
+		"btnPreviousMonth": "xpath=//span[@data-selenium='calendar-previous-month-button']",
+		"btnNextMonth": "xpath=//span[@data-selenium='calendar-next-month-button']",
+		"cbxChildAge": "xpath=//li[@data-selenium='occ-child-age-dropdown']//select",
+		"elesDatePicker": "xpath=//div[@class='DayPicker-Caption']",
+		"eleDatePicker1": "xpath=//div[@class='DayPicker-Caption'][1]",
+		"eleDatePicker2": "xpath=//div[@class='DayPicker-Caption'][2]",
+		"eleDate": "xpath=//div[@aria-label='%s']"
+	}
+}

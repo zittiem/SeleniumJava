@@ -1,14 +1,16 @@
 package pages.VietJet;
 
-import datatype.VietJet.TicketInfo;
+import datatype.VietJet.Booking;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import helper.LocatorHelper;
-import utils.constants.Constants;
+import utils.constant.Constants;
+import utils.helper.ResourceHelper;
 import utils.helper.DateTimeHelper;
 
 public class PassengerInformationPage {
-	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH, getClass().getSimpleName());
+	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName, getClass().getSimpleName());
+	
 	// Element
 	protected Element formDetail = new Element(locator.getLocator("formDetail"));
 	protected Element lblDepartureFrom = new Element(locator.getLocator("lblDepartureFrom"));
@@ -34,41 +36,72 @@ public class PassengerInformationPage {
 	protected Element btnContinue = new Element(locator.getLocator("btnContinue"));
 
 	// Methods
-	private double getCastValue(String value) {
+	
+    /**
+     * Convert money from string to double
+     *
+     * @param  value
+     *         money in string format. Ex: 10,000 VND
+     *         
+     * @return	money with double type
+     *
+     */
+	private double convertMoneyFromStringToDouble(String value) {
 		return Double.parseDouble(value.split(" ")[0].replace(",", "")) * 1;
 	}
 
-	public TicketInfo getCurrentTicketInfo() {
-		TicketInfo ticketInfo = new TicketInfo();
-		ticketInfo.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
-		ticketInfo.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
-		ticketInfo.setDepartureDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), "dd/MM/yyyy"));
-		ticketInfo.setDepartureTime(lblDepartureTime.getText());
-		ticketInfo.setDepartureFare(getCastValue(lblDepartureFare.getText()));
-		ticketInfo.setDepartureCharge(getCastValue(lblDepartureCharges.getText()));
-		ticketInfo.setDepartureTax(getCastValue(lblDepartureTax.getText()));
-		ticketInfo.setDepartureTotal(getCastValue(lblDepartureTotalFare.getText()));
-		ticketInfo.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
-		ticketInfo.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
-		ticketInfo.setReturnDate(
-				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), "dd/MM/yyyy"));
-		ticketInfo.setReturnTime(lblReturnTime.getText());
-		ticketInfo.setReturnFare(getCastValue(lblReturnFare.getText()));
-		ticketInfo.setReturnCharge(getCastValue(lblReturnCharges.getText()));
-		ticketInfo.setReturnTax(getCastValue(lblReturnTax.getText()));
-		ticketInfo.setReturnTotal(getCastValue(lblReturnTotalFare.getText()));
-		ticketInfo.setGrandTotal(getCastValue(lblGrandTotal.getText()));
-		ticketInfo.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
-		ticketInfo.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
-		ticketInfo.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
-		return ticketInfo;
+    /**
+     * Get current booking information
+     *         
+     * @return	Object Booking
+     *
+     */
+	public Booking getCurrentBookingInfo() {
+		Booking booking = new Booking();
+		lblGrandTotal.waitForDisplayed(30);
+		lblGrandTotal.waitForTextChanged("0", 30);
+		booking.setDepartureFrom(lblDepartureFrom.getText().split(":")[1].trim());
+		booking.setDepartureTo(lblDepartureTo.getText().split(":")[1].trim());
+		booking.setDepartureDate(
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblDepartureDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
+		booking.setDepartureTime(lblDepartureTime.getText());
+		booking.setDepartureFare(convertMoneyFromStringToDouble(lblDepartureFare.getText()));
+		booking.setDepartureCharge(convertMoneyFromStringToDouble(lblDepartureCharges.getText()));
+		booking.setDepartureTax(convertMoneyFromStringToDouble(lblDepartureTax.getText()));
+		booking.setDepartureTotal(convertMoneyFromStringToDouble(lblDepartureTotalFare.getText()));
+		booking.setReturnFrom(lblReturnFrom.getText().split(":")[1].trim());
+		booking.setReturnTo(lblReturnTo.getText().split(":")[1].trim());
+		booking.setReturnDate(
+				DateTimeHelper.getDateString(DateTimeHelper.getDate(lblReturnDate.getText()), ResourceHelper.SHARED_DATA.get().date_format));
+		booking.setReturnTime(lblReturnTime.getText());
+		booking.setReturnFare(convertMoneyFromStringToDouble(lblReturnFare.getText()));
+		booking.setReturnCharge(convertMoneyFromStringToDouble(lblReturnCharges.getText()));
+		booking.setReturnTax(convertMoneyFromStringToDouble(lblReturnTax.getText()));
+		booking.setReturnTotal(convertMoneyFromStringToDouble(lblReturnTotalFare.getText()));
+		booking.setGrandTotal(convertMoneyFromStringToDouble(lblGrandTotal.getText()));
+		booking.setNumberOfAdults(Integer.parseInt(lblNumberOfAdults.getText().split(":")[1].trim()));
+		booking.setNumberOfChildren(Integer.parseInt(lblNumberOfChildren.getText().split(":")[1].trim()));
+		booking.setNumberOfInfants(Integer.parseInt(lblNumberOfInfants.getText().split(":")[1].trim()));
+		return booking;
 	}
 
+    /**
+     * Wait for page load completely. Time out is Constants.LONG_TIME.
+     */
 	public void waitForPageLoad() {
 		formDetail.waitForDisplayed(Constants.LONG_TIME);
 	}
 
+	// Verify
+	
+	 /**
+     * Return a Boolean value to indicate whether this page is displayed
+     *
+     * @return  true|false
+     * 			true: This page is displayed
+     * 			false: This page is not displayed
+     * 
+     */
 	public boolean isDisplayed() {
 		waitForPageLoad();
 		return DriverUtils.getURL().contains("Details.aspx");

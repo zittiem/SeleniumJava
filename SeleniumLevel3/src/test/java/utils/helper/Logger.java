@@ -26,18 +26,20 @@ public class Logger {
 	}
 	
 	public static void verify(String message) {
-		message = "<b style=\"color: blue;word-break:break-word;\"><i style=\"color: #00af00\">VERIFY POINT: </i>" + message + "</b>";
+		message = "<b style=\"color: blue;word-break:break-word;\"><i style=\"color: orange\">VERIFY POINT: </i>" + message + "</b>";
 		Reporter.log(message);
 		ExtentTestManager.getTest().log(Status.INFO, message);
 	}
 	
 	public static void passedAssertion(String message) {
-		Reporter.log("<b>INFO: </b>" + message);
+		message = "<b style=\"color: blue;word-break:break-word;\"><i style=\"color: #00af00\">" + message + " </i></b>";
+		Reporter.log(message);
 		ExtentTestManager.getTest().log(Status.PASS, message);
 	}
 	
 	public static void failedAssertion(String message) {
-		Reporter.log("<b>INFO: </b>" + message);
+		message = "<b style=\"color: blue;word-break:break-word;\"><i style=\"color: red\">" + message + " </i></b>";
+		Reporter.log(message);
 		ExtentTestManager.getTest().log(Status.FAIL, message);
 	}
 	

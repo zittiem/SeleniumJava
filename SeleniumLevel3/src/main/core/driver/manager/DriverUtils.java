@@ -18,47 +18,46 @@ import org.openqa.selenium.JavascriptExecutor;
 
 public class DriverUtils {
 	private static Logger logger = Logger.getLogger(DriverUtils.class);
-	
+
 	/* -------------------------- SURFACE -------------------------- */
-	
-	public static WebDriver getDriver()
-	{
+
+	public static WebDriver getDriver() {
 		return DriverManager.getDriver();
 	}
-	
-	public static String getURL(){
+
+	public static String getURL() {
 		return getDriver().getCurrentUrl();
 	}
-	
-	public static String getTitle(){
+
+	public static String getTitle() {
 		return getDriver().getTitle();
 	}
-	
+
 	public static String getPageSource() {
 		return getDriver().getPageSource();
 	}
-	
+
 	public static String getWindowHandle() {
 		return getDriver().getWindowHandle();
 	}
-	
+
 	public static List<String> getWindowHandles() {
 		return new ArrayList<String>(getDriver().getWindowHandles());
 	}
-	
+
 	public static WebElement findElement(By by) {
 		return getDriver().findElement(by);
 	}
-	
+
 	public static List<WebElement> findElements(By by) {
 		return getDriver().findElements(by);
 	}
-	
+
 	public static Object executeJavaScript(String script, Object... objs) {
 		logger.debug("Execute javascript " + script);
 		return ((JavascriptExecutor) getDriver()).executeScript(script, objs);
 	}
-	
+
 	public static void navigate(String url) {
 		logger.debug("Navigate to " + url);
 		try {
@@ -67,7 +66,7 @@ public class DriverUtils {
 			logger.error("An error occurred when nagivating: " + e.getMessage());
 		}
 	}
-	
+
 	public static void switchToFrame(WebElement frameElement) {
 		try {
 			logger.debug("Switch frame");
@@ -77,7 +76,57 @@ public class DriverUtils {
 			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
 		}
 	}
+
+	public static void switchToFrame(By by) {
+		try {
+			logger.debug("Switch frame");
+			getDriver().switchTo().frame(findElement(by));
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by web element: " + e.getMessage());
+		}
+	}
 	
+	public static void switchToFrame(String nameOrId) {
+		try {
+			logger.debug("Switch frame");
+			getDriver().switchTo().frame(nameOrId);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by name or id: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToFrame(int index) {
+		try {
+			logger.debug("Switch frame");
+			getDriver().switchTo().frame(index);
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching frame by frame index: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToParentFrame() {
+		try {
+			logger.debug("Switch to parent frame");
+			getDriver().switchTo().parentFrame();
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching to parent frame: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToDefaultFrame() {
+		try {
+			logger.debug("Switch to default frame");
+			getDriver().switchTo().defaultContent();
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching to default frame: " + e.getMessage());
+		}
+	}
+
 	public static void switchTo(String windowHandle) {
 		try {
 			logger.debug("Switch window");
@@ -88,6 +137,27 @@ public class DriverUtils {
 		}
 	}
 	
+	public static void switchToFirst() {
+		try {
+			logger.debug("Switch to first window");
+			getDriver().switchTo().window(getWindowHandles().get(0));
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching first window: " + e.getMessage());
+		}
+	}
+	
+	public static void switchToLatest() {
+		try {
+			logger.debug("Switch to latest window");
+			List<String> windows = getWindowHandles();
+			getDriver().switchTo().window(windows.get(windows.size() - 1));
+
+		} catch (Exception e) {
+			logger.error("An error occurred when switching latest window: " + e.getMessage());
+		}
+	}
+
 	public static void maximizeBrowser() {
 		try {
 			logger.debug("Maximize browser");
@@ -96,14 +166,13 @@ public class DriverUtils {
 			logger.error("An error occurred when maximizing browser" + e.getMessage());
 		}
 	}
-	
+
 	public static void close() {
 		try {
 			logger.debug("Close browser");
 			int windowCount = getWindowHandles().size();
 			getDriver().close();
-			if (windowCount == 1)
-			{
+			if (windowCount == 1) {
 				DriverManager.removeDriver();
 			}
 
@@ -111,7 +180,7 @@ public class DriverUtils {
 			logger.error("An error occurred when closing browser:" + e.getMessage());
 		}
 	}
-	
+
 	public static void quit() {
 		try {
 			logger.debug("Quit browser");
@@ -122,12 +191,11 @@ public class DriverUtils {
 			logger.error("An error occurred when quiting browser: " + e.getMessage());
 		}
 	}
-	
+
 	public static void quitAll() {
 		try {
 			logger.debug("Quit all browsers");
-			for (Map.Entry<String, BaseDriver> item : DriverManager.getDriverMap().entrySet())
-			{
+			for (Map.Entry<String, BaseDriver> item : DriverManager.getDriverMap().entrySet()) {
 				item.getValue().getWebDriver().quit();
 			}
 
@@ -135,28 +203,28 @@ public class DriverUtils {
 			logger.error("An error occurred when quiting all browsers: " + e.getMessage());
 		}
 	}
-	
+
 	public static void wait(double timeInSecond) {
 		try {
-			Thread.sleep((long)(timeInSecond * 1000));
+			Thread.sleep((long) (timeInSecond * 1000));
 		} catch (Exception e) {
 			logger.error(String.format("An error occurred when wait %s seconds: %s", timeInSecond, e.getMessage()));
 		}
 	}
-	
-	public static String takeScreenShot(String filename, String filepath) throws Exception{
+
+	public static String takeScreenShot(String filename, String filepath) throws Exception {
 		String path = "";
-		try {	
-			//Convert web driver object to TakeScreenshot
-			TakesScreenshot scrShot =((TakesScreenshot) getDriver());
-	
-			//Call getScreenshotAs method to create image file
-			File SrcFile=scrShot.getScreenshotAs(OutputType.FILE);
-	
-			//Move image file to new destination
+		try {
+			// Convert web driver object to TakeScreenshot
+			TakesScreenshot scrShot = ((TakesScreenshot) getDriver());
+
+			// Call getScreenshotAs method to create image file
+			File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+
+			// Move image file to new destination
 			File DestFile = new File(filepath + File.separator + filename + ".png");
 
-			//Copy file at destination
+			// Copy file at destination
 			FileUtils.copyFile(SrcFile, DestFile);
 			path = DestFile.getAbsolutePath();
 		} catch (Exception e) {

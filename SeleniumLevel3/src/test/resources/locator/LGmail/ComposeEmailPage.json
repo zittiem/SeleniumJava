@@ -5,6 +5,7 @@
 		"txtCC": "id=divCc",
 		"txtSubject": "id=txtSubj",
 		"eleAttachments": "xpath=//span[@id='spnAtmt']",
+		"elesInsertedPicture": "xpath=//img[contains(@src,'attachment')]",
 		"txtBody": "xpath=//body[@ocsi]"
 	}
 }

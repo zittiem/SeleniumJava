@@ -42,6 +42,7 @@ public class UploadFilePage {
 					btnChooseMoreFiles.click();
 				}
 				System.out.println(filePath);
+				btnChooseFiles.getWrapperButtons().get(i).waitForDisplayed(Constants.SHORT_TIME);
 				btnChooseFiles.getWrapperButtons().get(i).sendKeys(filePath);
 			}
 		}

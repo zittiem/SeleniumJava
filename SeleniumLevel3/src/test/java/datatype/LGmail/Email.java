@@ -68,14 +68,16 @@ public class Email {
 	public void setContent(String content) {
 		this.content = content;
 	}
-
+	
 	public Email compileData() {
 		if (getSubject().equals("[Random]")) {
 			setSubject(RandomHelper.getRandomString("Subject-"));
 		}
-		if (getContent().equals("[Random]")) {
-			setContent("Welcome to LogiGear - Selenium Test");
+		if(getContent() != null) {
+			if (getContent().equals("[Random]")) {
+				setContent("Welcome to LogiGear - Selenium Test");
 
+			}
 		}
 		return this;
 	}

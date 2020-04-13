@@ -3,6 +3,9 @@ package pages.LGmail;
 import java.util.Iterator;
 import java.util.Set;
 
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import datatype.LGmail.Email;
 import datatype.LGmail.Enums.ComposeActions;
 import datatype.LGmail.Enums.MailTreeItem;
@@ -16,10 +19,13 @@ import utils.helper.ResourceHelper;
 public class MainPage {
 	LocatorHelper locator = new LocatorHelper(Constants.LOCATOR_FOLDER_PATH + ResourceHelper.SHARED_DATA.get().appName,
 			MainPage.class);
+	
+	// Static Elements
 	protected Element eleMessageToolbar = new Element(locator.getLocator("eleMessageToolbar"));
 	protected Element eleMailTreeItem = new Element(locator.getLocator("eleMailTreeItem"));
 	protected Element eleMailSubject = new Element(locator.getLocator("eleMailSubject"));
-
+	protected Element eleMailSubjectChild = new Element(locator.getLocator("eleMailSubjectChild"));
+	protected Element eleNewEmailComingSignal = new Element(locator.getLocator("eleNewEmailComingSignal"));
 	protected String mainWindow = DriverUtils.getWindowHandle();
 	protected String composeWindow = null;
 
@@ -33,7 +39,7 @@ public class MainPage {
 		eleMessageToolbar.generateDynamic(option.getID()).click();
 	}
 	
-	public String openUntitledMessageWindow() throws InterruptedException {
+	/*public String openUntitledMessageWindow() throws InterruptedException {
 		Set<String> listWindowsBefore = DriverUtils.getDriver().getWindowHandles();
 		
 		selectMessageToolbar(MessageToolbarItem.NEW);
@@ -59,7 +65,7 @@ public class MainPage {
 			return popupHandle2;
 		}
 		return null;
-	}
+	}*/
 
 	public void selectAction(ComposeActions action) {
 		ComposeEmailPage cp = new ComposeEmailPage();
@@ -67,8 +73,15 @@ public class MainPage {
 	}
 	
 	public void openAMail(MailTreeItem folder, String subject) throws InterruptedException {
+		if(eleNewEmailComingSignal.isDisplayed(Constants.SLEEP_TIME)) {
+			eleNewEmailComingSignal.waitForNotDisplayed(Constants.SHORT_TIME);
+		}
 		eleMailTreeItem.generateDynamic(folder.getValue()).click();
+		eleMailSubject.generateDynamic(subject).waitForDisplayed(Constants.SHORT_TIME);
 		eleMailSubject.generateDynamic(subject).doubleClick();
+		if(eleMailSubjectChild.isDisplayed(Constants.SLEEP_TIME)) {
+			eleMailSubjectChild.doubleClick();
+		}
 	}
 
 }

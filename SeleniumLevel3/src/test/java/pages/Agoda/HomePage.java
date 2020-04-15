@@ -1,6 +1,6 @@
 package pages.Agoda;
 
-import datatype.Agoda.TravellingInfo;
+import datatype.Agoda.RoomBooking;
 import element.wrapper.web.Button;
 import helper.LocatorHelper;
 import utils.constant.Constants;
@@ -22,7 +22,7 @@ public class HomePage extends GeneralPage {
      *         travel info (TravellingInfo)
      *
      */
-	public void searchHoltel(TravellingInfo travel) {
+	public void searchHotel(RoomBooking travel) {
 		enterTravelingInfo(travel);
 		btnSearch.waitForDisplayed(60);
 		btnSearch.click();

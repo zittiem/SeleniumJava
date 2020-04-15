@@ -2,7 +2,7 @@ package datatype.Agoda;
 
 import utils.helper.DateTimeHelper;
 
-public class TravellingInfo {
+public class RoomBooking {
 	private String destination = null;
 	private String checkInDate = null;
 	private String checkOutDate = null;
@@ -77,7 +77,7 @@ public class TravellingInfo {
 	}
 
 	// Update all the values if need to calculate after providing data.
-	public TravellingInfo compileData() {
+	public RoomBooking compileData() {
 		String _date = null;
 		if (this.checkInDate.contains(":")) {
 			_date = DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.checkInDate), "dd/MM/yyyy");

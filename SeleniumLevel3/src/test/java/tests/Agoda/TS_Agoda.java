@@ -9,7 +9,7 @@ import datatype.Agoda.Enums.Filter;
 import datatype.Agoda.Enums.SortOption;
 import driver.manager.DriverUtils;
 import datatype.Agoda.FilterOptions;
-import datatype.Agoda.TravellingInfo;
+import datatype.Agoda.RoomBooking;
 import pages.Agoda.HomePage;
 import pages.Agoda.HotelDetailedPage;
 import pages.Agoda.SearchHotelResultPage;
@@ -33,19 +33,19 @@ public class TS_Agoda extends TestBase {
 		
 		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC01");
-		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
+		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
 		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
 
 		Logger.info(
 				"2. Search the hotel with the following information:\r\n\t-Place: Da Nang\r\n\t-Date: 3 days from next Friday\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
-		homePage.searchHoltel(travel);
+		homePage.searchHotel(roomBooking);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination).");
 		
 		searchHoltelResultPage.waitForPageLoad();
-		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels. Please check.");
 		
 		Logger.info("3. Sort hotels by lowest prices");
@@ -56,7 +56,7 @@ public class TS_Agoda extends TestBase {
 				"5 first hotels are NOT sorted with the right order. Please check.");
 		
 		Logger.verify("The hotel destination is still correct.");
-		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels. Please check.");
 		
 		softAssert.assertAll();
@@ -76,7 +76,7 @@ public class TS_Agoda extends TestBase {
 		
 		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC02");
-		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
+		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
 
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
@@ -84,11 +84,11 @@ public class TS_Agoda extends TestBase {
 		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
 				+ "\r\n\t-Date: 3 days from next Friday"
 				+ "\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
-		homePage.searchHoltel(travel);
+		homePage.searchHotel(roomBooking);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
 
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
 
 		Logger.info("3. Filter the hotels with the following info:\r\n\t-Price: 500000-1000000VND\r\n\t-Star:3");
@@ -100,7 +100,7 @@ public class TS_Agoda extends TestBase {
 				"The price or star filtered not highlighted. Please check.");
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination, price, star).");
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5), 
+		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5), 
 				"Search Result is displayed correctly with first 5 hotels (destination).");
 		softAssert.assertTrue(searchHotel.isHotelPriceCorrect(500000, 1000000, 5), 
 				"Search Result is displayed correctly with first 5 hotels (price).");
@@ -130,7 +130,7 @@ public class TS_Agoda extends TestBase {
 		
 		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC03");
-		TravellingInfo travel = dataHelper.getDataObject(TravellingInfo.class).compileData();
+		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
 		FilterOptions filter = new FilterOptions(dataHelper.getDataMap(FilterOptions.class.getSimpleName()));
 		List<String> hotelFacilities1 = dataHelper.getDataStringList("HotelFacilities1");
 		List<String> hotelFacilities2 = dataHelper.getDataStringList("HotelFacilities2");
@@ -141,11 +141,11 @@ public class TS_Agoda extends TestBase {
 		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
 				+ "\r\n\t-Date: 3 days from next Friday"
 				+ "\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
-		homePage.searchHoltel(travel);
+		homePage.searchHotel(roomBooking);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
 		searchHotel.waitForPageLoad();
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(travel.getDestination(), 5),
+		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
 
 		Logger.info("3. Filter the non smoking hotels and choose the 5th hotel in the list");
@@ -160,7 +160,7 @@ public class TS_Agoda extends TestBase {
 				"The hotel detailed page is not displayed with correct info (Name). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Destination)");
-		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(travel.getDestination()),
+		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(roomBooking.getDestination()),
 				"The hotel detailed page is not displayed with correct info (Destination). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Have swimming pool)");
@@ -188,7 +188,7 @@ public class TS_Agoda extends TestBase {
 				"The hotel detailed page is not displayed with correct info (Name). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Destination)");
-		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(travel.getDestination()),
+		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(roomBooking.getDestination()),
 				"The hotel detailed page is not displayed with correct info (Destination). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Non smoking hotel)");

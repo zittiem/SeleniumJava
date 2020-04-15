@@ -436,6 +436,7 @@ public class SearchHotelResultPage extends GeneralPage {
      */
 	public boolean isResultSortedByCheapestPrice(int records) {
 		List<Element> elements = eleResultItem.getWrapperElements();
+		boolean result = true;
 		
 		if (elements.size() >= records) {
 			
@@ -445,15 +446,15 @@ public class SearchHotelResultPage extends GeneralPage {
 				String nextResultPrice = btnResultPriceItem.generateDynamic(i+1).getText().replace(",", "");
 
 				if (Double.parseDouble(currentResultPrice) > Double.parseDouble(nextResultPrice)) {
-					return false;
+					result = false;
+					break;
 				}
 			}
-			return true;
 		} else {
-
+			result = false;
 			Logger.warning("No or less than " + records + " result is available. Total results are " + elements.size());
 		}
-		return false;
+		return result;
 	}
 	
 	 /**

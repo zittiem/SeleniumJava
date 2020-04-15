@@ -267,18 +267,6 @@ public class HomePage {
 	public String getSelectedLanguage() {
 		return cbxLanguage.getSelectedOption();
 	}
-	
-    /**
-     * Search a flight with lowest fare option is selected.
-     *
-     * @param	bookingInfo
-     * 			Information of a booking
-     */
-	public SelectFarePage searchCheapestFlights(Booking booking) {
-		enterSearchData(booking);
-		eleSearchBtn.click();
-		return new SelectFarePage();
-	}
 
 	// Verify
 	

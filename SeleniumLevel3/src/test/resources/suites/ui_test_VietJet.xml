@@ -26,6 +26,7 @@
 		<classes>
 			<class name="tests.VietJet.TS_VietJet">
 				<methods>
+					<include name="TC01" />
 					<include name="TC02" />
 				</methods>
 			</class>

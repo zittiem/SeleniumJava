@@ -12,6 +12,7 @@
 	  "eleDepToLbl":"xpath=(//table[@id='tblLeg1APs']//td)[2]",
 	  "eleRetFromLbl":"xpath=(//table[@id='tblLeg2APs']//td)[1]",
 	  "eleRetToLbl":"xpath=(//table[@id='tblLeg2APs']//td)[2]",
+	  "eleDateLbl":"id=Leg%sDate",
 	  "eleDisplayCurrencyLbl":"xpath=//span[@class='BSGrandTotal' and text()='%s']",
 	  "eleNumberOfAdults":"xpath=//table[@id='tblPaxCountsInfo']//td[1]",
 	  "eleNumberOfChildren":"xpath=//table[@id='tblPaxCountsInfo']//td[2]",

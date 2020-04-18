@@ -1,5 +1,6 @@
 package pages.VietJet;
 
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class SelectFarePage {
 	protected Element eleDepToLbl = new Element(locator.getLocator("eleDepToLbl"));
 	protected Element eleRetFromLbl = new Element(locator.getLocator("eleRetFromLbl"));
 	protected Element eleRetToLbl = new Element(locator.getLocator("eleRetToLbl"));
+	protected Element eleDateLbl = new Element(locator.getLocator("eleDateLbl"));
 	protected Element eleDisplayCurrencyLbl = new Element(locator.getLocator("eleDisplayCurrencyLbl"));
 	protected Element eleNumberOfAdults = new Element(locator.getLocator("eleNumberOfAdults"));
 	protected Element eleNumberOfChildren = new Element(locator.getLocator("eleNumberOfChildren"));
@@ -166,6 +168,26 @@ public class SelectFarePage {
 	}
 	
     /**
+     * Get year from a fare item
+     * 
+     * @param	fareItemType
+     * 			FlightType.Dep | FlightType.Ret
+     * 
+     * @return	return a year (int) from a fare item
+     * 
+     */
+	public int getYear(Enums.FlightType fareItemType) {
+		int year = 0;
+		String[] arrStr = null;
+		
+		arrStr= eleDateLbl.generateDynamic(fareItemType.getKey()).getText().split(" ");
+		arrStr = arrStr[0].split("/");
+		year =Integer.parseInt(arrStr[2].toString());
+		
+		return year;
+	}
+	
+    /**
      * Select a fare item
      * 
      * @param	fareItemType
@@ -177,27 +199,28 @@ public class SelectFarePage {
      * @exception	throw ParseException
      *
      */
-	public void selectFareItem(Enums.FlightType fareItemType, FareItem fareItem) {
+	public String viewFareItem(Enums.FlightType fareItemType, FareItem fareItem) {
 		@SuppressWarnings("deprecation")
-		int fareMonth = fareItem.getDate().getMonth();
+		int fareMonth = fareItem.getDate().getMonth() + 1;
+		@SuppressWarnings("deprecation")
+		int fareYear = fareItem.getDate().getYear() + 1900;
+		
 		int selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
+		int selectedYear = getYear(fareItemType);
 		
-		while(fareMonth > selectedMonth) {
-			String strSelectedMonth = eleSelectedMonthLbl.getText();
-			elePrevLnk.click();
+		while(fareMonth != selectedMonth || fareYear != selectedYear) {
+			String strSelectedMonth = eleSelectedMonthLbl.generateDynamic(fareItemType).getText();
+			eleNextLnk.generateDynamic(fareItemType).click();
 			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
-			selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
-		}
-		
-		while(fareMonth < selectedMonth) {
-			String strSelectedMonth = eleSelectedMonthLbl.getText();
-			eleNextLnk.click();
-			eleSelectedMonthLbl.waitForTextChanged(strSelectedMonth, 10);
-			selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText());
+			selectedMonth = Month.getKey(eleSelectedMonthLbl.generateDynamic(fareItemType).getText()) + 1;
+			selectedYear = getYear(fareItemType);
+			System.out.print("selectedMonth: " + selectedMonth + " vs " + fareMonth + "\n");
+			System.out.print("selectedYear: " + selectedYear + " vs " + fareYear + "\n");
 		}
 		
 		String dynamicFareId = fareItemType + fareItem.getID().substring(17, 25);
-		eleFareID.generateDynamic(dynamicFareId).click();
+		
+		return dynamicFareId;
 	}
 
     /**
@@ -212,7 +235,7 @@ public class SelectFarePage {
      * @exception	throw ParseException
      *
      */
-	public void selectReturnFlightCheapestFareInDefinedTimeFrame(Date minDate, Date maxDate) throws ParseException{
+	public void selectCheapestFaresInDefinedTimeFrame(Date minDate, Date maxDate) throws ParseException{
 		List<FareItem> lstDepFareItem = getFareItemsInDefinedTimeFrame(FlightType.Dep, minDate, maxDate);
 		List<FareItem> lstRetFareItem = getFareItemsInDefinedTimeFrame(FlightType.Ret, minDate, maxDate);
 		
@@ -221,6 +244,9 @@ public class SelectFarePage {
 		Boolean finalTotalCheapestFareExist = false;
 		FareItem finalDepFareItem = new FareItem();
 		FareItem finalRetFareItem = new FareItem();
+		
+	    System.out.print("lstDepFareItem: " + lstDepFareItem.size() + "/n");
+	    System.out.print("lstRetFareItem: " + lstRetFareItem.size() + "/n");
 		
 		// Filter combo cheapest fare for the return flight
 		if(lstDepFareItem.size() != 0 || lstRetFareItem.size() != 0) {
@@ -265,13 +291,15 @@ public class SelectFarePage {
 			Logger.warning("No ticket is available.");
 		}
 		
-		System.out.print("finalDepFareItem:" + finalDepFareItem.getID() + " \n");
-		System.out.print("finalRetFareItem:" + finalRetFareItem.getID() + " \n");
+		System.out.print("finalDepFareItem:" + finalDepFareItem.getID() + " vs " + finalDepFareItem.getDate() + "\n");
+		System.out.print("finalRetFareItem:" + finalRetFareItem.getID() + " vs " + finalRetFareItem.getDate() + " \n");
 		System.out.print("finalTotalCheapeastFare:" + finalTotalCheapeastFare + " \n");
 		
 		// Select combo cheapest fare for the return flight
-		selectFareItem(FlightType.Dep, finalDepFareItem);
-		selectFareItem(FlightType.Ret, finalRetFareItem);
+		String dynamicDepFareId = viewFareItem(FlightType.Dep, finalDepFareItem);
+		String dynamicRetFareId = viewFareItem(FlightType.Ret, finalRetFareItem);
+		eleFareID.generateDynamic(dynamicDepFareId).click();
+		eleFareID.generateDynamic(dynamicRetFareId).click();
 	}
 	
 	// Verify

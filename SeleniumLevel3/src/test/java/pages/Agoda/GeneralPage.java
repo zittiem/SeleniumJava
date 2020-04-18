@@ -4,7 +4,7 @@ import java.util.List;
 import datatype.Agoda.Enums.Month;
 import datatype.Agoda.Enums.TravelFields;
 import datatype.Agoda.Enums.TravelTypes;
-import datatype.Agoda.TravellingInfo;
+import datatype.Agoda.RoomBooking;
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import element.wrapper.web.Button;
@@ -199,7 +199,7 @@ public class GeneralPage extends TestBase {
      *         travel info (TravellingInfo)
      *
      */
-	protected void enterTravelingInfo(TravellingInfo travel) {
+	protected void enterTravelingInfo(RoomBooking travel) {
 		enterSearchKeyWord(travel.getDestination());
 		selectDate("in", travel.getCheckInDate());
 		selectDate("out", travel.getCheckOutDate());

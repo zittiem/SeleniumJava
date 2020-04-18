@@ -71,11 +71,16 @@ public class TS_VietJet extends TestBase {
 		SoftAssertion softAssert = new SoftAssertion();
 		
 		Logger.info("Precondition: Initial Data");
+		
+		// Pages
 		HomePage homePage = new HomePage();
 		SelectTravelOptionsPage selectTravelOptionsPage = new SelectTravelOptionsPage();
 		PassengerInformationPage passengerInfoPage = new PassengerInformationPage();
+		SelectFarePage selectFarePage = new SelectFarePage();
 		
+		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC02");
+		Booking booking = dataHelper.getDataObject(Booking.class).compileData();
 		
 		Logger.info("1. Navigate to https://www.vietjetair.com/Sites/Web/vi-VN/Home.");
 		//This step is included in @BeforeMethod
@@ -84,8 +89,7 @@ public class TS_VietJet extends TestBase {
 		softAssert.assertTrue(homePage.getSelectedLanguage().contains(LanguageType.VI.getText()), "The home page is not displayed in Vietnamese.");
 		
 		Logger.info("2. Search a ticket");
-		Booking booking = dataHelper.getDataObject(Booking.class).compileData();
-		SelectFarePage selectFarePage = homePage.searchCheapestFlights(booking);
+		homePage.searchFlight(booking);
 		
 		Logger.verify("'Chọn giá vé' page is displayed.");
 		softAssert.assertEquals(selectFarePage.getPageTitle(), "Vietjet Trang đặt chỗ - Chọn giá vé", "'Chọn giá vé' page is not displayed.");
@@ -102,7 +106,7 @@ public class TS_VietJet extends TestBase {
 	    Date maxDate = cal.getTime();
 	    
 	    //Select combo cheapest fare for the return flight
-	    selectFarePage.selectReturnFlightCheapestFareInDefinedTimeFrame(minDate, maxDate);
+	    selectFarePage.selectCheapestFaresInDefinedTimeFrame(minDate, maxDate);
 	    selectFarePage.submitPage();
 	    
 	    Logger.info("4. Choose the cheapest tickets and click 'Continue' button");

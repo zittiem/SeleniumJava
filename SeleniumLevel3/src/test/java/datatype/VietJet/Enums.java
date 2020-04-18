@@ -156,7 +156,7 @@ public class Enums {
 	}
 	
 	public enum FlightType {
-		Dep("Dep", "Depart"), Ret("Ret", "Return");
+		Dep("1", "Depart"), Ret("2", "Return");
 
 		private String key;
 		private String value;

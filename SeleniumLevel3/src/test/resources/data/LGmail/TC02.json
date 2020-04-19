@@ -1,10 +1,17 @@
 {
 	"Email": {
-		"to": "thanh.hoang@logigear.com",
+		"to": "vu.luu@logigear.com",
 		"subject": "[Random]",
-		"insertedPictures": "TestAttachFile.jpg"
+		"content": [
+			"[Random]",
+			"\n",
+			"image=TestAttachFile.jpg",
+			"\n\nBest regards"
+		]
 	},
 
-	"UserName": "thanh.hoang",
-	"Password": "p@ssw0rd111"
+	"UserInfo": {
+		"username": "???",
+		"password": "???"
+	}
 }

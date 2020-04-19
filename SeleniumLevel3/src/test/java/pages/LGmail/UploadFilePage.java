@@ -1,8 +1,8 @@
 package pages.LGmail;
 
 import java.io.File;
-import org.openqa.selenium.By;
 import driver.manager.DriverUtils;
+import element.base.web.Element;
 import element.wrapper.web.Button;
 import helper.LocatorHelper;
 import utils.constant.Constants;
@@ -17,6 +17,7 @@ public class UploadFilePage {
 	protected Button btnChooseMoreFiles = new Button(locator.getLocator("btnChooseMoreFiles"));
 	protected Button btnInsert = new Button(locator.getLocator("btnInsert"));
 	protected Button btnCancel = new Button(locator.getLocator("btnCancel"));
+	protected Element ifmInsertFiles = new Element(locator.getLocator("ifmInsertFiles"));
 	
 	// Method
 
@@ -41,22 +42,22 @@ public class UploadFilePage {
      * 			List of files that need to be inserted. Each file is separated by ";"
      * 
      */
-	public void insertFiles(String files) {
+	public void insertFiles(String[] files) {
 		DriverUtils.switchToFrame("iFrameModalDlg");
-		DriverUtils.switchToFrame(By.xpath("//iframe[@class='wh100']"));
+		ifmInsertFiles.waitForDisplayed(Constants.SHORT_TIME);
+		DriverUtils.switchToFrame(ifmInsertFiles.getElement());
 
-		if (!files.isEmpty()) {
+		if (files != null) {
 			File file = null;
-			String[] _files = files.split(";");
-
-			for (int i = 0; i < _files.length; i++) {
-				file = new File(Constants.DATA_FOLDER + ResourceHelper.SHARED_DATA.get().appName + "/" + _files[i]);
+			for (int i = 0; i < files.length; i++) {
+				file = new File(Constants.DATA_FOLDER + ResourceHelper.SHARED_DATA.get().appName + "/" + files[i]);
 				String filePath = file.getAbsolutePath();
 				if (i != 0) {
 					btnChooseMoreFiles.click();
 				}
-				btnChooseFiles.getWrapperButtons().get(i).waitForDisplayed(Constants.SHORT_TIME);
-				btnChooseFiles.getWrapperButtons().get(i).sendKeys(filePath);
+				Button element = btnChooseFiles.getWrapperButtons().get(i);
+				element.waitForDisplayed(Constants.SHORT_TIME);
+				element.sendKeys(filePath);
 			}
 		}
 		btnInsert.click();

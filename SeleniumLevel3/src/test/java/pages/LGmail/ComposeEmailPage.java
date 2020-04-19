@@ -1,8 +1,14 @@
 package pages.LGmail;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import org.openqa.selenium.By;
+import java.util.concurrent.TimeUnit;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.time.StopWatch;
 import datatype.LGmail.Email;
 import datatype.LGmail.Enums.ComposeActions;
 import driver.manager.DriverUtils;
@@ -12,6 +18,7 @@ import element.wrapper.web.TextBox;
 import helper.LocatorHelper;
 import utils.constant.Constants;
 import utils.helper.ImageHelper;
+import utils.helper.RandomHelper;
 import utils.helper.ResourceHelper;
 
 public class ComposeEmailPage {
@@ -33,13 +40,87 @@ public class ComposeEmailPage {
      * Wait for page load completely.
      */
 	public void waitForPageLoad() {
+		StopWatch sw = new StopWatch();
 		List<String> windows = DriverUtils.getWindowHandles();
-		while(windows.size()==1){
+		sw.start();
+		while(windows.size()==1 && sw.getTime(TimeUnit.SECONDS) < Constants.SHORT_TIME){
 			windows = DriverUtils.getWindowHandles();
 		}
 	}
 	
+	/**
+     * Get To list
+     * 
+     * @return	a string of To list
+     * 
+     */
+	public String getToList() {
+		return txtTo.getChildElement(FindBy.xpath, ".//span[@title]").getAttribute("title");
+	}
+    
+	/**
+     * Get Cc list
+     * 
+     * @return	a string of Cc list
+     * 
+     */
+	public String getCcList() {
+		String cClist = null;
+		Element eleCC = new Element(FindBy.xpath, txtCC.getLocator().toString().substring(10) + "//span[@title]");
+		if (eleCC.isDisplayed()) {
+			cClist = txtCC.getChildElement(FindBy.xpath, ".//span[@title]").getAttribute("title");
+		} else if (txtCC.isDisplayed()) {
+			if (!txtCC.getText().isEmpty()) {
+				cClist = txtCC.getText();
+			}
+		}
+		return cClist;
+	}
+	
+	/**
+     * Get email subject
+     * 
+     * @return	a string of email subject
+     * 
+     */
+	public String getMailSubject() {
+		return txtSubject.getAttribute("value");
+	}
+
     /**
+     * Get name of attachments
+     * 
+     * @return	a string of name of attachments
+     * 
+     */
+	public String getAttachmentsName() {
+		List<Element> eleAtt = eleAttachments.getWrapperElements();
+		if(eleAtt.size()==0) {
+			return null;
+		}
+		List<String> attNam = new ArrayList<String>();
+		for (Element e : eleAtt) {
+			attNam.add(e.getAttribute("_attname"));
+		}
+		
+		return Arrays.toString(attNam.toArray());
+	}
+
+    /**
+     * Get email content
+     * 
+     * @return	a string of email content
+     * 
+     */
+	public String getMailContent() {
+		String curContent = null;
+		DriverUtils.switchToFrame("ifBdy");
+		curContent = txtBody.getAttribute("innerText").trim();
+		DriverUtils.switchToDefaultFrame();
+		return curContent;
+	}
+	
+	/**
      * Save the inserted picture in a email
      * 
      * @param	filePath
@@ -49,20 +130,21 @@ public class ComposeEmailPage {
      * 
      * @throws	Exception
      */
-	public List<String> saveImage(String filePath, String fileName) throws Exception {
-		
+	public List<String> saveImage(String folderPath, String fileName) throws Exception {
+		File directory = new File(folderPath);
+	    if (!directory.exists()){
+	        directory.mkdirs();
+	    }
 		List<String> output = new ArrayList<String>();
 		DriverUtils.switchToLatest();
 		DriverUtils.maximizeBrowser();
 		DriverUtils.switchToFrame("ifBdy");
 		
-		// Wait for picture loaded completely");
-		Thread.sleep(5000);
-		
 		List<Element> eles = elesInsertedPicture.getWrapperElements();
 		for (int i = 0; i < eles.size(); i++) {
-			output.add(filePath + fileName + "_" + i + 1 + ".jpg");
-			ImageHelper.saveImage(eles.get(i), filePath, fileName + "_" + i + 1, "jpg");
+			String filePath = folderPath + fileName + "_" + RandomHelper.randomString() + ".jpg";
+			output.add(filePath);
+			ImageHelper.saveAsImage(eles.get(i), filePath);
 		}		
 		DriverUtils.switchToDefaultFrame();
 		return output;
@@ -76,7 +158,7 @@ public class ComposeEmailPage {
      * 
      * @throws	InterruptedException
      */
-	private void attachFiles(String files) throws InterruptedException {
+	private void attachFiles(String[] files) throws InterruptedException {
 		if(files!=null) {
 			UploadFilePage upFile = new UploadFilePage();
 			eleActions.generateDynamic(ComposeActions.ATTACH_FILE.getID()).click();
@@ -92,7 +174,7 @@ public class ComposeEmailPage {
      * 
      * @throws	InterruptedException
      */
-	private void insertPicture(String files) throws InterruptedException {
+	private void insertPictures(String[] files) throws InterruptedException {
 		if(files!=null) {
 			UploadFilePage upFile = new UploadFilePage();
 			eleActions.generateDynamic(ComposeActions.INSERT_IMAGE.getID()).click();
@@ -101,49 +183,28 @@ public class ComposeEmailPage {
 	}
 
     /**
-     * Get name of attachments
-     * 
-     * @return	a string of name of attachments
-     * 
-     */
-	public String getAttachmentsName() {
-		List<Element> eleAtt = eleAttachments.getWrapperElements();
-		if(eleAtt.size()==0) {
-			return null;
-		}
-		String attNam = "";
-		for (Element e : eleAtt) {
-			attNam += e.getAttribute("_attname") + ";";
-		}
-		return attNam.substring(0, attNam.length() - 1);
-	}
-
-    /**
-     * Get email content
-     * 
-     * @return	a string of email content
-     * 
-     */
-	public String getMailContent() {
-		String curContent = null;
-		DriverUtils.getDriver().switchTo().frame("ifBdy");
-		curContent = txtBody.getAttribute("innerText").trim();
-		DriverUtils.getDriver().switchTo().defaultContent();
-		return curContent;
-	}
-
-    /**
      * Enter email content
      * 
      * @param	content
      * 			email content
+     * @throws InterruptedException 
      * 
      */
-	private void enterContent(String content) {
+	private void enterContent(String[] content) throws InterruptedException {
 		if(content!=null) {
-			DriverUtils.getDriver().switchTo().frame("ifBdy");
-			txtBody.enter(content);
-			DriverUtils.getDriver().switchTo().defaultContent();
+			for (String item : content) {
+				if (Email.isImage(item)) {
+					DriverUtils.switchToDefaultFrame();
+					insertPictures(new String[] {Email.getImageName(item)});
+				}
+				else {
+					DriverUtils.switchToFrame("ifBdy");
+					DriverUtils.wait(0.5);
+					DriverUtils.getActions().sendKeys(txtBody.getElement(), item).build().perform();
+				}
+			}
+			
+			DriverUtils.switchToDefaultFrame();
 		}
 	}
 
@@ -159,49 +220,10 @@ public class ComposeEmailPage {
 		txtTo.enter(mail.getTo());
 		txtCC.enter(mail.getCcList());
 		txtSubject.enter(mail.getSubject());
-		attachFiles(mail.getAttachedFiles());
-		insertPicture(mail.getInsertedPictures());
+		attachFiles(mail.getAttachFiles());
 		enterContent(mail.getContent());
 	}
 
-    /**
-     * Get cc list
-     * 
-     * @return	a string of cc list
-     * 
-     */
-	public String getCCList() {
-		String cClist = null;
-		Element eleCC = new Element(FindBy.xpath, txtCC.getLocator().toString().substring(10) + "//span[@title]");
-		if (eleCC.isDisplayed()) {
-			cClist = txtCC.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title");
-		} else {
-			if (!txtCC.getText().isEmpty()) {
-				cClist = txtCC.getText();
-			}
-		}
-		return cClist;
-	}
-
-    /**
-     * Get information of email
-     * 
-     * @return	Object Email
-     * 
-     * @throws 	InterruptedException
-     * 
-     */
-	public Email getMailInfo() throws InterruptedException {
-		Email curEmail = new Email();
-		curEmail.setTo(txtTo.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title"));
-		curEmail.setCcList(getCCList());
-		curEmail.setSubject(txtSubject.getAttribute("value"));
-		curEmail.setAttachedFiles(getAttachmentsName());
-		curEmail.setContent(getMailContent());
-		return curEmail;
-	}
-
-	
     /**
      * Select compose actions. They are SEND|SAVE|ATTACH_FILE|INSERT_IMAGE|ADDRESS_BOOK|CHECK_NAMES
      * 
@@ -214,6 +236,37 @@ public class ComposeEmailPage {
 	}
 	
 	// Verify
+	
+	/**
+     * Return a Boolean value to indicate whether inserted picture is displayed
+     *
+     * @param	expectedInsertedPicturePath
+     * 			expected inserted picture file path
+     *
+     * @return  true|false
+     * 			true: The inserted picture is displayed
+     * 			false: The inserted picture is not displayed
+     * 
+     */
+	public Boolean areInsertedPicturesDisplayed(String[] pictures) throws IOException, InterruptedException {
+		if (pictures == null)
+			return true;
+		DriverUtils.switchToFrame("ifBdy");
+		DriverUtils.maximizeBrowser();
+		boolean result = true;
+		elesInsertedPicture.waitForDisplayed(Constants.SHORT_TIME);
+		for (int i = 0; i < pictures.length; i++) {
+			File file = new File(Constants.DATA_FOLDER + ResourceHelper.SHARED_DATA.get().appName + "/" + pictures[i]);
+			Element image = elesInsertedPicture.getWrapperElements().get(i);
+			boolean isSame = ImageHelper.compareImages(image, file.getAbsolutePath());
+			System.out.print("InsertedPicture (" + pictures[i] + "): " + isSame + " \n");
+			if (!isSame) result = false;
+		}
+		
+		DriverUtils.switchToDefaultFrame();
+		return result;
+	}
+	
 	 /**
      * Return a Boolean value to indicate whether information of email is correct
      *
@@ -223,20 +276,29 @@ public class ComposeEmailPage {
      * @return  true|false
      * 			true: Email information matches with expected
      * 			false: Email information does not match with expected
+	 * @throws InterruptedException 
+	 * @throws IOException 
      * 
      */
-	public Boolean isEmailInfoCorrect(Email expectedEmail) {
-		System.out.print("To: " + txtTo.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title") + " vs " + expectedEmail.getTo() + " \n");
-		System.out.print("CCList: " + getCCList() + " vs " + expectedEmail.getCcList() + " \n");
-		System.out.print("Subject: " + txtSubject.getAttribute("value") + " vs " + expectedEmail.getSubject() + " \n");
-		System.out.print("Attachments: " + getAttachmentsName() + " vs " + expectedEmail.getAttachedFiles() + " \n");
-		System.out.print("MailContent: " + getMailContent() + " vs " + expectedEmail.getAttachedFiles() + " \n");
+	public Boolean isEmailInfoCorrect(Email expectedEmail) throws IOException, InterruptedException {
+		String actualTo = getToList();
+		String actualCCList = getCcList();
+		String actualSubject = getMailSubject();
+		String actualContent = getMailContent().replaceAll("\n", "");
+		String actualAttachments = getAttachmentsName();
 		
-		return 	txtTo.getChildElement(FindBy.xpath, "//span[@title]").getAttribute("title").equals(expectedEmail.getTo())
-				&& getCCList().equals(expectedEmail.getCcList())
-				&& txtSubject.getAttribute("value").equals(expectedEmail.getSubject())
-				&& getAttachmentsName().equals(expectedEmail.getAttachedFiles())
-				&& getMailContent().equals(expectedEmail.getContent());
+		System.out.print("To: " + actualTo + " vs " + expectedEmail.getTo() + " \n");
+		System.out.print("CCList: " + actualCCList + " vs " + expectedEmail.getCcList() + " \n");
+		System.out.print("Subject: " + actualSubject + " vs " + expectedEmail.getSubject() + " \n");
+		System.out.print("MailContent: " + actualContent + " vs " + expectedEmail.getContentAsString().replaceAll("\n", "") + " \n");
+		System.out.print("Attachments: " + actualAttachments + " vs " + expectedEmail.getAttachFilesAsString() + " \n");
+		
+		return 	areInsertedPicturesDisplayed(expectedEmail.getInsertedImages())
+				&& StringUtils.equals(actualTo, expectedEmail.getTo())
+				&& StringUtils.equals(actualCCList, getCcList())
+				&& StringUtils.equals(actualSubject, expectedEmail.getSubject())
+				&& StringUtils.equals(actualContent, expectedEmail.getContentAsString().replaceAll("\n", ""))
+				&& StringUtils.equals(actualAttachments, expectedEmail.getAttachFilesAsString());
 	}
 	
 }

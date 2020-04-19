@@ -30,12 +30,10 @@ public class Enums {
 
 		public String getValue() {
 			return this.value;
-
 		}
 
 		public String getID() {
 			return this.id;
-
 		}
 
 	}

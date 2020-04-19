@@ -40,19 +40,17 @@ public class LogInPage {
      *
      */
 	public void login(UserInfo user) {
-		txtUserName.enter(user.getUserName());
-		enterPassword(user.getPassword());
-		btnSignIn.click();
+		login(user.getUserName(), user.getPassword());
 	}
 	
 	 /**
      * log in LGmail
      *
      * @param	username
-     * 			username
+     * 			String
      *
      * @param	password
-     * 			password
+     * 			String
      * 
      */
 	public void login(String username, String password) {

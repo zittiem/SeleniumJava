@@ -11,6 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import driver.resource.base.BaseDriver;
 
@@ -43,6 +44,10 @@ public class DriverUtils {
 
 	public static List<String> getWindowHandles() {
 		return new ArrayList<String>(getDriver().getWindowHandles());
+	}
+	
+	public static Actions getActions() {
+		return new Actions(getDriver());
 	}
 
 	public static WebElement findElement(By by) {
@@ -205,6 +210,14 @@ public class DriverUtils {
 	}
 
 	public static void wait(double timeInSecond) {
+		try {
+			Thread.sleep((long) (timeInSecond * 1000));
+		} catch (Exception e) {
+			logger.error(String.format("An error occurred when wait %s seconds: %s", timeInSecond, e.getMessage()));
+		}
+	}
+	
+	public static void wait(int timeInSecond) {
 		try {
 			Thread.sleep((long) (timeInSecond * 1000));
 		} catch (Exception e) {

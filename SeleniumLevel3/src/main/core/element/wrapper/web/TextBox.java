@@ -87,6 +87,16 @@ public class TextBox extends Element {
 			sendKeys(value.toString());
 		}
 	}
+	
+	/**
+	 * @author Dung.Vu: Enter value without clear old value.
+	 * @param value
+	 */
+	public void enterWithoutClear(Object value) {
+		if (value != null) {
+			sendKeys(value.toString());
+		}
+	}
 
 	/**
 	 * @author Vu.Luu: set element's value.

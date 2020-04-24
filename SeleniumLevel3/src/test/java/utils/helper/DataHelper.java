@@ -53,7 +53,7 @@ public class DataHelper {
 		}
 	}
 	
-	public <T, Y> Map<String, Y> getDataMap(String key) {
+	public <T> Map<String, T> getDataMap(String key) {
 		JsonElement content = _jsonObject.get(key);
 		try {
 			return JsonHelper.convertJsonToMap(content.toString());

@@ -1,5 +1,5 @@
 {
-	"any.chrome": {
+	"any.default": {
 		"btnShowDestination": "xpath=//i[contains(@class,'search-box')]",
 		"eleFirstSuggestionItem": "xpath=//li[@data-element-name='search-box-sub-suggestion'][1]",
 		"btnShowCheckIn": "xpath=//i[contains(@class,'check-in')]",

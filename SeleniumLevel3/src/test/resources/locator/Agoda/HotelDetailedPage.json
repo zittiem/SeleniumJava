@@ -1,5 +1,5 @@
 {
-	"any.chrome": {
+	"any.default": {
 		"eleHotelName": "xpath=//*[@data-selenium='hotel-header-name']",
 		"eleHotelAddress": "xpath=//span[@data-selenium='hotel-address-map']",
 		"eleHotelReviewScoreNumber": "xpath=//span[@data-selenium='hotel-header-review-score']",

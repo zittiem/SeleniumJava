@@ -1,5 +1,5 @@
 {
-	"any.chrome": {
+	"any.default": {
 		"eleResultItem": "xpath=//section[@class='hotel-item-box']",
 		"txtPriceMin": "id=price_box_0",
 		"txtPriceMax": "id=price_box_1",

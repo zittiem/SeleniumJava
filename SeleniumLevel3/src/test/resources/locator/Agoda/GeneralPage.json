@@ -1,5 +1,8 @@
 {
 	"any.default": {
+		"btnLanguageMenu": "xpath=//a[contains(@class, 'language-trigger')]",
+		"eleLanguagePopup": "xpath=//div[@role='dialog' and .//ul[@data-element-name='language-popup']]",
+		"btnLanguage": "xpath=//div[@data-selenium='all-languages']//a[./span[text()='%s']]",
 		"btnShowDestination": "xpath=//i[contains(@class,'search-box')]",
 		"eleFirstSuggestionItem": "xpath=//li[@data-element-name='search-box-sub-suggestion'][1]",
 		"btnShowCheckIn": "xpath=//i[contains(@class,'check-in')]",

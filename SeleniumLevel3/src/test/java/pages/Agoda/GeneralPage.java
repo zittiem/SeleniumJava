@@ -21,6 +21,8 @@ public class GeneralPage extends TestBase {
 			GeneralPage.class);
 	
 	// Static Elements
+	protected Button btnLanguageMenu = new Button(locator.getLocator("btnLanguageMenu"));
+	protected Element eleLanguagePopup = new Element(locator.getLocator("eleLanguagePopup"));
 	protected Button btnShowDestination = new Button(locator.getLocator("btnShowDestination"));
 	protected Button btnShowCheckIn = new Button(locator.getLocator("btnShowCheckIn"));
 	protected Button btnShowCheckOut = new Button(locator.getLocator("btnShowCheckOut"));
@@ -38,6 +40,7 @@ public class GeneralPage extends TestBase {
 	protected Element eleDatePicker2 = new Element(locator.getLocator("eleDatePicker2"));
 
 	// Dynamic Elements
+	protected Button btnLanguage = new Button(locator.getLocator("btnLanguage"));
 	protected Button btnTravelingOption = new Button(locator.getLocator("btnTravelingOption"));
 	protected Button btnMinus = new Button(locator.getLocator("btnMinus"));
 	protected Button btnPlus = new Button(locator.getLocator("btnPlus"));
@@ -70,18 +73,18 @@ public class GeneralPage extends TestBase {
 	private void selectYear(int year) {
 		List<Element> eles = elesDatePicker.getWrapperElements();
 		eles.get(0).waitForDisplayed(Constants.SHORT_TIME);
-		String currentFirtMonthYear = eles.get(0).getText();
-		int firstYear = Integer.parseInt(currentFirtMonthYear.split(" ")[1]);
+		String currentFirstMonthYear = eles.get(0).getText();
+		int firstYear = DateTimeHelper.getYear(currentFirstMonthYear, ResourceHelper.SHARED_DATA.get().month_year_format);
 		String currentSecondMonthYear = eles.get(1).getText();
-		int secondYear = Integer.parseInt(currentSecondMonthYear.split(" ")[1]);
+		int secondYear = DateTimeHelper.getYear(currentSecondMonthYear, ResourceHelper.SHARED_DATA.get().month_year_format);
 		Button btnClick = null;
 		while (year != firstYear && year != secondYear) {
 			if (year < firstYear) {
 				btnClick = btnNextMonth;
-				firstYear = Integer.parseInt(eleDatePicker1.getText().split(" ")[1]);
+				firstYear = DateTimeHelper.getYear(eleDatePicker1.getText(), ResourceHelper.SHARED_DATA.get().month_year_format);
 			} else if (year > secondYear) {
 				btnClick = btnPreviousMonth;
-				secondYear = Integer.parseInt(eleDatePicker2.getText().split(" ")[2]);
+				secondYear = DateTimeHelper.getYear(eleDatePicker2.getText(), ResourceHelper.SHARED_DATA.get().month_year_format);
 			}
 			btnClick.click();
 		}
@@ -211,12 +214,33 @@ public class GeneralPage extends TestBase {
 			selectChildAge(travel.getChildrenAge());
 		}
 	}
+	
+	/**
+     * Select language
+     *
+     * @param  language
+     *         language name to select (String)
+     *
+     */
+	public void selectLanguage(String language) {
+		btnLanguageMenu.click();
+		eleLanguagePopup.waitForPresent(Constants.SHORT_TIME);
+		btnLanguage.generateDynamic(language).click();
+		eleLanguagePopup.waitForNotPresent(Constants.SHORT_TIME);
+	}
 		
     /**
      * scroll to top of page
      */
 	public void scrollToTop() {
 		DriverUtils.executeJavaScript("window.scrollTo(0, 0);");
+	}
+	
+	/**
+     * scroll to bottom of page
+     */
+	public void scrollToBottom() {
+		DriverUtils.executeJavaScript("window.scrollTo(0, document.body.scrollHeight);");
 	}
 
 }

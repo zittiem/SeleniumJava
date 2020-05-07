@@ -4,13 +4,15 @@
 		"language_name": "English",
 		"date_format": "dd/MMM/yyyy",
 		"datetime_format": "EEE MM dd yyyy",
-		"simple_date_format": "dd/MM/yyyy"
+		"simple_date_format": "dd/MM/yyyy",
+		"month_year_format": "MMMM yyyy"
 	},
 	"en-US": {
 		"url": "https://www.agoda.com/",
 		"language_name": "English",
 		"date_format": "dd/MMM/yyyy",
 		"datetime_format": "EEE MM dd yyyy",
-		"simple_date_format": "dd/MM/yyyy"
+		"simple_date_format": "dd/MM/yyyy",
+		"month_year_format": "MMMM yyyy"
 	}
 }

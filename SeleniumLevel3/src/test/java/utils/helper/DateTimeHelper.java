@@ -5,13 +5,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZoneId;
-import java.time.format.TextStyle;
 import java.time.temporal.TemporalAdjusters;
 import java.util.Date;
-import java.util.Locale;
-
 import datatype.Agoda.Enums.WeekDays;
 
 public class DateTimeHelper {
@@ -99,6 +95,15 @@ public class DateTimeHelper {
 
 	public static Date getDate(String sDate) {
 		return getDate(sDate, "dd/MM/yyyy EEE");
+	}
+	
+	public static int getYear(String sDate, String format) {
+		try {
+			return new SimpleDateFormat(format).parse(sDate).getYear() + 1900;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return -1;
+		}
 	}
 
 	public static Date mapSDate(String sDate) {

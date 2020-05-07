@@ -267,8 +267,8 @@ public class SearchHotelResultPage extends GeneralPage {
      * 
      */
 	public void chooseSortOption(SortOption sortOption) {
-		btnSearchOption.generateDynamic(sortOption.getCode()).moveToElement();
-		btnSearchOption.click();
+		scrollToTop();
+		btnSearchOption.generateDynamic(sortOption.getCode()).click();
 		btnNextPage.waitForDisplayed(Constants.SHORT_TIME);
 		btnNextPage.moveToElement();
 		waitForItemLoad();

@@ -14,6 +14,8 @@ import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
+
 import driver.manager.DriverUtils;
 import element.base.web.Element;
 import element.setting.ElementStatus;
@@ -225,7 +227,7 @@ public class Element implements IWaiter, IAction, IInfo {
 		while (tries < Constant.ElementRetryLimit) {
 		    tries++;
 		    try {
-		    	//waitForCondition(ElementStatus.CLICKABLE, Constant.ElementWaitingTime, true);
+		    	waitForCondition(ElementStatus.PRESENT, Constant.ElementWaitingTime, true);
 		    	DriverUtils.executeJavaScript("arguments[0].click();", getElement());
 		    	return;
 		    } catch (StaleElementReferenceException staleEx) {
@@ -382,6 +384,9 @@ public class Element implements IWaiter, IAction, IInfo {
 		    try {
 		    	waitForCondition(ElementStatus.PRESENT, Constant.ElementWaitingTime, true);
 		    	new Actions(DriverUtils.getDriver()).moveToElement(getElement()).build().perform();
+		    	return;
+		    } catch (MoveTargetOutOfBoundsException moveEx) {
+		    	DriverUtils.executeJavaScript("arguments[0].scrollIntoView(true)", getElement());
 		    	return;
 		    } catch (StaleElementReferenceException staleEx) {
 		    	if (tries == Constant.ElementRetryLimit)

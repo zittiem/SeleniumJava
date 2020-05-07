@@ -17,8 +17,10 @@ public class ResourceHelper {
 		public String appName;
 		public String language;
 		public String url;
+		public String language_name;
 		public String date_format;
 		public String datetime_format;
 		public String simple_date_format;
+		public String month_year_format;
 	}
 }

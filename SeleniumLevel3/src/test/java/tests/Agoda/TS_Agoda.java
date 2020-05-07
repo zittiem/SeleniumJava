@@ -18,6 +18,7 @@ import utils.assertion.SoftAssertion;
 import utils.constant.Constants;
 import utils.helper.DataHelper;
 import utils.helper.Logger;
+import utils.helper.ResourceHelper;
 
 public class TS_Agoda extends TestBase {
 	@Test(description = "Verify that user can search and sort hotel successfully.")
@@ -37,6 +38,9 @@ public class TS_Agoda extends TestBase {
 		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
+		
+		// Select language
+		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
 
 		Logger.info(
 				"2. Search the hotel with the following information:\r\n\t-Place: Da Nang\r\n\t-Date: 3 days from next Friday\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
@@ -80,6 +84,9 @@ public class TS_Agoda extends TestBase {
 
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
+		
+		// Select language
+		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
 
 		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
 				+ "\r\n\t-Date: 3 days from next Friday"
@@ -137,6 +144,9 @@ public class TS_Agoda extends TestBase {
 		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
+		
+		// Select language
+		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
 
 		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
 				+ "\r\n\t-Date: 3 days from next Friday"
@@ -201,5 +211,5 @@ public class TS_Agoda extends TestBase {
 				"The hotel detailed page is not displayed with correct info (Detailed review points). Please check.");
 
 		softAssert.assertAll();
-		}
+	}
 }

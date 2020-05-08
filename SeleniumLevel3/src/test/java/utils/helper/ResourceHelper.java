@@ -22,5 +22,6 @@ public class ResourceHelper {
 		public String datetime_format;
 		public String simple_date_format;
 		public String month_year_format;
+		public String data_date_format;
 	}
 }

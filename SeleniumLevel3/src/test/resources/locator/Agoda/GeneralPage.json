@@ -22,6 +22,8 @@
 		"elesDatePicker": "xpath=//div[@class='DayPicker-Caption']",
 		"eleDatePicker1": "xpath=//div[@class='DayPicker-Caption'][1]",
 		"eleDatePicker2": "xpath=//div[@class='DayPicker-Caption'][2]",
-		"eleDate": "xpath=//div[@aria-label='%s']"
+		"eleDate": "xpath=//div[@aria-label='%s']",
+		"eleUsername": "xpath=//span[@data-selenium='login-text']",
+		"eleFavoriteMenu": "xpath=//a[@data-selenium='favorite-menu']"
 	}
 }

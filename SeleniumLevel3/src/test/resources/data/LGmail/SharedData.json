@@ -1,9 +1,0 @@
-{
-	"default": {
-		"url": "https://sgmail.logigear.com",
-		"language_name": "English",
-		"date_format": "dd/MMM/yyyy",
-		"datetime_format": "EEE MM dd yyyy",
-		"simple_date_format": "dd/MM/yyyy"
-	}
-}

@@ -1,12 +1,19 @@
 {
 	"RoomBooking": {
-		"destination": "Da Nang",
-		"checkInDate": "Fr:Days:+0",
-		"checkOutDate": "Fr:Days:+3",
+		"searchKeyword": "Da Lat",
+		"destination": "Dalat",
+		"checkInDate": "Days:+1",
+		"checkOutDate": "Days:+4",
 		"travelOption": "Family travelers",
-		"numberOfRoom": 2,
-		"numberOfAdult": 4,
+		"numberOfRoom": 1,
+		"numberOfAdult": 2,
 		"numberOfChildren": 0,
 		"childrenAge": 0
-	}
+	},
+	
+	"FilterOptions": {
+		"Room offers": ["Breakfast included"]
+	},
+	
+	"RoomFeatures": ["Free breakfast"]
 }

@@ -1,6 +1,7 @@
 package pages.Agoda;
 
 import java.util.List;
+
 import datatype.Agoda.Enums.Month;
 import datatype.Agoda.Enums.TravelFields;
 import datatype.Agoda.Enums.TravelTypes;
@@ -38,6 +39,8 @@ public class GeneralPage extends TestBase {
 	protected Element elesDatePicker = new Element(locator.getLocator("elesDatePicker"));
 	protected Element eleDatePicker1 = new Element(locator.getLocator("eleDatePicker1"));
 	protected Element eleDatePicker2 = new Element(locator.getLocator("eleDatePicker2"));
+	protected Element eleUsername = new Element(locator.getLocator("eleUsername"));
+	protected Element eleFavoriteMenu = new Element(locator.getLocator("eleFavoriteMenu"));
 
 	// Dynamic Elements
 	protected Button btnLanguage = new Button(locator.getLocator("btnLanguage"));
@@ -203,7 +206,7 @@ public class GeneralPage extends TestBase {
      *
      */
 	protected void enterTravelingInfo(RoomBooking travel) {
-		enterSearchKeyWord(travel.getDestination());
+		enterSearchKeyWord(travel.getSearchKeyword());
 		selectDate("in", travel.getCheckInDate());
 		selectDate("out", travel.getCheckOutDate());
 		selectTravelerType(travel.getTravelOption());
@@ -228,19 +231,27 @@ public class GeneralPage extends TestBase {
 		btnLanguage.generateDynamic(language).click();
 		eleLanguagePopup.waitForNotPresent(Constants.SHORT_TIME);
 	}
+	
+	/**
+     * Open Favorite Menu
+     *
+     */
+	public void openFavoriteMenu() {
+		eleUsername.click();
+		eleFavoriteMenu.click();
+	}
 		
     /**
-     * scroll to top of page
+     * Scroll to top of page
      */
 	public void scrollToTop() {
 		DriverUtils.executeJavaScript("window.scrollTo(0, 0);");
 	}
 	
 	/**
-     * scroll to bottom of page
+     * Scroll to bottom of page
      */
 	public void scrollToBottom() {
 		DriverUtils.executeJavaScript("window.scrollTo(0, document.body.scrollHeight);");
 	}
-
 }

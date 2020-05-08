@@ -1,0 +1,6 @@
+{
+	"any.default": {
+		"eleFavoriteGroupMain": "id=favorite-group-main-layout",
+		"eleFavoriteGroupCard": "xpath=//a[@data-selenium='favorite-group-card' and contains(.,'%s')]"
+	}
+}

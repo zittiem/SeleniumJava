@@ -2,7 +2,9 @@ package pages.Agoda;
 
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.lang3.time.StopWatch;
 import org.javatuples.Pair;
 
 import datatype.Agoda.Enums.ReviewCategory;
@@ -25,9 +27,12 @@ public class HotelDetailedPage extends GeneralPage {
 	protected Element eleReviewCardPopup = new Element(locator.getLocator("eleReviewCardPopup"));
 	protected Element eleHotelFeatures = new Element(locator.getLocator("eleHotelFeatures"));
 	protected Element elesNonSmokingRoomAmenity = new Element(locator.getLocator("elesNonSmokingRoomAmenity"));
+	protected Element eleRoom = new Element(locator.getLocator("eleRoom"));
+	protected Element eleFavoriteHeart = new Element(locator.getLocator("eleFavoriteHeart"));
 
 	// Dynamic Elements
 	protected Element eleHotelFacility = new Element(locator.getLocator("eleHotelFacility"));
+	protected Element eleRoomFeature = new Element(locator.getLocator("eleRoomFeature"));
 	
 	// Special Locators
 	protected Pair<FindBy, String> reviewCategoryLocator = locator.getLocator("eleReviewCategory");
@@ -41,6 +46,13 @@ public class HotelDetailedPage extends GeneralPage {
 	public void waitForPageLoad() {
 		eleHotelName.waitForDisplayed(Constants.LONG_TIME);
 	}
+	
+	/**
+     * Switch to Hotel Detailed page
+     */
+	public void switchTo() {
+		DriverUtils.switchToLatest();
+	}
 
 	 /**
      * Open the review score popup by clicking on the hotel header review score
@@ -49,6 +61,14 @@ public class HotelDetailedPage extends GeneralPage {
 		scrollToTop();
 		eleHotelReviewScoreNumber.click();
 		eleReviewCardPopup.waitForDisplayed(Constants.SHORT_TIME);
+	}
+	
+	/**
+     * Add Hotel into Favorite list
+     */
+	public void selectFavoriteHeart() {
+		scrollToTop();
+		eleFavoriteHeart.click();
 	}
 	
 	 /**
@@ -69,6 +89,33 @@ public class HotelDetailedPage extends GeneralPage {
      */
 	public String getHotelDestination() {
 		return eleHotelAddress.getText();
+	}
+	
+	/**
+     * Load room data
+     *
+     * @return  void
+     * 
+     */
+	public void loadRooms() {
+		eleRoom.waitForDisplayed(Constants.SHORT_TIME);
+		StopWatch sw = new StopWatch();
+		sw.start();
+		int size = 0;
+		int previousSize = 0;
+		List<Element> elements;
+		do
+		{
+			elements = eleRoom.getWrapperElements();
+			size = elements.size();
+			if (size != previousSize)
+			{
+				previousSize = size;
+				elements.get(size - 1).moveToElement();
+			}
+			else break;
+		}
+		while (sw.getTime(TimeUnit.SECONDS) < Constants.SHORT_TIME);
 	}
 	
 	// Verify
@@ -93,6 +140,30 @@ public class HotelDetailedPage extends GeneralPage {
 					Logger.info("Hotel's URL: " + DriverUtils.getURL());
 					return false;
 				}
+			}
+		}
+		return true;
+	}
+	
+	// Verify
+	
+	 /**
+     * Return a Boolean value to indicate whether the specified room feature are correct
+     *
+     * @param	facilities
+     *			List of the specified hotel facilities
+     *
+     * @return  true|false
+     * 			true: all room feature exist 
+     * 			false: any room feature does not exist
+     * 
+     */
+	public boolean isRoomFeatureCorrect(List<String> roomFeatures) {
+		loadRooms();
+		for (String feature : roomFeatures) {
+			if (!eleRoomFeature.generateDynamic(feature).isDisplayed())
+			{
+				return false;
 			}
 		}
 		return true;

@@ -15,7 +15,6 @@
 				<methods>
 					<include name="TC01" />
 					<include name="TC02" />
-					<include name="TC03" />
 				</methods>
 			</class>
 		</classes>

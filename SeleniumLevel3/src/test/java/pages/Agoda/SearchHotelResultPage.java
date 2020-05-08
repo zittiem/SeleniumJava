@@ -314,6 +314,7 @@ public class SearchHotelResultPage extends GeneralPage {
 			return false;
 		for (int i = 0; i < records; i++) {
 			eleDestination = new Element(elements.get(i), destinationLocator, destination);
+			eleDestination.moveToElement();
 			if (!eleDestination.getText().contains(destination)) {
 				return false;
 			}

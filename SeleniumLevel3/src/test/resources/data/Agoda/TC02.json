@@ -1,6 +1,12 @@
 {
+	"Account": {
+		"email": "lhvu1369@gmail.com",
+		"password": "lhvu1369PW"
+	},
+	
 	"RoomBooking": {
-		"destination": "Da Nang",
+		"searchKeyword": "Da Lat",
+		"destination": "Dalat",
 		"checkInDate": "Fr:Days:+0",
 		"checkOutDate": "Fr:Days:+3",
 		"travelOption": "Family travelers",
@@ -8,5 +14,11 @@
 		"numberOfAdult": 4,
 		"numberOfChildren": 0,
 		"childrenAge": 0
-	}
+	},
+	
+	"FilterOptions": {
+		"Property facilities": ["Swimming pool"]
+	},
+	
+	"HotelFacilities": ["Swimming pool"]
 }

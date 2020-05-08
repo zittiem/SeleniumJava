@@ -6,16 +6,14 @@
 		<listener class-name="utils.config.TestListener" />
 	</listeners>
 	<test name="Run Chrome - Agoda">
-		<parameter name="driverConfig" value="chrome.local" />
+		<parameter name="driverConfig" value="firefox.local" />
 		<parameter name="platform" value="any" />	
 		<parameter name="appName" value="Agoda" />
 		<parameter name="language" value="default" />	
 		<classes>
 			<class name="tests.Agoda.TS_Agoda">
 				<methods>
-					<include name="TC01" />
 					<include name="TC02" />
-					<include name="TC03" />
 				</methods>
 			</class>
 		</classes>

@@ -1,17 +1,16 @@
 package tests.Agoda;
 
 import java.util.List;
-import java.util.Map;
-
 import org.testng.annotations.Test;
 
-import datatype.Agoda.Enums.Filter;
-import datatype.Agoda.Enums.SortOption;
-import driver.manager.DriverUtils;
+import datatype.Agoda.Account;
 import datatype.Agoda.FilterOptions;
 import datatype.Agoda.RoomBooking;
+import pages.Agoda.FavoriteGroupsPage;
+import pages.Agoda.FavoritePropertiesPage;
 import pages.Agoda.HomePage;
 import pages.Agoda.HotelDetailedPage;
+import pages.Agoda.LoginPage;
 import pages.Agoda.SearchHotelResultPage;
 import tests.TestBase;
 import utils.assertion.SoftAssertion;
@@ -21,7 +20,7 @@ import utils.helper.Logger;
 import utils.helper.ResourceHelper;
 
 public class TS_Agoda extends TestBase {
-	@Test(description = "Verify that user can search and sort hotel successfully.")
+	@Test(description = "Search and filter hotels successfully")
 	public void TC01() {
 
 		SoftAssertion softAssert = new SoftAssertion();
@@ -30,11 +29,14 @@ public class TS_Agoda extends TestBase {
 		
 		// Pages
 		HomePage homePage = new HomePage();
-		SearchHotelResultPage searchHoltelResultPage = new SearchHotelResultPage();
+		SearchHotelResultPage searchHotelResultPage = new SearchHotelResultPage();
+		HotelDetailedPage hotelDetailedPage = new HotelDetailedPage();
 		
 		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC01");
 		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
+		FilterOptions filter = new FilterOptions(dataHelper.getDataMap(FilterOptions.class.getSimpleName()));
+		List<String> roomFeatures = dataHelper.getDataStringList("RoomFeatures");
 		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
@@ -43,104 +45,57 @@ public class TS_Agoda extends TestBase {
 		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
 
 		Logger.info(
-				"2. Search the hotel with the following information:\r\n\t-Place: Da Nang\r\n\t-Date: 3 days from next Friday\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
+				"2. Search the hotel with the following information:\r\n\t-Place: Da Lat\r\n\t-Date: 3 days from tomorrow\r\n\t-Number of people: Family Travelers -> 1 rooms and 2 adults");
 		homePage.searchHotel(roomBooking);
 
 		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination).");
-		
-		searchHoltelResultPage.waitForPageLoad();
-		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
+		searchHotelResultPage.waitForPageLoad();
+		softAssert.assertTrue(searchHotelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
 				"Search Result is not displayed correctly with first 5 hotels. Please check.");
 		
-		Logger.info("3. Sort hotels by lowest prices");
-		searchHoltelResultPage.chooseSortOption(SortOption.CheapestPrice);
-		
-		Logger.verify("5 first hotels are sorted with the right order. ");
-		softAssert.assertTrue(searchHoltelResultPage.isResultSortedByCheapestPrice(5),
-				"5 first hotels are NOT sorted with the right order. Please check.");
-		
-		Logger.verify("The hotel destination is still correct.");
-		softAssert.assertTrue(searchHoltelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
-				"Search Result is not displayed correctly with first 5 hotels. Please check.");
+		Logger.info("3. Filter the hotels with breakfast included and select the first hotel");
+		searchHotelResultPage.filterMore(filter);
+		String expectedHotelName = searchHotelResultPage.getHotelName(1);
+		searchHotelResultPage.selectHotel(1);
+		hotelDetailedPage.switchTo();
+			
+		Logger.verify("The hotel detailed page is displayed with correct info (Name)");
+		hotelDetailedPage.waitForPageLoad();
+		softAssert.assertEquals(hotelDetailedPage.getHotelName(), expectedHotelName,
+				"The hotel detailed page is not displayed with correct info (Name). Please check.");
+			
+		Logger.verify("The hotel detailed page is displayed with correct info (Destination)");
+		softAssert.assertTrue(hotelDetailedPage.getHotelDestination().contains(roomBooking.getDestination()),
+				"The hotel detailed page is not displayed with correct info (Destination). Please check.");
+			
+		Logger.verify("The hotel detailed page is displayed with correct info (Breakfast included)");
+		softAssert.assertTrue(hotelDetailedPage.isRoomFeatureCorrect(roomFeatures),
+				"The hotel detailed page is not displayed with correct info (Breakfast included). Please check.");
 		
 		softAssert.assertAll();
-		
 	}
 	
-	@Test(description = "Verify that user can search and filter hotel successfully .")
-	public void TC02() throws InterruptedException {
+	@Test(description = "Add hotel into Favourite successfully")
+	public void TC02() {
 
 		SoftAssertion softAssert = new SoftAssertion();
-
+			
 		Logger.info("Precondition: Initial Data");
 		
 		// Pages
 		HomePage homePage = new HomePage();
-		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
+		LoginPage loginPage = new LoginPage();
+		SearchHotelResultPage searchHotelResultPage = new SearchHotelResultPage();
+		HotelDetailedPage hotelDetailedPage = new HotelDetailedPage();
+		FavoriteGroupsPage favoriteGroupsPage = new FavoriteGroupsPage();
+		FavoritePropertiesPage favoritePropertiesPage = new FavoritePropertiesPage();
 		
 		// Test Data
 		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC02");
-		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
-
-		Logger.info("1. Navigate to https://www.agoda.com/.");
-		// This step is included in @BeforeMethod
-		
-		// Select language
-		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
-
-		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
-				+ "\r\n\t-Date: 3 days from next Friday"
-				+ "\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
-		homePage.searchHotel(roomBooking);
-
-		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
-
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
-				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
-
-		Logger.info("3. Filter the hotels with the following info:\r\n\t-Price: 500000-1000000VND\r\n\t-Star:3");
-		searchHotel.filterPrice(500000, 1000000);
-		searchHotel.filterStarRating(3);
-
-		Logger.verify("The price and start filtered ishighlighted");
-		softAssert.assertTrue(searchHotel.isFiltersHighLighted(Filter.Price, Filter.Rating),
-				"The price or star filtered not highlighted. Please check.");
-
-		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination, price, star).");
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5), 
-				"Search Result is displayed correctly with first 5 hotels (destination).");
-		softAssert.assertTrue(searchHotel.isHotelPriceCorrect(500000, 1000000, 5), 
-				"Search Result is displayed correctly with first 5 hotels (price).");
-		softAssert.assertTrue(searchHotel.isHotelStarRatingCorrect(3, 5), 
-				"Search Result is displayed correctly with first 5 hotels (star).");
-
-		Logger.info("4. Remove price filter");
-		searchHotel.deleteFilter(Filter.Price);
-
-		Logger.verify("The price slice is reset");
-		softAssert.assertTrue(searchHotel.isPriceSliderReset(), "The price slice is not reset. Please check");
-
-		softAssert.assertAll();
-	}
-	
-	@Test(description = "Verify that user can add hotel into Favourite successfully .")
-	public void TC03() throws InterruptedException {
-		
-		SoftAssertion softAssert = new SoftAssertion();
-
-		Logger.info("Precondition: Initial Data");
-		
-		// Pages
-		HomePage homePage = new HomePage();
-		SearchHotelResultPage searchHotel = new SearchHotelResultPage();
-		HotelDetailedPage hotelDetailed = new HotelDetailedPage();
-		
-		// Test Data
-		DataHelper dataHelper = new DataHelper(Constants.DATA_FOLDER + this.appName, "TC03");
+		Account account = dataHelper.getDataObject(Account.class);
 		RoomBooking roomBooking = dataHelper.getDataObject(RoomBooking.class).compileData();
 		FilterOptions filter = new FilterOptions(dataHelper.getDataMap(FilterOptions.class.getSimpleName()));
-		List<String> hotelFacilities1 = dataHelper.getDataStringList("HotelFacilities1");
-		List<String> hotelFacilities2 = dataHelper.getDataStringList("HotelFacilities2");
+		List<String> hotelFacilities = dataHelper.getDataStringList("HotelFacilities");
 		
 		Logger.info("1. Navigate to https://www.agoda.com/.");
 		// This step is included in @BeforeMethod
@@ -148,68 +103,72 @@ public class TS_Agoda extends TestBase {
 		// Select language
 		homePage.selectLanguage(ResourceHelper.SHARED_DATA.get().language_name);
 
-		Logger.info("2. Search the hotel with the following information:" + "\r\n\t-Place: Da Nang"
-				+ "\r\n\t-Date: 3 days from next Friday"
-				+ "\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
+		Logger.info(
+				"2. Search the hotel with the following information:\r\n\t-Place: Da Lat\r\n\t-Date: 3 days from next Friday\r\n\t-Number of people: Family Travelers -> 2 rooms and 4 adults");
 		homePage.searchHotel(roomBooking);
 
-		Logger.verify("Search Result is displayed correctly with first 5 hotels (destination).");
-		searchHotel.waitForPageLoad();
-		softAssert.assertTrue(searchHotel.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
-				"Search Result is not displayed correctly with first 5 hotels (destination). Please check.");
-
-		Logger.info("3. Filter the non smoking hotels and choose the 5th hotel in the list");
-		searchHotel.filterMore(filter);
-		String expectedHotelName = searchHotel.getHotelName(5);
-		searchHotel.selectHotel(5);
-		DriverUtils.switchToLatest();
+		Logger.verify("Search Result is displayed correctly with first 5 hotels(destination).");
+		searchHotelResultPage.waitForPageLoad();
+		softAssert.assertTrue(searchHotelResultPage.isHotelDestinationCorrect(roomBooking.getDestination(), 5),
+				"Search Result is not displayed correctly with first 5 hotels. Please check.");
+		
+		Logger.info("3. Filter the hotels with swimming pool and choose the 1st hotel in the list");
+		searchHotelResultPage.filterMore(filter);
+		String expectedHotelName = searchHotelResultPage.getHotelName(1);
+		searchHotelResultPage.selectHotel(1);
+		hotelDetailedPage.switchTo();
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Name)");
-		hotelDetailed.waitForPageLoad();
-		softAssert.assertEquals(hotelDetailed.getHotelName(), expectedHotelName,
+		hotelDetailedPage.waitForPageLoad();
+		softAssert.assertEquals(hotelDetailedPage.getHotelName(), expectedHotelName,
 				"The hotel detailed page is not displayed with correct info (Name). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Destination)");
-		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(roomBooking.getDestination()),
+		softAssert.assertTrue(hotelDetailedPage.getHotelDestination().contains(roomBooking.getDestination()),
 				"The hotel detailed page is not displayed with correct info (Destination). Please check.");
 			
 		Logger.verify("The hotel detailed page is displayed with correct info (Have swimming pool)");
-		softAssert.assertTrue(hotelDetailed.isHotelFacilityCorrect(hotelFacilities1),
+		softAssert.assertTrue(hotelDetailedPage.isHotelFacilityCorrect(hotelFacilities),
 				"The hotel detailed page is not displayed with correct info (Have swimming pool). Please check.");
-		DriverUtils.close();	
 		
-		Logger.info("4. Move mouse to point of the hotel to show detailed review points");
-		DriverUtils.switchToFirst();
-		searchHotel.viewHotelReviewScores(1);
+		Logger.info("4. Add the hotel into the saved list");
+		hotelDetailedPage.selectFavoriteHeart();
+			
+		Logger.verify("Login popup appears");
+		loginPage.waitForPageLoad();
+		softAssert.assertTrue(loginPage.isPageDisplayed(),
+				"The Login popup didn't appears. Please check.");
 		
-		Logger.verify("Detailed review popup appears and show the following information: Cleanliness, Facilities, Service, Location, Value for money");
-		softAssert.assertTrue(searchHotel.doesAllHotelReviewCategoriesExist(),
-				"Detailed review popup doesn't show the following information: Cleanliness, Facilities, Service, Location, Value for money. Please check.");
+		Logger.info("5. Log in Agoda");
+		loginPage.signIn(account);
+		
+		Logger.info("6. Open Saved Properties List Page");
+		hotelDetailedPage.openFavoriteMenu();
+		favoriteGroupsPage.waitForPageLoad();
+		favoriteGroupsPage.selectFavoriteGroupCard(roomBooking.getDestination());
 			
-		Logger.info("5. Choose the first hotel");
-		expectedHotelName = searchHotel.getHotelName(1);
-		Map<String, String> expectedreviewScore = searchHotel.getHotelScores(1);
-		searchHotel.selectHotel(1);
-		DriverUtils.switchToLatest();
+		Logger.verify("The hotel is added to the saved list successfully (The booking dates)");
+		favoritePropertiesPage.waitForPageLoad();
+		softAssert.assertTrue(favoritePropertiesPage.areBookingDatesCorrect(roomBooking.getCheckInDateObj(), roomBooking.getCheckOutDateObj()),
+				"The added hotel is not displayed with correct info (The booking dates). Please check.");
 			
-		Logger.verify("The hotel detailed page is displayed with correct info (Name)");
-		hotelDetailed.waitForPageLoad();
-		softAssert.assertEquals(hotelDetailed.getHotelName(), expectedHotelName,
-				"The hotel detailed page is not displayed with correct info (Name). Please check.");
-			
-		Logger.verify("The hotel detailed page is displayed with correct info (Destination)");
-		softAssert.assertTrue(hotelDetailed.getHotelDestination().contains(roomBooking.getDestination()),
-				"The hotel detailed page is not displayed with correct info (Destination). Please check.");
-			
-		Logger.verify("The hotel detailed page is displayed with correct info (Non smoking hotel)");
-		softAssert.assertTrue(hotelDetailed.isHotelFacilityCorrect(hotelFacilities2),
-				"The hotel detailed page is not displayed with correct info (Non smoking hotel). Please check.");
-			
-		Logger.verify("The hotel detailed page is displayed with correct info (Detailed review points)");
-		hotelDetailed.openReviewScorePopup();
-		softAssert.assertTrue(hotelDetailed.isHotelReviewScoreCorrect(expectedreviewScore),
-				"The hotel detailed page is not displayed with correct info (Detailed review points). Please check.");
-
+		Logger.verify("The hotel is added to the saved list successfully (The number of guests)");
+		softAssert.assertTrue(favoritePropertiesPage.areNumberOfGuestsCorrect(roomBooking.getNumberOfAdult(), roomBooking.getNumberOfChildren(), roomBooking.getNumberOfRoom()),
+				"The added hotel is not displayed with correct info (The number of guests). Please check.");
+		
+		Logger.verify("The hotel is added to the saved list successfully (The hotel information)");
+		softAssert.assertTrue(favoritePropertiesPage.isHotelInformationCorrect(expectedHotelName),
+				"The added hotel is not displayed with correct info (The hotel information). Please check.");
+		
+		try
+		{
+			// clean up
+			favoritePropertiesPage.removeFavoriteHeart(expectedHotelName);
+		}
+		catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 		softAssert.assertAll();
 	}
 }

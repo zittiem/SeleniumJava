@@ -1,17 +1,31 @@
 package datatype.Agoda;
 
+import java.util.Date;
+
 import utils.helper.DateTimeHelper;
 
 public class RoomBooking {
+	private String searchKeyword = null;
 	private String destination = null;
 	private String checkInDate = null;
+	private Date checkInDateObj = null;
 	private String checkOutDate = null;
+	private Date checkOutDateObj = null;
 	private String travelOption = null;
 	private int numberOfRoom = 0;
 	private int numberOfAdult = 0;
 	private int numberOfChildren = 0;
 	private String childrenAge = null;
 
+	
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	
 	public String getDestination() {
 		return destination;
 	}
@@ -82,15 +96,32 @@ public class RoomBooking {
 		if (this.checkInDate.contains(":")) {
 			_date = DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.checkInDate), "dd/MM/yyyy");
 			setCheckInDate(_date);
-			setCheckInDate(getCheckInDate());
 		}
 		if (this.checkOutDate.contains(":")) {
 			_date = DateTimeHelper.getDateString(DateTimeHelper.mapDate(this.checkOutDate), "dd/MM/yyyy");
 			setCheckOutDate(_date);
-			setCheckOutDate(getCheckOutDate());
 		}
+		
+		setCheckInDateObj(DateTimeHelper.getDate(getCheckInDate(), "dd/MM/yyyy"));
+		setCheckOutDateObj(DateTimeHelper.getDate(getCheckOutDate(), "dd/MM/yyyy"));
 
 		return this;
+	}
+
+	public Date getCheckInDateObj() {
+		return checkInDateObj;
+	}
+
+	public void setCheckInDateObj(Date checkInDateObj) {
+		this.checkInDateObj = checkInDateObj;
+	}
+
+	public Date getCheckOutDateObj() {
+		return checkOutDateObj;
+	}
+
+	public void setCheckOutDateObj(Date checkOutDateObj) {
+		this.checkOutDateObj = checkOutDateObj;
 	}
 
 	@Override

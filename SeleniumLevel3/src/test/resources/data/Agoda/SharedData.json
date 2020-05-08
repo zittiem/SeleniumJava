@@ -5,7 +5,11 @@
 		"date_format": "dd/MMM/yyyy",
 		"datetime_format": "EEE MM dd yyyy",
 		"simple_date_format": "dd/MM/yyyy",
-		"month_year_format": "MMMM yyyy"
+		"month_year_format": "MMMM yyyy",
+		"data_date_format": "dd MMM yyyy",
+		"adult_format": "%s adults",
+		"children_format": "%s children",
+		"room_format": "%s rooms"
 	},
 	"en-US": {
 		"url": "https://www.agoda.com/",
@@ -13,6 +17,10 @@
 		"date_format": "dd/MMM/yyyy",
 		"datetime_format": "EEE MM dd yyyy",
 		"simple_date_format": "dd/MM/yyyy",
-		"month_year_format": "MMMM yyyy"
+		"month_year_format": "MMMM yyyy",
+		"data_date_format": "dd MMM yyyy",
+		"adult_format": "%s adults",
+		"children_format": "%s children",
+		"room_format": "%s rooms"
 	}
 }

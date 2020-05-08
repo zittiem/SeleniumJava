@@ -1,0 +1,11 @@
+{
+	"any.default": {
+		"eleCheckInBox": "xpath=//input[@data-selenium='checkInBox']",
+		"eleCheckOutBox": "xpath=//input[@data-selenium='checkOutBox']",
+		"eleAdult": "id=adultText",
+		"eleChildren": "id=childrenText",
+		"eleRoom": "id=roomText",
+		"eleHotelName": "xpath=//div[@data-selenium='hotel-name' and contains(text(), '%s')]",
+		"eleHotelFavoriteHeart": "xpath=//a[.//div[@data-selenium='hotel-name' and contains(text(), '%s')]]//i[@data-selenium='favorite-heart']"
+	}
+}

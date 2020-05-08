@@ -25,15 +25,54 @@ public class HotelDetailedPage extends GeneralPage {
 	protected Element eleReviewCardPopup = new Element(locator.getLocator("eleReviewCardPopup"));
 	protected Element eleHotelFeatures = new Element(locator.getLocator("eleHotelFeatures"));
 	protected Element elesNonSmokingRoomAmenity = new Element(locator.getLocator("elesNonSmokingRoomAmenity"));
+	protected Element eleBreakfastIncluded = new Element(locator.getLocator("eleBreakfastIncluded"));
+	protected Element eleBreakfastFree = new Element(locator.getLocator("eleBreakfastFree"));
+	protected Element eleFavoriteHeart = new Element(locator.getLocator("eleFavoriteHeart"));
+	protected Element eleHeaderDropDownIcon = new Element(locator.getLocator("eleHeaderDropDownIcon"));
+	protected Element eleCheckInDate = new Element(locator.getLocator("eleCheckInDate"));
+	protected Element eleCheckOutDate = new Element(locator.getLocator("eleCheckOutDate"));
 
 	// Dynamic Elements
 	protected Element eleHotelFacility = new Element(locator.getLocator("eleHotelFacility"));
+	protected Element eleHeaderDropDownItem = new Element(locator.getLocator("eleHeaderDropDownItem"));
 	
 	// Special Locators
 	protected Pair<FindBy, String> reviewCategoryLocator = locator.getLocator("eleReviewCategory");
 	protected Pair<FindBy, String> reviewScoreLocator = locator.getLocator("eleReviewScore");
 	
 	// Methods
+	
+    /**
+     * Get CheckInDate
+     */
+	public String getCheckInDate() {
+		eleCheckInDate.waitForDisplayed(30);
+		return eleCheckInDate.getText();
+	}
+	
+    /**
+     * Get CheckOutDate
+     */
+	public String getCheckOutDate() {
+		return eleCheckOutDate.getText();
+	}
+	
+    /**
+     * Add a hotel to the saved list.
+     */
+	public void selectHeaderDropDownItem(String item) {
+		eleHeaderDropDownIcon.waitForDisplayed(60);
+		eleHeaderDropDownIcon.click();
+		eleHeaderDropDownItem.generateDynamic(item).click();
+	}
+	
+    /**
+     * Add a hotel to the saved list.
+     */
+	public void addHotelToSavedList() {
+		eleFavoriteHeart.click();
+	}
+	
 	
     /**
      * Wait for page load completely. Time out is Constants.LONG_TIME.
@@ -72,6 +111,23 @@ public class HotelDetailedPage extends GeneralPage {
 	}
 	
 	// Verify
+	
+	 /**
+    * Return a Boolean value to indicate whether breakfast is included
+    *
+    * @return  true|false
+    * 			true: breakfast is included
+    * 			false: breakfast is not included
+    * 
+    */
+	public boolean isBreakfastIncluded() {
+		Logger.info("Hotel's URL: " + DriverUtils.getURL());
+		
+		if(eleBreakfastFree.isDisplayed() || eleBreakfastIncluded.isDisplayed()) 
+			return true;
+		else
+			return false;
+	}
 	
 	 /**
      * Return a Boolean value to indicate whether the specified hotel facilities are correct

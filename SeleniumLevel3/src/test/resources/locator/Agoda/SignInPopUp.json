@@ -1,0 +1,8 @@
+{
+	"any.default": {
+		"txtEmail": "id=signin-email-input",
+		"txtPassword": "id=signin-password-input",
+		"btnSignIn": "id=sign-in-submit-button",
+		"eleSignInPopUp": "xpath=//div[contains(@class,'LoginModal') and @role='dialog']"
+	}
+}

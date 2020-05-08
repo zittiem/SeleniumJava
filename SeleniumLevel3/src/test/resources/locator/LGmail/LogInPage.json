@@ -1,7 +1,0 @@
-{
-	"any.chrome": {
-		"txtUserName": "id=username",
-		"txtPassword": "id=password",
-		"btnSignIn": "xpath=//input[@value='Sign in']"
-	}
-}

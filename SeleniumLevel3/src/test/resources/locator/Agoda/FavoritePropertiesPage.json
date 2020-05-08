@@ -1,0 +1,8 @@
+{
+	"any.default": {
+		"eleCheckInDate": "xpath=//input[@data-selenium='checkInBox']",
+		"eleCheckOutDate": "xpath=//input[@data-selenium='checkOutBox']",
+		"eleGuestInfo": "xpath=//input[@class='form-control oneline-guests']",
+		"eleHotelName": "xpath=//div[@class='hotel-name']"
+	}
+}

@@ -9,8 +9,8 @@ import driver.manager.DriverManager;
 import driver.manager.DriverUtils;
 import utils.constant.Constants;
 import utils.helper.DataHelper;
-import utils.helper.ResourceHelper;
 import utils.helper.Logger;
+import utils.helper.ResourceHelper;
 import utils.helper.ResourceHelper.SharedData;
 
 public class TestBase {

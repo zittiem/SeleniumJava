@@ -1,5 +1,5 @@
-set chrome-driver=-Dwebdriver.chrome.driver="D:\Training\SeleniumJava\SeleniumLevel3\src\test\resources\drivers\win\chromedriver.exe"
-set firefox-driver=-Dwebdriver.gecko.driver="D:\Training\SeleniumJava\SeleniumLevel3\src\test\resources\drivers\win\geckodriver.exe"
+set chrome-driver=-Dwebdriver.chrome.driver="../drivers/win/chromedriver.exe"
+set firefox-driver=-Dwebdriver.gecko.driver="../drivers/win/geckodriver.exe"
 set ie-driver=-Dwebdriver.ie.driver="../drivers/win/IEDriverServer.exe"
 
 set chrome-browser=-browser "browserName=chrome, version=ANY, platform=WINDOWS, maxInstances=5"

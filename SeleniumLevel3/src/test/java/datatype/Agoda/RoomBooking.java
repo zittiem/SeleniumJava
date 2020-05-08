@@ -3,6 +3,7 @@ package datatype.Agoda;
 import utils.helper.DateTimeHelper;
 
 public class RoomBooking {
+	private String searchKeyword = null;
 	private String destination = null;
 	private String checkInDate = null;
 	private String checkOutDate = null;
@@ -12,6 +13,14 @@ public class RoomBooking {
 	private int numberOfChildren = 0;
 	private String childrenAge = null;
 
+	public String getSearchKeyword() {
+		return searchKeyword;
+	}
+
+	public void setSearchKeyword(String searchKeyword) {
+		this.searchKeyword = searchKeyword;
+	}
+	
 	public String getDestination() {
 		return destination;
 	}

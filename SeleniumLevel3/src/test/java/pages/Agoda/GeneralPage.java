@@ -203,7 +203,7 @@ public class GeneralPage extends TestBase {
      *
      */
 	protected void enterTravelingInfo(RoomBooking travel) {
-		enterSearchKeyWord(travel.getDestination());
+		enterSearchKeyWord(travel.getSearchKeyword());
 		selectDate("in", travel.getCheckInDate());
 		selectDate("out", travel.getCheckOutDate());
 		selectTravelerType(travel.getTravelOption());

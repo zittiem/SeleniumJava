@@ -1,0 +1,22 @@
+{
+	"RoomBooking": {
+		"searchKeyword": "Da Lat",
+		"destination": "Dalat",
+		"checkInDate": "Fr:Days:+0",
+		"checkOutDate": "Fr:Days:+3",
+		"travelOption": "Family travelers",
+		"numberOfRoom": 2,
+		"numberOfAdult": 4,
+		"numberOfChildren": 0,
+		"childrenAge": 0
+	},
+	
+	"FilterOptions": {
+		"Property facilities": ["Swimming pool"]
+	},
+	
+	"UserInfo": {
+		"email": "hoangmaithanh7772@gmail.com",
+		"password": "thanhhoang89"
+	}
+}

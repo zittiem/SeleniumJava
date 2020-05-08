@@ -73,7 +73,7 @@ public class SearchHotelResultPage extends GeneralPage {
      */
 	public void clickFilterButton(Filter filter) {
 		btnFilter = btnFilter.generateDynamic(filter.getValue());
-		scrollToTop();
+		btnFilter.moveToElement();
 		btnFilter.click();
 	}
 	
@@ -310,6 +310,7 @@ public class SearchHotelResultPage extends GeneralPage {
 		moveToHotel(records);
 		Element eleDestination = null;
 		List<Element> elements = eleResultItem.getWrapperElements();
+		
 		if (elements.size() < records)
 			return false;
 		for (int i = 0; i < records; i++) {

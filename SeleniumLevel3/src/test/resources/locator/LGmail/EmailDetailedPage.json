@@ -1,6 +1,0 @@
-{
-	"any.chrome": {
-		"eleSubject": "id=divSubj",
-		"eleSender": "id=spnFrom"
-	}
-}

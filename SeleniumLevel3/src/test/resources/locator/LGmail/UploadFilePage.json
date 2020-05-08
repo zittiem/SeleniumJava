@@ -1,9 +1,0 @@
-{
-	"any.chrome": {
-		"ifmInsertFiles": "xpath=//iframe[@class='wh100']",
-		"btnChooseFiles": "xpath=//div[not(@style='display: none')]/input[contains(@id,'file')]",
-		"btnChooseMoreFiles": "id=lnkAdd",
-		"btnInsert": "id=btnAttch",
-		"btnCancel": "id=btnCncl"
-	}
-}

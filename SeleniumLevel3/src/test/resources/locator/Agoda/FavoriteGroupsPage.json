@@ -1,0 +1,5 @@
+{
+	"any.default": {
+		"eleCard": "xpath=//div[@class='group-name' and contains(text(),'%s')]"
+	}
+}

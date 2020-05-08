@@ -1,16 +1,16 @@
-package datatype.LGmail;
+package datatype.Agoda;
 
 public class UserInfo {
 
-	private String username = null;
+	private String email = null;
 	private String password = null;
 
-	public String getUserName() {
-		return username;
+	public String getEmail() {
+		return email;
 	}
 
 	public void setUserName(String userName) {
-		this.username = userName;
+		this.email = userName;
 	}
 
 	public String getPassword() {
@@ -23,7 +23,7 @@ public class UserInfo {
 
 	@Override
 	public String toString() {
-		return "UserInfo [username=" + username + ", password=" + password + "]";
+		return "UserInfo [email=" + email + ", password=" + password + "]";
 	}
 
 	public void showInfo() {

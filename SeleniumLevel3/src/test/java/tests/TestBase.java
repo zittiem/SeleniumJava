@@ -1,5 +1,8 @@
 package tests;
 
+import java.lang.reflect.Method;
+
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -21,7 +24,7 @@ public class TestBase {
 	
 	@Parameters({ "driverConfig", "platform", "appName", "language" })
 	@BeforeMethod(alwaysRun = true)
-	public void beforeMethod(String driverConfig, String platform, String appName, String language)
+	public void beforeMethod(ITestContext context, Method method, String driverConfig, String platform, String appName, String language)
 			throws Throwable {
 		this.appName = appName;
 		this.language = language;

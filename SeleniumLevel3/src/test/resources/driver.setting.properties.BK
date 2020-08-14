@@ -1,0 +1,150 @@
+############## FULL SUPPORT #####################
+
+#[chrome.local]
+#mode=[Local or Remote]
+#driver=[Chrome, Firefox, Edge, Safari, or PhantomJS]
+#executable=[path to driver executable file]
+#remoteUrl=[url of selenium HUB] 
+#capabilities=[define capabilities for each browser]
+#arguments=[The arguments to use when starting browser]
+
+##### ONLY FOR CHROME DRIVER #####
+#experimentalOptions=[define experimentalOptions for Chrome browser]
+
+
+##################################===LOCAL===###############################
+[chrome.local]
+mode=Local
+platform=Desktop
+driver=Chrome
+provider=Selenium
+
+[firefox.local]
+mode=Local
+platform=Desktop
+driver=Firefox
+provider=Selenium
+
+[ie.local]
+mode=Local
+platform=Desktop
+driver=IE
+provider=Selenium
+
+[edge.local]
+mode=Local
+platform=Desktop
+driver=Edge
+provider=Selenium
+executable=src/test/resources/drivers/win/msedgedriver.exe
+arguments={"arg1":"--disable-features=RendererCodeIntegrity"}
+
+##################################===REMOTE===###############################
+[chrome.remote]
+mode=Remote
+platform=Desktop
+driver=Chrome
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName":"chrome","platform":"ANY"}
+
+[firefox.remote]
+mode=Remote
+platform=Desktop
+driver=Firefox
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName":"firefox","platform":"ANY"}
+
+[ie.remote]
+mode=Remote
+platform=Desktop
+driver=IE
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName":"internet explorer","platform":"ANY"}
+
+[edge.remote]
+mode=Remote
+platform=Desktop
+driver=Edge
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName":"edge","platform":"ANY"}
+
+[safari.remote]
+mode=Remote
+platform=Desktop
+driver=Safari
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName":"safari","platform":"ANY"}
+
+##############################===MOBILE===########################################
+[android.chrome.local]
+mode=Local
+platform=Desktop
+driver=Chrome
+provider=Selenium
+######## Chrome browser on Android without using Appium ########
+experimentalOptions={"androidPackage": "com.android.chrome"}
+######## Samsung Internet browser on Android without using Appium ########
+#experimentalOptions={"androidPackage": "com.sec.android.app.sbrowser", "androidActivity": "com.sec.android.app.sbrowser.SBrowserMainActivity", "androidDeviceSocket": "Terrace_devtools_remote", "androidExecName": "Terrace"}
+
+[android.chrome]
+mode=Remote
+platform=Mobile
+driver=Chrome
+provider=Selenium
+remoteUrl=http://127.0.0.1:4723/wd/hub
+capabilities={"browserName": "chrome", "deviceName": "Samsung Tab", "platformName":"Android", "udid": "c57bf216"}
+
+[android.samsunginternet]
+mode=Remote
+platform=Mobile
+driver=Chrome
+provider=Selenium
+remoteUrl=http://127.0.0.1:4723/wd/hub
+capabilities={"browserName": "chrome", "chromedriverExecutable": "${user.dir}/src/test/resources/drivers/android/chromedriver.exe", "deviceName": "Samsung Tab", "platformName":"Android", "udid": "c57bf216"}
+experimentalOptions={"androidPackage": "com.sec.android.app.sbrowser", "androidActivity": "com.sec.android.app.sbrowser.SBrowserMainActivity", "androidDeviceSocket": "Terrace_devtools_remote", "androidExecName": "Terrace"}
+
+[android.firefox]
+mode=Remote
+platform=Mobile
+driver=Firefox
+provider=Selenium
+remoteUrl=http://127.0.0.1:4723/wd/hub
+capabilities={"browserName": "firefox", "deviceName": "Samsung Tab", "platformName":"Android", "udid": "c57bf216"}
+
+[ios.safari]
+mode=Remote
+platform=Mobile
+driver=Safari
+provider=Selenium
+remoteUrl=http://192.168.171.71:4444/wd/hub
+capabilities={"browserName": "safari", "platformVersion": "13.2.3", "deviceName": "Iphone 6s", "platformName": "ios", "udid": "468191f9f9e3a1743ddca8ed16375d02bc0858ab"}
+
+##############################===HEADLESS===########################################
+[chrome.local.headless]
+mode=Local
+platform=Desktop
+driver=Chrome
+provider=Selenium
+arguments={"arg1":"--headless","arg2":"--disable-gpu","arg3":"--window-size=1280,1024"}
+
+[chrome.remote.headless]
+mode=Remote
+platform=Desktop
+driver=Chrome
+provider=Selenium
+remoteUrl=http://localhost:4443/wd/hub
+capabilities={"browserName":"chrome","platform":"ANY"}
+arguments={"arg1":"--headless","arg2":"--disable-gpu","arg3":"--window-size=1280,1024"}
+
+[firefox.local.headless]
+mode=Local
+platform=Desktop
+driver=Firefox
+provider=Selenium
+executable=src/test/resources/drivers/win/geckodriver.exe
+arguments={"arg1":"-headless"}

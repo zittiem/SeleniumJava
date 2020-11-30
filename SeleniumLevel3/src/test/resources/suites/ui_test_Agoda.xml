@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Suite" thread-count="5" data-provider-thread-count="1"
+<suite name="Suite" thread-count="2" data-provider-thread-count="1"
 	parallel="methods">
 	<listeners>
 		<listener class-name="utils.config.TestListener" />
 	</listeners>
-	<test name="Run Chrome - Agoda">
+	<test name="Run Chrome - Agoda 1">
 		<parameter name="driverConfig" value="chrome.local" />
 		<parameter name="platform" value="any" />	
 		<parameter name="appName" value="Agoda" />
@@ -14,7 +14,7 @@
 			<class name="tests.Agoda.TS_Agoda">
 				<methods>
 					<include name="TC01" />
-					<include name="TC02" />
+					<!-- <include name="TC02" /> -->
 				</methods>
 			</class>
 		</classes>

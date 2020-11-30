@@ -55,7 +55,7 @@ public class JsonHelper {
 
 	public static DesiredCapabilities convertJsonToCapabilities(String json) throws Exception {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		Map<String, String> caps = JsonHelper.convertJsonToMap(json);
+		Map<String, Object> caps = JsonHelper.convertJsonToMap(json);
 		if (caps != null) {
 			Set<String> keys = caps.keySet();
 			for (String key : keys) {

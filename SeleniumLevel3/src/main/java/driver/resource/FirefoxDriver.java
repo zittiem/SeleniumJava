@@ -11,7 +11,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class FirefoxDriver extends BaseDriver {
 
-	protected FirefoxOptions options;
+	private FirefoxOptions options;
 	
 	public FirefoxDriver(DriverProperty property) {
 		super(property);

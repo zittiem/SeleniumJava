@@ -25,6 +25,16 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+		        <groupId>org.apache.maven.plugins</groupId>
+		        <artifactId>maven-surefire-plugin</artifactId>
+		        <version>3.0.0-M5</version>
+		        <configuration>
+		          <suiteXmlFiles>
+		            <suiteXmlFile>src/test/resources/suites/ui_test_Agoda.xml</suiteXmlFile>
+		          </suiteXmlFiles>
+		        </configuration>
+		      </plugin>
 		</plugins>
 	</build>
 
@@ -84,11 +94,11 @@
 			<artifactId>javatuples</artifactId>
 			<version>1.2</version>
 		</dependency>
-		<dependency>
+		<!-- <dependency>
 			<groupId>com.googlecode.json-simple</groupId>
 			<artifactId>json-simple</artifactId>
 			<version>1.1.1</version>
-		</dependency>
+		</dependency> -->
 		<!-- https://mvnrepository.com/artifact/javax.mail/javax.mail-api -->
 	<dependency>
     	<groupId>javax.mail</groupId>
